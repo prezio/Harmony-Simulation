@@ -13,9 +13,9 @@ namespace MusicPopulation
         public int numberOfNotes;
         static readonly int[] limits = new int[] { 16, 60, 128 };
 
-        static Random random= new Random();
+        static Random random = new Random();
 
-        protected void transpose(uint n)
+        protected void Transpose(uint n)
         {
             int temp;
             int place = random.Next(numberOfNotes - 1);
@@ -31,59 +31,59 @@ namespace MusicPopulation
             //notes[place, 2] = notes[place + 1, 2];
             //notes[place + 1, 2] = temp;
         }
-        protected void exchange(uint n)
+        protected void Exchange(uint n)
         {
             int place = random.Next(numberOfNotes);
             notes[place, n] = random.Next(limits[n]);
         }
-        public void mutate()
+        public void Mutate()
         {
             if(random.NextDouble()<SimulationParameters.growthChance)
             {
-                grow();
+                Grow();
             }
             while(random.NextDouble()<SimulationParameters.exchangeChance[0])
             {
-                exchange(0);
+                Exchange(0);
             }
             while (random.NextDouble() < SimulationParameters.exchangeChance[1])
             {
-                exchange(1);
+                Exchange(1);
             }
             while (random.NextDouble() < SimulationParameters.exchangeChance[2])
             {
-                exchange(2);
+                Exchange(2);
             }
             while (random.NextDouble() < SimulationParameters.transposeChance[0])
             {
-                transpose(0);
+                Transpose(0);
             }
             while (random.NextDouble() < SimulationParameters.transposeChance[1])
             {
-                transpose(1);
+                Transpose(1);
             }
             while (random.NextDouble() < SimulationParameters.transposeChance[2])
             {
-                transpose(2);
+                Transpose(2);
             }
             while (random.NextDouble() < SimulationParameters.modifyChance[0])
             {
-                modify(0);
+                Modify(0);
             }
             while (random.NextDouble() < SimulationParameters.modifyChance[1])
             {
-                modify(1);
+                Modify(1);
             }
             while (random.NextDouble() < SimulationParameters.modifyChance[2])
             {
-                modify(2);
+                Modify(2);
             }
             if (random.NextDouble() < SimulationParameters.shrinkChance)
             {
-                shrink();
+                Shrink();
             }
         }
-        protected void modify(uint n)
+        protected void Modify(uint n)
         {
             int temp;
             int place = random.Next(numberOfNotes - 1);
@@ -98,12 +98,12 @@ namespace MusicPopulation
                 notes[place, n] = 0;
             }
         }
-        protected void shrink()
+        protected void Shrink()
         {
             if(numberOfNotes>1)
                 --numberOfNotes;
         }
-        protected void grow()
+        protected void Grow()
         {
             if (numberOfNotes == maxNotes)
                 return;
@@ -112,11 +112,11 @@ namespace MusicPopulation
             notes[numberOfNotes, 2] = random.Next(limits[2]);
             ++numberOfNotes;
         }
-        public void influence(Member influencer)
+        public void Influence(Member influencer)
         {
             if(numberOfNotes<influencer.numberOfNotes)
             {
-                grow();
+                Grow();
             }
             else if(numberOfNotes>influencer.numberOfNotes)
             {
