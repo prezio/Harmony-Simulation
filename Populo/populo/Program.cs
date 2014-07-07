@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MusicPopulation;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,8 @@ namespace populo
     {
         static void Main(string[] args)
         {
+            // Test Random Board Generator
+            var temp = RandomGenerator.RandomPermBoard;
         }
     }
 }
