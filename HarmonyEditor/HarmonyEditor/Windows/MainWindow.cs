@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PeriodicChords;
+using Microsoft.Win32;
 
 namespace HarmonyEditor
 {
@@ -28,10 +29,64 @@ namespace HarmonyEditor
             buttonRemoveAccord.Enabled = _selectedIndex != -1;
             buttonEditAccord.Enabled = _selectedIndex != -1;
         }
+        private void LoadSettings()
+        {
+            try
+            {
+                int boardWidth, boardHeight, tileWidth, tileHeight;
+                bool freqNotes;
+
+                string path = Registry.LocalMachine.Name + @"\SOFTWARE\Harmony-Simulation";
+
+                boardWidth = (int)Registry.GetValue(path, "BoardWidth", null);
+                boardHeight = (int)Registry.GetValue(path, "BoardHeight", null);
+                tileWidth = (int)Registry.GetValue(path, "TileWidth", null);
+                tileHeight = (int)Registry.GetValue(path, "TileHeight", null);
+                freqNotes = (string)Registry.GetValue(path, "FreqNotes", null) == "true" ? true : false;
+
+                this.Width = boardWidth;
+                this.Height = boardHeight;
+                numericUpDownWidth.Value = tileWidth;
+                numericUpDownHeight.Value = tileHeight;
+
+                if (!freqNotes)
+                {
+                    radioButtonFrequencies.Checked = false;
+                    radioButtonNotes.Checked = true;
+                }
+            }
+            catch (Exception)
+            {
+                return;
+            }
+        }
+        private void SaveSettings()
+        {
+            try
+            {
+                string path = Registry.LocalMachine.Name + @"\SOFTWARE\Harmony-Simulation";
+                Registry.SetValue(path, "BoardWidth", (int)this.Width);
+                Registry.SetValue(path, "BoardHeight", (int)this.Height);
+                Registry.SetValue(path, "TileWidth", (int)numericUpDownWidth.Value);
+                Registry.SetValue(path, "TileHeight", (int)numericUpDownHeight.Value);
+                Registry.SetValue(path, "FreqNotes", radioButtonFrequencies.Checked ? "true" : "false");
+            }
+            catch (Exception)
+            {
+                return;
+            }
+        }
 
         public MainWindow()
         {
             InitializeComponent();
+            LoadSettings();
+        }
+
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+            SaveSettings();
         }
 
         #region Events
