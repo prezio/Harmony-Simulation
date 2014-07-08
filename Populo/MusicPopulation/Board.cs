@@ -15,6 +15,13 @@ namespace MusicPopulation
         public Board()
         {
             _board = new Member[_height, _width];
+            var population = RandomGenerator.RandomPermutation(_height * _width, SimulationParameters.populationGrowth);
+            foreach (int k in population)
+            {
+                int i = k / _height;
+                int j = k % _width;
+                _board[i, j] = new Member();
+            }
         }
         public Member this[int i, int j]
         {

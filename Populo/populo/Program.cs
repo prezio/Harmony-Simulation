@@ -18,15 +18,23 @@ namespace populo
             }
         }
 
-       
-
         public static void Main(string[] args)
         {
             // Test Random Board Generator
             //var temp = RandomGenerator.RandomPermBoard;
-
+            DateTime start = DateTime.Now;
             Board board = new Board();
-            Mutate(board);
+            for (int i = 0; i < 100; i++)
+            {
+                Mutate(board);
+            }
+            DateTime end = DateTime.Now;
+
+            TimeSpan duration = end - start;
+            Console.WriteLine(duration);
+
+            //Mutate(board);
+            Console.ReadKey();
         }
     }
 }
