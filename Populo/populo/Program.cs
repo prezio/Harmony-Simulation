@@ -17,11 +17,17 @@ namespace populo
                     m.Mutate();
             }
         }
+        public static void KillWeak(Board board)
+        {
+            foreach (Member m in board)
+            {
+                //if (m.Rank < SimulationParameters.deathChance)
+                    
+            }
+        }
 
         public static void Main(string[] args)
         {
-            // Test Random Board Generator
-            //var temp = RandomGenerator.RandomPermBoard;
             DateTime start = DateTime.Now;
             Board board = new Board();
             for (int i = 0; i < 100; i++)
@@ -33,7 +39,6 @@ namespace populo
             TimeSpan duration = end - start;
             Console.WriteLine(duration);
 
-            //Mutate(board);
             Console.ReadKey();
         }
     }

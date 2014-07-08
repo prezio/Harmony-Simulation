@@ -35,6 +35,11 @@ namespace MusicPopulation
             int place = RandomGenerator.RandomGen.Next(numberOfNotes);
             notes[place, n] = RandomGenerator.RandomGen.Next(limits[n]);
         }
+        public double Rank()
+        {
+            // Random rank
+            return RandomGenerator.RandomGen.NextDouble();
+        }
         public void Mutate()
         {
             if (RandomGenerator.RandomGen.NextDouble() < SimulationParameters.growthChance)
@@ -127,6 +132,10 @@ namespace MusicPopulation
                 notes[i, 1] += (int)(SimulationParameters.influenceAmount[1] * (influencer.notes[i % influencer.numberOfNotes, 1] - notes[i, 1]));
                 notes[i, 2] += (int)(SimulationParameters.influenceAmount[2] * (influencer.notes[i % influencer.numberOfNotes, 2] - notes[i, 2]));
             }
+        }
+        public void Kill()
+        {
+            
         }
         public Member(Member original)
         {

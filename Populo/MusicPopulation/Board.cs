@@ -9,7 +9,7 @@ namespace MusicPopulation
     {
         private int _width = SimulationParameters.boardWidth;
         private int _height = SimulationParameters.boardHeight;
-        private int position;
+        private int _position;
         private Member[,] _board;
 
         public Board()
@@ -29,38 +29,35 @@ namespace MusicPopulation
             {
                 return _board[i, j];
             }
-        }
-        public void Mutate()
-        {
-            foreach (Member m in _board)
+            set
             {
-                m.Mutate();
+                _board[i, j] = value;
             }
-        }
-        public void Serialize()
-        {
-            throw new NotImplementedException();
         }
         public object Current
         {
             get 
             {
-                Tuple<int, int> cur = RandomGenerator.RandomOrder[position];
+                Tuple<int, int> cur = RandomGenerator.RandomOrder[_position];
                 return _board[cur.Item1, cur.Item2];
             }
         }
         public bool MoveNext()
         {
-            position++;
-            return (position < RandomGenerator.RandomOrder.Length);
+            _position++;
+            return (_position < RandomGenerator.RandomOrder.Length);
         }
         public void Reset()
         {
-            position = 0;
+            _position = 0;
         }
         public IEnumerator GetEnumerator()
         {
             return (IEnumerator)this;
+        }
+        public void Serialize()
+        {
+            throw new NotImplementedException();
         }
     }
 }
