@@ -10,7 +10,12 @@ namespace MusicPopulation
     {
         public static int boardWidth = 256, boardHeight = 256;
         public static int populationGrowth = 256*256 / 2;
-        public static double deathChance = 0.00001;
+        public static int radiusReproduce = 2;
+        public static double deathLimit = 100;
+        public static double alfa(int param)
+        {
+            return 1;
+        }
 
         public static int[] modifyAmount = new int[] { 3, 5, 15 };
         public static double[] influenceAmount = new double[] { 0.2, 0.2, 0.2 };

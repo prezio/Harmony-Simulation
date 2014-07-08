@@ -35,10 +35,14 @@ namespace MusicPopulation
             int place = RandomGenerator.RandomGen.Next(numberOfNotes);
             notes[place, n] = RandomGenerator.RandomGen.Next(limits[n]);
         }
-        public double Rank()
+        public int Rank()
         {
-            // Random rank
-            return RandomGenerator.RandomGen.NextDouble();
+            int rank = 0;
+            foreach (int a in notes)
+            {
+                rank += a;
+            }
+            return rank;
         }
         public void Mutate()
         {

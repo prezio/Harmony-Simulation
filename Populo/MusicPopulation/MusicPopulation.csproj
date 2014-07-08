@@ -39,10 +39,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Board.cs" />
-    <Compile Include="RandomGenerator.cs" />
-    <Compile Include="SimulationParameters.cs" />
-    <Compile Include="Member.cs" />
+    <Compile Include="Components\AreaManager.cs" />
+    <Compile Include="Components\Board.cs" />
+    <Compile Include="Simulation\Simulation.cs" />
+    <Compile Include="Tools\RandomGenerator.cs" />
+    <Compile Include="Simulation\SimulationParameters.cs" />
+    <Compile Include="Components\Member.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
