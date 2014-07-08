@@ -15,7 +15,8 @@ namespace populo
             DateTime start = DateTime.Now;
             for (int i = 0; i < 100; i++)
             {
-                
+                Console.WriteLine("{0} % completed.", i);
+                Simulation.Evolve();
             }
             DateTime end = DateTime.Now;
 
