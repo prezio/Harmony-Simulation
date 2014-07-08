@@ -8,6 +8,7 @@ namespace MusicPopulation
     {
         private static Random _random = new Random();
         private static int[,] _randomPermBoard = null;
+        private static Tuple<int, int>[] _randomOrder = null;
         private static void CreateAndShuffle()
         {
             int n = SimulationParameters.boardHeight * SimulationParameters.boardWidth;
@@ -26,6 +27,7 @@ namespace MusicPopulation
             while (n > 0)
             {
                 n--;
+
                 int k = RandomGen.Next(n);
                 int i1 = n / h;
                 int j1 = n % w;
@@ -45,6 +47,25 @@ namespace MusicPopulation
                 return _random;
             }
         }
+        public static Tuple<int, int>[] RandomOrder
+        {
+            get
+            {
+                if (_randomOrder == null)
+                {
+                    int w = SimulationParameters.boardWidth, h = SimulationParameters.boardHeight;
+                    _randomOrder = new Tuple<int, int>[w * h];
+                    for (int i = 0; i < h; i++)
+                    {
+                        for (int j = 0; j < w; j++)
+                        {
+                            _randomOrder[RandomPermBoard[i, j]] = new Tuple<int, int>(i, j);
+                        }
+                    }
+                }
+                return _randomOrder;
+            }
+        }
         public static int[,] RandomPermBoard
         {
             get
@@ -55,6 +76,13 @@ namespace MusicPopulation
                 }
                 return _randomPermBoard;
             }
+        }
+        public static bool chanceProbability(double chance)
+        {
+            if (RandomGen.NextDouble() <= chance)
+                return true;
+            else
+                return false;
         }
     }
 }

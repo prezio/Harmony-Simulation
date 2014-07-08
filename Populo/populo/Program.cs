@@ -7,12 +7,26 @@ using System.Threading.Tasks;
 
 namespace populo
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Mutate(Board board)
+        {
+            foreach (Member m in board)
+            {
+                if (m != null)
+                    m.Mutate();
+            }
+        }
+
+       
+
+        public static void Main(string[] args)
         {
             // Test Random Board Generator
-            var temp = RandomGenerator.RandomPermBoard;
+            //var temp = RandomGenerator.RandomPermBoard;
+
+            Board board = new Board();
+            Mutate(board);
         }
     }
 }
