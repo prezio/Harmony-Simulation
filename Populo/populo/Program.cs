@@ -13,13 +13,13 @@ namespace populo
         public static void Main(string[] args)
         {
             DateTime start = DateTime.Now;
-            for (int i = 0; i <= 50; i++)
+            for (int i = 0; i <= 200; i++)
             {
-                Console.WriteLine("{0} / 50 completed.", i);
+                Console.WriteLine("{0} / 10 completed.", i);
                 Simulation.Evolve();
             }
-            DateTime end = DateTime.Now;
 
+            DateTime end = DateTime.Now;
             TimeSpan duration = end - start;
             Console.WriteLine(duration);
 

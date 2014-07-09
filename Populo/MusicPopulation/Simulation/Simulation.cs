@@ -1,33 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 
 namespace MusicPopulation
 {
     public static class Simulation
     {
         private static Board _board = null;
-        private static AreaManager[] _arrayManage = null;
+        private static AreaThread[] _arrayAreaThread = null;
 
 
         public static void Evolve()
         {
-            int i = 0;
-            foreach (var area in BoardThreads)
+            var threads = GenerateThreads();
+            foreach (var thread in threads)
             {
-                Console.WriteLine("\nArea {0}", i);
-                area.KillWeaksWhoDoesNotServeTheEmperorWell();
-                area.ReproduceMenToHaveMoreServantsOfTheEmperor();
-                area.MutateWeaksSoTheyCanServeEmperorBetter();
-                area.InfluenceMenWithSongsGlorifyingEmperor();
-                Console.WriteLine("==========\n");
-                i++;
+                thread.Start();
             }
-            /*var area = BoardThreads[0];
-            area.KillWeaksWhoDoesNotServeTheEmperorWell();
-            area.ReproduceMenToHaveMoreServantsOfTheEmperor();
-            area.MutateWeaksSoTheyCanServeEmperorBetter();
-            area.InfluenceMenWithSongsGlorifyingEmperor();*/
+            foreach (var thread in threads)
+            {
+                thread.Join();
+            }
         }
         public static Tuple<int,int> GetBestInArea(int x1, int y1, int x2, int y2)
         {
@@ -39,19 +33,12 @@ namespace MusicPopulation
                 i = x1;
                 while (i <= x2)
                 {
-                    try
+                    var member = SimulationBoard[i, j];
+                    if (member != null && member.Rank() > best_rank)
                     {
-                        var member = SimulationBoard[i, j];
-                        if (member != null && member.Rank() > best_rank)
-                        {
-                            best_x = i;
-                            best_y = j;
-                            best_rank = member.Rank();
-                        }
-                    }
-                    catch (Exception)
-                    {
-                        // ignore
+                        best_x = i;
+                        best_y = j;
+                        best_rank = member.Rank();
                     }
                     i++;
                 }
@@ -62,23 +49,33 @@ namespace MusicPopulation
             else
                 return new Tuple<int, int>(best_x, best_y);
         }
-        public static AreaManager[] BoardThreads
+        public static Thread[] GenerateThreads()
+        {
+            List<Thread> result = new List<Thread>();
+            foreach (var areaThread in AreaThreads)
+            {
+                result.Add(new Thread(new ThreadStart(areaThread.Evolve)));
+            }
+            return result.ToArray();
+        }
+        public static AreaThread[] AreaThreads
         {
             get
             {
-                if (_arrayManage == null)
+                if (_arrayAreaThread == null)
                 {
-                    List<AreaManager> result = new List<AreaManager>();
+                    List<AreaThread> result = new List<AreaThread>();
                     for (int i = 0; i < 4; i++)
                     {
                         for (int j = 0; j < 4; j++)
                         {
-                            result.Add(new AreaManager(i * 64, j * 64, 64, 64));
+                            AreaManager area = new AreaManager(i * 64, j * 64, 64, 64);
+                            result.Add(new AreaThread(area));
                         }
                     }
-                    _arrayManage = result.ToArray();
+                    _arrayAreaThread = result.ToArray();
                 }
-                return _arrayManage;
+                return _arrayAreaThread;
             }
         }
         public static Board SimulationBoard
@@ -92,6 +89,5 @@ namespace MusicPopulation
                 return _board;
             }
         }
-        
     }
 }

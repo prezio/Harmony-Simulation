@@ -9,9 +9,9 @@ namespace MusicPopulation
     public static class SimulationParameters
     {
         public static int boardWidth = 256, boardHeight = 256;
-        public static int populationGrowth = 256*256 / 9;
+        public static int populationGrowth = 256 * 256 / 2;
         public static int radiusReproduce = 2;
-        public static double deathLimit = 1600;
+        public static double deathLimit = 1;
         public static double alfa(int param)
         {
             return 1;

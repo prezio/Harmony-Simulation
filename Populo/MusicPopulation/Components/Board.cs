@@ -30,6 +30,8 @@ namespace MusicPopulation
         {
             get
             {
+                if (i < 0 || j<0 || i>=_width || j >= _height)
+                    return null;
                 return _board[i, j];
             }
             set

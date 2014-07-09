@@ -111,39 +111,39 @@ namespace MusicPopulation
             {
                 Grow();
             }
-            while (RandomGenerator.RandomGen.NextDouble() < SimulationParameters.exchangeChance[0])
+            if (RandomGenerator.RandomGen.NextDouble() < SimulationParameters.exchangeChance[0])
             {
                 Exchange(0);
             }
-            while (RandomGenerator.RandomGen.NextDouble() < SimulationParameters.exchangeChance[1])
+            if (RandomGenerator.RandomGen.NextDouble() < SimulationParameters.exchangeChance[1])
             {
                 Exchange(1);
             }
-            while (RandomGenerator.RandomGen.NextDouble() < SimulationParameters.exchangeChance[2])
+            if (RandomGenerator.RandomGen.NextDouble() < SimulationParameters.exchangeChance[2])
             {
                 Exchange(2);
             }
-            while (RandomGenerator.RandomGen.NextDouble() < SimulationParameters.transposeChance[0])
+            if (RandomGenerator.RandomGen.NextDouble() < SimulationParameters.transposeChance[0])
             {
                 Transpose(0);
             }
-            while (RandomGenerator.RandomGen.NextDouble() < SimulationParameters.transposeChance[1])
+            if (RandomGenerator.RandomGen.NextDouble() < SimulationParameters.transposeChance[1])
             {
                 Transpose(1);
             }
-            while (RandomGenerator.RandomGen.NextDouble() < SimulationParameters.transposeChance[2])
+            if (RandomGenerator.RandomGen.NextDouble() < SimulationParameters.transposeChance[2])
             {
                 Transpose(2);
             }
-            while (RandomGenerator.RandomGen.NextDouble() < SimulationParameters.modifyChance[0])
+            if (RandomGenerator.RandomGen.NextDouble() < SimulationParameters.modifyChance[0])
             {
                 Modify(0);
             }
-            while (RandomGenerator.RandomGen.NextDouble() < SimulationParameters.modifyChance[1])
+            if (RandomGenerator.RandomGen.NextDouble() < SimulationParameters.modifyChance[1])
             {
                 Modify(1);
             }
-            while (RandomGenerator.RandomGen.NextDouble() < SimulationParameters.modifyChance[2])
+            if (RandomGenerator.RandomGen.NextDouble() < SimulationParameters.modifyChance[2])
             {
                 Modify(2);
             }
