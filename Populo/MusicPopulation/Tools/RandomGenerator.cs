@@ -30,6 +30,7 @@ namespace MusicPopulation
                 array[i] = i;
             }
             int n1 = n;
+
             while (n > n1 - k)
             {
                 n--;

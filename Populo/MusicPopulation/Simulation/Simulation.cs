@@ -7,15 +7,27 @@ namespace MusicPopulation
     public static class Simulation
     {
         private static Board _board = null;
-        private static AreaManager _manage1 = null;
+        private static AreaManager[] _arrayManage = null;
 
 
         public static void Evolve()
         {
-            BoardThread.KillWeaksWhoDoesNotServeTheEmperorWell();
-            BoardThread.ReproduceMenToHaveMoreServantsOfTheEmperor();
-            //BoardThread.MutateWeaksSoTheyCanServeEmperorBetter();
-            BoardThread.InfluenceMenWithSongsGlorifyingEmperor();
+            int i = 0;
+            foreach (var area in BoardThreads)
+            {
+                Console.WriteLine("\nArea {0}", i);
+                area.KillWeaksWhoDoesNotServeTheEmperorWell();
+                area.ReproduceMenToHaveMoreServantsOfTheEmperor();
+                area.MutateWeaksSoTheyCanServeEmperorBetter();
+                area.InfluenceMenWithSongsGlorifyingEmperor();
+                Console.WriteLine("==========\n");
+                i++;
+            }
+            /*var area = BoardThreads[0];
+            area.KillWeaksWhoDoesNotServeTheEmperorWell();
+            area.ReproduceMenToHaveMoreServantsOfTheEmperor();
+            area.MutateWeaksSoTheyCanServeEmperorBetter();
+            area.InfluenceMenWithSongsGlorifyingEmperor();*/
         }
         public static Tuple<int,int> GetBestInArea(int x1, int y1, int x2, int y2)
         {
@@ -50,15 +62,23 @@ namespace MusicPopulation
             else
                 return new Tuple<int, int>(best_x, best_y);
         }
-        public static AreaManager BoardThread
+        public static AreaManager[] BoardThreads
         {
             get
             {
-                if (_manage1 == null)
+                if (_arrayManage == null)
                 {
-                    _manage1 = new AreaManager(0, 0, 255, 255);
+                    List<AreaManager> result = new List<AreaManager>();
+                    for (int i = 0; i < 4; i++)
+                    {
+                        for (int j = 0; j < 4; j++)
+                        {
+                            result.Add(new AreaManager(i * 64, j * 64, 64, 64));
+                        }
+                    }
+                    _arrayManage = result.ToArray();
                 }
-                return _manage1;
+                return _arrayManage;
             }
         }
         public static Board SimulationBoard

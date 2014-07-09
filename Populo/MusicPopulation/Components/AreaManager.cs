@@ -9,7 +9,7 @@ namespace MusicPopulation
     {
         private int _mX, _mY;
         private int _width, _height;
-        private int _position;
+        private int _position = -1;
         private Tuple<int, int>[] _areaRandOrder;
 
         public AreaManager(int x, int y, int w, int h)
@@ -49,32 +49,46 @@ namespace MusicPopulation
         #region Algorithm Steps
         public void KillWeaksWhoDoesNotServeTheEmperorWell() // Wymieranie najgorszych osobników
         {
+            int done = 0;
+            int all = 0;
+
             foreach(Member m in this)
             {
                 if ( m != null && m.Rank() < SimulationParameters.deathLimit)
                 {
                     Simulation.SimulationBoard[_areaRandOrder[_position].Item1, _areaRandOrder[_position].Item2] = null;
+                    done++;
                 }
+                all++;
             }
+            Console.WriteLine("Kill weaks: " + done + "/" + all);
         }
         public void MutateWeaksSoTheyCanServeEmperorBetter() // Mutacje
         {
+            int done = 0;
+            int all = 0;
             foreach (var pos in _areaRandOrder)
             {
                try 
-               { 
-                   Simulation.SimulationBoard[pos.Item1, pos.Item2].Mutate(); 
+               {
+                   all++;
+                   Simulation.SimulationBoard[pos.Item1, pos.Item2].Mutate();
+                   done++;
                } 
                catch (Exception) 
                {
                    // ignore
                }
             }
+            Console.WriteLine("Mutate: " + done + "/" + all);
         }
         public void ReproduceMenToHaveMoreServantsOfTheEmperor()
         {
             int n = PopulationGrowth, n_max = _width * _height;
             int r = SimulationParameters.radiusReproduce;
+
+            int all = 0;
+            int done = 0;
 
             foreach (var pos in _areaRandOrder)
             {
@@ -82,12 +96,17 @@ namespace MusicPopulation
                 if (member == null && RandomGenerator.ChanceProbability((double)n / n_max * SimulationParameters.alfa(0)))
                 {
                     var best_pos = Simulation.GetBestInArea(pos.Item1 - r, pos.Item2 - r, pos.Item1 + r, pos.Item2 + r);
-                    Simulation.SimulationBoard[pos.Item1, pos.Item2] = Simulation.SimulationBoard[best_pos.Item1, best_pos.Item2];
+                    if (best_pos != null)
+                        Simulation.SimulationBoard[pos.Item1, pos.Item2] = Simulation.SimulationBoard[best_pos.Item1, best_pos.Item2];
+                    done++;
                 }
+                all++;
             }
+            Console.WriteLine("Reproduce: " + done + "/" + all);
         }
         public void InfluenceMenWithSongsGlorifyingEmperor()
         {
+            int influenced = 0;
             for (int i = 0; i < 4; i++)
             {
                 for (int j = 0; j < 4; j++)
@@ -112,18 +131,23 @@ namespace MusicPopulation
                         {
                             var member = Simulation.SimulationBoard[x, y];
                             if (member != null && (x != best_pos.Item1 || y != best_pos.Item2))
+                            {
                                 member.Influence(best_mem);
+                                influenced++;
+                            }
                             x++;
                         }
                         y++;
                     }
                 }
             }
+            Console.WriteLine("Influenced: " + influenced);
         }
         #endregion
         #region IEnumerable, IEnumerator interface methods
         public IEnumerator GetEnumerator()
         {
+            _position = -1;
             return (IEnumerator)this;
         }
         public object Current
@@ -141,7 +165,7 @@ namespace MusicPopulation
         }
         public void Reset()
         {
-            _position = 0;
+            _position = -1;
         }
         #endregion
     }
