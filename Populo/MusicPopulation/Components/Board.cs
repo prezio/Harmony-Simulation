@@ -11,7 +11,6 @@ namespace MusicPopulation
         private int _height = SimulationParameters.boardHeight;
         private Member[,] _board;
 
-
         public Board(int w, int h, int growth)
         {
             _board = new Member[w, h];

@@ -9,9 +9,17 @@ namespace MusicPopulation
     {
         private static Board _board = null;
         private static AreaThread[] _arrayAreaThread = null;
+        private static Thread[] GenerateThreads()
+        {
+            List<Thread> result = new List<Thread>();
+            foreach (var areaThread in AreaThreads)
+            {
+                result.Add(new Thread(new ThreadStart(areaThread.Evolve)));
+            }
+            return result.ToArray();
+        }
 
-
-        public static void Evolve()
+        public static void EvolveUsingThreads()
         {
             var threads = GenerateThreads();
             foreach (var thread in threads)
@@ -21,6 +29,13 @@ namespace MusicPopulation
             foreach (var thread in threads)
             {
                 thread.Join();
+            }
+        }
+        public static void Evolve()
+        {
+            foreach (var area in AreaThreads)
+            {
+                area.Evolve();
             }
         }
         public static Tuple<int,int> GetBestInArea(int x1, int y1, int x2, int y2)
@@ -48,15 +63,6 @@ namespace MusicPopulation
                 return null;
             else
                 return new Tuple<int, int>(best_x, best_y);
-        }
-        public static Thread[] GenerateThreads()
-        {
-            List<Thread> result = new List<Thread>();
-            foreach (var areaThread in AreaThreads)
-            {
-                result.Add(new Thread(new ThreadStart(areaThread.Evolve)));
-            }
-            return result.ToArray();
         }
         public static AreaThread[] AreaThreads
         {

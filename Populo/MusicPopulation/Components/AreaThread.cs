@@ -15,7 +15,7 @@ namespace MusicPopulation
             _area.KillWeaksWhoDoesNotServeTheEmperorWell();
             _area.ReproduceMenToHaveMoreServantsOfTheEmperor();
             _area.MutateWeaksSoTheyCanServeEmperorBetter();
-            //_area.InfluenceMenWithSongsGlorifyingEmperor();
+            _area.InfluenceMenWithSongsGlorifyingEmperor();
         }
     }
 }
