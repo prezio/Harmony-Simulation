@@ -13,7 +13,7 @@ namespace populo
 
         public static void Main(string[] args)
         {
-            int tries = 200;
+            int tries = 100;
 
             DateTime start = DateTime.Now;
             for (int i = 0; i <= tries; i++)
@@ -21,8 +21,8 @@ namespace populo
                 Debug.WriteLine("{0} / {1} completed.", i, tries);
                 Console.WriteLine("{0} / {1} completed.", i, tries);
 
-                //Simulation.EvolveUsingThreads();
-                Simulation.Evolve();
+                Simulation.EvolveUsingThreads();
+                //Simulation.Evolve();
 
                 Debug.WriteLine("==================\n");
             }

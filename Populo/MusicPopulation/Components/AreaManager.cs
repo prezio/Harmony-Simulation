@@ -52,9 +52,9 @@ namespace MusicPopulation
         {
             List<Tuple<int, int, int>> values = new List<Tuple<int, int, int>>();
 
-            for (int i = _mX; i < _width; i++)
+            for (int i = _mX; i < _mX + _width; i++)
             {
-                for (int j = _mY; j < _height; j++)
+                for (int j = _mY; j < _mY + _height; j++)
                 {
                     Member m = Simulation.SimulationBoard[i, j];
                     if (m != null)
@@ -63,8 +63,8 @@ namespace MusicPopulation
             }
 
             values.Sort((a, b) => a.Item3 < b.Item3 ? -1 : a.Item3==b.Item3 ? 0 : 1);
-            int deaths = (int)((double)SimulationParameters.percentDeath / 100 * values.Count);
-
+            int deaths = (int)((double)SimulationParameters.percentDeath / 100 * (double)values.Count);
+            
             int done = 0;
             int all = values.Count;
 
@@ -73,9 +73,7 @@ namespace MusicPopulation
                 Simulation.SimulationBoard[values[i].Item1, values[i].Item2] = null;
                 done++;
             }
-
-            if(done!=0)
-                Debug.WriteLine("Kill weaks: " + done + "/" + all);
+            Debug.WriteLine("Kill weaks: " + done + "/" + all );
         }
         public void MutateWeaksSoTheyCanServeEmperorBetter() // Mutacje
         {
@@ -91,8 +89,7 @@ namespace MusicPopulation
                 }
                 all++;
             }
-            if(done!=0)
-                Debug.WriteLine("Mutate: " + done + "/" + all);
+            Debug.WriteLine("Mutate: " + done + "/" + all);
         }
         public void ReproduceMenToHaveMoreServantsOfTheEmperor()
         {
@@ -134,7 +131,6 @@ namespace MusicPopulation
                     }
                 }
             }
-
             Debug.WriteLine("Reproduced: " + reproduced);
         }
         public void InfluenceMenWithSongsGlorifyingEmperor()

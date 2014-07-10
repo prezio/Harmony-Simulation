@@ -7,35 +7,48 @@ namespace MusicPopulation
 {
     public static class Simulation
     {
-        private static Board _board = null;
-        private static AreaThread[] _arrayAreaThread = null;
-        private static Thread[] GenerateThreads()
+        private static AreaManager[] CreateAreas()
         {
-            List<Thread> result = new List<Thread>();
-            foreach (var areaThread in AreaThreads)
+            Console.WriteLine("Create Area");
+            List<AreaManager> result = new List<AreaManager>();
+            for (int i = 0; i < 4; i++)
             {
-                result.Add(new Thread(new ThreadStart(areaThread.Evolve)));
+                for (int j = 0; j < 4; j++)
+                {
+                    AreaManager area = new AreaManager(i * 64, j * 64, 64, 64);
+                    result.Add(area);
+                }
             }
             return result.ToArray();
         }
 
+        public static Board SimulationBoard = new Board(SimulationParameters.boardWidth, SimulationParameters.boardHeight, SimulationParameters.populationGrowth);
+        public static AreaManager[] Areas = CreateAreas();
         public static void EvolveUsingThreads()
         {
-            var threads = GenerateThreads();
-            foreach (var thread in threads)
+            int events = 16;
+
+            ManualResetEvent[] doneEvents = new ManualResetEvent[events];
+
+            for (int i = 0; i < events; i++)
             {
-                thread.Start();
+                doneEvents[i] = new ManualResetEvent(false);
+                AreaThread thread = new AreaThread(i, doneEvents[i]);
+                ThreadPool.QueueUserWorkItem(thread.Evolve, null);
             }
-            foreach (var thread in threads)
-            {
-                thread.Join();
-            }
+
+            WaitHandle.WaitAll(doneEvents);
         }
         public static void Evolve()
         {
-            foreach (var area in AreaThreads)
+            int i = 0;
+            foreach (var area in Areas)
             {
-                area.Evolve();
+                area.KillWeaksWhoDoesNotServeTheEmperorWell();
+                area.ReproduceMenToHaveMoreServantsOfTheEmperor();
+                area.MutateWeaksSoTheyCanServeEmperorBetter();
+                area.InfluenceMenWithSongsGlorifyingEmperor();
+                i++;
             }
         }
         public static Tuple<int,int> GetBestInArea(int x1, int y1, int x2, int y2)
@@ -63,37 +76,6 @@ namespace MusicPopulation
                 return null;
             else
                 return new Tuple<int, int>(best_x, best_y);
-        }
-        public static AreaThread[] AreaThreads
-        {
-            get
-            {
-                if (_arrayAreaThread == null)
-                {
-                    List<AreaThread> result = new List<AreaThread>();
-                    for (int i = 0; i < 4; i++)
-                    {
-                        for (int j = 0; j < 4; j++)
-                        {
-                            AreaManager area = new AreaManager(i * 64, j * 64, 64, 64);
-                            result.Add(new AreaThread(area));
-                        }
-                    }
-                    _arrayAreaThread = result.ToArray();
-                }
-                return _arrayAreaThread;
-            }
-        }
-        public static Board SimulationBoard
-        {
-            get
-            {
-                if (_board == null)
-                {
-                    _board = new Board(SimulationParameters.boardWidth, SimulationParameters.boardHeight, SimulationParameters.populationGrowth);
-                }
-                return _board;
-            }
         }
     }
 }

@@ -13,6 +13,7 @@ namespace MusicPopulation
 
         public Board(int w, int h, int growth)
         {
+            Console.WriteLine("Create Board");
             _board = new Member[w, h];
             this._width = w;
             this._height = h;

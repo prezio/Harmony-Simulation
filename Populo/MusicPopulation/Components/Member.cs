@@ -9,7 +9,7 @@ namespace MusicPopulation
     public class Member
     {
         private const int _maxNotes = 255;
-        private int[,] _notes = new int[_maxNotes,3]; //pitch, duration, dynamics
+        private int[,] _notes = null; //pitch, duration, dynamics
         private int _numberOfNotes;
         static readonly int[] limits = new int[] { 16, 60, 128 };
 
@@ -89,6 +89,8 @@ namespace MusicPopulation
         public Member()
         {
             _numberOfNotes = RandomGenerator.RandomGen.Next(_maxNotes - 1) + 1;
+            _notes = new int[_maxNotes, 3];
+
             for(int i=0; i< _numberOfNotes; i++)
             {
                 _notes[i, 0] = RandomGenerator.RandomGen.Next(limits[0]);
