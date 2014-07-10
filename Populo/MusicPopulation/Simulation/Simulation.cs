@@ -38,6 +38,7 @@ namespace MusicPopulation
             }
 
             WaitHandle.WaitAll(doneEvents);
+            Move();
         }
         public static void Evolve()
         {
@@ -51,6 +52,8 @@ namespace MusicPopulation
                 i++;
             }
         }
+
+        #region Evolution operations which requires board
         public static Tuple<int,int> GetBestInArea(int x1, int y1, int x2, int y2)
         {
             int best_x = -1, best_y = -1, best_rank = -1;
@@ -77,5 +80,13 @@ namespace MusicPopulation
             else
                 return new Tuple<int, int>(best_x, best_y);
         }
+        public static void Move()
+        {
+            foreach (var area in Areas)
+            {
+                area.MoveYourMenSergant();
+            }
+        }
+        #endregion
     }
 }

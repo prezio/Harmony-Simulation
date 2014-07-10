@@ -11,6 +11,7 @@ namespace MusicPopulation
         public static int boardWidth = 256, boardHeight = 256;
         public static int populationGrowth = 256 * 256 / 2;
         public static int percentDeath = 10;
+        public static int maxSteps = 20;
         public static double alfa(int param)
         {
             return 1;

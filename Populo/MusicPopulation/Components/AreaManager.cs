@@ -172,6 +172,51 @@ namespace MusicPopulation
             }
             Debug.WriteLine("Influenced: " + influenced);
         }
+        public void MoveYourMenSergant()
+        {
+            int done = 0;
+            int all = 0;
+            foreach (var pos in _areaRandOrder)
+            {
+                Member m = Simulation.SimulationBoard[pos.Item1, pos.Item2];
+                if (m != null)
+                {
+                    int dir = RandomGenerator.RandomGen.Next() % 4;
+                    int steps = RandomGenerator.RandomGen.Next() % (SimulationParameters.maxSteps - 1) + 1;
+
+                    int new_x, new_y;
+                    switch (dir)
+                    {
+                        case 0: // go north
+                            new_x = pos.Item1;
+                            new_y = pos.Item2 - steps;
+                            break;
+                        case 1: // go south
+                            new_x = pos.Item1;
+                            new_y = pos.Item2 + steps;
+                            break;
+                        case 2: // go west
+                            new_x = pos.Item1 - steps;
+                            new_y = pos.Item2;
+                            break;
+                        default: // go east
+                            new_x = pos.Item1 + steps;
+                            new_y = pos.Item2;
+                            break;
+                    }
+
+                    if (Simulation.SimulationBoard.IsLegal(new_x, new_y) && Simulation.SimulationBoard[new_x, new_y] == null)
+                    {
+                        Simulation.SimulationBoard[new_x, new_y] = Simulation.SimulationBoard[pos.Item1, pos.Item2];
+                        done++;
+                    }
+
+                    all++;
+                }
+            }
+
+            Debug.WriteLine("Move: " + done + "/" + all);
+        }
         #endregion
 
         #region IEnumerable, IEnumerator interface methods

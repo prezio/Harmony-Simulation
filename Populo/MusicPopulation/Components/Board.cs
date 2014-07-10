@@ -39,6 +39,10 @@ namespace MusicPopulation
                 _board[i, j] = value;
             }
         }
+        public bool IsLegal(int x, int y)
+        {
+            return x >= 0 && y >= 0 && x < _width && y < _height;
+        }
         public void Serialize()
         {
             throw new NotImplementedException();
