@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Text;
 
 namespace MusicPopulation
 {
@@ -46,6 +47,9 @@ namespace MusicPopulation
                 _board[i, j] = value;
             }
         }
+        /// <summary>
+        /// Returns whether point (x, y) is legal or not.
+        /// </summary>
         public bool IsLegal(int x, int y)
         {
             return x >= 0 && y >= 0 && x < _width && y < _height;
@@ -79,9 +83,20 @@ namespace MusicPopulation
             else
                 return new Tuple<int, int>(best_x, best_y);
         }
-        public void Serialize()
+        public string Serialize()
         {
-            throw new NotImplementedException();
+            StringBuilder result = new StringBuilder();
+            for (int i = 0; i < _width; i++)
+            {
+                for (int j = 0; j < _height; j++)
+                {
+                    if (_board[i, j] == null)
+                        result.Append("null\n");
+                    else
+                        result.Append(_board[i, j].SelectProbe() + "\n");
+                }
+            }
+            return result.ToString();
         }
     }
 }

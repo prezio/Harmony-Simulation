@@ -74,5 +74,10 @@ namespace MusicPopulation
                 i++;
             }
         }
+
+        public static void ResetSimulation()
+        {
+            SimulationBoard = new Board(SimulationParameters.boardWidth, SimulationParameters.boardHeight, SimulationParameters.populationGrowth); 
+        }
     }
 }

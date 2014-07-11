@@ -6,14 +6,10 @@ namespace MusicPopulation
 {
     public static class RandomGenerator
     {
-        private static Random _random = new Random();
-
-        public static Random RandomGen
+        public static Random RandomGen = new Random();
+        public static void SetSeed(int seed)
         {
-            get
-            {
-                return _random;
-            }
+            RandomGen = new Random(seed);
         }
         public static bool ChanceProbability(double chance)
         {

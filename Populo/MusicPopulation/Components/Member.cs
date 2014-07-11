@@ -154,5 +154,17 @@ namespace MusicPopulation
                 Shrink();
             }
         }
+        public string SelectProbe()
+        {
+            string result = _numberOfNotes.ToString();
+            if (_numberOfNotes >= 5)
+                result += " " + _notes[4, 2].ToString();
+            if (_numberOfNotes >= 100)
+                result += " " + _notes[99, 1].ToString();
+            if (_numberOfNotes >= 200)
+                result += " " + _notes[199, 0].ToString() + " " + _notes[199, 1].ToString();
+
+            return result;
+        }
     }
 }
