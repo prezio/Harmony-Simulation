@@ -63,7 +63,7 @@ namespace MusicPopulation
             }
 
             values.Sort((a, b) => a.Item3 < b.Item3 ? -1 : a.Item3==b.Item3 ? 0 : 1);
-            int deaths = (int)((double)SimulationParameters.percentDeath / 100 * (double)values.Count);
+            int deaths = (int)((double)SimulationParameters.PercentDeath / 100 * (double)values.Count);
             
             int done = 0;
             int all = values.Count;
@@ -118,7 +118,7 @@ namespace MusicPopulation
                         while (x <= x2)
                         {
                             var member = Simulation.SimulationBoard[x, y];
-                            double probability = 1-(double)n / n_max * SimulationParameters.alfa(0);
+                            double probability = 1-(double)n / n_max * SimulationParameters.Alfa(0);
 
                             if (member == null && RandomGenerator.ChanceProbability(probability))
                             {
@@ -182,7 +182,7 @@ namespace MusicPopulation
                 if (m != null)
                 {
                     int dir = RandomGenerator.RandomGen.Next() % 4;
-                    int steps = RandomGenerator.RandomGen.Next() % (SimulationParameters.maxSteps - 1) + 1;
+                    int steps = RandomGenerator.RandomGen.Next() % (SimulationParameters.MaxSteps - 1) + 1;
 
                     int new_x, new_y;
                     switch (dir)

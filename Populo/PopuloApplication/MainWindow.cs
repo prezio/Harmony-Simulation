@@ -16,5 +16,12 @@ namespace PopuloApplication
         {
             InitializeComponent();
         }
+
+        #region Events
+        private void buttonStartSimulation_Click(object sender, EventArgs e)
+        {
+            
+        }
+        #endregion
     }
 }

@@ -26,7 +26,7 @@ namespace MusicPopulation
         /// <summary>
         /// Simulation Board with Randomly generated individuals.
         /// </summary>
-        public static Board SimulationBoard = new Board(SimulationParameters.boardWidth, SimulationParameters.boardHeight, SimulationParameters.populationGrowth);
+        public static Board SimulationBoard = new Board(SimulationParameters.BoardWidth, SimulationParameters.BoardHeight, SimulationParameters.PopulationGrowth);
         /// <summary>
         /// Each AreaManager commands its own seperated area.
         /// </summary>
@@ -77,7 +77,7 @@ namespace MusicPopulation
 
         public static void ResetSimulation()
         {
-            SimulationBoard = new Board(SimulationParameters.boardWidth, SimulationParameters.boardHeight, SimulationParameters.populationGrowth); 
+            SimulationBoard = new Board(SimulationParameters.BoardWidth, SimulationParameters.BoardHeight, SimulationParameters.PopulationGrowth); 
         }
     }
 }

@@ -9,8 +9,8 @@ namespace MusicPopulation
 {
     public class Board
     {
-        private int _width = SimulationParameters.boardWidth;
-        private int _height = SimulationParameters.boardHeight;
+        private int _width = SimulationParameters.BoardWidth;
+        private int _height = SimulationParameters.BoardHeight;
         private Member[,] _board;
 
         /// <summary>

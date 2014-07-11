@@ -16,11 +16,11 @@ namespace populo
         /// First is generated using threads, second not.
         /// The output of two files will not be the same because of diffrent order of dealing with areas.
         /// </summary>
-        public static void Test1()
+        private static void Test1()
         {
             // select same seed and number of tries for both tests
             int seed = 1405067994;
-            int tries = 1;
+            int tries = 3;
 
             // First test
             RandomGenerator.SetSeed(seed);
@@ -57,10 +57,32 @@ namespace populo
             File.WriteAllText("test2.txt", output2.ToString());
         }
 
+        /// <summary>
+        /// Max Tests
+        /// </summary>
+        private static void Test2()
+        {
+            DateTime start = DateTime.Now;
+
+            SimulationParameters.PopulationGrowth = 256 * 256;
+            SimulationParameters.PercentDeath = 1; // low percentage of deaths
+            int tries = 100;
+
+            for (int i = 0; i < tries; i++)
+            {
+                Console.WriteLine("Step: {0}/{1}", i, tries);
+                Simulation.EvolveUsingThreads();
+            }
+
+            DateTime end = DateTime.Now;
+            Console.WriteLine("Duration: {0}", end - start);
+        }
+
         public static void Main(string[] args)
         {
             //Start test
-            Test1();
+            //Test1();
+            Test2();
 
             Console.ReadKey();
         }

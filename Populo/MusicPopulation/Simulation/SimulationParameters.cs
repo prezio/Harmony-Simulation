@@ -8,21 +8,21 @@ namespace MusicPopulation
 {
     public static class SimulationParameters
     {
-        public static int boardWidth = 256, boardHeight = 256;
-        public static int populationGrowth = 256 * 256 / 2;
-        public static int percentDeath = 10;
-        public static int maxSteps = 20;
-        public static double alfa(int param)
+        public static int BoardWidth = 256, BoardHeight = 256;
+        public static int PopulationGrowth = 256 * 256 / 2;
+        public static int PercentDeath = 10;
+        public static int MaxSteps = 20;
+        public static double Alfa(int param)
         {
             return 1;
         }
 
-        public static int[] modifyAmount = new int[] { 3, 5, 15 };
-        public static double[] influenceAmount = new double[] { 0.2, 0.2, 0.2 };
-        public static double[] transposeChance = new double[] { 0.05, 0.05, 0.05 };
-        public static double[] exchangeChance = new double[] { 0.05, 0.05, 0.05 };
-        public static double[] modifyChance = new double[] { 0.05, 0.05, 0.05 };
-        public static double growthChance = 0.05;
-        public static double shrinkChance = 0.05;
+        public static int[] ModifyAmount = new int[] { 3, 5, 15 };
+        public static double[] InfluenceAmount = new double[] { 0.2, 0.2, 0.2 };
+        public static double[] TransposeChance = new double[] { 0.05, 0.05, 0.05 };
+        public static double[] ExchangeChance = new double[] { 0.05, 0.05, 0.05 };
+        public static double[] ModifyChance = new double[] { 0.05, 0.05, 0.05 };
+        public static double GrowthChance = 0.05;
+        public static double ShrinkChance = 0.05;
     }
 }

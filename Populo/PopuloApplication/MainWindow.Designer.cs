@@ -31,6 +31,7 @@
             this.textBoxModifyAmount = new System.Windows.Forms.TextBox();
             this.labelParameters = new System.Windows.Forms.Label();
             this.textBoxInfluenceAmount = new System.Windows.Forms.TextBox();
+            this.buttonStartSimulation = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBoxModifyAmount
@@ -56,11 +57,22 @@
             this.textBoxInfluenceAmount.Size = new System.Drawing.Size(100, 20);
             this.textBoxInfluenceAmount.TabIndex = 2;
             // 
+            // buttonStartSimulation
+            // 
+            this.buttonStartSimulation.Location = new System.Drawing.Point(588, 162);
+            this.buttonStartSimulation.Name = "buttonStartSimulation";
+            this.buttonStartSimulation.Size = new System.Drawing.Size(98, 39);
+            this.buttonStartSimulation.TabIndex = 3;
+            this.buttonStartSimulation.Text = "Start Simulation";
+            this.buttonStartSimulation.UseVisualStyleBackColor = true;
+            this.buttonStartSimulation.Click += new System.EventHandler(this.buttonStartSimulation_Click);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(576, 398);
+            this.ClientSize = new System.Drawing.Size(765, 302);
+            this.Controls.Add(this.buttonStartSimulation);
             this.Controls.Add(this.textBoxInfluenceAmount);
             this.Controls.Add(this.labelParameters);
             this.Controls.Add(this.textBoxModifyAmount);
@@ -76,6 +88,7 @@
         private System.Windows.Forms.TextBox textBoxModifyAmount;
         private System.Windows.Forms.Label labelParameters;
         private System.Windows.Forms.TextBox textBoxInfluenceAmount;
+        private System.Windows.Forms.Button buttonStartSimulation;
     }
 }
 
