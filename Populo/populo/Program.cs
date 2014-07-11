@@ -22,7 +22,7 @@ namespace populo
                 Console.WriteLine("{0} / {1} completed.", i, tries);
 
                 Simulation.EvolveUsingThreads();
-                //Simulation.Evolve();
+                //Simulation.EvolveWithoutThreads();
 
                 Debug.WriteLine("==================\n");
             }

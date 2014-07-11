@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 
@@ -9,7 +10,7 @@ namespace MusicPopulation
     {
         private static AreaManager[] CreateAreas()
         {
-            Console.WriteLine("Create Area");
+            Debug.WriteLine("Create Area");
             List<AreaManager> result = new List<AreaManager>();
             for (int i = 0; i < 4; i++)
             {
@@ -22,8 +23,19 @@ namespace MusicPopulation
             return result.ToArray();
         }
 
+        /// <summary>
+        /// Simulation Board with Randomly generated individuals.
+        /// </summary>
         public static Board SimulationBoard = new Board(SimulationParameters.boardWidth, SimulationParameters.boardHeight, SimulationParameters.populationGrowth);
+        /// <summary>
+        /// Each AreaManager commands its own seperated area.
+        /// </summary>
         public static AreaManager[] Areas = CreateAreas();
+
+        /// <summary>
+        /// Function generating one step of evolutionary algorithm.
+        /// Algorithm involves the use of threading.
+        /// </summary>
         public static void EvolveUsingThreads()
         {
             int events = 16;
@@ -38,9 +50,18 @@ namespace MusicPopulation
             }
 
             WaitHandle.WaitAll(doneEvents);
-            Move();
+
+            // evolve operations which are not supported by threading
+            foreach (var area in Areas)
+            {
+                area.MoveYourMenSergant();
+            }
         }
-        public static void Evolve()
+        /// <summary>
+        /// Function generating one step of evolutionary algorithm.
+        /// Algorithm does not involve the use of threading.
+        /// </summary>
+        public static void EvolveWithoutThreads()
         {
             int i = 0;
             foreach (var area in Areas)
@@ -49,44 +70,9 @@ namespace MusicPopulation
                 area.ReproduceMenToHaveMoreServantsOfTheEmperor();
                 area.MutateWeaksSoTheyCanServeEmperorBetter();
                 area.InfluenceMenWithSongsGlorifyingEmperor();
+                area.MoveYourMenSergant();
                 i++;
             }
         }
-
-        #region Evolution operations which requires board
-        public static Tuple<int,int> GetBestInArea(int x1, int y1, int x2, int y2)
-        {
-            int best_x = -1, best_y = -1, best_rank = -1;
-            int i, j = y1;
-
-            while (j <= y2)
-            {
-                i = x1;
-                while (i <= x2)
-                {
-                    var member = SimulationBoard[i, j];
-                    if (member != null && member.Rank() > best_rank)
-                    {
-                        best_x = i;
-                        best_y = j;
-                        best_rank = member.Rank();
-                    }
-                    i++;
-                }
-                j++;
-            }
-            if (best_rank == -1)
-                return null;
-            else
-                return new Tuple<int, int>(best_x, best_y);
-        }
-        public static void Move()
-        {
-            foreach (var area in Areas)
-            {
-                area.MoveYourMenSergant();
-            }
-        }
-        #endregion
     }
 }

@@ -106,7 +106,7 @@ namespace MusicPopulation
                     int x2 = x1 + 3;
                     int y2 = y1 + 3;
 
-                    var best_pos = Simulation.GetBestInArea(x1, y1, x2, y2);
+                    var best_pos = Simulation.SimulationBoard.GetBestInArea(x1, y1, x2, y2);
 
                     if (best_pos == null)
                         continue;
@@ -146,7 +146,7 @@ namespace MusicPopulation
                     int x2 = x1 + 3;
                     int y2 = y1 + 3;
 
-                    var best_pos = Simulation.GetBestInArea(x1, y1, x2, y2);
+                    var best_pos = Simulation.SimulationBoard.GetBestInArea(x1, y1, x2, y2);
 
                     if(best_pos==null)
                         continue;

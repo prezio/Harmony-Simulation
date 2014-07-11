@@ -89,9 +89,9 @@ namespace MusicPopulation
         public Member()
         {
             _numberOfNotes = RandomGenerator.RandomGen.Next(_maxNotes - 1) + 1;
-            _notes = new int[_maxNotes, 3];
+            _notes = new int[_maxNotes + 1, 3];
 
-            for(int i=0; i< _numberOfNotes; i++)
+            for(int i=0; i < _numberOfNotes; i++)
             {
                 _notes[i, 0] = RandomGenerator.RandomGen.Next(limits[0]);
                 _notes[i, 1] = RandomGenerator.RandomGen.Next(limits[1]);
