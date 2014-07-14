@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading;
 
 namespace MusicPopulation
 {
@@ -13,8 +14,11 @@ namespace MusicPopulation
         private int _position = -1;
         private Tuple<int, int>[] _areaRandOrder;
 
+        private static Semaphore _semaphore = new Semaphore(1, 1);
+
         public AreaManager(int x, int y, int w, int h)
         {
+            
             _mX = x;
             _mY = y;
 
@@ -182,7 +186,7 @@ namespace MusicPopulation
                 if (m != null)
                 {
                     int dir = RandomGenerator.RandomGen.Next() % 4;
-                    int steps = RandomGenerator.RandomGen.Next() % (SimulationParameters.MaxSteps - 1) + 1;
+                    int steps = RandomGenerator.RandomGen.Next() % SimulationParameters.MaxSteps + 1;
 
                     int new_x, new_y;
                     switch (dir)

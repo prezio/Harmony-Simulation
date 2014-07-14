@@ -11,7 +11,7 @@ namespace MusicPopulation
         private const int _maxNotes = 255;
         private int[,] _notes = null; //pitch, duration, dynamics
         private int _numberOfNotes;
-        static readonly int[] limits = new int[] { 16, 60, 128 };
+        static readonly int[] limits = new int[] { 72, 60, 128 };
 
         protected void Transpose(uint n)
         {
