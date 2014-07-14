@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using PeriodicChords;
 using Microsoft.Win32;
+using Newtonsoft.Json;
+using System.IO;
+using System.Collections;
 
 namespace HarmonyEditor
 {
@@ -28,6 +31,11 @@ namespace HarmonyEditor
             }
             buttonRemoveAccord.Enabled = _selectedIndex != -1;
             buttonEditAccord.Enabled = _selectedIndex != -1;
+        }
+        private void ResetData()
+        {
+            flowLayoutPanel.Controls.Clear();
+            _selectedIndex = -1;
         }
         private void LoadSettings()
         {
@@ -229,6 +237,58 @@ namespace HarmonyEditor
             _selectedIndex = index;
             data.Selected = true;
             RefreshData();
+        }
+        private void zamknijToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+        private void otwórzToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog wnd = new OpenFileDialog();
+            wnd.RestoreDirectory = true;
+
+            DialogResult result = wnd.ShowDialog();
+            if (result != DialogResult.OK)
+            {
+                return;
+            }
+
+            ResetData();
+            var chords = Serialization.ReadFromJson(wnd.FileName);
+
+            foreach (var ch in chords)
+            {
+                Spectrum sp = new Spectrum();
+                sp.CurChord = ch;
+                sp.Rotated = true;
+                sp.MouseClick += spectrum_MouseClick;
+                flowLayoutPanel.Controls.Add(sp);
+            }
+
+            RefreshData();
+        }
+        private void zapiszToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog wnd = new SaveFileDialog();
+            wnd.RestoreDirectory = true;
+
+            DialogResult result = wnd.ShowDialog();
+            if (result != DialogResult.OK)
+            {
+                return;
+            }
+
+            List<Chord> list = new List<Chord>();
+            foreach(var control in flowLayoutPanel.Controls)
+            {
+                Spectrum sp = (Spectrum)control;
+                list.Add(sp.CurChord);
+            }
+            list.WriteToJson(wnd.FileName);
+        }
+        private void eksportujToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
         #endregion
     }

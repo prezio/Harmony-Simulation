@@ -44,21 +44,6 @@ namespace HarmonyEditor
             Selected = false;
         }
 
-        /*protected override void OnGotFocus(EventArgs e)
-        {
-            this.BackColor = _selColor;
-            base.OnGotFocus(e);
-        }
-        protected override void OnLostFocus(EventArgs e)
-        {
-            this.BackColor = Color.LightPink;
-            base.OnLostFocus(e);
-        }
-        protected override void OnClick(EventArgs e)
-        {
-            this.Focus();
-            base.OnClick(e);
-        }*/
         protected override void OnMouseDown(MouseEventArgs e)
         {
             base.OnMouseDown(e);

@@ -1,16 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 
 namespace PeriodicChords
 {
+    [DataContract]
     public abstract class PeriodicChord : Chord
     {
+        [DataMember]
         public uint BaseNote
         {
             get;
             set;
         }
+        [DataMember]
         public Period[] Periods
         {
             get;

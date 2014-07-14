@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 
 namespace PeriodicChords
 {
+    [DataContract]
     public abstract class SimpleChord : Chord
     {
+        [DataMember]
         public double[] Peaks
         {
             get;
