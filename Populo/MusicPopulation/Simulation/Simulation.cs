@@ -49,7 +49,8 @@ namespace MusicPopulation
                 ThreadPool.QueueUserWorkItem(thread.Evolve, null);
             }
 
-            WaitHandle.WaitAll(doneEvents);
+            foreach (var e in doneEvents)
+                e.WaitOne();
 
             // evolve operations which are not supported by threading
             foreach (var area in Areas)

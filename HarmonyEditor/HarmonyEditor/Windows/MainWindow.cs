@@ -84,6 +84,28 @@ namespace HarmonyEditor
                 return;
             }
         }
+        private string GetSaveDirectory()
+        {
+            SaveFileDialog wnd = new SaveFileDialog();
+            wnd.RestoreDirectory = true;
+
+            DialogResult result = wnd.ShowDialog();
+            if (result != DialogResult.OK)
+            {
+                return null;
+            }
+
+            return wnd.FileName;
+        }
+        private List<Chord> ToListOfChord()
+        {
+            List<Chord> result = new List<Chord>();
+            foreach (Spectrum sp in flowLayoutPanel.Controls)
+            {
+                result.Add(sp.CurChord);
+            }
+            return result;
+        }
 
         public MainWindow()
         {
@@ -269,26 +291,15 @@ namespace HarmonyEditor
         }
         private void zapiszToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SaveFileDialog wnd = new SaveFileDialog();
-            wnd.RestoreDirectory = true;
-
-            DialogResult result = wnd.ShowDialog();
-            if (result != DialogResult.OK)
-            {
-                return;
-            }
-
-            List<Chord> list = new List<Chord>();
-            foreach(var control in flowLayoutPanel.Controls)
-            {
-                Spectrum sp = (Spectrum)control;
-                list.Add(sp.CurChord);
-            }
-            list.WriteToJson(wnd.FileName);
+            string fileName = GetSaveDirectory();
+            if (fileName != null)
+                ToListOfChord().WriteToJson(fileName);
         }
         private void eksportujToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            string fileName = GetSaveDirectory();
+            if (fileName != null)
+                ToListOfChord().WriteToPitch(fileName);
         }
         #endregion
     }

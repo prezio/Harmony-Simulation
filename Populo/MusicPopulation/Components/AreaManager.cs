@@ -14,7 +14,12 @@ namespace MusicPopulation
         private int _position = -1;
         private Tuple<int, int>[] _areaRandOrder;
 
-        private static Semaphore _semaphore = new Semaphore(1, 1);
+        // Move Synchronization containers
+        private List<Tuple<int, int, int, int>> _listLeftMove;
+        private List<Tuple<int, int, int, int>> _listRightMove;
+        private List<Tuple<int, int, int, int>> _listDownMove;
+        private List<Tuple<int, int, int, int>> _listUpMove;
+        //================================
 
         public AreaManager(int x, int y, int w, int h)
         {
@@ -122,7 +127,7 @@ namespace MusicPopulation
                         while (x <= x2)
                         {
                             var member = Simulation.SimulationBoard[x, y];
-                            double probability = 1-(double)n / n_max * SimulationParameters.Alfa(0);
+                            double probability = 1-(double)n / n_max * SimulationParameters.Alfa;
 
                             if (member == null && RandomGenerator.ChanceProbability(probability))
                             {

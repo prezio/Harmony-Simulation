@@ -16,14 +16,14 @@ namespace MusicPopulation
         }
         public void Evolve(Object threadContext)
         {
-            //Debug.WriteLine("Thread {0} started...", _indexOfArea);
+            Debug.WriteLine("Thread {0} started...", _indexOfArea);
 
             Simulation.Areas[_indexOfArea].KillWeaksWhoDoesNotServeTheEmperorWell();
             Simulation.Areas[_indexOfArea].ReproduceMenToHaveMoreServantsOfTheEmperor();
             Simulation.Areas[_indexOfArea].MutateWeaksSoTheyCanServeEmperorBetter();
             Simulation.Areas[_indexOfArea].InfluenceMenWithSongsGlorifyingEmperor();
 
-            //Debug.WriteLine("Thread {0} calculated...", _indexOfArea);
+            Debug.WriteLine("Thread {0} calculated...", _indexOfArea);
 
             if (_doneEvent != null)
             {

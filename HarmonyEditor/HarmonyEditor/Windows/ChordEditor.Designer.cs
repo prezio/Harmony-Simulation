@@ -47,6 +47,7 @@
             this.period1 = new HarmonyEditor.PeriodEditor();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
+            this.buttonPlay = new System.Windows.Forms.Button();
             this.groupBoxSpectrum.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -144,18 +145,28 @@
             // 
             // spectrumFrequencies
             // 
+            this.spectrumFrequencies.AllowDrag = false;
             this.spectrumFrequencies.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.spectrumFrequencies.CurChord = null;
+            this.spectrumFrequencies.FreqNotes = false;
             this.spectrumFrequencies.Location = new System.Drawing.Point(6, 39);
             this.spectrumFrequencies.Name = "spectrumFrequencies";
+            this.spectrumFrequencies.Rotated = false;
+            this.spectrumFrequencies.Selected = false;
             this.spectrumFrequencies.Size = new System.Drawing.Size(162, 43);
             this.spectrumFrequencies.TabIndex = 8;
             this.spectrumFrequencies.Text = "spectrum1";
             // 
             // spectrumNotes
             // 
+            this.spectrumNotes.AllowDrag = false;
             this.spectrumNotes.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.spectrumNotes.CurChord = null;
+            this.spectrumNotes.FreqNotes = false;
             this.spectrumNotes.Location = new System.Drawing.Point(174, 39);
             this.spectrumNotes.Name = "spectrumNotes";
+            this.spectrumNotes.Rotated = false;
+            this.spectrumNotes.Selected = false;
             this.spectrumNotes.Size = new System.Drawing.Size(162, 43);
             this.spectrumNotes.TabIndex = 9;
             this.spectrumNotes.Text = "spectrum2";
@@ -227,11 +238,22 @@
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
+            // buttonPlay
+            // 
+            this.buttonPlay.Location = new System.Drawing.Point(667, 49);
+            this.buttonPlay.Name = "buttonPlay";
+            this.buttonPlay.Size = new System.Drawing.Size(75, 35);
+            this.buttonPlay.TabIndex = 19;
+            this.buttonPlay.Text = "Odtwórz dźwięk";
+            this.buttonPlay.UseVisualStyleBackColor = true;
+            this.buttonPlay.Click += new System.EventHandler(this.buttonPlay_Click);
+            // 
             // ChordEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(964, 582);
+            this.Controls.Add(this.buttonPlay);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.groupBoxSpectrum);
@@ -279,5 +301,6 @@
         private System.Windows.Forms.GroupBox groupBoxSpectrum;
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.Button buttonCancel;
+        private System.Windows.Forms.Button buttonPlay;
     }
 }

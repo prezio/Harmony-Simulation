@@ -220,6 +220,10 @@ namespace HarmonyEditor
             _okClicked = true;
             Close();
         }
+        private void buttonPlay_Click(object sender, EventArgs e)
+        {
+
+        }
         #endregion
     }
 }

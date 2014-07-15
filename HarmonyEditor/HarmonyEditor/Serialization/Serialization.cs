@@ -19,7 +19,10 @@ namespace HarmonyEditor
         }
         public static void WriteToPitch(this IEnumerable<Chord> list, string fileName)
         {
-            //var text = JsonConvert.SerializeObject(list.Select(ch => ch.Notes.ToList()).Aggregate((s, s1) => s.Concat(s1)));
+            List<double> pitches = list.Select(ch => ch.Notes).SelectMany(i => i).ToList();
+            string text = JsonConvert.SerializeObject(pitches);
+
+            File.WriteAllText(fileName, text);
         }
         public static IEnumerable<Chord> ReadFromJson(string fileName)
         {
