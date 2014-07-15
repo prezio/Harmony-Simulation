@@ -105,8 +105,8 @@ namespace MusicPopulation
                 area.ReproduceMenToHaveMoreServantsOfTheEmperor();
                 area.MutateWeaksSoTheyCanServeEmperorBetter();
                 area.InfluenceMenWithSongsGlorifyingEmperor();
-                area.MoveYourMenSergant();
 
+                area.MoveYourMenSergant();
                 area.RegroupYourMenToOtherFront(0);
                 area.RegroupYourMenToOtherFront(1);
                 area.RegroupYourMenToOtherFront(2);

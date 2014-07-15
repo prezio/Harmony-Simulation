@@ -83,20 +83,5 @@ namespace MusicPopulation
             else
                 return new Tuple<int, int>(best_x, best_y);
         }
-        public string Serialize()
-        {
-            StringBuilder result = new StringBuilder();
-            for (int i = 0; i < _width; i++)
-            {
-                for (int j = 0; j < _height; j++)
-                {
-                    if (_board[i, j] == null)
-                        result.Append("null\n");
-                    else
-                        result.Append(_board[i, j].SelectProbe() + "\n");
-                }
-            }
-            return result.ToString();
-        }
     }
 }
