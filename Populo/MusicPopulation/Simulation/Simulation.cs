@@ -106,10 +106,31 @@ namespace MusicPopulation
                 area.MutateWeaksSoTheyCanServeEmperorBetter();
                 area.InfluenceMenWithSongsGlorifyingEmperor();
                 area.MoveYourMenSergant();
+
+                area.RegroupYourMenToOtherFront(0);
+                area.RegroupYourMenToOtherFront(1);
+                area.RegroupYourMenToOtherFront(2);
+                area.RegroupYourMenToOtherFront(3);
                 i++;
             }
         }
+        public static List<int[,]> SimulationBoardState
+        {
+            get
+            {
+                List<int[,]> result = new List<int[,]>();
 
+                foreach (var area in Areas)
+                {
+                    var pos = area.ChampionOfArea;
+                    if (pos != null)
+                    {
+                        result.Add(Simulation.SimulationBoard[pos.Item1, pos.Item2].Notes);
+                    }
+                }
+                return result;
+            }
+        }
         public static void ResetSimulation()
         {
             SimulationBoard = new Board(SimulationParameters.BoardWidth, SimulationParameters.BoardHeight, SimulationParameters.PopulationGrowth); 

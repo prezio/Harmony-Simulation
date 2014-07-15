@@ -61,6 +61,7 @@
             this.labelExchangeChance = new System.Windows.Forms.Label();
             this.labelGrowthChance = new System.Windows.Forms.Label();
             this.labelShrinkChance = new System.Windows.Forms.Label();
+            this.buttonClose = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPercentDeath)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxSteps)).BeginInit();
             this.groupBoxParameters.SuspendLayout();
@@ -87,7 +88,7 @@
             // 
             // buttonNextStep
             // 
-            this.buttonNextStep.Location = new System.Drawing.Point(457, 20);
+            this.buttonNextStep.Location = new System.Drawing.Point(459, 20);
             this.buttonNextStep.Name = "buttonNextStep";
             this.buttonNextStep.Size = new System.Drawing.Size(98, 39);
             this.buttonNextStep.TabIndex = 3;
@@ -539,11 +540,22 @@
             this.labelShrinkChance.TabIndex = 33;
             this.labelShrinkChance.Text = "Szansa zmalania:";
             // 
+            // buttonClose
+            // 
+            this.buttonClose.Location = new System.Drawing.Point(459, 310);
+            this.buttonClose.Name = "buttonClose";
+            this.buttonClose.Size = new System.Drawing.Size(98, 39);
+            this.buttonClose.TabIndex = 10;
+            this.buttonClose.Text = "Zamknij";
+            this.buttonClose.UseVisualStyleBackColor = true;
+            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(562, 360);
+            this.ClientSize = new System.Drawing.Size(569, 360);
+            this.Controls.Add(this.buttonClose);
             this.Controls.Add(this.groupBoxParameters);
             this.Controls.Add(this.buttonNextStep);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
@@ -613,6 +625,7 @@
         private System.Windows.Forms.NumericUpDown numericUpDownModifyChance3;
         private System.Windows.Forms.NumericUpDown numericUpDownModifyChance2;
         private System.Windows.Forms.NumericUpDown numericUpDownModifyChance1;
+        private System.Windows.Forms.Button buttonClose;
     }
 }
 

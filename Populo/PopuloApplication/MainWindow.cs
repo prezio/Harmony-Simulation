@@ -92,6 +92,10 @@ namespace PopuloApplication
             SaveParameters();
             _taskSimulation = Task.Factory.StartNew(() => Simulation.EvolveUsingThreads());
         }
+        private void buttonClose_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
         #endregion
     }
 }

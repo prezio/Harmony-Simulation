@@ -28,7 +28,6 @@ namespace MusicPopulation
 
         public AreaManager(int x, int y, int w, int h)
         {
-            
             _mX = x;
             _mY = y;
 
@@ -58,6 +57,13 @@ namespace MusicPopulation
                         res++;
                 }
                 return res;
+            }
+        }
+        public Tuple<int, int> ChampionOfArea
+        {
+            get
+            {
+                return Simulation.SimulationBoard.GetBestInArea(_mX, _mY, _mX + _width - 1, _mY + _height - 1);
             }
         }
 

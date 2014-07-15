@@ -64,6 +64,13 @@ namespace MusicPopulation
             ++_numberOfNotes;
         }
 
+        public int[,] Notes
+        {
+            get
+            {
+                return _notes;
+            }
+        }
         public void Influence(Member influencer)
         {
             if(_numberOfNotes<influencer._numberOfNotes)
