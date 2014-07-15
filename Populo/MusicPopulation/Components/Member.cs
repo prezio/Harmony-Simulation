@@ -101,11 +101,29 @@ namespace MusicPopulation
         public int Rank()
         {
             int rank = 0;
-            foreach (int a in _notes)
+            int previousChord = _notes[0, 0] / 24;
+            int currentChord = 0;
+            for (int i = 1; i < _numberOfNotes; i++ )
             {
-                rank += a;
+                currentChord = _notes[i, 0] / 24;
+                if((currentChord-previousChord+3)%3==2)
+                {
+                    rank-=10;
+                }
+                else
+                {
+                    rank += 10;
+                }
+                if(_notes[i,1]>_notes[i-1,1])
+                {
+                    rank += 15;
+                }
+                if (_notes[i, 2] < _notes[i - 1, 2])
+                {
+                    rank += 7;
+                }
             }
-            return rank;
+                return rank;
         }
         public void Mutate()
         {
