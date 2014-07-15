@@ -78,11 +78,31 @@ namespace populo
             Console.WriteLine("Duration: {0}", end - start);
         }
 
+        /// <summary>
+        /// Standard Test
+        /// </summary>
+        private static void Test3()
+        {
+            DateTime start = DateTime.Now;
+
+            int tries = 100;
+
+            for (int i = 0; i < tries; i++)
+            {
+                Console.WriteLine("Step: {0}/{1}", i, tries);
+                Simulation.EvolveUsingThreads();
+            }
+
+            DateTime end = DateTime.Now;
+            Console.WriteLine("Duration: {0}", end - start);
+        }
+
         public static void Main(string[] args)
         {
             //Start test
             //Test1();
             //Test2();
+            Test3();
 
             Console.ReadKey();
         }

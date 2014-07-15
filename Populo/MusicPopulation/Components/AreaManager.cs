@@ -21,6 +21,11 @@ namespace MusicPopulation
         private List<Tuple<int, int, int, int>> _listUpMove;
         //================================
 
+        private bool IsInsideArea(int x, int y)
+        {
+            return x >= _mX && x < _mX + _width && y >= _mY && y < _mY + _height;
+        }
+
         public AreaManager(int x, int y, int w, int h)
         {
             
@@ -185,6 +190,12 @@ namespace MusicPopulation
         {
             int done = 0;
             int all = 0;
+
+            _listDownMove = new List<Tuple<int, int, int, int>>();
+            _listLeftMove = new List<Tuple<int, int, int, int>>();
+            _listRightMove = new List<Tuple<int, int, int, int>>();
+            _listUpMove = new List<Tuple<int, int, int, int>>();
+
             foreach (var pos in _areaRandOrder)
             {
                 Member m = Simulation.SimulationBoard[pos.Item1, pos.Item2];
@@ -214,17 +225,66 @@ namespace MusicPopulation
                             break;
                     }
 
-                    if (Simulation.SimulationBoard.IsLegal(new_x, new_y) && Simulation.SimulationBoard[new_x, new_y] == null)
+                    if (IsInsideArea(new_x, new_y))
                     {
-                        Simulation.SimulationBoard[new_x, new_y] = Simulation.SimulationBoard[pos.Item1, pos.Item2];
+                        if (Simulation.SimulationBoard[new_x, new_y] == null)
+                        {
+                            Simulation.SimulationBoard[new_x, new_y] = Simulation.SimulationBoard[pos.Item1, pos.Item2];
+                            Simulation.SimulationBoard[pos.Item1, pos.Item2] = null;
+                        }
                         done++;
+                    }
+                    else
+                    {
+                        if (Simulation.SimulationBoard.IsLegal(new_x, new_y) && Simulation.SimulationBoard[new_x, new_y] == null)
+                        {
+                            Tuple<int, int, int, int> cmdMove = new Tuple<int,int,int,int>(pos.Item1, pos.Item2, new_x, new_y);
+
+                            if (new_x >= _mX + _width)
+                                _listRightMove.Add(cmdMove);
+                            else if (new_x < _mX)
+                                _listLeftMove.Add(cmdMove);
+                            else if (new_y >= _mY + _height)
+                                _listDownMove.Add(cmdMove);
+                            else if (new_y < _mY)
+                                _listUpMove.Add(cmdMove);
+                        }
                     }
 
                     all++;
                 }
             }
 
-            Debug.WriteLine("Move: " + done + "/" + all);
+            Debug.WriteLine("Move Inside: " + done + "/" + all);
+        }
+        /// <summary>
+        /// Moves Individuals in given direction
+        /// </summary>
+        /// <param name="dir">0 - north, 1 - south, 2 - west, 3 - east</param>
+        public void RegroupYourMenToOtherFront(int dir)
+        {
+            List<Tuple<int, int, int, int>> listMove = null;
+
+            if (dir == 0)
+                listMove = _listUpMove;
+            else if (dir == 1)
+                listMove = _listDownMove;
+            else if (dir == 2)
+                listMove = _listLeftMove;
+            else if (dir == 3)
+                listMove = _listRightMove;
+
+            foreach (var move in listMove)
+            {
+                int sX = move.Item1, sY = move.Item2;
+                int tX = move.Item3, tY = move.Item4;
+
+                if (Simulation.SimulationBoard[tX, tY] == null)
+                {
+                    Simulation.SimulationBoard[tX, tY] = Simulation.SimulationBoard[sX, sY];
+                    Simulation.SimulationBoard[sX, sY] = null;
+                }
+            }
         }
         #endregion
 

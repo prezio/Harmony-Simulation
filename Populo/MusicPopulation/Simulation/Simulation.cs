@@ -46,17 +46,51 @@ namespace MusicPopulation
             {
                 doneEvents[i] = new ManualResetEvent(false);
                 AreaThread thread = new AreaThread(i, doneEvents[i]);
-                ThreadPool.QueueUserWorkItem(thread.Evolve, null);
+                ThreadPool.QueueUserWorkItem(thread.EvolvePart1, null);
             }
 
             foreach (var e in doneEvents)
                 e.WaitOne();
 
-            // evolve operations which are not supported by threading
-            foreach (var area in Areas)
+            for (int i = 0; i < events; i++)
             {
-                area.MoveYourMenSergant();
+                doneEvents[i] = new ManualResetEvent(false);
+                AreaThread thread = new AreaThread(i, doneEvents[i]);
+                ThreadPool.QueueUserWorkItem(thread.EvolvePart2, null);
             }
+
+            foreach (var e in doneEvents)
+                e.WaitOne();
+
+            for (int i = 0; i < events; i++)
+            {
+                doneEvents[i] = new ManualResetEvent(false);
+                AreaThread thread = new AreaThread(i, doneEvents[i]);
+                ThreadPool.QueueUserWorkItem(thread.EvolvePart3, null);
+            }
+
+            foreach (var e in doneEvents)
+                e.WaitOne();
+
+            for (int i = 0; i < events; i++)
+            {
+                doneEvents[i] = new ManualResetEvent(false);
+                AreaThread thread = new AreaThread(i, doneEvents[i]);
+                ThreadPool.QueueUserWorkItem(thread.EvolvePart4, null);
+            }
+
+            foreach (var e in doneEvents)
+                e.WaitOne();
+
+            for (int i = 0; i < events; i++)
+            {
+                doneEvents[i] = new ManualResetEvent(false);
+                AreaThread thread = new AreaThread(i, doneEvents[i]);
+                ThreadPool.QueueUserWorkItem(thread.EvolvePart5, null);
+            }
+
+            foreach (var e in doneEvents)
+                e.WaitOne();
         }
         /// <summary>
         /// Function generating one step of evolutionary algorithm.
