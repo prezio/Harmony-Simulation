@@ -114,18 +114,19 @@ namespace MusicPopulation
                 i++;
             }
         }
-        public static List<int[,]> SimulationBoardState
+        public static List<Tuple<int, int[,]>> SimulationBoardState
         {
             get
             {
-                List<int[,]> result = new List<int[,]>();
+                List<Tuple<int, int[,]>> result = new List<Tuple<int, int[,]>>();
 
                 foreach (var area in Areas)
                 {
                     var pos = area.ChampionOfArea;
                     if (pos != null)
                     {
-                        result.Add(Simulation.SimulationBoard[pos.Item1, pos.Item2].Notes);
+                        Member m = Simulation.SimulationBoard[pos.Item1, pos.Item2];
+                        result.Add(new Tuple<int, int[,]>(m.NumberOfNotes, m.Notes));
                     }
                 }
                 return result;

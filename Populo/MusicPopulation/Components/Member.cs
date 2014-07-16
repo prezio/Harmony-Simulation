@@ -56,14 +56,29 @@ namespace MusicPopulation
         }
         protected void Grow()
         {
-            if (_numberOfNotes == _maxNotes)
+            if (_numberOfNotes >= _maxNotes)
                 return;
-            _notes[_numberOfNotes, 0] = RandomGenerator.RandomGen.Next(limits[0]);
-            _notes[_numberOfNotes, 1] = RandomGenerator.RandomGen.Next(limits[1]);
-            _notes[_numberOfNotes, 2] = RandomGenerator.RandomGen.Next(limits[2]);
-            ++_numberOfNotes;
+
+            int tmp1 = RandomGenerator.RandomGen.Next(limits[0]);
+            int tmp2 = RandomGenerator.RandomGen.Next(limits[1]);
+            int tmp3 = RandomGenerator.RandomGen.Next(limits[2]);
+
+            Console.WriteLine("{0}, {1}, {2}", tmp1, tmp2, tmp3);
+
+            _notes[_numberOfNotes, 0] = tmp1;
+            _notes[_numberOfNotes, 1] = tmp2;
+            _notes[_numberOfNotes, 2] = tmp3;
+
+            _numberOfNotes++;
         }
 
+        public int NumberOfNotes
+        {
+            get
+            {
+                return _numberOfNotes;
+            }
+        }
         public int[,] Notes
         {
             get

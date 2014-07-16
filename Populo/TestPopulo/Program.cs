@@ -22,7 +22,7 @@ namespace populo
 
             SimulationParameters.PopulationGrowth = 256 * 256;
             SimulationParameters.PercentDeath = 1; // low percentage of deaths
-            int tries = 100;
+            int tries = 1000;
 
             for (int i = 0; i < tries; i++)
             {
@@ -45,17 +45,49 @@ namespace populo
 
             for (int i = 0; i < tries; i++)
             {
-                Console.WriteLine("Step: {0}/{1}", i, tries);
+                //Console.WriteLine("Step: {0}/{1}", i, tries);
                 Simulation.EvolveUsingThreads();
             }
 
             DateTime end = DateTime.Now;
 
-            List<int[,]> result = Simulation.SimulationBoardState;
-            StringBuilder text = new StringBuilder();
-            string fileName = "symulacja";
+            List<Tuple<int, int[,]>> result = Simulation.SimulationBoardState;
+            StringBuilder text = null;
 
-            
+            int count = 1;
+            foreach (Tuple<int, int[,]> sound in result)
+            {
+                text = new StringBuilder();
+                int number = sound.Item1;
+                int[,] array = sound.Item2;
+
+                for (int i = 0; i < number; i++)
+                {
+                    text.Append(array[i, 0].ToString() + "\n");
+                }
+
+                File.WriteAllText("symulacja_" + count.ToString() + "_0.txt", text.ToString());
+
+                text = new StringBuilder();
+
+                for (int i = 0; i < number; i++)
+                {
+                    text.Append(array[i, 1].ToString() + "\n");
+                }
+
+                File.WriteAllText("symulacja_" + count.ToString() + "_1.txt", text.ToString());
+
+                text = new StringBuilder();
+
+                for (int i = 0; i < number; i++)
+                {
+                    text.Append(array[i, 2].ToString() + "\n");
+                }
+
+                File.WriteAllText("symulacja_" + count.ToString() + "_2.txt", text.ToString());
+
+                count++;
+            }
 
             Console.WriteLine("Duration: {0}", end - start);
         }
