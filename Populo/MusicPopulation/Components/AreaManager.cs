@@ -13,6 +13,7 @@ namespace MusicPopulation
         private int _width, _height;
         private int _position = -1;
         private Tuple<int, int>[] _areaRandOrder;
+        private Random _randContext;
 
         // Move Synchronization containers
         private List<Tuple<int, int, int, int>> _listLeftMove;
@@ -34,7 +35,9 @@ namespace MusicPopulation
             _width = w;
             _height = h;
 
-            int[] array = RandomGenerator.RandomPermutation(w * h, w * h);
+            _randContext = RandomGenerator.GenerateRandomGen();
+
+            int[] array = RandomGenerator.RandomPermutation(w * h, w * h, _randContext);
             _areaRandOrder = new Tuple<int, int>[w*h];
 
 
@@ -90,7 +93,7 @@ namespace MusicPopulation
 
             for (int i = 0; i < deaths; i++)
             {
-                Simulation.SimulationBoard[values[i].Item1, values[i].Item2] = null;
+                //Simulation.SimulationBoard[values[i].Item1, values[i].Item2] = null;
                 done++;
             }
             Debug.WriteLine("Kill weaks: " + done + "/" + all );
@@ -104,7 +107,7 @@ namespace MusicPopulation
                 Member m = Simulation.SimulationBoard[pos.Item1, pos.Item2];
                 if (m != null)
                 {
-                    m.Mutate();
+                    m.Mutate(_randContext);
                     done++;
                 }
                 all++;
@@ -140,7 +143,7 @@ namespace MusicPopulation
                             var member = Simulation.SimulationBoard[x, y];
                             double probability = 1-(double)n / n_max * SimulationParameters.Alfa;
 
-                            if (member == null && RandomGenerator.ChanceProbability(probability))
+                            if (member == null && RandomGenerator.ChanceProbability(probability, _randContext))
                             {
                                 Simulation.SimulationBoard[x, y] = Simulation.SimulationBoard[best_pos.Item1, best_pos.Item2];
                                 reproduced++;
@@ -181,7 +184,7 @@ namespace MusicPopulation
                             var member = Simulation.SimulationBoard[x, y];
                             if (member != null)
                             {
-                                member.Influence(best_mem);
+                                member.Influence(best_mem, _randContext);
                                 influenced++;
                             }
                             x++;
@@ -207,8 +210,8 @@ namespace MusicPopulation
                 Member m = Simulation.SimulationBoard[pos.Item1, pos.Item2];
                 if (m != null)
                 {
-                    int dir = RandomGenerator.RandomGen.Next() % 4;
-                    int steps = RandomGenerator.RandomGen.Next() % SimulationParameters.MaxSteps + 1;
+                    int dir = _randContext.Next() % 4;
+                    int steps = _randContext.Next() % SimulationParameters.MaxSteps + 1;
 
                     int new_x, new_y;
                     switch (dir)

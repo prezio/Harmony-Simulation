@@ -24,7 +24,7 @@ namespace MusicPopulation
         public static double[] ExchangeChance = new double[] { 0.05, 0.05, 0.05 };
         public static double[] ModifyChance = new double[] { 0.05, 0.05, 0.05 };
         public static double GrowthChance = 0.05;
-        public static double ShrinkChance = 0.05;
+        public static double ShrinkChance = 0;
         #endregion
     }
 }

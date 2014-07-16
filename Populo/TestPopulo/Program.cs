@@ -1,4 +1,5 @@
 ﻿using MusicPopulation;
+//using MusicPopulation;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,20 @@ namespace populo
 {
     public class Program
     {
+        public class Test
+        {
+            private Random _random;
 
+            public Test()
+            {
+                _random = new Random();
+            }
+
+            public void foo()
+            {
+                Console.WriteLine(_random.Next());
+            }
+        }
         /// <summary>
         /// Max Tests
         /// </summary>
@@ -22,7 +36,7 @@ namespace populo
 
             SimulationParameters.PopulationGrowth = 256 * 256;
             SimulationParameters.PercentDeath = 1; // low percentage of deaths
-            int tries = 1000;
+            int tries = 5000;
 
             for (int i = 0; i < tries; i++)
             {
@@ -41,11 +55,11 @@ namespace populo
         {
             DateTime start = DateTime.Now;
 
-            int tries = 100;
+            int tries = 25000;
 
             for (int i = 0; i < tries; i++)
             {
-                //Console.WriteLine("Step: {0}/{1}", i, tries);
+                Console.WriteLine("Step: {0}/{1}", i, tries);
                 Simulation.EvolveUsingThreads();
             }
 
@@ -95,8 +109,13 @@ namespace populo
         public static void Main(string[] args)
         {
             //Start test
+            //Test2();
+            /*Test test = new Test();
+            for (int i = 0; i < 100; i++)
+            {
+                test.foo();
+            }*/
             Test2();
-
             Console.ReadKey();
         }
     }

@@ -97,6 +97,41 @@ namespace HarmonyEditor
 
             return wnd.FileName;
         }
+        private void AddSpectrum(Spectrum sp)
+        {
+            sp.Rotated = true;
+            sp.MouseClick += spectrum_MouseClick;
+            sp.DoubleClick += spectrum_DoubleClick;
+
+            flowLayoutPanel.Controls.Add(sp);
+        }
+        private void EditCurrentChord()
+        {
+            Spectrum sp = (Spectrum)flowLayoutPanel.Controls[_selectedIndex];
+            if (sp.CurChord is PeriodicChord)
+            {
+                PeriodicChord pc = (PeriodicChord)sp.CurChord;
+                ChordEditor window = new ChordEditor(pc);
+                window.ShowDialog();
+
+                if (window.OkClicked)
+                {
+                    sp.CurChord = window.Result;
+                }
+            }
+            else if (sp.CurChord is SimpleChord)
+            {
+                SimpleChord sc = (SimpleChord)sp.CurChord;
+                SimpleChordEditor window = new SimpleChordEditor(sc);
+                window.ShowDialog();
+
+                if (window.OkClicked)
+                {
+                    sp.CurChord = window.Result;
+                }
+            }
+            RefreshData();
+        }
         private List<Chord> ToListOfChord()
         {
             List<Chord> result = new List<Chord>();
@@ -131,6 +166,24 @@ namespace HarmonyEditor
             _selectedIndex = -1;
             RefreshData();
         }
+        private void spectrum_DoubleClick(object sender, EventArgs e)
+        {
+            Spectrum sp = (Spectrum)sender;
+            if (_selectedIndex == -1)
+            {
+                sp.Selected = true;
+                _selectedIndex = flowLayoutPanel.Controls.IndexOf(sp);
+            }
+            else
+            {
+                Spectrum tmp = (Spectrum)flowLayoutPanel.Controls[_selectedIndex];
+                tmp.Selected = false;
+                _selectedIndex = flowLayoutPanel.Controls.IndexOf(sp);
+                sp.Selected = true;
+            }
+            RefreshData();
+            EditCurrentChord();
+        }
         private void spectrum_MouseClick(object sender, MouseEventArgs e)
         {
             Spectrum sp = (Spectrum) sender;
@@ -160,11 +213,8 @@ namespace HarmonyEditor
 
             Spectrum sp = new Spectrum(true, radioButtonFrequencies.Checked, window.Result,
                                                          (int)numericUpDownWidth.Value, (int)numericUpDownHeight.Value);
-            sp.MouseClick += spectrum_MouseClick;
-
-            flowLayoutPanel.Controls.Add(sp);
+            AddSpectrum(sp);
         }
-
         private void buttonAddPeriodicAccord_Click(object sender, EventArgs e)
         {
             ChordEditor window = new ChordEditor();
@@ -177,9 +227,7 @@ namespace HarmonyEditor
 
             Spectrum sp = new Spectrum(true, radioButtonFrequencies.Checked, window.Result,
                                                         (int)numericUpDownWidth.Value, (int)numericUpDownHeight.Value);
-            sp.MouseClick += spectrum_MouseClick;
-
-            flowLayoutPanel.Controls.Add(sp);
+            AddSpectrum(sp);
         }
         private void radioButtonFrequencies_CheckedChanged(object sender, EventArgs e)
         {
@@ -213,30 +261,7 @@ namespace HarmonyEditor
         }
         private void buttonEditAccord_Click(object sender, EventArgs e)
         {
-            Spectrum sp = (Spectrum)flowLayoutPanel.Controls[_selectedIndex];
-            if (sp.CurChord is PeriodicChord)
-            {
-                PeriodicChord pc = (PeriodicChord)sp.CurChord;
-                ChordEditor window = new ChordEditor(pc);
-                window.ShowDialog();
-
-                if (window.OkClicked)
-                {
-                    sp.CurChord = window.Result;
-                }
-            }
-            else if (sp.CurChord is SimpleChord)
-            {
-                SimpleChord sc = (SimpleChord)sp.CurChord;
-                SimpleChordEditor window = new SimpleChordEditor(sc);
-                window.ShowDialog();
-
-                if (window.OkClicked)
-                {
-                    sp.CurChord = window.Result;
-                }
-            }
-            RefreshData();
+            EditCurrentChord();
         }
         private void flowLayoutPanel_DragEnter(object sender, DragEventArgs e)
         {
@@ -302,5 +327,6 @@ namespace HarmonyEditor
                 ToListOfChord().WriteToPitch(fileName);
         }
         #endregion
+
     }
 }

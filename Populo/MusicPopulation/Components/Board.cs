@@ -25,13 +25,14 @@ namespace MusicPopulation
             _board = new Member[w, h];
             this._width = w;
             this._height = h;
+            Random randContext = RandomGenerator.GenerateRandomGen();
 
-            var population = RandomGenerator.RandomPermutation(_height * _width, growth);
+            var population = RandomGenerator.RandomPermutation(_height * _width, growth, randContext);
             foreach (int k in population)
             {
                 int i = k % _height;
                 int j = k / _width;
-                _board[i, j] = new Member();
+                _board[i, j] = new Member(randContext);
             }
         }
         public Member this[int i, int j]
@@ -59,7 +60,7 @@ namespace MusicPopulation
         /// </summary>
         public Tuple<int, int> GetBestInArea(int x1, int y1, int x2, int y2)
         {
-            int best_x = -1, best_y = -1, best_rank = -1;
+            int best_x = -1, best_y = -1, best_rank = Int32.MinValue;
             int i, j = y1;
 
             while (j <= y2)
@@ -78,7 +79,7 @@ namespace MusicPopulation
                 }
                 j++;
             }
-            if (best_rank == -1)
+            if (best_x == -1 && best_y == -1)
                 return null;
             else
                 return new Tuple<int, int>(best_x, best_y);
