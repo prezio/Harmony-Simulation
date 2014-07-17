@@ -38,8 +38,19 @@ namespace MusicPopulation
         /// </summary>
         public static void EvolveUsingThreads()
         {
-            int events = 16;
+            int events = 16; // number of threads; each one commands its own area
 
+            // I divided algorithm into 5 steps in order to avoid locking memory. In each step I run parallely 16 threads.
+
+            // In first step each thread:
+            //  - kills weak indiwviduals,
+            //  - chooses best individual,
+            //  - reproduces best individuals
+            //  - mutates individuals
+            //  - influences individuals
+            //  - generate random moves for each individual, if individual wants to move outside area
+            //    I push movement to other step of evolution(this allows me to avoid memory hazard but we have to
+            //    assume that individual won't move so far)
             ManualResetEvent[] doneEvents = new ManualResetEvent[events];
 
             for (int i = 0; i < events; i++)
@@ -52,6 +63,8 @@ namespace MusicPopulation
             foreach (var e in doneEvents)
                 e.WaitOne();
 
+            // In second step each thread deals with individuals which want to leave area
+            // and move to up area
             for (int i = 0; i < events; i++)
             {
                 doneEvents[i] = new ManualResetEvent(false);
@@ -62,6 +75,8 @@ namespace MusicPopulation
             foreach (var e in doneEvents)
                 e.WaitOne();
 
+            // In third step each thread deals with individuals which want to leave area
+            // and move to down area
             for (int i = 0; i < events; i++)
             {
                 doneEvents[i] = new ManualResetEvent(false);
@@ -72,6 +87,8 @@ namespace MusicPopulation
             foreach (var e in doneEvents)
                 e.WaitOne();
 
+            // In fourth step each thread deals with individuals which want to leave area
+            // and move to left area
             for (int i = 0; i < events; i++)
             {
                 doneEvents[i] = new ManualResetEvent(false);
@@ -82,6 +99,8 @@ namespace MusicPopulation
             foreach (var e in doneEvents)
                 e.WaitOne();
 
+            // In fifth step each thread deals with individuals which want to leave area
+            // and move to right area
             for (int i = 0; i < events; i++)
             {
                 doneEvents[i] = new ManualResetEvent(false);
@@ -98,7 +117,6 @@ namespace MusicPopulation
         /// </summary>
         public static void EvolveWithoutThreads()
         {
-            int i = 0;
             foreach (var area in Areas)
             {
                 area.KillWeaksWhoDoesNotServeTheEmperorWell();
@@ -111,25 +129,13 @@ namespace MusicPopulation
                 area.RegroupYourMenToOtherFront(1);
                 area.RegroupYourMenToOtherFront(2);
                 area.RegroupYourMenToOtherFront(3);
-                i++;
             }
         }
-        public static List<Tuple<int, int[,]>> SimulationBoardState
+        public static List<Member> SimulationBoardState
         {
             get
             {
-                List<Tuple<int, int[,]>> result = new List<Tuple<int, int[,]>>();
-
-                foreach (var area in Areas)
-                {
-                    var pos = area.ChampionOfArea;
-                    if (pos != null)
-                    {
-                        Member m = Simulation.SimulationBoard[pos.Item1, pos.Item2];
-                        result.Add(new Tuple<int, int[,]>(m.NumberOfNotes, m.Notes));
-                    }
-                }
-                return result;
+                return Areas.Select(area => area.ChampionOfArea).ToList();
             }
         }
         public static void ResetSimulation()

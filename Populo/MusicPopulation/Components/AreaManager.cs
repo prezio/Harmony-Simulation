@@ -14,6 +14,7 @@ namespace MusicPopulation
         private int _position = -1;
         private Tuple<int, int>[] _areaRandOrder;
         private Random _randContext;
+        private Member _championOfArea = null;
 
         // Move Synchronization containers
         private List<Tuple<int, int, int, int>> _listLeftMove;
@@ -62,11 +63,11 @@ namespace MusicPopulation
                 return res;
             }
         }
-        public Tuple<int, int> ChampionOfArea
+        public Member ChampionOfArea
         {
             get
             {
-                return Simulation.SimulationBoard.GetBestInArea(_mX, _mY, _mX + _width - 1, _mY + _height - 1);
+                return _championOfArea;
             }
         }
 
@@ -93,18 +94,22 @@ namespace MusicPopulation
 
             for (int i = 0; i < deaths; i++)
             {
-                //Simulation.SimulationBoard[values[i].Item1, values[i].Item2] = null;
+                Simulation.SimulationBoard[values[i].Item1, values[i].Item2] = null;
                 done++;
             }
             Debug.WriteLine("Kill weaks: " + done + "/" + all );
+        }
+        public void SelectChampionWhoCanBecomeCommissar()
+        {
+            var pos = Simulation.SimulationBoard.GetBestInArea(_mX, _mY, _mX + _width - 1, _mY + _height - 1);
+            _championOfArea = Simulation.SimulationBoard[pos.Item1, pos.Item2];
         }
         public void MutateWeaksSoTheyCanServeEmperorBetter() // Mutacje
         {
             int done = 0;
             int all = 0;
-            foreach (var pos in _areaRandOrder)
+            foreach (Member m in this)
             {
-                Member m = Simulation.SimulationBoard[pos.Item1, pos.Item2];
                 if (m != null)
                 {
                     m.Mutate(_randContext);

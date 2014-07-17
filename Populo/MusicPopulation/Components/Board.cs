@@ -68,12 +68,18 @@ namespace MusicPopulation
                 i = x1;
                 while (i <= x2)
                 {
-                    var member = _board[i, j];
-                    if (member != null && member.Rank() > best_rank)
+                    Member member = _board[i, j];
+
+                    if (member != null)
                     {
-                        best_x = i;
-                        best_y = j;
-                        best_rank = member.Rank();
+                        int rank = member.Rank();
+
+                        if (rank > best_rank)
+                        {
+                            best_x = i;
+                            best_y = j;
+                            best_rank = rank;
+                        }
                     }
                     i++;
                 }

@@ -9,12 +9,12 @@ namespace MusicPopulation
     public static class SimulationParameters
     {
         #region Const Variables
-        public static int BoardWidth = 256, BoardHeight = 256;
-        public static int PopulationGrowth = 256 * 256 / 2;
+        public const int BoardWidth = 256, BoardHeight = 256;
+        public const int PopulationGrowth = 256 * 256 / 2;
         #endregion
 
         #region Variables which will change during simulation
-        public static int PercentDeath = 10;
+        public static int PercentDeath = 0;
         public static int MaxSteps = 20;
 
         public static double Alfa = 1;

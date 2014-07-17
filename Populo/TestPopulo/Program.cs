@@ -34,7 +34,7 @@ namespace populo
         {
             DateTime start = DateTime.Now;
 
-            SimulationParameters.PopulationGrowth = 256 * 256;
+            //SimulationParameters.PopulationGrowth = 256 * 256;
             SimulationParameters.PercentDeath = 1; // low percentage of deaths
             int tries = 5000;
 
@@ -55,7 +55,7 @@ namespace populo
         {
             DateTime start = DateTime.Now;
 
-            int tries = 25000;
+            int tries = 1000;
 
             for (int i = 0; i < tries; i++)
             {
@@ -65,15 +65,15 @@ namespace populo
 
             DateTime end = DateTime.Now;
 
-            List<Tuple<int, int[,]>> result = Simulation.SimulationBoardState;
+            List<Member> result = Simulation.SimulationBoardState;
             StringBuilder text = null;
 
             int count = 1;
-            foreach (Tuple<int, int[,]> sound in result)
+            foreach (Member sound in result)
             {
                 text = new StringBuilder();
-                int number = sound.Item1;
-                int[,] array = sound.Item2;
+                int number = sound.NumberOfNotes;
+                int[,] array = sound.Notes;
 
                 for (int i = 0; i < number; i++)
                 {

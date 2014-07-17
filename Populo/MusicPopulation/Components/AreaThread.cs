@@ -20,6 +20,7 @@ namespace MusicPopulation
             Debug.WriteLine("Thread {0} Part 1 started...", _indexOfArea);
 
             Simulation.Areas[_indexOfArea].KillWeaksWhoDoesNotServeTheEmperorWell();
+            Simulation.Areas[_indexOfArea].SelectChampionWhoCanBecomeCommissar();
             Simulation.Areas[_indexOfArea].ReproduceMenToHaveMoreServantsOfTheEmperor();
             Simulation.Areas[_indexOfArea].MutateWeaksSoTheyCanServeEmperorBetter();
             Simulation.Areas[_indexOfArea].InfluenceMenWithSongsGlorifyingEmperor();
