@@ -48,6 +48,23 @@ namespace MusicPopulation
                 _board[i, j] = value;
             }
         }
+
+        public int PopulationGrowth
+        {
+            get
+            {
+                int res = 0;
+                for(int i=0; i<_width; i++)
+                {
+                    for(int j=0; j<_height; j++)
+                    {
+                        if (_board[i, j] != null)
+                            res++;
+                    }
+                }
+                return res;
+            }
+        }
         /// <summary>
         /// Returns whether point (x, y) is legal or not.
         /// </summary>

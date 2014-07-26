@@ -43,6 +43,7 @@
     <Compile Include="Components\AreaThread.cs" />
     <Compile Include="Components\Board.cs" />
     <Compile Include="Simulation\Simulation.cs" />
+    <Compile Include="Tools\Logger.cs" />
     <Compile Include="Tools\RandomGenerator.cs" />
     <Compile Include="Simulation\SimulationParameters.cs" />
     <Compile Include="Components\Member.cs" />

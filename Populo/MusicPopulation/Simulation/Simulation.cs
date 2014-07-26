@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace MusicPopulation
 {
@@ -51,7 +52,99 @@ namespace MusicPopulation
             //  - generate random moves for each individual, if individual wants to move outside area
             //    I push movement to other step of evolution(this allows me to avoid memory hazard but we have to
             //    assume that individual won't move so far)
-            ManualResetEvent[] doneEvents = new ManualResetEvent[events];
+
+            Task[] tasks = new Task[events];
+            AreaThread[] threads = new AreaThread[events];
+            for(int i = 0; i < events; i++)
+            {
+                threads[i] = new AreaThread(i);
+            }
+
+            for(int i = 0; i < events; i++)
+            {
+                tasks[i] = new Task(threads[i].EvolvePart1);
+                tasks[i].Start();
+            }
+            try
+            {
+                for (int i = 0; i < events; i++)
+                {
+                    tasks[i].Wait();
+                }
+            }
+            catch(AggregateException ex)
+            {
+                Logger.AddError(ex, null);
+            }
+
+            for (int i = 0; i < events; i++)
+            {
+                tasks[i] = new Task(threads[i].EvolvePart2);
+                tasks[i].Start();
+            }
+            try
+            {
+                for (int i = 0; i < events; i++)
+                {
+                    tasks[i].Wait();
+                }
+            }
+            catch (AggregateException ex)
+            {
+                Logger.AddError(ex, null);
+            }
+
+            for (int i = 0; i < events; i++)
+            {
+                tasks[i] = new Task(threads[i].EvolvePart3);
+                tasks[i].Start();
+            }
+            try
+            {
+                for (int i = 0; i < events; i++)
+                {
+                    tasks[i].Wait();
+                }
+            }
+            catch (AggregateException ex)
+            {
+                Logger.AddError(ex, null);
+            }
+
+            for (int i = 0; i < events; i++)
+            {
+                tasks[i] = new Task(threads[i].EvolvePart4);
+                tasks[i].Start();
+            }
+            try
+            {
+                for (int i = 0; i < events; i++)
+                {
+                    tasks[i].Wait();
+                }
+            }
+            catch (AggregateException ex)
+            {
+                Logger.AddError(ex, null);
+            }
+
+            for (int i = 0; i < events; i++)
+            {
+                tasks[i] = new Task(threads[i].EvolvePart5);
+                tasks[i].Start();
+            }
+            try
+            {
+                for (int i = 0; i < events; i++)
+                {
+                    tasks[i].Wait();
+                }
+            }
+            catch (AggregateException ex)
+            {
+                Logger.AddError(ex, null);
+            }
+            /*ManualResetEvent[] doneEvents = new ManualResetEvent[events];
 
             for (int i = 0; i < events; i++)
             {
@@ -109,7 +202,7 @@ namespace MusicPopulation
             }
 
             foreach (var e in doneEvents)
-                e.WaitOne();
+                e.WaitOne();*/
         }
         /// <summary>
         /// Function generating one step of evolutionary algorithm.

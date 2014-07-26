@@ -1,5 +1,4 @@
 ﻿using MusicPopulation;
-//using MusicPopulation;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -13,109 +12,90 @@ namespace populo
 {
     public class Program
     {
-        public class Test
+        private static int[] tries = { 1000 };      
+        private static void WriteToFile(int count, int tries)
         {
-            private Random _random;
+            StringBuilder text = new StringBuilder();
 
-            public Test()
-            {
-                _random = new Random();
-            }
+            text.Append(Logger.GenBoardDescription(tries));
+            text.Append(Logger.GenAreaDescription());
+            
+            text.Append("\nEND\n");
 
-            public void foo()
-            {
-                Console.WriteLine(_random.Next());
-            }
+            string fileName = "symulacja" + count.ToString() + ".txt";
+            File.WriteAllText(fileName, text.ToString());
         }
-        /// <summary>
-        /// Max Tests
-        /// </summary>
-        private static void Test1()
+        private static void automationTest()
         {
-            DateTime start = DateTime.Now;
+            int count = 0;
 
-            //SimulationParameters.PopulationGrowth = 256 * 256;
-            SimulationParameters.PercentDeath = 1; // low percentage of deaths
-            int tries = 5000;
-
-            for (int i = 0; i < tries; i++)
+            for (SimulationParameters.PercentDeath = 0; SimulationParameters.PercentDeath <= 10; SimulationParameters.PercentDeath ++)
             {
-                Console.WriteLine("Step: {0}/{1}", i, tries);
-                Simulation.EvolveUsingThreads();
+                for (SimulationParameters.ModifyAmount[0] = 0; SimulationParameters.ModifyAmount[0] <= 20; SimulationParameters.ModifyAmount[0] ++)
+                {
+                    for (SimulationParameters.ModifyAmount[1] = 0; SimulationParameters.ModifyAmount[1] <= 20; SimulationParameters.ModifyAmount[1]++)
+                    {
+                        for (SimulationParameters.ModifyAmount[2] = 0; SimulationParameters.ModifyAmount[2] <= 20; SimulationParameters.ModifyAmount[2]++)
+                        {
+                            for (SimulationParameters.InfluenceAmount[0] = 0; SimulationParameters.InfluenceAmount[0] <= 1; SimulationParameters.InfluenceAmount[0]+=0.01)
+                            {
+                                for (SimulationParameters.InfluenceAmount[1] = 0; SimulationParameters.InfluenceAmount[1] <= 1; SimulationParameters.InfluenceAmount[1] += 0.01)
+                                {
+                                    for (SimulationParameters.InfluenceAmount[2] = 0; SimulationParameters.InfluenceAmount[2] <= 1; SimulationParameters.InfluenceAmount[2] += 0.01)
+                                    {
+                                        for (SimulationParameters.GrowthChance = 0; SimulationParameters.GrowthChance <= 0.1; SimulationParameters.GrowthChance += 0.05)
+                                        {
+                                            for (SimulationParameters.ShrinkChance = 0; SimulationParameters.ShrinkChance <= 0.1; SimulationParameters.ShrinkChance += 0.05)
+                                            {
+                                                for(int i=0; i<tries.Length; i++)
+                                                {
+                                                    Simulation.ResetSimulation();
+                                                    for(int j=0; j<tries[i]; j++)
+                                                    {
+                                                        Simulation.EvolveUsingThreads();
+                                                    }
+
+                                                    WriteToFile(count, tries[i]);
+                                                    
+                                                    Console.WriteLine("{0} completed.", count);
+                                                    count++;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
 
-            DateTime end = DateTime.Now;
-            Console.WriteLine("Duration: {0}", end - start);
         }
-
-        /// <summary>
-        /// Standard Test
-        /// </summary>
-        private static void Test2()
+        private static void Test()
         {
-            DateTime start = DateTime.Now;
-
+            SimulationParameters.PercentDeath = 0;
+            SimulationParameters.ModifyAmount[0] = 0;
+            SimulationParameters.ModifyAmount[1] = 0;
+            SimulationParameters.ModifyAmount[2] = 0;
+            SimulationParameters.InfluenceAmount[0] = 0;
+            SimulationParameters.InfluenceAmount[1] = 0;
+            SimulationParameters.InfluenceAmount[2] = 0;
+            SimulationParameters.GrowthChance = 0.05;
+            SimulationParameters.ShrinkChance = 0.05;
             int tries = 1000;
-
-            for (int i = 0; i < tries; i++)
+            
+            for(int i=0; i<tries; i++)
             {
-                Console.WriteLine("Step: {0}/{1}", i, tries);
                 Simulation.EvolveUsingThreads();
+                Console.WriteLine(i);
             }
-
-            DateTime end = DateTime.Now;
-
-            List<Member> result = Simulation.SimulationBoardState;
-            StringBuilder text = null;
-
-            int count = 1;
-            foreach (Member sound in result)
-            {
-                text = new StringBuilder();
-                int number = sound.NumberOfNotes;
-                int[,] array = sound.Notes;
-
-                for (int i = 0; i < number; i++)
-                {
-                    text.Append(array[i, 0].ToString() + "\n");
-                }
-
-                File.WriteAllText("symulacja_" + count.ToString() + "_0.txt", text.ToString());
-
-                text = new StringBuilder();
-
-                for (int i = 0; i < number; i++)
-                {
-                    text.Append(array[i, 1].ToString() + "\n");
-                }
-
-                File.WriteAllText("symulacja_" + count.ToString() + "_1.txt", text.ToString());
-
-                text = new StringBuilder();
-
-                for (int i = 0; i < number; i++)
-                {
-                    text.Append(array[i, 2].ToString() + "\n");
-                }
-
-                File.WriteAllText("symulacja_" + count.ToString() + "_2.txt", text.ToString());
-
-                count++;
-            }
-
-            Console.WriteLine("Duration: {0}", end - start);
         }
 
         public static void Main(string[] args)
         {
-            //Start test
-            //Test2();
-            /*Test test = new Test();
-            for (int i = 0; i < 100; i++)
-            {
-                test.foo();
-            }*/
-            Test2();
+            automationTest();
+            //Test();
+            Console.WriteLine("Done.");
             Console.ReadKey();
         }
     }
