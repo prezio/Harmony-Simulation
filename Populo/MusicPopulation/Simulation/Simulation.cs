@@ -43,6 +43,13 @@ namespace MusicPopulation
 
             // I divided algorithm into 5 steps in order to avoid locking memory. In each step I run parallely 16 threads.
 
+            Task[] tasks = new Task[events];
+            AreaThread[] threads = new AreaThread[events];
+            for (int i = 0; i < events; i++)
+            {
+                threads[i] = new AreaThread(i);
+            }
+
             // In first step each thread:
             //  - kills weak indiwviduals,
             //  - chooses best individual,
@@ -52,157 +59,63 @@ namespace MusicPopulation
             //  - generate random moves for each individual, if individual wants to move outside area
             //    I push movement to other step of evolution(this allows me to avoid memory hazard but we have to
             //    assume that individual won't move so far)
-
-            Task[] tasks = new Task[events];
-            AreaThread[] threads = new AreaThread[events];
-            for(int i = 0; i < events; i++)
-            {
-                threads[i] = new AreaThread(i);
-            }
-
             for(int i = 0; i < events; i++)
             {
                 tasks[i] = new Task(threads[i].EvolvePart1);
                 tasks[i].Start();
             }
-            try
-            {
-                for (int i = 0; i < events; i++)
-                {
-                    tasks[i].Wait();
-                }
-            }
-            catch(AggregateException ex)
-            {
-                Logger.AddError(ex, null);
-            }
-
             for (int i = 0; i < events; i++)
             {
-                tasks[i] = new Task(threads[i].EvolvePart2);
-                tasks[i].Start();
+                tasks[i].Wait();
             }
-            try
-            {
-                for (int i = 0; i < events; i++)
-                {
-                    tasks[i].Wait();
-                }
-            }
-            catch (AggregateException ex)
-            {
-                Logger.AddError(ex, null);
-            }
-
-            for (int i = 0; i < events; i++)
-            {
-                tasks[i] = new Task(threads[i].EvolvePart3);
-                tasks[i].Start();
-            }
-            try
-            {
-                for (int i = 0; i < events; i++)
-                {
-                    tasks[i].Wait();
-                }
-            }
-            catch (AggregateException ex)
-            {
-                Logger.AddError(ex, null);
-            }
-
-            for (int i = 0; i < events; i++)
-            {
-                tasks[i] = new Task(threads[i].EvolvePart4);
-                tasks[i].Start();
-            }
-            try
-            {
-                for (int i = 0; i < events; i++)
-                {
-                    tasks[i].Wait();
-                }
-            }
-            catch (AggregateException ex)
-            {
-                Logger.AddError(ex, null);
-            }
-
-            for (int i = 0; i < events; i++)
-            {
-                tasks[i] = new Task(threads[i].EvolvePart5);
-                tasks[i].Start();
-            }
-            try
-            {
-                for (int i = 0; i < events; i++)
-                {
-                    tasks[i].Wait();
-                }
-            }
-            catch (AggregateException ex)
-            {
-                Logger.AddError(ex, null);
-            }
-            /*ManualResetEvent[] doneEvents = new ManualResetEvent[events];
-
-            for (int i = 0; i < events; i++)
-            {
-                doneEvents[i] = new ManualResetEvent(false);
-                AreaThread thread = new AreaThread(i, doneEvents[i]);
-                ThreadPool.QueueUserWorkItem(thread.EvolvePart1, null);
-            }
-
-            foreach (var e in doneEvents)
-                e.WaitOne();
 
             // In second step each thread deals with individuals which want to leave area
             // and move to up area
             for (int i = 0; i < events; i++)
             {
-                doneEvents[i] = new ManualResetEvent(false);
-                AreaThread thread = new AreaThread(i, doneEvents[i]);
-                ThreadPool.QueueUserWorkItem(thread.EvolvePart2, null);
+                tasks[i] = new Task(threads[i].EvolvePart2);
+                tasks[i].Start();
             }
-
-            foreach (var e in doneEvents)
-                e.WaitOne();
+            for (int i = 0; i < events; i++)
+            {
+                tasks[i].Wait();
+            }
 
             // In third step each thread deals with individuals which want to leave area
             // and move to down area
             for (int i = 0; i < events; i++)
             {
-                doneEvents[i] = new ManualResetEvent(false);
-                AreaThread thread = new AreaThread(i, doneEvents[i]);
-                ThreadPool.QueueUserWorkItem(thread.EvolvePart3, null);
+                tasks[i] = new Task(threads[i].EvolvePart3);
+                tasks[i].Start();
             }
-
-            foreach (var e in doneEvents)
-                e.WaitOne();
+            for (int i = 0; i < events; i++)
+            {
+                tasks[i].Wait();
+            }
 
             // In fourth step each thread deals with individuals which want to leave area
             // and move to left area
             for (int i = 0; i < events; i++)
             {
-                doneEvents[i] = new ManualResetEvent(false);
-                AreaThread thread = new AreaThread(i, doneEvents[i]);
-                ThreadPool.QueueUserWorkItem(thread.EvolvePart4, null);
+                tasks[i] = new Task(threads[i].EvolvePart4);
+                tasks[i].Start();
             }
-
-            foreach (var e in doneEvents)
-                e.WaitOne();
+            for (int i = 0; i < events; i++)
+            {
+                tasks[i].Wait();
+            }
 
             // In fifth step each thread deals with individuals which want to leave area
             // and move to right area
             for (int i = 0; i < events; i++)
             {
-                doneEvents[i] = new ManualResetEvent(false);
-                AreaThread thread = new AreaThread(i, doneEvents[i]);
-                ThreadPool.QueueUserWorkItem(thread.EvolvePart5, null);
+                tasks[i] = new Task(threads[i].EvolvePart5);
+                tasks[i].Start();
             }
-
-            foreach (var e in doneEvents)
-                e.WaitOne();*/
+            for (int i = 0; i < events; i++)
+            {
+                tasks[i].Wait();
+            }
         }
         /// <summary>
         /// Function generating one step of evolutionary algorithm.

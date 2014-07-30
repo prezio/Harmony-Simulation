@@ -102,7 +102,8 @@ namespace MusicPopulation
         public void SelectChampionWhoCanBecomeCommissar()
         {
             var pos = Simulation.SimulationBoard.GetBestInArea(_mX, _mY, _mX + _width - 1, _mY + _height - 1);
-            _championOfArea = Simulation.SimulationBoard[pos.Item1, pos.Item2];
+            Member best = Simulation.SimulationBoard[pos.Item1, pos.Item2];
+            _championOfArea = new Member1(best);
         }
         public void MutateWeaksSoTheyCanServeEmperorBetter() // Mutacje
         {
@@ -150,7 +151,7 @@ namespace MusicPopulation
 
                             if (member == null && RandomGenerator.ChanceProbability(probability, _randContext))
                             {
-                                Simulation.SimulationBoard[x, y] = Simulation.SimulationBoard[best_pos.Item1, best_pos.Item2];
+                                Simulation.SimulationBoard[x, y] = new Member1(Simulation.SimulationBoard[best_pos.Item1, best_pos.Item2]);
                                 reproduced++;
                             }
                             x++;
@@ -180,6 +181,12 @@ namespace MusicPopulation
                         continue;
                     var best_mem = Simulation.SimulationBoard[best_pos.Item1, best_pos.Item2];
 
+                    if (best_mem.NumberOfNotes <= 0)
+                    {
+                        Console.WriteLine("line");
+                        continue;
+                    }
+
                     int x, y = y1;
                     while (y <= y2)
                     {
@@ -187,7 +194,7 @@ namespace MusicPopulation
                         while (x <= x2)
                         {
                             var member = Simulation.SimulationBoard[x, y];
-                            if (member != null)
+                            if (member != null && (x != best_pos.Item1 || y != best_pos.Item2))
                             {
                                 member.Influence(best_mem, _randContext);
                                 influenced++;

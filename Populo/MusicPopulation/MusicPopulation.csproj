@@ -39,14 +39,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Components\AreaManager.cs" />
-    <Compile Include="Components\AreaThread.cs" />
-    <Compile Include="Components\Board.cs" />
+    <Compile Include="Components\Area\AreaManager.cs" />
+    <Compile Include="Components\Area\AreaThread.cs" />
+    <Compile Include="Components\Board\Board.cs" />
+    <Compile Include="Components\Member\Member.cs" />
     <Compile Include="Simulation\Simulation.cs" />
     <Compile Include="Tools\Logger.cs" />
     <Compile Include="Tools\RandomGenerator.cs" />
     <Compile Include="Simulation\SimulationParameters.cs" />
-    <Compile Include="Components\Member.cs" />
+    <Compile Include="Components\Member\Member1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

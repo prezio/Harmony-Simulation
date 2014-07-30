@@ -6,24 +6,19 @@ using System.Threading.Tasks;
 
 namespace MusicPopulation
 {
-    public class Member
+    public class Member1 : Member
     {
-        private const int _maxNotes = 255;
-        private int[,] _notes = null; //pitch, duration, dynamics
-        private int _numberOfNotes;
-        static readonly int[] limits = new int[] { 72, 60, 128 };
-
         protected void Transpose(uint n, Random randContext)
         {
-            if (_numberOfNotes <= 1)
+            if (NumberOfNotes <= 1)
             {
                 return;
             }
             int temp;
-            int place = randContext.Next(_numberOfNotes - 1);
-            temp = _notes[place, n];
-            _notes[place, n] = _notes[place + 1, n];
-            _notes[place + 1, n] = temp;
+            int place = randContext.Next(NumberOfNotes - 1);
+            temp = Notes[place, n];
+            Notes[place, n] = Notes[place + 1, n];
+            Notes[place + 1, n] = temp;
             //place = random.Next(numberOfNotes - 1);
             //temp = notes[place, 1];
             //notes[place, 1] = notes[place + 1, 1];
@@ -35,106 +30,80 @@ namespace MusicPopulation
         }
         protected void Exchange(uint n, Random randContext)
         {
-            if (_numberOfNotes <= 1)
+            if (NumberOfNotes <= 1)
             {
                 return;
             }
-            int place = randContext.Next(_numberOfNotes);
-            _notes[place, n] = randContext.Next(limits[n]);
+            int place = randContext.Next(NumberOfNotes - 1);
+            Notes[place, n] = randContext.Next(limits[n]);
         }
         protected void Modify(uint n, Random randContext)
         {
-            if (_numberOfNotes <= 1)
+            if (NumberOfNotes <= 1)
             {
                 return;
             }
             int temp;
             
-            int place = randContext.Next(_numberOfNotes - 1);
+            int place = randContext.Next(NumberOfNotes - 1);
             temp = randContext.Next(-SimulationParameters.ModifyAmount[n], SimulationParameters.ModifyAmount[n] + 1);
-            _notes[place, n] += temp;
-            if (_notes[place, n] >= limits[n])
+            Notes[place, n] += temp;
+            if (Notes[place, n] >= limits[n])
             {
-                _notes[place, n] = limits[n] - 1;
+                Notes[place, n] = limits[n] - 1;
             }
-            else if (_notes[place,n]<0)
+            else if (Notes[place,n] < 0)
             {
-                _notes[place, n] = 0;
+                Notes[place, n] = 0;
             }
         }
         protected void Shrink()
         {
-            if(_numberOfNotes>1)
-                --_numberOfNotes;
+            if (NumberOfNotes > 1)
+                NumberOfNotes --;
         }
         protected void Grow(Random randContext)
         {
-            if (_numberOfNotes >= _maxNotes)
+            if (NumberOfNotes >= _maxNotes)
                 return;
 
-            int tmp1 = randContext.Next(limits[0]);
-            int tmp2 = randContext.Next(limits[1]);
-            int tmp3 = randContext.Next(limits[2]);
+            Notes[NumberOfNotes, 0] = randContext.Next(limits[0]);
+            Notes[NumberOfNotes, 1] = randContext.Next(limits[1]);
+            Notes[NumberOfNotes, 2] = randContext.Next(limits[2]);
 
-            _notes[_numberOfNotes, 0] = tmp1;
-            _notes[_numberOfNotes, 1] = tmp2;
-            _notes[_numberOfNotes, 2] = tmp3;
-
-            _numberOfNotes++;
+            NumberOfNotes++;
         }
 
-        public int NumberOfNotes
+        public Member1(Random randContext)
+            : base(randContext)
         {
-            get
-            {
-                return _numberOfNotes;
-            }
         }
-        public int[,] Notes
+        public Member1(Member original)
+            : base(original)
         {
-            get
-            {
-                return _notes;
-            }
         }
-        public void Influence(Member influencer, Random randContext)
+
+        public override void Influence(Member influencer, Random randContext)
         {
-            if(_numberOfNotes<influencer._numberOfNotes)
+            if (NumberOfNotes < influencer.NumberOfNotes)
             {
                 Grow(randContext);
             }
-            else if(_numberOfNotes>influencer._numberOfNotes)
+            else if (NumberOfNotes > influencer.NumberOfNotes)
             {
-                --_numberOfNotes;
+                NumberOfNotes --;
             }
-            for(int i=0;i<_numberOfNotes;++i)
+            for (int i = 0; i < NumberOfNotes; ++i)
             {
-                _notes[i, 0] +=(int)(SimulationParameters.InfluenceAmount[0] * (influencer._notes[i % influencer._numberOfNotes, 0] - _notes[i, 0]));
-                _notes[i, 1] += (int)(SimulationParameters.InfluenceAmount[1] * (influencer._notes[i % influencer._numberOfNotes, 1] - _notes[i, 1]));
-                _notes[i, 2] += (int)(SimulationParameters.InfluenceAmount[2] * (influencer._notes[i % influencer._numberOfNotes, 2] - _notes[i, 2]));
-            }
-        }
-        public Member(Member original)
-        {
-            _numberOfNotes = original._numberOfNotes;
-            Array.Copy(original._notes, _notes, _maxNotes);
-        }
-        public Member(Random randContext)
-        {
-            _numberOfNotes = randContext.Next(_maxNotes - 1) + 1;
-            _notes = new int[_maxNotes + 1, 3];
-
-            for(int i=0; i < _numberOfNotes; i++)
-            {
-                _notes[i, 0] = randContext.Next(limits[0]);
-                _notes[i, 1] = randContext.Next(limits[1]);
-                _notes[i, 2] = randContext.Next(limits[2]);
+                Notes[i, 0] += (int)(SimulationParameters.InfluenceAmount[0] * (influencer.Notes[i % influencer.NumberOfNotes, 0] - Notes[i, 0]));
+                Notes[i, 1] += (int)(SimulationParameters.InfluenceAmount[1] * (influencer.Notes[i % influencer.NumberOfNotes, 1] - Notes[i, 1]));
+                Notes[i, 2] += (int)(SimulationParameters.InfluenceAmount[2] * (influencer.Notes[i % influencer.NumberOfNotes, 2] - Notes[i, 2]));
             }
         }
-        public int Rank()
+        public override int Rank()
         {
             int rank = 0;
-            for (int i = 0; i < _numberOfNotes; i++)
+            for (int i = 0; i < NumberOfNotes; i++)
             {
                 rank -= (Notes[i, 1] - i) * (Notes[i, 1] - i);
             }
@@ -160,9 +129,10 @@ namespace MusicPopulation
             //        rank += 7;
             //    }
             //}
+            
                 return rank;
         }
-        public void Mutate(Random randContext)
+        public override void Mutate(Random randContext)
         {
             if (randContext.NextDouble() < SimulationParameters.GrowthChance)
             {

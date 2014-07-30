@@ -22,7 +22,7 @@ namespace MusicPopulation
         public Board(int w, int h, int growth)
         {
             Debug.WriteLine("Create Board");
-            _board = new Member[w, h];
+            _board = new Member1[w, h];
             this._width = w;
             this._height = h;
             Random randContext = RandomGenerator.GenerateRandomGen();
@@ -32,7 +32,7 @@ namespace MusicPopulation
             {
                 int i = k % _height;
                 int j = k / _width;
-                _board[i, j] = new Member(randContext);
+                _board[i, j] = new Member1(randContext);
             }
         }
         public Member this[int i, int j]

@@ -90,12 +90,28 @@ namespace populo
                 Console.WriteLine(i);
             }
         }
+        private static void NormalTest()
+        {
+            int tries = 10000;
+
+            for (int i = 0; i < tries; i++)
+            {
+                Simulation.EvolveUsingThreads();
+                Console.WriteLine(i);
+            }
+
+            WriteToFile(0, tries);
+        }
 
         public static void Main(string[] args)
         {
-            automationTest();
+            //automationTest();
             //Test();
-            Console.WriteLine("Done.");
+            NormalTest();
+
+            //Tuple<int, int> a1 = Simulation.SimulationBoard.GetBestInArea(0, 0, 15, 15);
+            //Tuple<int, int> a2 = Simulation.SimulationBoard.GetBestInArea(16, 0, 31, 15);
+            //Console.WriteLine("Done. {0} {1} || {2} {3}", a1.Item1, a1.Item2, a2.Item1, a2.Item2);
             Console.ReadKey();
         }
     }
