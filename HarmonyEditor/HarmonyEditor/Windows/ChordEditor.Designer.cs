@@ -37,6 +37,10 @@
             this.labelFrequency = new System.Windows.Forms.Label();
             this.labelNotes = new System.Windows.Forms.Label();
             this.groupBoxSpectrum = new System.Windows.Forms.GroupBox();
+            this.buttonAdd = new System.Windows.Forms.Button();
+            this.buttonCancel = new System.Windows.Forms.Button();
+            this.buttonPlay = new System.Windows.Forms.Button();
+            this.Stop = new System.Windows.Forms.Button();
             this.spectrumFrequencies = new HarmonyEditor.Spectrum();
             this.spectrumNotes = new HarmonyEditor.Spectrum();
             this.period6 = new HarmonyEditor.PeriodEditor();
@@ -45,10 +49,6 @@
             this.period3 = new HarmonyEditor.PeriodEditor();
             this.period2 = new HarmonyEditor.PeriodEditor();
             this.period1 = new HarmonyEditor.PeriodEditor();
-            this.buttonAdd = new System.Windows.Forms.Button();
-            this.buttonCancel = new System.Windows.Forms.Button();
-            this.buttonPlay = new System.Windows.Forms.Button();
-            this.Stop = new System.Windows.Forms.Button();
             this.groupBoxSpectrum.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -144,6 +144,46 @@
             this.groupBoxSpectrum.TabStop = false;
             this.groupBoxSpectrum.Text = "Spektra";
             // 
+            // buttonAdd
+            // 
+            this.buttonAdd.Location = new System.Drawing.Point(12, 540);
+            this.buttonAdd.Name = "buttonAdd";
+            this.buttonAdd.Size = new System.Drawing.Size(108, 30);
+            this.buttonAdd.TabIndex = 17;
+            this.buttonAdd.Text = "Dodaj";
+            this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
+            // 
+            // buttonCancel
+            // 
+            this.buttonCancel.Location = new System.Drawing.Point(836, 540);
+            this.buttonCancel.Name = "buttonCancel";
+            this.buttonCancel.Size = new System.Drawing.Size(116, 30);
+            this.buttonCancel.TabIndex = 18;
+            this.buttonCancel.Text = "Anuluj";
+            this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
+            // 
+            // buttonPlay
+            // 
+            this.buttonPlay.Location = new System.Drawing.Point(667, 49);
+            this.buttonPlay.Name = "buttonPlay";
+            this.buttonPlay.Size = new System.Drawing.Size(75, 35);
+            this.buttonPlay.TabIndex = 19;
+            this.buttonPlay.Text = "Odtwórz akord";
+            this.buttonPlay.UseVisualStyleBackColor = true;
+            this.buttonPlay.Click += new System.EventHandler(this.buttonPlay_Click);
+            // 
+            // Stop
+            // 
+            this.Stop.Location = new System.Drawing.Point(748, 49);
+            this.Stop.Name = "Stop";
+            this.Stop.Size = new System.Drawing.Size(75, 35);
+            this.Stop.TabIndex = 20;
+            this.Stop.Text = "Stop";
+            this.Stop.UseVisualStyleBackColor = true;
+            this.Stop.Click += new System.EventHandler(this.Stop_Click);
+            // 
             // spectrumFrequencies
             // 
             this.spectrumFrequencies.AllowDrag = false;
@@ -219,46 +259,6 @@
             this.period1.Size = new System.Drawing.Size(151, 255);
             this.period1.TabIndex = 2;
             // 
-            // buttonAdd
-            // 
-            this.buttonAdd.Location = new System.Drawing.Point(12, 540);
-            this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(108, 30);
-            this.buttonAdd.TabIndex = 17;
-            this.buttonAdd.Text = "Dodaj";
-            this.buttonAdd.UseVisualStyleBackColor = true;
-            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
-            // 
-            // buttonCancel
-            // 
-            this.buttonCancel.Location = new System.Drawing.Point(836, 540);
-            this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(116, 30);
-            this.buttonCancel.TabIndex = 18;
-            this.buttonCancel.Text = "Anuluj";
-            this.buttonCancel.UseVisualStyleBackColor = true;
-            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
-            // 
-            // buttonPlay
-            // 
-            this.buttonPlay.Location = new System.Drawing.Point(667, 49);
-            this.buttonPlay.Name = "buttonPlay";
-            this.buttonPlay.Size = new System.Drawing.Size(75, 35);
-            this.buttonPlay.TabIndex = 19;
-            this.buttonPlay.Text = "Odtwórz akord";
-            this.buttonPlay.UseVisualStyleBackColor = true;
-            this.buttonPlay.Click += new System.EventHandler(this.buttonPlay_Click);
-            // 
-            // Stop
-            // 
-            this.Stop.Location = new System.Drawing.Point(748, 49);
-            this.Stop.Name = "Stop";
-            this.Stop.Size = new System.Drawing.Size(75, 35);
-            this.Stop.TabIndex = 20;
-            this.Stop.Text = "Stop";
-            this.Stop.UseVisualStyleBackColor = true;
-            this.Stop.Click += new System.EventHandler(this.Stop_Click);
-            // 
             // ChordEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -285,6 +285,7 @@
             this.MaximizeBox = false;
             this.Name = "ChordEditor";
             this.Text = "Dodaj Akord...";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ChordEditor_FormClosing);
             this.groupBoxSpectrum.ResumeLayout(false);
             this.groupBoxSpectrum.PerformLayout();
             this.ResumeLayout(false);

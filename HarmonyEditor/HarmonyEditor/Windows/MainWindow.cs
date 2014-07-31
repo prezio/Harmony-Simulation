@@ -331,7 +331,111 @@ namespace HarmonyEditor
 
         private void MainWindow_Load(object sender, EventArgs e)
         {
+            int instrument = 0;
             Program.outDevice = new OutputDevice(0);
+
+            ChannelMessageBuilder builder = new ChannelMessageBuilder();
+
+            builder.Command = ChannelCommand.ProgramChange;
+            builder.MidiChannel = 0;
+            builder.Data1 = instrument;
+            builder.Data2 = 127;
+            builder.Build();
+            Program.outDevice.Send(builder.Result);
+            builder.Command = ChannelCommand.ProgramChange;
+            builder.MidiChannel = 1;
+            builder.Data1 = instrument;
+            builder.Data2 = 127;
+            builder.Build();
+            Program.outDevice.Send(builder.Result);
+            builder.Command = ChannelCommand.ProgramChange;
+            builder.MidiChannel = 2;
+            builder.Data1 = instrument;
+            builder.Data2 = 127;
+            builder.Build();
+            Program.outDevice.Send(builder.Result);
+            builder.Command = ChannelCommand.ProgramChange;
+            builder.MidiChannel = 3;
+            builder.Data1 = instrument;
+            builder.Data2 = 127;
+            builder.Build();
+            Program.outDevice.Send(builder.Result);
+
+            builder.Command = ChannelCommand.Controller;
+            builder.MidiChannel = 1;
+            builder.Data1 = 101;
+            builder.Data2 = 0;
+            builder.Build();
+            Program.outDevice.Send(builder.Result);
+            builder.Command = ChannelCommand.Controller;
+            builder.MidiChannel = 1;
+            builder.Data1 = 100;
+            builder.Data2 = 1;
+            builder.Build();
+            Program.outDevice.Send(builder.Result);
+            builder.Command = ChannelCommand.Controller;
+            builder.MidiChannel = 1;
+            builder.Data1 = 6;
+            builder.Data2 = 0x50;
+            builder.Build();
+            Program.outDevice.Send(builder.Result);
+            builder.Command = ChannelCommand.Controller;
+            builder.MidiChannel = 1;
+            builder.Data1 = 38;
+            builder.Data2 = 0x00;
+            builder.Build();
+            Program.outDevice.Send(builder.Result);
+
+            builder.Command = ChannelCommand.Controller;
+            builder.MidiChannel = 2;
+            builder.Data1 = 101;
+            builder.Data2 = 0;
+            builder.Build();
+            Program.outDevice.Send(builder.Result);
+            builder.Command = ChannelCommand.Controller;
+            builder.MidiChannel = 2;
+            builder.Data1 = 100;
+            builder.Data2 = 1;
+            builder.Build();
+            Program.outDevice.Send(builder.Result);
+            builder.Command = ChannelCommand.Controller;
+            builder.MidiChannel = 2;
+            builder.Data1 = 6;
+            builder.Data2 = 0x60;
+            builder.Build();
+            Program.outDevice.Send(builder.Result);
+            builder.Command = ChannelCommand.Controller;
+            builder.MidiChannel = 2;
+            builder.Data1 = 38;
+            builder.Data2 = 0x00;
+            builder.Build();
+            Program.outDevice.Send(builder.Result);
+
+            builder.Command = ChannelCommand.Controller;
+            builder.MidiChannel = 3;
+            builder.Data1 = 101;
+            builder.Data2 = 0;
+            builder.Build();
+            Program.outDevice.Send(builder.Result);
+            builder.Command = ChannelCommand.Controller;
+            builder.MidiChannel = 3;
+            builder.Data1 = 100;
+            builder.Data2 = 1;
+            builder.Build();
+            Program.outDevice.Send(builder.Result);
+            builder.Command = ChannelCommand.Controller;
+            builder.MidiChannel = 3;
+            builder.Data1 = 6;
+            builder.Data2 = 0x70;
+            builder.Build();
+            Program.outDevice.Send(builder.Result);
+            builder.Command = ChannelCommand.Controller;
+            builder.MidiChannel = 3;
+            builder.Data1 = 38;
+            builder.Data2 = 0x00;
+            builder.Build();
+            Program.outDevice.Send(builder.Result);
+
         }
 
         private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)

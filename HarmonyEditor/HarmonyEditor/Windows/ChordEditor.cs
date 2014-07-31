@@ -224,14 +224,15 @@ namespace HarmonyEditor
         private void buttonPlay_Click(object sender, EventArgs e)
         {
             CountSpectrum();
+            StopSounds();
             ChannelMessageBuilder builder = new ChannelMessageBuilder();
             double[] notes = _chord.Notes;
             foreach(double note in notes)
             {
                 builder.Command = ChannelCommand.NoteOn;
-                builder.MidiChannel = 0;
+                builder.MidiChannel = (((int) note)%100)/25;
                 builder.Data1 =(int) note/100;
-                builder.Data2 = 127;
+                builder.Data2 = 100;
                 builder.Build();
 
                 Program.outDevice.Send(builder.Result);
@@ -242,6 +243,10 @@ namespace HarmonyEditor
 
         private void Stop_Click(object sender, EventArgs e)
         {
+            StopSounds();
+        }
+        private void StopSounds()
+        {
             ChannelMessageBuilder builder = new ChannelMessageBuilder();
             builder.Command = ChannelCommand.Controller;
             builder.MidiChannel = 0;
@@ -250,6 +255,32 @@ namespace HarmonyEditor
             builder.Build();
 
             Program.outDevice.Send(builder.Result);
+            builder.Command = ChannelCommand.Controller;
+            builder.MidiChannel = 1;
+            builder.Data1 = 120;
+            builder.Data2 = 0;
+            builder.Build();
+
+            Program.outDevice.Send(builder.Result);
+            builder.Command = ChannelCommand.Controller;
+            builder.MidiChannel = 2;
+            builder.Data1 = 120;
+            builder.Data2 = 0;
+            builder.Build();
+
+            Program.outDevice.Send(builder.Result);
+            builder.Command = ChannelCommand.Controller;
+            builder.MidiChannel = 3;
+            builder.Data1 = 120;
+            builder.Data2 = 0;
+            builder.Build();
+
+            Program.outDevice.Send(builder.Result);
+        }
+
+        private void ChordEditor_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            StopSounds();
         }
     }
 }
