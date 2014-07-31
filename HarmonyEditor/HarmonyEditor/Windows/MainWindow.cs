@@ -12,6 +12,7 @@ using Microsoft.Win32;
 using Newtonsoft.Json;
 using System.IO;
 using System.Collections;
+using Sanford.Multimedia.Midi;
 
 namespace HarmonyEditor
 {
@@ -327,6 +328,16 @@ namespace HarmonyEditor
                 ToListOfChord().WriteToPitch(fileName);
         }
         #endregion
+
+        private void MainWindow_Load(object sender, EventArgs e)
+        {
+            Program.outDevice = new OutputDevice(0);
+        }
+
+        private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Program.outDevice.Close();
+        }
 
     }
 }

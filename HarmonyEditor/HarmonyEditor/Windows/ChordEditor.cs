@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Sanford.Multimedia.Midi;
 
 namespace HarmonyEditor
 {
@@ -90,7 +91,7 @@ namespace HarmonyEditor
             {
                 MessageBox.Show("Podane dźwięki nie mieszczą się w zakresie obsługiwanym przez program.");
             }
-        }
+       } 
         private void UploadChord(PeriodicChord chord)
         {
             textBoxBaseSound.Text = chord.BaseNote.ToString();
@@ -222,8 +223,33 @@ namespace HarmonyEditor
         }
         private void buttonPlay_Click(object sender, EventArgs e)
         {
+            CountSpectrum();
+            ChannelMessageBuilder builder = new ChannelMessageBuilder();
+            double[] notes = _chord.Notes;
+            foreach(double note in notes)
+            {
+                builder.Command = ChannelCommand.NoteOn;
+                builder.MidiChannel = 0;
+                builder.Data1 =(int) note/100;
+                builder.Data2 = 127;
+                builder.Build();
+
+                Program.outDevice.Send(builder.Result);
+            }
 
         }
         #endregion
+
+        private void Stop_Click(object sender, EventArgs e)
+        {
+            ChannelMessageBuilder builder = new ChannelMessageBuilder();
+            builder.Command = ChannelCommand.Controller;
+            builder.MidiChannel = 0;
+            builder.Data1 = 120;
+            builder.Data2 = 0;
+            builder.Build();
+
+            Program.outDevice.Send(builder.Result);
+        }
     }
 }

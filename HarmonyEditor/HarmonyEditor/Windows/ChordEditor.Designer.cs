@@ -48,6 +48,7 @@
             this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonPlay = new System.Windows.Forms.Button();
+            this.Stop = new System.Windows.Forms.Button();
             this.groupBoxSpectrum.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -244,15 +245,26 @@
             this.buttonPlay.Name = "buttonPlay";
             this.buttonPlay.Size = new System.Drawing.Size(75, 35);
             this.buttonPlay.TabIndex = 19;
-            this.buttonPlay.Text = "Odtwórz dźwięk";
+            this.buttonPlay.Text = "Odtwórz akord";
             this.buttonPlay.UseVisualStyleBackColor = true;
             this.buttonPlay.Click += new System.EventHandler(this.buttonPlay_Click);
+            // 
+            // Stop
+            // 
+            this.Stop.Location = new System.Drawing.Point(748, 49);
+            this.Stop.Name = "Stop";
+            this.Stop.Size = new System.Drawing.Size(75, 35);
+            this.Stop.TabIndex = 20;
+            this.Stop.Text = "Stop";
+            this.Stop.UseVisualStyleBackColor = true;
+            this.Stop.Click += new System.EventHandler(this.Stop_Click);
             // 
             // ChordEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(964, 582);
+            this.Controls.Add(this.Stop);
             this.Controls.Add(this.buttonPlay);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonAdd);
@@ -302,5 +314,6 @@
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.Button buttonPlay;
+        private System.Windows.Forms.Button Stop;
     }
 }
