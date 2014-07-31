@@ -8,7 +8,8 @@ namespace MusicPopulation
         protected static readonly int[] limits = new int[] { 72, 60, 128 };
         
         public int NumberOfNotes { get; set; }
-        public int[,] Notes { get; set; } //pitch, duration, dynamics
+        public int[,] Notes { get; set; } // pitch, duration, dynamics
+
         public Member(Random randContext)
         {
             NumberOfNotes = randContext.Next(_maxNotes - 1) + 1;
@@ -23,9 +24,7 @@ namespace MusicPopulation
         }
         public Member(Member original)
         {
-            NumberOfNotes =original.NumberOfNotes;
-            Notes = new int[_maxNotes + 1, 3];
-            Array.Copy(original.Notes, Notes, _maxNotes);
+            Clone(original);
         }
         public void Clone(Member member)
         {

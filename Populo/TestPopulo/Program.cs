@@ -12,7 +12,7 @@ namespace populo
 {
     public class Program
     {
-        private static int[] tries = { 1000 };      
+        private static int[] tries = { 10 };      
         private static void WriteToFile(int count, int tries)
         {
             StringBuilder text = new StringBuilder();
@@ -92,11 +92,11 @@ namespace populo
         }
         private static void NormalTest()
         {
-            int tries = 10000;
+            int tries = 1;
 
             for (int i = 0; i < tries; i++)
             {
-                Simulation.EvolveUsingThreads();
+                Simulation.EvolveWithoutThreads();
                 Console.WriteLine(i);
             }
 
@@ -105,6 +105,8 @@ namespace populo
 
         public static void Main(string[] args)
         {
+
+           //var board =  Simulation.SimulationBoard;
             //automationTest();
             //Test();
             NormalTest();

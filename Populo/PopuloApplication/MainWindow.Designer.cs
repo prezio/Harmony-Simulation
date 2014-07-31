@@ -36,54 +36,54 @@
             this.labelAlfa = new System.Windows.Forms.Label();
             this.groupBoxParameters = new System.Windows.Forms.GroupBox();
             this.groupBoxFactors = new System.Windows.Forms.GroupBox();
-            this.numericUpDownAlfa = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownModifyAmount2 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownModifyAmount3 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownModifyAmount1 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownInfluenceAmount1 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownInfluenceAmount2 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownInfluenceAmount3 = new System.Windows.Forms.NumericUpDown();
-            this.labelModifyAmount = new System.Windows.Forms.Label();
-            this.labelInfluenceAmount = new System.Windows.Forms.Label();
-            this.numericUpDownTransposeChance1 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownTransposeChance2 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownTransposeChance3 = new System.Windows.Forms.NumericUpDown();
-            this.labelTransposeChance = new System.Windows.Forms.Label();
-            this.numericUpDownModifyChance1 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownModifyChance2 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownModifyChance3 = new System.Windows.Forms.NumericUpDown();
-            this.labelModifyChance = new System.Windows.Forms.Label();
-            this.numericUpDownGrowthChance = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownShrinkChance = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownExchangeChance1 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownExchangeChance2 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownExchangeChance3 = new System.Windows.Forms.NumericUpDown();
-            this.labelExchangeChance = new System.Windows.Forms.Label();
-            this.labelGrowthChance = new System.Windows.Forms.Label();
             this.labelShrinkChance = new System.Windows.Forms.Label();
+            this.labelGrowthChance = new System.Windows.Forms.Label();
+            this.labelExchangeChance = new System.Windows.Forms.Label();
+            this.numericUpDownExchangeChance3 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownExchangeChance2 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownExchangeChance1 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownShrinkChance = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownGrowthChance = new System.Windows.Forms.NumericUpDown();
+            this.labelModifyChance = new System.Windows.Forms.Label();
+            this.numericUpDownModifyChance3 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownModifyChance2 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownModifyChance1 = new System.Windows.Forms.NumericUpDown();
+            this.labelTransposeChance = new System.Windows.Forms.Label();
+            this.numericUpDownTransposeChance3 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownTransposeChance2 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownTransposeChance1 = new System.Windows.Forms.NumericUpDown();
+            this.labelInfluenceAmount = new System.Windows.Forms.Label();
+            this.labelModifyAmount = new System.Windows.Forms.Label();
+            this.numericUpDownInfluenceAmount3 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownInfluenceAmount2 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownInfluenceAmount1 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownModifyAmount1 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownModifyAmount3 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownModifyAmount2 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownAlfa = new System.Windows.Forms.NumericUpDown();
             this.buttonClose = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPercentDeath)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxSteps)).BeginInit();
             this.groupBoxParameters.SuspendLayout();
             this.groupBoxFactors.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAlfa)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownModifyAmount2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownModifyAmount3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownModifyAmount1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownInfluenceAmount1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownInfluenceAmount2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownInfluenceAmount3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTransposeChance1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTransposeChance2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTransposeChance3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownModifyChance1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownModifyChance2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownModifyChance3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownGrowthChance)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownShrinkChance)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownExchangeChance1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownExchangeChance2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownExchangeChance3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownExchangeChance2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownExchangeChance1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownShrinkChance)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownGrowthChance)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownModifyChance3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownModifyChance2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownModifyChance1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTransposeChance3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTransposeChance2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTransposeChance1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownInfluenceAmount3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownInfluenceAmount2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownInfluenceAmount1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownModifyAmount1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownModifyAmount3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownModifyAmount2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAlfa)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonNextStep
@@ -186,314 +186,32 @@
             this.groupBoxFactors.TabStop = false;
             this.groupBoxFactors.Text = "Współczynniki";
             // 
-            // numericUpDownAlfa
+            // labelShrinkChance
             // 
-            this.numericUpDownAlfa.DecimalPlaces = 3;
-            this.numericUpDownAlfa.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            196608});
-            this.numericUpDownAlfa.Location = new System.Drawing.Point(228, 23);
-            this.numericUpDownAlfa.Maximum = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.numericUpDownAlfa.Name = "numericUpDownAlfa";
-            this.numericUpDownAlfa.Size = new System.Drawing.Size(56, 20);
-            this.numericUpDownAlfa.TabIndex = 9;
+            this.labelShrinkChance.AutoSize = true;
+            this.labelShrinkChance.Location = new System.Drawing.Point(6, 208);
+            this.labelShrinkChance.Name = "labelShrinkChance";
+            this.labelShrinkChance.Size = new System.Drawing.Size(89, 13);
+            this.labelShrinkChance.TabIndex = 33;
+            this.labelShrinkChance.Text = "Szansa zmalania:";
             // 
-            // numericUpDownModifyAmount2
+            // labelGrowthChance
             // 
-            this.numericUpDownModifyAmount2.Location = new System.Drawing.Point(290, 49);
-            this.numericUpDownModifyAmount2.Name = "numericUpDownModifyAmount2";
-            this.numericUpDownModifyAmount2.Size = new System.Drawing.Size(56, 20);
-            this.numericUpDownModifyAmount2.TabIndex = 10;
+            this.labelGrowthChance.AutoSize = true;
+            this.labelGrowthChance.Location = new System.Drawing.Point(6, 182);
+            this.labelGrowthChance.Name = "labelGrowthChance";
+            this.labelGrowthChance.Size = new System.Drawing.Size(84, 13);
+            this.labelGrowthChance.TabIndex = 32;
+            this.labelGrowthChance.Text = "Szansa wzrostu:";
             // 
-            // numericUpDownModifyAmount3
+            // labelExchangeChance
             // 
-            this.numericUpDownModifyAmount3.Location = new System.Drawing.Point(352, 49);
-            this.numericUpDownModifyAmount3.Name = "numericUpDownModifyAmount3";
-            this.numericUpDownModifyAmount3.Size = new System.Drawing.Size(56, 20);
-            this.numericUpDownModifyAmount3.TabIndex = 11;
-            // 
-            // numericUpDownModifyAmount1
-            // 
-            this.numericUpDownModifyAmount1.Location = new System.Drawing.Point(228, 49);
-            this.numericUpDownModifyAmount1.Name = "numericUpDownModifyAmount1";
-            this.numericUpDownModifyAmount1.Size = new System.Drawing.Size(56, 20);
-            this.numericUpDownModifyAmount1.TabIndex = 12;
-            // 
-            // numericUpDownInfluenceAmount1
-            // 
-            this.numericUpDownInfluenceAmount1.DecimalPlaces = 2;
-            this.numericUpDownInfluenceAmount1.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-            this.numericUpDownInfluenceAmount1.Location = new System.Drawing.Point(228, 75);
-            this.numericUpDownInfluenceAmount1.Maximum = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.numericUpDownInfluenceAmount1.Name = "numericUpDownInfluenceAmount1";
-            this.numericUpDownInfluenceAmount1.Size = new System.Drawing.Size(56, 20);
-            this.numericUpDownInfluenceAmount1.TabIndex = 13;
-            // 
-            // numericUpDownInfluenceAmount2
-            // 
-            this.numericUpDownInfluenceAmount2.DecimalPlaces = 2;
-            this.numericUpDownInfluenceAmount2.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-            this.numericUpDownInfluenceAmount2.Location = new System.Drawing.Point(290, 75);
-            this.numericUpDownInfluenceAmount2.Maximum = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.numericUpDownInfluenceAmount2.Name = "numericUpDownInfluenceAmount2";
-            this.numericUpDownInfluenceAmount2.Size = new System.Drawing.Size(56, 20);
-            this.numericUpDownInfluenceAmount2.TabIndex = 14;
-            // 
-            // numericUpDownInfluenceAmount3
-            // 
-            this.numericUpDownInfluenceAmount3.DecimalPlaces = 2;
-            this.numericUpDownInfluenceAmount3.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-            this.numericUpDownInfluenceAmount3.Location = new System.Drawing.Point(352, 75);
-            this.numericUpDownInfluenceAmount3.Maximum = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.numericUpDownInfluenceAmount3.Name = "numericUpDownInfluenceAmount3";
-            this.numericUpDownInfluenceAmount3.Size = new System.Drawing.Size(56, 20);
-            this.numericUpDownInfluenceAmount3.TabIndex = 15;
-            // 
-            // labelModifyAmount
-            // 
-            this.labelModifyAmount.AutoSize = true;
-            this.labelModifyAmount.Location = new System.Drawing.Point(6, 51);
-            this.labelModifyAmount.Name = "labelModifyAmount";
-            this.labelModifyAmount.Size = new System.Drawing.Size(87, 13);
-            this.labelModifyAmount.TabIndex = 16;
-            this.labelModifyAmount.Text = "Ilość modyfikacji:";
-            // 
-            // labelInfluenceAmount
-            // 
-            this.labelInfluenceAmount.AutoSize = true;
-            this.labelInfluenceAmount.Location = new System.Drawing.Point(6, 77);
-            this.labelInfluenceAmount.Name = "labelInfluenceAmount";
-            this.labelInfluenceAmount.Size = new System.Drawing.Size(80, 13);
-            this.labelInfluenceAmount.TabIndex = 17;
-            this.labelInfluenceAmount.Text = "Ilość wpływów:";
-            // 
-            // numericUpDownTransposeChance1
-            // 
-            this.numericUpDownTransposeChance1.DecimalPlaces = 3;
-            this.numericUpDownTransposeChance1.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            196608});
-            this.numericUpDownTransposeChance1.Location = new System.Drawing.Point(228, 102);
-            this.numericUpDownTransposeChance1.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDownTransposeChance1.Name = "numericUpDownTransposeChance1";
-            this.numericUpDownTransposeChance1.Size = new System.Drawing.Size(56, 20);
-            this.numericUpDownTransposeChance1.TabIndex = 18;
-            // 
-            // numericUpDownTransposeChance2
-            // 
-            this.numericUpDownTransposeChance2.DecimalPlaces = 3;
-            this.numericUpDownTransposeChance2.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            196608});
-            this.numericUpDownTransposeChance2.Location = new System.Drawing.Point(290, 101);
-            this.numericUpDownTransposeChance2.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDownTransposeChance2.Name = "numericUpDownTransposeChance2";
-            this.numericUpDownTransposeChance2.Size = new System.Drawing.Size(56, 20);
-            this.numericUpDownTransposeChance2.TabIndex = 19;
-            // 
-            // numericUpDownTransposeChance3
-            // 
-            this.numericUpDownTransposeChance3.DecimalPlaces = 3;
-            this.numericUpDownTransposeChance3.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            196608});
-            this.numericUpDownTransposeChance3.Location = new System.Drawing.Point(352, 101);
-            this.numericUpDownTransposeChance3.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDownTransposeChance3.Name = "numericUpDownTransposeChance3";
-            this.numericUpDownTransposeChance3.Size = new System.Drawing.Size(56, 20);
-            this.numericUpDownTransposeChance3.TabIndex = 20;
-            // 
-            // labelTransposeChance
-            // 
-            this.labelTransposeChance.AutoSize = true;
-            this.labelTransposeChance.Location = new System.Drawing.Point(6, 104);
-            this.labelTransposeChance.Name = "labelTransposeChance";
-            this.labelTransposeChance.Size = new System.Drawing.Size(103, 13);
-            this.labelTransposeChance.TabIndex = 21;
-            this.labelTransposeChance.Text = "Szansa transpozycji:";
-            // 
-            // numericUpDownModifyChance1
-            // 
-            this.numericUpDownModifyChance1.DecimalPlaces = 3;
-            this.numericUpDownModifyChance1.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            196608});
-            this.numericUpDownModifyChance1.Location = new System.Drawing.Point(228, 154);
-            this.numericUpDownModifyChance1.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDownModifyChance1.Name = "numericUpDownModifyChance1";
-            this.numericUpDownModifyChance1.Size = new System.Drawing.Size(56, 20);
-            this.numericUpDownModifyChance1.TabIndex = 22;
-            // 
-            // numericUpDownModifyChance2
-            // 
-            this.numericUpDownModifyChance2.DecimalPlaces = 3;
-            this.numericUpDownModifyChance2.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            196608});
-            this.numericUpDownModifyChance2.Location = new System.Drawing.Point(290, 153);
-            this.numericUpDownModifyChance2.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDownModifyChance2.Name = "numericUpDownModifyChance2";
-            this.numericUpDownModifyChance2.Size = new System.Drawing.Size(56, 20);
-            this.numericUpDownModifyChance2.TabIndex = 23;
-            // 
-            // numericUpDownModifyChance3
-            // 
-            this.numericUpDownModifyChance3.DecimalPlaces = 3;
-            this.numericUpDownModifyChance3.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            196608});
-            this.numericUpDownModifyChance3.Location = new System.Drawing.Point(352, 153);
-            this.numericUpDownModifyChance3.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDownModifyChance3.Name = "numericUpDownModifyChance3";
-            this.numericUpDownModifyChance3.Size = new System.Drawing.Size(56, 20);
-            this.numericUpDownModifyChance3.TabIndex = 24;
-            // 
-            // labelModifyChance
-            // 
-            this.labelModifyChance.AutoSize = true;
-            this.labelModifyChance.Location = new System.Drawing.Point(6, 156);
-            this.labelModifyChance.Name = "labelModifyChance";
-            this.labelModifyChance.Size = new System.Drawing.Size(100, 13);
-            this.labelModifyChance.TabIndex = 25;
-            this.labelModifyChance.Text = "Szansa modyfikacji:";
-            // 
-            // numericUpDownGrowthChance
-            // 
-            this.numericUpDownGrowthChance.DecimalPlaces = 3;
-            this.numericUpDownGrowthChance.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            196608});
-            this.numericUpDownGrowthChance.Location = new System.Drawing.Point(228, 180);
-            this.numericUpDownGrowthChance.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDownGrowthChance.Name = "numericUpDownGrowthChance";
-            this.numericUpDownGrowthChance.Size = new System.Drawing.Size(56, 20);
-            this.numericUpDownGrowthChance.TabIndex = 26;
-            // 
-            // numericUpDownShrinkChance
-            // 
-            this.numericUpDownShrinkChance.DecimalPlaces = 3;
-            this.numericUpDownShrinkChance.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            196608});
-            this.numericUpDownShrinkChance.Location = new System.Drawing.Point(228, 206);
-            this.numericUpDownShrinkChance.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDownShrinkChance.Name = "numericUpDownShrinkChance";
-            this.numericUpDownShrinkChance.Size = new System.Drawing.Size(56, 20);
-            this.numericUpDownShrinkChance.TabIndex = 27;
-            // 
-            // numericUpDownExchangeChance1
-            // 
-            this.numericUpDownExchangeChance1.DecimalPlaces = 3;
-            this.numericUpDownExchangeChance1.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            196608});
-            this.numericUpDownExchangeChance1.Location = new System.Drawing.Point(228, 128);
-            this.numericUpDownExchangeChance1.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDownExchangeChance1.Name = "numericUpDownExchangeChance1";
-            this.numericUpDownExchangeChance1.Size = new System.Drawing.Size(56, 20);
-            this.numericUpDownExchangeChance1.TabIndex = 28;
-            // 
-            // numericUpDownExchangeChance2
-            // 
-            this.numericUpDownExchangeChance2.DecimalPlaces = 3;
-            this.numericUpDownExchangeChance2.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            196608});
-            this.numericUpDownExchangeChance2.Location = new System.Drawing.Point(290, 127);
-            this.numericUpDownExchangeChance2.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDownExchangeChance2.Name = "numericUpDownExchangeChance2";
-            this.numericUpDownExchangeChance2.Size = new System.Drawing.Size(56, 20);
-            this.numericUpDownExchangeChance2.TabIndex = 29;
+            this.labelExchangeChance.AutoSize = true;
+            this.labelExchangeChance.Location = new System.Drawing.Point(6, 130);
+            this.labelExchangeChance.Name = "labelExchangeChance";
+            this.labelExchangeChance.Size = new System.Drawing.Size(88, 13);
+            this.labelExchangeChance.TabIndex = 31;
+            this.labelExchangeChance.Text = "Szansa wymiany:";
             // 
             // numericUpDownExchangeChance3
             // 
@@ -513,32 +231,314 @@
             this.numericUpDownExchangeChance3.Size = new System.Drawing.Size(56, 20);
             this.numericUpDownExchangeChance3.TabIndex = 30;
             // 
-            // labelExchangeChance
+            // numericUpDownExchangeChance2
             // 
-            this.labelExchangeChance.AutoSize = true;
-            this.labelExchangeChance.Location = new System.Drawing.Point(6, 130);
-            this.labelExchangeChance.Name = "labelExchangeChance";
-            this.labelExchangeChance.Size = new System.Drawing.Size(88, 13);
-            this.labelExchangeChance.TabIndex = 31;
-            this.labelExchangeChance.Text = "Szansa wymiany:";
+            this.numericUpDownExchangeChance2.DecimalPlaces = 3;
+            this.numericUpDownExchangeChance2.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            196608});
+            this.numericUpDownExchangeChance2.Location = new System.Drawing.Point(290, 127);
+            this.numericUpDownExchangeChance2.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownExchangeChance2.Name = "numericUpDownExchangeChance2";
+            this.numericUpDownExchangeChance2.Size = new System.Drawing.Size(56, 20);
+            this.numericUpDownExchangeChance2.TabIndex = 29;
             // 
-            // labelGrowthChance
+            // numericUpDownExchangeChance1
             // 
-            this.labelGrowthChance.AutoSize = true;
-            this.labelGrowthChance.Location = new System.Drawing.Point(6, 182);
-            this.labelGrowthChance.Name = "labelGrowthChance";
-            this.labelGrowthChance.Size = new System.Drawing.Size(84, 13);
-            this.labelGrowthChance.TabIndex = 32;
-            this.labelGrowthChance.Text = "Szansa wzrostu:";
+            this.numericUpDownExchangeChance1.DecimalPlaces = 3;
+            this.numericUpDownExchangeChance1.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            196608});
+            this.numericUpDownExchangeChance1.Location = new System.Drawing.Point(228, 128);
+            this.numericUpDownExchangeChance1.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownExchangeChance1.Name = "numericUpDownExchangeChance1";
+            this.numericUpDownExchangeChance1.Size = new System.Drawing.Size(56, 20);
+            this.numericUpDownExchangeChance1.TabIndex = 28;
             // 
-            // labelShrinkChance
+            // numericUpDownShrinkChance
             // 
-            this.labelShrinkChance.AutoSize = true;
-            this.labelShrinkChance.Location = new System.Drawing.Point(6, 208);
-            this.labelShrinkChance.Name = "labelShrinkChance";
-            this.labelShrinkChance.Size = new System.Drawing.Size(89, 13);
-            this.labelShrinkChance.TabIndex = 33;
-            this.labelShrinkChance.Text = "Szansa zmalania:";
+            this.numericUpDownShrinkChance.DecimalPlaces = 3;
+            this.numericUpDownShrinkChance.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            196608});
+            this.numericUpDownShrinkChance.Location = new System.Drawing.Point(228, 206);
+            this.numericUpDownShrinkChance.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownShrinkChance.Name = "numericUpDownShrinkChance";
+            this.numericUpDownShrinkChance.Size = new System.Drawing.Size(56, 20);
+            this.numericUpDownShrinkChance.TabIndex = 27;
+            // 
+            // numericUpDownGrowthChance
+            // 
+            this.numericUpDownGrowthChance.DecimalPlaces = 3;
+            this.numericUpDownGrowthChance.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            196608});
+            this.numericUpDownGrowthChance.Location = new System.Drawing.Point(228, 180);
+            this.numericUpDownGrowthChance.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownGrowthChance.Name = "numericUpDownGrowthChance";
+            this.numericUpDownGrowthChance.Size = new System.Drawing.Size(56, 20);
+            this.numericUpDownGrowthChance.TabIndex = 26;
+            // 
+            // labelModifyChance
+            // 
+            this.labelModifyChance.AutoSize = true;
+            this.labelModifyChance.Location = new System.Drawing.Point(6, 156);
+            this.labelModifyChance.Name = "labelModifyChance";
+            this.labelModifyChance.Size = new System.Drawing.Size(100, 13);
+            this.labelModifyChance.TabIndex = 25;
+            this.labelModifyChance.Text = "Szansa modyfikacji:";
+            // 
+            // numericUpDownModifyChance3
+            // 
+            this.numericUpDownModifyChance3.DecimalPlaces = 3;
+            this.numericUpDownModifyChance3.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            196608});
+            this.numericUpDownModifyChance3.Location = new System.Drawing.Point(352, 153);
+            this.numericUpDownModifyChance3.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownModifyChance3.Name = "numericUpDownModifyChance3";
+            this.numericUpDownModifyChance3.Size = new System.Drawing.Size(56, 20);
+            this.numericUpDownModifyChance3.TabIndex = 24;
+            // 
+            // numericUpDownModifyChance2
+            // 
+            this.numericUpDownModifyChance2.DecimalPlaces = 3;
+            this.numericUpDownModifyChance2.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            196608});
+            this.numericUpDownModifyChance2.Location = new System.Drawing.Point(290, 153);
+            this.numericUpDownModifyChance2.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownModifyChance2.Name = "numericUpDownModifyChance2";
+            this.numericUpDownModifyChance2.Size = new System.Drawing.Size(56, 20);
+            this.numericUpDownModifyChance2.TabIndex = 23;
+            // 
+            // numericUpDownModifyChance1
+            // 
+            this.numericUpDownModifyChance1.DecimalPlaces = 3;
+            this.numericUpDownModifyChance1.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            196608});
+            this.numericUpDownModifyChance1.Location = new System.Drawing.Point(228, 154);
+            this.numericUpDownModifyChance1.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownModifyChance1.Name = "numericUpDownModifyChance1";
+            this.numericUpDownModifyChance1.Size = new System.Drawing.Size(56, 20);
+            this.numericUpDownModifyChance1.TabIndex = 22;
+            // 
+            // labelTransposeChance
+            // 
+            this.labelTransposeChance.AutoSize = true;
+            this.labelTransposeChance.Location = new System.Drawing.Point(6, 104);
+            this.labelTransposeChance.Name = "labelTransposeChance";
+            this.labelTransposeChance.Size = new System.Drawing.Size(103, 13);
+            this.labelTransposeChance.TabIndex = 21;
+            this.labelTransposeChance.Text = "Szansa transpozycji:";
+            // 
+            // numericUpDownTransposeChance3
+            // 
+            this.numericUpDownTransposeChance3.DecimalPlaces = 3;
+            this.numericUpDownTransposeChance3.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            196608});
+            this.numericUpDownTransposeChance3.Location = new System.Drawing.Point(352, 101);
+            this.numericUpDownTransposeChance3.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownTransposeChance3.Name = "numericUpDownTransposeChance3";
+            this.numericUpDownTransposeChance3.Size = new System.Drawing.Size(56, 20);
+            this.numericUpDownTransposeChance3.TabIndex = 20;
+            // 
+            // numericUpDownTransposeChance2
+            // 
+            this.numericUpDownTransposeChance2.DecimalPlaces = 3;
+            this.numericUpDownTransposeChance2.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            196608});
+            this.numericUpDownTransposeChance2.Location = new System.Drawing.Point(290, 101);
+            this.numericUpDownTransposeChance2.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownTransposeChance2.Name = "numericUpDownTransposeChance2";
+            this.numericUpDownTransposeChance2.Size = new System.Drawing.Size(56, 20);
+            this.numericUpDownTransposeChance2.TabIndex = 19;
+            // 
+            // numericUpDownTransposeChance1
+            // 
+            this.numericUpDownTransposeChance1.DecimalPlaces = 3;
+            this.numericUpDownTransposeChance1.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            196608});
+            this.numericUpDownTransposeChance1.Location = new System.Drawing.Point(228, 102);
+            this.numericUpDownTransposeChance1.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownTransposeChance1.Name = "numericUpDownTransposeChance1";
+            this.numericUpDownTransposeChance1.Size = new System.Drawing.Size(56, 20);
+            this.numericUpDownTransposeChance1.TabIndex = 18;
+            // 
+            // labelInfluenceAmount
+            // 
+            this.labelInfluenceAmount.AutoSize = true;
+            this.labelInfluenceAmount.Location = new System.Drawing.Point(6, 77);
+            this.labelInfluenceAmount.Name = "labelInfluenceAmount";
+            this.labelInfluenceAmount.Size = new System.Drawing.Size(80, 13);
+            this.labelInfluenceAmount.TabIndex = 17;
+            this.labelInfluenceAmount.Text = "Ilość wpływów:";
+            // 
+            // labelModifyAmount
+            // 
+            this.labelModifyAmount.AutoSize = true;
+            this.labelModifyAmount.Location = new System.Drawing.Point(6, 51);
+            this.labelModifyAmount.Name = "labelModifyAmount";
+            this.labelModifyAmount.Size = new System.Drawing.Size(87, 13);
+            this.labelModifyAmount.TabIndex = 16;
+            this.labelModifyAmount.Text = "Ilość modyfikacji:";
+            // 
+            // numericUpDownInfluenceAmount3
+            // 
+            this.numericUpDownInfluenceAmount3.DecimalPlaces = 2;
+            this.numericUpDownInfluenceAmount3.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.numericUpDownInfluenceAmount3.Location = new System.Drawing.Point(352, 75);
+            this.numericUpDownInfluenceAmount3.Maximum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.numericUpDownInfluenceAmount3.Name = "numericUpDownInfluenceAmount3";
+            this.numericUpDownInfluenceAmount3.Size = new System.Drawing.Size(56, 20);
+            this.numericUpDownInfluenceAmount3.TabIndex = 15;
+            // 
+            // numericUpDownInfluenceAmount2
+            // 
+            this.numericUpDownInfluenceAmount2.DecimalPlaces = 2;
+            this.numericUpDownInfluenceAmount2.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.numericUpDownInfluenceAmount2.Location = new System.Drawing.Point(290, 75);
+            this.numericUpDownInfluenceAmount2.Maximum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.numericUpDownInfluenceAmount2.Name = "numericUpDownInfluenceAmount2";
+            this.numericUpDownInfluenceAmount2.Size = new System.Drawing.Size(56, 20);
+            this.numericUpDownInfluenceAmount2.TabIndex = 14;
+            // 
+            // numericUpDownInfluenceAmount1
+            // 
+            this.numericUpDownInfluenceAmount1.DecimalPlaces = 2;
+            this.numericUpDownInfluenceAmount1.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.numericUpDownInfluenceAmount1.Location = new System.Drawing.Point(228, 75);
+            this.numericUpDownInfluenceAmount1.Maximum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.numericUpDownInfluenceAmount1.Name = "numericUpDownInfluenceAmount1";
+            this.numericUpDownInfluenceAmount1.Size = new System.Drawing.Size(56, 20);
+            this.numericUpDownInfluenceAmount1.TabIndex = 13;
+            // 
+            // numericUpDownModifyAmount1
+            // 
+            this.numericUpDownModifyAmount1.Location = new System.Drawing.Point(228, 49);
+            this.numericUpDownModifyAmount1.Name = "numericUpDownModifyAmount1";
+            this.numericUpDownModifyAmount1.Size = new System.Drawing.Size(56, 20);
+            this.numericUpDownModifyAmount1.TabIndex = 12;
+            // 
+            // numericUpDownModifyAmount3
+            // 
+            this.numericUpDownModifyAmount3.Location = new System.Drawing.Point(352, 49);
+            this.numericUpDownModifyAmount3.Name = "numericUpDownModifyAmount3";
+            this.numericUpDownModifyAmount3.Size = new System.Drawing.Size(56, 20);
+            this.numericUpDownModifyAmount3.TabIndex = 11;
+            // 
+            // numericUpDownModifyAmount2
+            // 
+            this.numericUpDownModifyAmount2.Location = new System.Drawing.Point(290, 49);
+            this.numericUpDownModifyAmount2.Name = "numericUpDownModifyAmount2";
+            this.numericUpDownModifyAmount2.Size = new System.Drawing.Size(56, 20);
+            this.numericUpDownModifyAmount2.TabIndex = 10;
+            // 
+            // numericUpDownAlfa
+            // 
+            this.numericUpDownAlfa.DecimalPlaces = 3;
+            this.numericUpDownAlfa.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            196608});
+            this.numericUpDownAlfa.Location = new System.Drawing.Point(228, 23);
+            this.numericUpDownAlfa.Maximum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.numericUpDownAlfa.Name = "numericUpDownAlfa";
+            this.numericUpDownAlfa.Size = new System.Drawing.Size(56, 20);
+            this.numericUpDownAlfa.TabIndex = 9;
             // 
             // buttonClose
             // 
@@ -554,7 +554,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(569, 360);
+            this.ClientSize = new System.Drawing.Size(569, 358);
             this.Controls.Add(this.buttonClose);
             this.Controls.Add(this.groupBoxParameters);
             this.Controls.Add(this.buttonNextStep);
@@ -568,24 +568,24 @@
             this.groupBoxParameters.PerformLayout();
             this.groupBoxFactors.ResumeLayout(false);
             this.groupBoxFactors.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAlfa)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownModifyAmount2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownModifyAmount3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownModifyAmount1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownInfluenceAmount1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownInfluenceAmount2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownInfluenceAmount3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTransposeChance1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTransposeChance2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTransposeChance3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownModifyChance1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownModifyChance2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownModifyChance3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownGrowthChance)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownShrinkChance)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownExchangeChance1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownExchangeChance2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownExchangeChance3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownExchangeChance2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownExchangeChance1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownShrinkChance)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownGrowthChance)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownModifyChance3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownModifyChance2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownModifyChance1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTransposeChance3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTransposeChance2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTransposeChance1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownInfluenceAmount3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownInfluenceAmount2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownInfluenceAmount1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownModifyAmount1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownModifyAmount3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownModifyAmount2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAlfa)).EndInit();
             this.ResumeLayout(false);
 
         }

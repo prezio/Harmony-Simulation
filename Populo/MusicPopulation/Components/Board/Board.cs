@@ -11,6 +11,27 @@ namespace MusicPopulation
     {
         private int _width = SimulationParameters.BoardWidth;
         private int _height = SimulationParameters.BoardHeight;
+        private int _growth;
+        private int _indexOfPhase; // index of current phase
+        private int _numberOfPhases = 1;
+        private void SetPhase(int indOfPh)
+        {
+            _indexOfPhase = indOfPh;
+            Random randContext = RandomGenerator.GenerateRandomGen();
+            int[] population = RandomGenerator.RandomPermutation(_height * _width, _growth, randContext);
+
+            foreach (int k in population)
+            {
+                int i = k % _height;
+                int j = k / _width;
+                switch (_indexOfPhase)
+                {
+                    case 0:
+                        _board[i, j] = new Member1(randContext);
+                        break;
+                }
+            }
+        }
         private Member[,] _board;
 
         /// <summary>
@@ -22,18 +43,12 @@ namespace MusicPopulation
         public Board(int w, int h, int growth)
         {
             Debug.WriteLine("Create Board");
-            _board = new Member1[w, h];
+            _board = new Member[w, h];
             this._width = w;
             this._height = h;
-            Random randContext = RandomGenerator.GenerateRandomGen();
+            this._growth = growth;
 
-            var population = RandomGenerator.RandomPermutation(_height * _width, growth, randContext);
-            foreach (int k in population)
-            {
-                int i = k % _height;
-                int j = k / _width;
-                _board[i, j] = new Member1(randContext);
-            }
+            SetPhase(0);
         }
         public Member this[int i, int j]
         {
@@ -47,6 +62,10 @@ namespace MusicPopulation
             {
                 _board[i, j] = value;
             }
+        }
+        public void ChangePhase()
+        {
+            SetPhase((_indexOfPhase + 1) % _numberOfPhases);
         }
 
         public int PopulationGrowth
