@@ -35,7 +35,7 @@
             this.numericUpDownMaxSteps = new System.Windows.Forms.NumericUpDown();
             this.labelAlfa = new System.Windows.Forms.Label();
             this.groupBoxParameters = new System.Windows.Forms.GroupBox();
-            this.groupBoxFactors = new System.Windows.Forms.GroupBox();
+            this.groupBoxFactorsPhase1 = new System.Windows.Forms.GroupBox();
             this.labelShrinkChance = new System.Windows.Forms.Label();
             this.labelGrowthChance = new System.Windows.Forms.Label();
             this.labelExchangeChance = new System.Windows.Forms.Label();
@@ -62,10 +62,12 @@
             this.numericUpDownModifyAmount2 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDownAlfa = new System.Windows.Forms.NumericUpDown();
             this.buttonClose = new System.Windows.Forms.Button();
+            this.groupBoxFactorsPhase2 = new System.Windows.Forms.GroupBox();
+            this.buttonNewPhase = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPercentDeath)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxSteps)).BeginInit();
             this.groupBoxParameters.SuspendLayout();
-            this.groupBoxFactors.SuspendLayout();
+            this.groupBoxFactorsPhase1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownExchangeChance3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownExchangeChance2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownExchangeChance1)).BeginInit();
@@ -88,11 +90,11 @@
             // 
             // buttonNextStep
             // 
-            this.buttonNextStep.Location = new System.Drawing.Point(459, 20);
+            this.buttonNextStep.Location = new System.Drawing.Point(821, 12);
             this.buttonNextStep.Name = "buttonNextStep";
             this.buttonNextStep.Size = new System.Drawing.Size(98, 39);
             this.buttonNextStep.TabIndex = 3;
-            this.buttonNextStep.Text = "Next step";
+            this.buttonNextStep.Text = "Następny krok";
             this.buttonNextStep.UseVisualStyleBackColor = true;
             this.buttonNextStep.Click += new System.EventHandler(this.buttonNextStep_Click);
             // 
@@ -139,52 +141,53 @@
             // 
             // groupBoxParameters
             // 
-            this.groupBoxParameters.Controls.Add(this.groupBoxFactors);
+            this.groupBoxParameters.Controls.Add(this.groupBoxFactorsPhase2);
+            this.groupBoxParameters.Controls.Add(this.groupBoxFactorsPhase1);
             this.groupBoxParameters.Controls.Add(this.numericUpDownPercentDeath);
             this.groupBoxParameters.Controls.Add(this.labelPercentDeath);
             this.groupBoxParameters.Controls.Add(this.numericUpDownMaxSteps);
             this.groupBoxParameters.Controls.Add(this.label1);
             this.groupBoxParameters.Location = new System.Drawing.Point(12, 12);
             this.groupBoxParameters.Name = "groupBoxParameters";
-            this.groupBoxParameters.Size = new System.Drawing.Size(439, 337);
+            this.groupBoxParameters.Size = new System.Drawing.Size(803, 337);
             this.groupBoxParameters.TabIndex = 9;
             this.groupBoxParameters.TabStop = false;
             this.groupBoxParameters.Text = "Parametry";
             // 
-            // groupBoxFactors
+            // groupBoxFactorsPhase1
             // 
-            this.groupBoxFactors.Controls.Add(this.labelShrinkChance);
-            this.groupBoxFactors.Controls.Add(this.labelGrowthChance);
-            this.groupBoxFactors.Controls.Add(this.labelExchangeChance);
-            this.groupBoxFactors.Controls.Add(this.numericUpDownExchangeChance3);
-            this.groupBoxFactors.Controls.Add(this.numericUpDownExchangeChance2);
-            this.groupBoxFactors.Controls.Add(this.numericUpDownExchangeChance1);
-            this.groupBoxFactors.Controls.Add(this.numericUpDownShrinkChance);
-            this.groupBoxFactors.Controls.Add(this.numericUpDownGrowthChance);
-            this.groupBoxFactors.Controls.Add(this.labelModifyChance);
-            this.groupBoxFactors.Controls.Add(this.numericUpDownModifyChance3);
-            this.groupBoxFactors.Controls.Add(this.numericUpDownModifyChance2);
-            this.groupBoxFactors.Controls.Add(this.numericUpDownModifyChance1);
-            this.groupBoxFactors.Controls.Add(this.labelTransposeChance);
-            this.groupBoxFactors.Controls.Add(this.numericUpDownTransposeChance3);
-            this.groupBoxFactors.Controls.Add(this.numericUpDownTransposeChance2);
-            this.groupBoxFactors.Controls.Add(this.numericUpDownTransposeChance1);
-            this.groupBoxFactors.Controls.Add(this.labelInfluenceAmount);
-            this.groupBoxFactors.Controls.Add(this.labelModifyAmount);
-            this.groupBoxFactors.Controls.Add(this.numericUpDownInfluenceAmount3);
-            this.groupBoxFactors.Controls.Add(this.numericUpDownInfluenceAmount2);
-            this.groupBoxFactors.Controls.Add(this.numericUpDownInfluenceAmount1);
-            this.groupBoxFactors.Controls.Add(this.numericUpDownModifyAmount1);
-            this.groupBoxFactors.Controls.Add(this.numericUpDownModifyAmount3);
-            this.groupBoxFactors.Controls.Add(this.numericUpDownModifyAmount2);
-            this.groupBoxFactors.Controls.Add(this.numericUpDownAlfa);
-            this.groupBoxFactors.Controls.Add(this.labelAlfa);
-            this.groupBoxFactors.Location = new System.Drawing.Point(9, 86);
-            this.groupBoxFactors.Name = "groupBoxFactors";
-            this.groupBoxFactors.Size = new System.Drawing.Size(424, 240);
-            this.groupBoxFactors.TabIndex = 8;
-            this.groupBoxFactors.TabStop = false;
-            this.groupBoxFactors.Text = "Współczynniki";
+            this.groupBoxFactorsPhase1.Controls.Add(this.labelShrinkChance);
+            this.groupBoxFactorsPhase1.Controls.Add(this.labelGrowthChance);
+            this.groupBoxFactorsPhase1.Controls.Add(this.labelExchangeChance);
+            this.groupBoxFactorsPhase1.Controls.Add(this.numericUpDownExchangeChance3);
+            this.groupBoxFactorsPhase1.Controls.Add(this.numericUpDownExchangeChance2);
+            this.groupBoxFactorsPhase1.Controls.Add(this.numericUpDownExchangeChance1);
+            this.groupBoxFactorsPhase1.Controls.Add(this.numericUpDownShrinkChance);
+            this.groupBoxFactorsPhase1.Controls.Add(this.numericUpDownGrowthChance);
+            this.groupBoxFactorsPhase1.Controls.Add(this.labelModifyChance);
+            this.groupBoxFactorsPhase1.Controls.Add(this.numericUpDownModifyChance3);
+            this.groupBoxFactorsPhase1.Controls.Add(this.numericUpDownModifyChance2);
+            this.groupBoxFactorsPhase1.Controls.Add(this.numericUpDownModifyChance1);
+            this.groupBoxFactorsPhase1.Controls.Add(this.labelTransposeChance);
+            this.groupBoxFactorsPhase1.Controls.Add(this.numericUpDownTransposeChance3);
+            this.groupBoxFactorsPhase1.Controls.Add(this.numericUpDownTransposeChance2);
+            this.groupBoxFactorsPhase1.Controls.Add(this.numericUpDownTransposeChance1);
+            this.groupBoxFactorsPhase1.Controls.Add(this.labelInfluenceAmount);
+            this.groupBoxFactorsPhase1.Controls.Add(this.labelModifyAmount);
+            this.groupBoxFactorsPhase1.Controls.Add(this.numericUpDownInfluenceAmount3);
+            this.groupBoxFactorsPhase1.Controls.Add(this.numericUpDownInfluenceAmount2);
+            this.groupBoxFactorsPhase1.Controls.Add(this.numericUpDownInfluenceAmount1);
+            this.groupBoxFactorsPhase1.Controls.Add(this.numericUpDownModifyAmount1);
+            this.groupBoxFactorsPhase1.Controls.Add(this.numericUpDownModifyAmount3);
+            this.groupBoxFactorsPhase1.Controls.Add(this.numericUpDownModifyAmount2);
+            this.groupBoxFactorsPhase1.Controls.Add(this.numericUpDownAlfa);
+            this.groupBoxFactorsPhase1.Controls.Add(this.labelAlfa);
+            this.groupBoxFactorsPhase1.Location = new System.Drawing.Point(9, 86);
+            this.groupBoxFactorsPhase1.Name = "groupBoxFactorsPhase1";
+            this.groupBoxFactorsPhase1.Size = new System.Drawing.Size(424, 245);
+            this.groupBoxFactorsPhase1.TabIndex = 8;
+            this.groupBoxFactorsPhase1.TabStop = false;
+            this.groupBoxFactorsPhase1.Text = "Współczynniki Faza 1";
             // 
             // labelShrinkChance
             // 
@@ -542,7 +545,7 @@
             // 
             // buttonClose
             // 
-            this.buttonClose.Location = new System.Drawing.Point(459, 310);
+            this.buttonClose.Location = new System.Drawing.Point(821, 307);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(98, 39);
             this.buttonClose.TabIndex = 10;
@@ -550,11 +553,32 @@
             this.buttonClose.UseVisualStyleBackColor = true;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
+            // groupBoxFactorsPhase2
+            // 
+            this.groupBoxFactorsPhase2.Enabled = false;
+            this.groupBoxFactorsPhase2.Location = new System.Drawing.Point(439, 86);
+            this.groupBoxFactorsPhase2.Name = "groupBoxFactorsPhase2";
+            this.groupBoxFactorsPhase2.Size = new System.Drawing.Size(358, 245);
+            this.groupBoxFactorsPhase2.TabIndex = 9;
+            this.groupBoxFactorsPhase2.TabStop = false;
+            this.groupBoxFactorsPhase2.Text = "Współczynniki Faza 2";
+            // 
+            // buttonNewPhase
+            // 
+            this.buttonNewPhase.Location = new System.Drawing.Point(821, 57);
+            this.buttonNewPhase.Name = "buttonNewPhase";
+            this.buttonNewPhase.Size = new System.Drawing.Size(98, 39);
+            this.buttonNewPhase.TabIndex = 11;
+            this.buttonNewPhase.Text = "Nowa faza";
+            this.buttonNewPhase.UseVisualStyleBackColor = true;
+            this.buttonNewPhase.Click += new System.EventHandler(this.buttonNewPhase_Click);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(569, 358);
+            this.ClientSize = new System.Drawing.Size(931, 358);
+            this.Controls.Add(this.buttonNewPhase);
             this.Controls.Add(this.buttonClose);
             this.Controls.Add(this.groupBoxParameters);
             this.Controls.Add(this.buttonNextStep);
@@ -566,8 +590,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxSteps)).EndInit();
             this.groupBoxParameters.ResumeLayout(false);
             this.groupBoxParameters.PerformLayout();
-            this.groupBoxFactors.ResumeLayout(false);
-            this.groupBoxFactors.PerformLayout();
+            this.groupBoxFactorsPhase1.ResumeLayout(false);
+            this.groupBoxFactorsPhase1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownExchangeChance3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownExchangeChance2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownExchangeChance1)).EndInit();
@@ -599,7 +623,7 @@
         private System.Windows.Forms.NumericUpDown numericUpDownMaxSteps;
         private System.Windows.Forms.Label labelAlfa;
         private System.Windows.Forms.GroupBox groupBoxParameters;
-        private System.Windows.Forms.GroupBox groupBoxFactors;
+        private System.Windows.Forms.GroupBox groupBoxFactorsPhase1;
         private System.Windows.Forms.NumericUpDown numericUpDownAlfa;
         private System.Windows.Forms.NumericUpDown numericUpDownTransposeChance3;
         private System.Windows.Forms.NumericUpDown numericUpDownTransposeChance2;
@@ -626,6 +650,8 @@
         private System.Windows.Forms.NumericUpDown numericUpDownModifyChance2;
         private System.Windows.Forms.NumericUpDown numericUpDownModifyChance1;
         private System.Windows.Forms.Button buttonClose;
+        private System.Windows.Forms.GroupBox groupBoxFactorsPhase2;
+        private System.Windows.Forms.Button buttonNewPhase;
     }
 }
 
