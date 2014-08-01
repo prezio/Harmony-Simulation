@@ -30,7 +30,14 @@ namespace MusicPopulation
         {
             NumberOfNotes = member.NumberOfNotes;
             Notes = new int[_maxNotes + 1, 3];
-            Array.Copy(member.Notes, Notes, _maxNotes);
+            Array.Copy(member.Notes, Notes, (_maxNotes + 1) * 3);
+        }
+        public Tuple<int, int[,]> CloneParameters()
+        {
+            int[,] notes = new int[_maxNotes + 1, 3];
+            Array.Copy(Notes, notes, (_maxNotes + 1) * 3);
+
+            return new Tuple<int, int[,]>(NumberOfNotes, notes);
         }
 
         public abstract int Rank();

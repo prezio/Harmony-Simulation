@@ -27,7 +27,7 @@ namespace MusicPopulation
         /// <summary>
         /// Simulation Board with Randomly generated individuals.
         /// </summary>
-        public static Board SimulationBoard = new Board(SimulationParameters.BoardWidth, SimulationParameters.BoardHeight, SimulationParameters.PopulationGrowth);
+        public static Board SimulationBoard = new Board();
         /// <summary>
         /// Each AreaManager commands its own seperated area.
         /// </summary>
@@ -126,6 +126,7 @@ namespace MusicPopulation
             foreach (var area in Areas)
             {
                 area.KillWeaksWhoDoesNotServeTheEmperorWell();
+                area.SelectChampionWhoCanBecomeCommissar();
                 area.ReproduceMenToHaveMoreServantsOfTheEmperor();
                 area.MutateWeaksSoTheyCanServeEmperorBetter();
                 area.InfluenceMenWithSongsGlorifyingEmperor();
@@ -137,16 +138,16 @@ namespace MusicPopulation
                 area.RegroupYourMenToOtherFront(3);
             }
         }
-        public static List<Member> SimulationBoardState
+        public static List<Tuple<int, int[,]>> SimulationBoardState
         {
             get
             {
-                return Areas.Select(area => area.ChampionOfArea).ToList();
+                return Areas.Select(area => area.ChampionParameters).ToList();
             }
         }
         public static void ResetSimulation()
         {
-            SimulationBoard = new Board(SimulationParameters.BoardWidth, SimulationParameters.BoardHeight, SimulationParameters.PopulationGrowth); 
+            SimulationBoard = new Board(); 
         }
     }
 }

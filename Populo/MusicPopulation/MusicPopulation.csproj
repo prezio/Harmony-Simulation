@@ -42,7 +42,9 @@
     <Compile Include="Components\Area\AreaManager.cs" />
     <Compile Include="Components\Area\AreaThread.cs" />
     <Compile Include="Components\Board\Board.cs" />
+    <Compile Include="Components\Board\BoardParameters.cs" />
     <Compile Include="Components\Member\Member.cs" />
+    <Compile Include="Components\Member\Member1Parameters.cs" />
     <Compile Include="Simulation\Simulation.cs" />
     <Compile Include="Tools\Logger.cs" />
     <Compile Include="Tools\RandomGenerator.cs" />

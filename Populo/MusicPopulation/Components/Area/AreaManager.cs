@@ -14,7 +14,7 @@ namespace MusicPopulation
         private int _position = -1;
         private Tuple<int, int>[] _areaRandOrder;
         private Random _randContext;
-        private Member _championOfArea = null;
+        private Tuple<int, int[,]> _championParameters = null;
 
         // Move Synchronization containers
         private List<Tuple<int, int, int, int>> _listLeftMove;
@@ -63,11 +63,11 @@ namespace MusicPopulation
                 return res;
             }
         }
-        public Member ChampionOfArea
+        public Tuple<int, int[,]> ChampionParameters
         {
             get
             {
-                return _championOfArea;
+                return _championParameters;
             }
         }
 
@@ -103,7 +103,7 @@ namespace MusicPopulation
         {
             var pos = Simulation.SimulationBoard.GetBestInArea(_mX, _mY, _mX + _width - 1, _mY + _height - 1);
             Member best = Simulation.SimulationBoard[pos.Item1, pos.Item2];
-            _championOfArea = new Member1(best);
+            _championParameters = best.CloneParameters();
         }
         public void MutateWeaksSoTheyCanServeEmperorBetter() // Mutacje
         {
@@ -140,23 +140,25 @@ namespace MusicPopulation
                     if (best_pos == null)
                         continue;
 
-                    int x, y = y1;
-                    while (y <= y2)
+                    int bX = best_pos.Item1, bY = best_pos.Item2;
+                    int iX, iY = y1;
+
+                    while (iY <= y2)
                     {
-                        x = x1;
-                        while (x <= x2)
+                        iX = x1;
+                        while (iX <= x2)
                         {
-                            var member = Simulation.SimulationBoard[x, y];
+                            var member = Simulation.SimulationBoard[iX, iY];
                             double probability = 1-(double)n / n_max * SimulationParameters.Alfa;
 
                             if (member == null && RandomGenerator.ChanceProbability(probability, _randContext))
                             {
-                                Simulation.SimulationBoard[x, y] = new Member1(Simulation.SimulationBoard[best_pos.Item1, best_pos.Item2]);
+                                Simulation.SimulationBoard.CopyIndividual(bX, bY, iX, iY);
                                 reproduced++;
                             }
-                            x++;
+                            iX++;
                         }
-                        y++;
+                        iY++;
                     }
                 }
             }
@@ -302,8 +304,7 @@ namespace MusicPopulation
 
                 if (Simulation.SimulationBoard[tX, tY] == null)
                 {
-                    Simulation.SimulationBoard[tX, tY] = Simulation.SimulationBoard[sX, sY];
-                    Simulation.SimulationBoard[sX, sY] = null;
+                    Simulation.SimulationBoard.MoveIndividual(sX, sY, tX, tY);
                 }
             }
         }

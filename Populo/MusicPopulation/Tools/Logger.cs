@@ -11,13 +11,20 @@ namespace MusicPopulation
         private static readonly object _syncLog = new object();
         private static string GenBoardDescription()
         {
+            int phase = Simulation.SimulationBoard.IndexOfPhase;
             StringBuilder res = new StringBuilder();
-            res.Append(string.Format("Percent death: {0}\n", SimulationParameters.PercentDeath));
-            res.Append(string.Format("Modify amount: {0}, {1}, {2}\n", SimulationParameters.ModifyAmount[0], SimulationParameters.ModifyAmount[1], SimulationParameters.ModifyAmount[2]));
-            res.Append(string.Format("Influence amount: {0}, {1}, {2}\n", SimulationParameters.InfluenceAmount[0], SimulationParameters.InfluenceAmount[1], SimulationParameters.InfluenceAmount[2]));
-            res.Append(string.Format("Growth chance: {0}\n", SimulationParameters.GrowthChance));
-            res.Append(string.Format("Shrink chance: {0}\n", SimulationParameters.ShrinkChance));
-            res.Append(string.Format("Population growth: {0}\n", Simulation.SimulationBoard.PopulationGrowth));
+
+            switch(phase)
+            {
+                case 0:
+                    res.Append(string.Format("Percent death: {0}\n", SimulationParameters.PercentDeath));
+                    res.Append(string.Format("Modify amount: {0}, {1}, {2}\n", Member1.ModifyAmount[0], Member1.ModifyAmount[1], Member1.ModifyAmount[2]));
+                    res.Append(string.Format("Influence amount: {0}, {1}, {2}\n", Member1.InfluenceAmount[0], Member1.InfluenceAmount[1], Member1.InfluenceAmount[2]));
+                    res.Append(string.Format("Growth chance: {0}\n", Member1.GrowthChance));
+                    res.Append(string.Format("Shrink chance: {0}\n", Member1.ShrinkChance));
+                    res.Append(string.Format("Population growth: {0}\n", Simulation.SimulationBoard.PopulationGrowth));
+                    break;
+            }
             return res.ToString();
         }
 
@@ -31,20 +38,20 @@ namespace MusicPopulation
         }
         public static string GenAreaDescription()
         {
-            List<Member> sounds = Simulation.SimulationBoardState;
+            List<Tuple<int, int[,]>> sounds = Simulation.SimulationBoardState;
 
             StringBuilder res = new StringBuilder();
             int area = 1;
-            foreach (Member sound in sounds)
+            foreach (var sound in sounds)
             {
                 res.Append(string.Format("Area number {0}\n", area));
 
-                int number = sound.NumberOfNotes;
-                int[,] array = sound.Notes;
+                int number = sound.Item1;
+                int[,] array = sound.Item2;
 
                 for (int i = 0; i < number; i++)
                 {
-                    res.Append(string.Format("{0}; {1}; {2}\n", array[i, 0], array[i, 1], array[i, 2]));
+                    res.Append(string.Format("{0};{1};{2}\n", array[i, 0], array[i, 1], array[i, 2]));
                 }
                 res.Append(string.Format("End of area {0}\n", area));
                 area++;

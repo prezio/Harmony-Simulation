@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MusicPopulation
 {
-    public class Member1 : Member
+    public partial class Member1 : Member
     {
         protected void Transpose(uint n, Random randContext)
         {
@@ -46,7 +46,7 @@ namespace MusicPopulation
             int temp;
             
             int place = randContext.Next(NumberOfNotes - 1);
-            temp = randContext.Next(-SimulationParameters.ModifyAmount[n], SimulationParameters.ModifyAmount[n] + 1);
+            temp = randContext.Next(-ModifyAmount[n], ModifyAmount[n] + 1);
             Notes[place, n] += temp;
             if (Notes[place, n] >= limits[n])
             {
@@ -95,9 +95,9 @@ namespace MusicPopulation
             }
             for (int i = 0; i < NumberOfNotes; ++i)
             {
-                Notes[i, 0] += (int)(SimulationParameters.InfluenceAmount[0] * (influencer.Notes[i % influencer.NumberOfNotes, 0] - Notes[i, 0]));
-                Notes[i, 1] += (int)(SimulationParameters.InfluenceAmount[1] * (influencer.Notes[i % influencer.NumberOfNotes, 1] - Notes[i, 1]));
-                Notes[i, 2] += (int)(SimulationParameters.InfluenceAmount[2] * (influencer.Notes[i % influencer.NumberOfNotes, 2] - Notes[i, 2]));
+                Notes[i, 0] += (int)(InfluenceAmount[0] * (influencer.Notes[i % influencer.NumberOfNotes, 0] - Notes[i, 0]));
+                Notes[i, 1] += (int)(InfluenceAmount[1] * (influencer.Notes[i % influencer.NumberOfNotes, 1] - Notes[i, 1]));
+                Notes[i, 2] += (int)(InfluenceAmount[2] * (influencer.Notes[i % influencer.NumberOfNotes, 2] - Notes[i, 2]));
             }
         }
         public override int Rank()
@@ -134,47 +134,47 @@ namespace MusicPopulation
         }
         public override void Mutate(Random randContext)
         {
-            if (randContext.NextDouble() < SimulationParameters.GrowthChance)
+            if (randContext.NextDouble() < GrowthChance)
             {
                 Grow(randContext);
             }
-            if (randContext.NextDouble() < SimulationParameters.ExchangeChance[0])
+            if (randContext.NextDouble() < ExchangeChance[0])
             {
                 Exchange(0, randContext);
             }
-            if (randContext.NextDouble() < SimulationParameters.ExchangeChance[1])
+            if (randContext.NextDouble() < ExchangeChance[1])
             {
                 Exchange(1, randContext);
             }
-            if (randContext.NextDouble() < SimulationParameters.ExchangeChance[2])
+            if (randContext.NextDouble() < ExchangeChance[2])
             {
                 Exchange(2, randContext);
             }
-            if (randContext.NextDouble() < SimulationParameters.TransposeChance[0])
+            if (randContext.NextDouble() < TransposeChance[0])
             {
                 Transpose(0, randContext);
             }
-            if (randContext.NextDouble() < SimulationParameters.TransposeChance[1])
+            if (randContext.NextDouble() < TransposeChance[1])
             {
                 Transpose(1, randContext);
             }
-            if (randContext.NextDouble() < SimulationParameters.TransposeChance[2])
+            if (randContext.NextDouble() < TransposeChance[2])
             {
                 Transpose(2, randContext);
             }
-            if (randContext.NextDouble() < SimulationParameters.ModifyChance[0])
+            if (randContext.NextDouble() < ModifyChance[0])
             {
                 Modify(0, randContext);
             }
-            if (randContext.NextDouble() < SimulationParameters.ModifyChance[1])
+            if (randContext.NextDouble() < ModifyChance[1])
             {
                 Modify(1, randContext);
             }
-            if (randContext.NextDouble() < SimulationParameters.ModifyChance[2])
+            if (randContext.NextDouble() < ModifyChance[2])
             {
                 Modify(2, randContext);
             }
-            if (randContext.NextDouble() < SimulationParameters.ShrinkChance)
+            if (randContext.NextDouble() < ShrinkChance)
             {
                 Shrink();
             }
