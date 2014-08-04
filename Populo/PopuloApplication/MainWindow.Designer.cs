@@ -64,6 +64,7 @@
             this.numericUpDownAlfa = new System.Windows.Forms.NumericUpDown();
             this.buttonClose = new System.Windows.Forms.Button();
             this.buttonNewPhase = new System.Windows.Forms.Button();
+            this.PlayMelody = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPercentDeath)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxSteps)).BeginInit();
             this.groupBoxParameters.SuspendLayout();
@@ -573,11 +574,23 @@
             this.buttonNewPhase.UseVisualStyleBackColor = true;
             this.buttonNewPhase.Click += new System.EventHandler(this.buttonNewPhase_Click);
             // 
+            // PlayMelody
+            // 
+            this.PlayMelody.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.PlayMelody.Location = new System.Drawing.Point(821, 102);
+            this.PlayMelody.Name = "PlayMelody";
+            this.PlayMelody.Size = new System.Drawing.Size(98, 39);
+            this.PlayMelody.TabIndex = 12;
+            this.PlayMelody.Text = "Play";
+            this.PlayMelody.UseVisualStyleBackColor = true;
+            this.PlayMelody.Click += new System.EventHandler(this.PlayMelody_Click);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(931, 358);
+            this.Controls.Add(this.PlayMelody);
             this.Controls.Add(this.buttonNewPhase);
             this.Controls.Add(this.buttonClose);
             this.Controls.Add(this.groupBoxParameters);
@@ -586,6 +599,7 @@
             this.MaximizeBox = false;
             this.Name = "MainWindow";
             this.Text = "Populo Simulator";
+            this.Load += new System.EventHandler(this.MainWindow_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPercentDeath)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxSteps)).EndInit();
             this.groupBoxParameters.ResumeLayout(false);
@@ -652,6 +666,7 @@
         private System.Windows.Forms.Button buttonClose;
         private System.Windows.Forms.GroupBox groupBoxFactorsPhase2;
         private System.Windows.Forms.Button buttonNewPhase;
+        private System.Windows.Forms.Button PlayMelody;
     }
 }
 
