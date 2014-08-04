@@ -37,18 +37,19 @@
             this.labelFrequency = new System.Windows.Forms.Label();
             this.labelNotes = new System.Windows.Forms.Label();
             this.groupBoxSpectrum = new System.Windows.Forms.GroupBox();
+            this.spectrumFrequencies = new HarmonyEditor.Spectrum();
+            this.spectrumNotes = new HarmonyEditor.Spectrum();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonPlay = new System.Windows.Forms.Button();
             this.Stop = new System.Windows.Forms.Button();
-            this.spectrumFrequencies = new HarmonyEditor.Spectrum();
-            this.spectrumNotes = new HarmonyEditor.Spectrum();
             this.period6 = new HarmonyEditor.PeriodEditor();
             this.period5 = new HarmonyEditor.PeriodEditor();
             this.period4 = new HarmonyEditor.PeriodEditor();
             this.period3 = new HarmonyEditor.PeriodEditor();
             this.period2 = new HarmonyEditor.PeriodEditor();
             this.period1 = new HarmonyEditor.PeriodEditor();
+            this.Arpeggio = new System.Windows.Forms.Button();
             this.groupBoxSpectrum.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -144,6 +145,34 @@
             this.groupBoxSpectrum.TabStop = false;
             this.groupBoxSpectrum.Text = "Spektra";
             // 
+            // spectrumFrequencies
+            // 
+            this.spectrumFrequencies.AllowDrag = false;
+            this.spectrumFrequencies.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.spectrumFrequencies.CurChord = null;
+            this.spectrumFrequencies.FreqNotes = false;
+            this.spectrumFrequencies.Location = new System.Drawing.Point(6, 39);
+            this.spectrumFrequencies.Name = "spectrumFrequencies";
+            this.spectrumFrequencies.Rotated = false;
+            this.spectrumFrequencies.Selected = false;
+            this.spectrumFrequencies.Size = new System.Drawing.Size(162, 43);
+            this.spectrumFrequencies.TabIndex = 8;
+            this.spectrumFrequencies.Text = "spectrum1";
+            // 
+            // spectrumNotes
+            // 
+            this.spectrumNotes.AllowDrag = false;
+            this.spectrumNotes.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.spectrumNotes.CurChord = null;
+            this.spectrumNotes.FreqNotes = false;
+            this.spectrumNotes.Location = new System.Drawing.Point(174, 39);
+            this.spectrumNotes.Name = "spectrumNotes";
+            this.spectrumNotes.Rotated = false;
+            this.spectrumNotes.Selected = false;
+            this.spectrumNotes.Size = new System.Drawing.Size(162, 43);
+            this.spectrumNotes.TabIndex = 9;
+            this.spectrumNotes.Text = "spectrum2";
+            // 
             // buttonAdd
             // 
             this.buttonAdd.Location = new System.Drawing.Point(12, 540);
@@ -183,34 +212,6 @@
             this.Stop.Text = "Stop";
             this.Stop.UseVisualStyleBackColor = true;
             this.Stop.Click += new System.EventHandler(this.Stop_Click);
-            // 
-            // spectrumFrequencies
-            // 
-            this.spectrumFrequencies.AllowDrag = false;
-            this.spectrumFrequencies.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.spectrumFrequencies.CurChord = null;
-            this.spectrumFrequencies.FreqNotes = false;
-            this.spectrumFrequencies.Location = new System.Drawing.Point(6, 39);
-            this.spectrumFrequencies.Name = "spectrumFrequencies";
-            this.spectrumFrequencies.Rotated = false;
-            this.spectrumFrequencies.Selected = false;
-            this.spectrumFrequencies.Size = new System.Drawing.Size(162, 43);
-            this.spectrumFrequencies.TabIndex = 8;
-            this.spectrumFrequencies.Text = "spectrum1";
-            // 
-            // spectrumNotes
-            // 
-            this.spectrumNotes.AllowDrag = false;
-            this.spectrumNotes.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.spectrumNotes.CurChord = null;
-            this.spectrumNotes.FreqNotes = false;
-            this.spectrumNotes.Location = new System.Drawing.Point(174, 39);
-            this.spectrumNotes.Name = "spectrumNotes";
-            this.spectrumNotes.Rotated = false;
-            this.spectrumNotes.Selected = false;
-            this.spectrumNotes.Size = new System.Drawing.Size(162, 43);
-            this.spectrumNotes.TabIndex = 9;
-            this.spectrumNotes.Text = "spectrum2";
             // 
             // period6
             // 
@@ -259,11 +260,22 @@
             this.period1.Size = new System.Drawing.Size(151, 255);
             this.period1.TabIndex = 2;
             // 
+            // Arpeggio
+            // 
+            this.Arpeggio.Location = new System.Drawing.Point(667, 90);
+            this.Arpeggio.Name = "Arpeggio";
+            this.Arpeggio.Size = new System.Drawing.Size(75, 35);
+            this.Arpeggio.TabIndex = 21;
+            this.Arpeggio.Text = "Odtwórz arpeggio";
+            this.Arpeggio.UseVisualStyleBackColor = true;
+            this.Arpeggio.Click += new System.EventHandler(this.Arpeggio_Click);
+            // 
             // ChordEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(964, 582);
+            this.Controls.Add(this.Arpeggio);
             this.Controls.Add(this.Stop);
             this.Controls.Add(this.buttonPlay);
             this.Controls.Add(this.buttonCancel);
@@ -316,5 +328,6 @@
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.Button buttonPlay;
         private System.Windows.Forms.Button Stop;
+        private System.Windows.Forms.Button Arpeggio;
     }
 }

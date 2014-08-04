@@ -247,6 +247,7 @@ namespace HarmonyEditor
         }
         private void StopSounds()
         {
+            Program.sequencer.Stop();
             ChannelMessageBuilder builder = new ChannelMessageBuilder();
             builder.Command = ChannelCommand.Controller;
             builder.MidiChannel = 0;
@@ -281,6 +282,36 @@ namespace HarmonyEditor
         private void ChordEditor_FormClosing(object sender, FormClosingEventArgs e)
         {
             StopSounds();
+        }
+
+        private void Arpeggio_Click(object sender, EventArgs e)
+        {
+            int channel = 0;
+            int pitch = 0;
+            CountSpectrum();
+            StopSounds();
+            Program.sequencer.Sequence= new Sequence();
+            Track track = new Track();
+            int i = 0;
+            ChannelMessageBuilder builder = new ChannelMessageBuilder();
+            double[] notes = _chord.Notes;
+            foreach (double note in notes)
+            {
+                channel= (((int)note) % 100) / 25;
+                pitch=(int)note / 100;
+                builder.Command = ChannelCommand.NoteOn;
+                builder.MidiChannel = channel;
+                builder.Data1 = pitch;
+                builder.Data2 = 120;
+                builder.Build();
+                track.Insert(i, builder.Result);
+                i+=20;
+                builder.Data2 = 0;
+                builder.Build();
+                track.Insert(i, builder.Result);
+            }
+            Program.sequencer.Sequence.Add(track);
+            Program.sequencer.Start();
         }
     }
 }
