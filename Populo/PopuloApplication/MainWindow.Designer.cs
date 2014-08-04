@@ -35,6 +35,7 @@
             this.numericUpDownMaxSteps = new System.Windows.Forms.NumericUpDown();
             this.labelAlfa = new System.Windows.Forms.Label();
             this.groupBoxParameters = new System.Windows.Forms.GroupBox();
+            this.groupBoxFactorsPhase2 = new System.Windows.Forms.GroupBox();
             this.groupBoxFactorsPhase1 = new System.Windows.Forms.GroupBox();
             this.labelShrinkChance = new System.Windows.Forms.Label();
             this.labelGrowthChance = new System.Windows.Forms.Label();
@@ -62,7 +63,6 @@
             this.numericUpDownModifyAmount2 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDownAlfa = new System.Windows.Forms.NumericUpDown();
             this.buttonClose = new System.Windows.Forms.Button();
-            this.groupBoxFactorsPhase2 = new System.Windows.Forms.GroupBox();
             this.buttonNewPhase = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPercentDeath)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxSteps)).BeginInit();
@@ -153,6 +153,16 @@
             this.groupBoxParameters.TabIndex = 9;
             this.groupBoxParameters.TabStop = false;
             this.groupBoxParameters.Text = "Parametry";
+            // 
+            // groupBoxFactorsPhase2
+            // 
+            this.groupBoxFactorsPhase2.Enabled = false;
+            this.groupBoxFactorsPhase2.Location = new System.Drawing.Point(439, 86);
+            this.groupBoxFactorsPhase2.Name = "groupBoxFactorsPhase2";
+            this.groupBoxFactorsPhase2.Size = new System.Drawing.Size(358, 245);
+            this.groupBoxFactorsPhase2.TabIndex = 9;
+            this.groupBoxFactorsPhase2.TabStop = false;
+            this.groupBoxFactorsPhase2.Text = "Współczynniki Faza 2";
             // 
             // groupBoxFactorsPhase1
             // 
@@ -552,16 +562,6 @@
             this.buttonClose.Text = "Zamknij";
             this.buttonClose.UseVisualStyleBackColor = true;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
-            // 
-            // groupBoxFactorsPhase2
-            // 
-            this.groupBoxFactorsPhase2.Enabled = false;
-            this.groupBoxFactorsPhase2.Location = new System.Drawing.Point(439, 86);
-            this.groupBoxFactorsPhase2.Name = "groupBoxFactorsPhase2";
-            this.groupBoxFactorsPhase2.Size = new System.Drawing.Size(358, 245);
-            this.groupBoxFactorsPhase2.TabIndex = 9;
-            this.groupBoxFactorsPhase2.TabStop = false;
-            this.groupBoxFactorsPhase2.Text = "Współczynniki Faza 2";
             // 
             // buttonNewPhase
             // 

@@ -8,6 +8,9 @@ namespace MusicPopulation
 {
     public partial class Member1 : Member
     {
+        private int _numberOfNotes;
+        private int[,] _notes;
+
         protected void Transpose(uint n, Random randContext)
         {
             if (NumberOfNotes <= 1)
@@ -60,7 +63,7 @@ namespace MusicPopulation
         protected void Shrink()
         {
             if (NumberOfNotes > 1)
-                NumberOfNotes --;
+                _numberOfNotes --;
         }
         protected void Grow(Random randContext)
         {
@@ -71,18 +74,46 @@ namespace MusicPopulation
             Notes[NumberOfNotes, 1] = randContext.Next(limits[1]);
             Notes[NumberOfNotes, 2] = randContext.Next(limits[2]);
 
-            NumberOfNotes++;
+            _numberOfNotes++;
+        }
+
+        
+        protected static readonly int[] limits = new int[] { 72, 60, 128 };
+
+        public override int NumberOfNotes 
+        {
+            get
+            {
+                return _numberOfNotes;
+            }
+        }
+        public override int[,] Notes  // pitch, duration, dynamics
+        {
+            get
+            {
+                return _notes;
+            }
         }
 
         public Member1(Random randContext)
             : base(randContext)
         {
+            _numberOfNotes = randContext.Next(_maxNotes - 1) + 1;
+            _notes = new int[_maxNotes + 1, 3];
+
+            for (int i = 0; i < NumberOfNotes; i++)
+            {
+                Notes[i, 0] = randContext.Next(limits[0]);
+                Notes[i, 1] = randContext.Next(limits[1]);
+                Notes[i, 2] = randContext.Next(limits[2]);
+            }
         }
         public Member1(Member original)
             : base(original)
         {
         }
 
+        #region Overriden Methods
         public override void Influence(Member influencer, Random randContext)
         {
             if (NumberOfNotes < influencer.NumberOfNotes)
@@ -91,7 +122,7 @@ namespace MusicPopulation
             }
             else if (NumberOfNotes > influencer.NumberOfNotes)
             {
-                NumberOfNotes --;
+                _numberOfNotes --;
             }
             for (int i = 0; i < NumberOfNotes; ++i)
             {
@@ -179,5 +210,12 @@ namespace MusicPopulation
                 Shrink();
             }
         }
+        public override void Clone(Member member)
+        {
+            _numberOfNotes = member.NumberOfNotes;
+            _notes = new int[_maxNotes + 1, 3];
+            Array.Copy(member.Notes, Notes, (_maxNotes + 1) * 3);
+        }
+        #endregion
     }
 }
