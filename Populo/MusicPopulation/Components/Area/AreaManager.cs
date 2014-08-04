@@ -41,7 +41,6 @@ namespace MusicPopulation
             int[] array = RandomGenerator.RandomPermutation(w * h, w * h, _randContext);
             _areaRandOrder = new Tuple<int, int>[w*h];
 
-
             for (int ind = 0; ind < array.Length; ind++ )
             {
                 int i = array[ind] % _width;
@@ -214,10 +213,10 @@ namespace MusicPopulation
             int done = 0;
             int all = 0;
 
-            _listDownMove = new List<Tuple<int, int, int, int>>();
-            _listLeftMove = new List<Tuple<int, int, int, int>>();
-            _listRightMove = new List<Tuple<int, int, int, int>>();
-            _listUpMove = new List<Tuple<int, int, int, int>>();
+            _listDownMove   = new List<Tuple<int, int, int, int>>();
+            _listLeftMove   = new List<Tuple<int, int, int, int>>();
+            _listRightMove  = new List<Tuple<int, int, int, int>>();
+            _listUpMove     = new List<Tuple<int, int, int, int>>();
 
             foreach (var pos in _areaRandOrder)
             {

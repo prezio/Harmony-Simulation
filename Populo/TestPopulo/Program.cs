@@ -106,7 +106,7 @@ namespace populo
         public static void Main(string[] args)
         {
 
-           //var board =  Simulation.SimulationBoard;
+            //var board =  Simulation.SimulationBoard;
             //automationTest();
             //Test();
             NormalTest();

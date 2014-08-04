@@ -130,40 +130,47 @@ namespace PopuloApplication
             sequencer.ChannelMessagePlayed += ChannelMessagePlayed;
             int instrument = 0;
             outDevice = new OutputDevice(0);
+            for (int channel = 0; channel < 16; channel++)
+            {
+                ChannelMessageBuilder builder = new ChannelMessageBuilder();
 
-            ChannelMessageBuilder builder = new ChannelMessageBuilder();
-
-            builder.Command = ChannelCommand.ProgramChange;
-            builder.MidiChannel = 0;
-            builder.Data1 = instrument;
-            builder.Data2 = 127;
-            builder.Build();
-            outDevice.Send(builder.Result);
+                builder.Command = ChannelCommand.ProgramChange;
+                builder.MidiChannel = channel;
+                builder.Data1 = channel*3;
+                builder.Data2 = 127;
+                builder.Build();
+                outDevice.Send(builder.Result);
+            }
         }
-        private void play(int numberOfNotes, int[ , ] notes)
+        private void play(int[] numberOfNotes, int[ , ][] notes)
         {
             
             sequencer.Sequence = new Sequence();
-            Track track = new Track();
-            int i = 0;
+            
             int pitch=0;
             ChannelMessageBuilder builder = new ChannelMessageBuilder();
-            for (int index = 0; index < numberOfNotes;index++ )
+            for (int channel = 0; channel < 16; channel++)
             {
-                //channel = (((int)notes[index,0]) % 100) / 25;
-                pitch = notes[index , 0];
-                builder.Command = ChannelCommand.NoteOn;
-                builder.MidiChannel = 0;
-                builder.Data1 = pitch;
-                builder.Data2 = notes[index, 2];
-                builder.Build();
-                track.Insert(i, builder.Result);
-                i += notes[index, 1]*6;
-                builder.Data2 = 0;
-                builder.Build();
-                track.Insert(i, builder.Result);
+                Track track = new Track();
+                int i = 0;
+                for (int index = 0; index < numberOfNotes[channel]; index++)
+                {
+                    //channel = (((int)notes[index,0]) % 100) / 25;
+                    pitch = notes[index, 0][channel];
+                    builder.Command = ChannelCommand.NoteOn;
+                    builder.MidiChannel = channel;
+                    builder.Data1 = pitch;
+                    builder.Data2 = notes[index, 2][channel];
+                    builder.Build();
+                    track.Insert(i, builder.Result);
+                    i += notes[index, 1][channel] * 5;
+                    builder.Data2 = 0;
+                    builder.Build();
+                    track.Insert(i, builder.Result);
+                }
+                sequencer.Sequence.Add(track);
             }
-            sequencer.Sequence.Add(track);
+            
             sequencer.Start();
         }
 
@@ -206,7 +213,7 @@ namespace PopuloApplication
                           { 60,1,100},
                           { 56,4,120}
                           };
-            play(36, temp);
+            //play(36, temp);
         }
     }
 }

@@ -77,23 +77,7 @@ namespace MusicPopulation
             _numberOfNotes++;
         }
 
-        
         protected static readonly int[] limits = new int[] { 72, 60, 128 };
-
-        public override int NumberOfNotes 
-        {
-            get
-            {
-                return _numberOfNotes;
-            }
-        }
-        public override int[,] Notes  // pitch, duration, dynamics
-        {
-            get
-            {
-                return _notes;
-            }
-        }
 
         public Member1(Random randContext)
             : base(randContext)
@@ -114,6 +98,20 @@ namespace MusicPopulation
         }
 
         #region Overriden Methods
+        public override int NumberOfNotes
+        {
+            get
+            {
+                return _numberOfNotes;
+            }
+        }
+        public override int[,] Notes  // pitch, duration, dynamics
+        {
+            get
+            {
+                return _notes;
+            }
+        }
         public override void Influence(Member influencer, Random randContext)
         {
             if (NumberOfNotes < influencer.NumberOfNotes)
