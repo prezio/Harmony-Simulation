@@ -110,10 +110,10 @@ namespace PopuloApplication
                     builder.Command = ChannelCommand.NoteOn;
                     builder.MidiChannel = channel;
                     builder.Data1 = pitch;
-                    builder.Data2 = boardState[channel].Item2[index, 2];
+                    builder.Data2 = boardState[channel].Item2[index, 3];
                     builder.Build();
                     track.Insert(i, builder.Result);
-                    i += boardState[channel].Item2[index, 1] * 5;
+                    i += boardState[channel].Item2[index, 2] * 5;
                     builder.Data2 = 0;
                     builder.Build();
                     track.Insert(i, builder.Result);

@@ -71,25 +71,27 @@ namespace MusicPopulation
                 return;
 
             Notes[NumberOfNotes, 0] = randContext.Next(limits[0]);
-            Notes[NumberOfNotes, 1] = randContext.Next(limits[1]);
+            Notes[NumberOfNotes, 1] = 0;
             Notes[NumberOfNotes, 2] = randContext.Next(limits[2]);
+            Notes[NumberOfNotes, 3] = randContext.Next(limits[3]);
 
             _numberOfNotes++;
         }
 
-        protected static readonly int[] limits = new int[] { 72, 60, 128 };
+        protected static readonly int[] limits = new int[] { 20,0, 60, 128 };
 
         public Member1(Random randContext)
             : base(randContext)
         {
             _numberOfNotes = randContext.Next(_maxNotes - 1) + 1;
-            _notes = new int[_maxNotes + 1, 3];
+            _notes = new int[_maxNotes + 1, 4];
 
             for (int i = 0; i < NumberOfNotes; i++)
             {
                 Notes[i, 0] = randContext.Next(limits[0]);
-                Notes[i, 1] = randContext.Next(limits[1]);
+                Notes[i, 1] = 0;
                 Notes[i, 2] = randContext.Next(limits[2]);
+                Notes[i, 3] = randContext.Next(limits[3]);
             }
         }
         public Member1(Member original)
@@ -125,41 +127,67 @@ namespace MusicPopulation
             for (int i = 0; i < NumberOfNotes; ++i)
             {
                 Notes[i, 0] += (int)(InfluenceAmount[0] * (influencer.Notes[i % influencer.NumberOfNotes, 0] - Notes[i, 0]));
-                Notes[i, 1] += (int)(InfluenceAmount[1] * (influencer.Notes[i % influencer.NumberOfNotes, 1] - Notes[i, 1]));
-                Notes[i, 2] += (int)(InfluenceAmount[2] * (influencer.Notes[i % influencer.NumberOfNotes, 2] - Notes[i, 2]));
+                Notes[i, 2] += (int)(InfluenceAmount[1] * (influencer.Notes[i % influencer.NumberOfNotes, 1] - Notes[i, 1]));
+                Notes[i, 3] += (int)(InfluenceAmount[2] * (influencer.Notes[i % influencer.NumberOfNotes, 2] - Notes[i, 2]));
             }
         }
         public override int Rank()
         {
+            int[] count = new int[limits[0]];
             int rank = 0;
-            //for (int i = 0; i < NumberOfNotes; i++)
-            //{
-            //    rank -= (Notes[i, 1] - i) * (Notes[i, 1] - i);
-            //}
-            int previousChord = Notes[0, 0] / 24;
-            int currentChord = 0;
-            for (int i = 1; i < NumberOfNotes; i++)
+            double proportion = ((double)Notes[0, 2]) / Notes[1, 2];
+            double prevProportion = proportion;
+            int difference = Notes[1, 3] - Notes[0, 3];
+            int prevDifference = difference;
+            int sameDirectionRhythm = 0;
+            int sameDirectionDynamics = 0;
+            count[Notes[0, 0]]++;
+            count[Notes[1, 0]]++;
+            if (difference > 40)
+                rank += 40;
+            for (int i = 2; i < NumberOfNotes; i++)
             {
-                currentChord = Notes[i, 0] / 24;
-                if ((currentChord - previousChord + 3) % 3 == 2)
+                count[Notes[i, 0]]++;
+                prevProportion = proportion;
+                proportion = ((double)Notes[i-1, 2]) / Notes[i, 2];
+                if (Math.Abs(proportion) == Math.Abs(prevProportion))
+                    rank -= 30;
+                if(proportion*prevProportion<0)
                 {
-                    rank -= 10;
+                    sameDirectionRhythm = 0;
                 }
                 else
                 {
-                    rank += 10;
+                    sameDirectionRhythm++;
+                    if(sameDirectionRhythm>2)
+                    {
+                        rank -= sameDirectionRhythm * 20;
+                    }
                 }
-                if (Notes[i, 1] > Notes[i - 1, 1])
+                prevDifference = difference;
+                difference = Notes[i-1, 3] - Notes[i, 3];
+                if (difference > 40)
+                    rank += 40;
+                if (difference * prevDifference < 0)
                 {
-                    rank += 15;
+                    sameDirectionDynamics = 0;
                 }
-                if (Notes[i, 2] < Notes[i - 1, 2])
+                else
                 {
-                    rank += 7;
+                    sameDirectionDynamics++;
+                    if (sameDirectionDynamics > 2)
+                    {
+                        rank -= sameDirectionDynamics * 30;
+                    }
                 }
             }
-            
-                return rank;
+            int mean = _numberOfNotes / limits[0];
+            for (int i = 0; i < limits[0];i++ )
+            {
+                rank -= (count[i] - mean) * (count[i] - mean);
+            }
+
+               return rank;
         }
         public override void Mutate(Random randContext)
         {
@@ -173,11 +201,11 @@ namespace MusicPopulation
             }
             if (randContext.NextDouble() < ExchangeChance[1])
             {
-                Exchange(1, randContext);
+                Exchange(2, randContext);
             }
             if (randContext.NextDouble() < ExchangeChance[2])
             {
-                Exchange(2, randContext);
+                Exchange(3, randContext);
             }
             if (randContext.NextDouble() < TransposeChance[0])
             {
@@ -185,11 +213,11 @@ namespace MusicPopulation
             }
             if (randContext.NextDouble() < TransposeChance[1])
             {
-                Transpose(1, randContext);
+                Transpose(2, randContext);
             }
             if (randContext.NextDouble() < TransposeChance[2])
             {
-                Transpose(2, randContext);
+                Transpose(3, randContext);
             }
             if (randContext.NextDouble() < ModifyChance[0])
             {
@@ -197,11 +225,11 @@ namespace MusicPopulation
             }
             if (randContext.NextDouble() < ModifyChance[1])
             {
-                Modify(1, randContext);
+                Modify(2, randContext);
             }
             if (randContext.NextDouble() < ModifyChance[2])
             {
-                Modify(2, randContext);
+                Modify(3, randContext);
             }
             if (randContext.NextDouble() < ShrinkChance)
             {
@@ -211,8 +239,8 @@ namespace MusicPopulation
         public override void Clone(Member member)
         {
             _numberOfNotes = member.NumberOfNotes;
-            _notes = new int[_maxNotes + 1, 3];
-            Array.Copy(member.Notes, Notes, (_maxNotes + 1) * 3);
+            _notes = new int[_maxNotes + 1, 4];
+            Array.Copy(member.Notes, Notes, (_maxNotes + 1) * 4);
         }
         #endregion
     }
