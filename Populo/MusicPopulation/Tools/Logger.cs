@@ -51,7 +51,7 @@ namespace MusicPopulation
 
                 for (int i = 0; i < number; i++)
                 {
-                    res.Append(string.Format("{0};{1};{2}\n", array[i, 0], array[i, 1], array[i, 2]));
+                    res.Append(string.Format("{0};{1};{2};{3}\n", array[i, 0], array[i, 1], array[i, 2], array[i, 3]));
                 }
                 res.Append(string.Format("End of area {0}\n", area));
                 area++;

@@ -30,6 +30,7 @@ namespace MusicPopulation
             }
         }
         private Member[,] _board;
+        private int[,] _rankTable;
 
         /// <summary>
         /// Constructs new Board
@@ -38,6 +39,7 @@ namespace MusicPopulation
         {
             Debug.WriteLine("Create Board");
             _board = new Member[BoardWidth, BoardHeight];
+            _rankTable = new int[BoardWidth, BoardHeight];
             SetPhase(0);
         }
         public Member this[int i, int j]
@@ -65,6 +67,20 @@ namespace MusicPopulation
                 return _indexOfPhase;
             }
         }
+        //public string RankTableMsg
+        //{
+        //    get
+        //    {
+        //        StringBuilder result = new StringBuilder();
+        //        for (int i = 0; i < BoardWidth; i++)
+        //        {
+        //            for (int j = 0; j < BoardHeight; j++)
+        //            {
+        //                result.Append(string.Format("{0} ", _rankTable[
+        //            }
+        //        }
+        //    }
+        //}
         public int PopulationGrowth
         {
             get
@@ -102,10 +118,11 @@ namespace MusicPopulation
                 while (i <= x2)
                 {
                     Member member = _board[i, j];
+                    int rank = Int32.MinValue;
 
                     if (member != null)
                     {
-                        int rank = member.Rank();
+                        rank = member.Rank();
 
                         if (rank > best_rank)
                         {
@@ -114,6 +131,7 @@ namespace MusicPopulation
                             best_rank = rank;
                         }
                     }
+                    _rankTable[i, j] = rank;
                     i++;
                 }
                 j++;

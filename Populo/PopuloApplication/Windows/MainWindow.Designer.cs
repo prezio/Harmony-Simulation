@@ -64,6 +64,7 @@
             this.numericUpDownAlfa = new System.Windows.Forms.NumericUpDown();
             this.buttonClose = new System.Windows.Forms.Button();
             this.buttonChangePhase = new System.Windows.Forms.Button();
+            this.buttonStop = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPercentDeath)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxSteps)).BeginInit();
             this.groupBoxParameters.SuspendLayout();
@@ -90,11 +91,11 @@
             // 
             // buttonStartSimulation
             // 
-            this.buttonStartSimulation.Location = new System.Drawing.Point(821, 12);
+            this.buttonStartSimulation.Location = new System.Drawing.Point(868, 12);
             this.buttonStartSimulation.Name = "buttonStartSimulation";
             this.buttonStartSimulation.Size = new System.Drawing.Size(98, 39);
             this.buttonStartSimulation.TabIndex = 3;
-            this.buttonStartSimulation.Text = "Rozpocznij symulację";
+            this.buttonStartSimulation.Text = "Start";
             this.buttonStartSimulation.UseVisualStyleBackColor = true;
             this.buttonStartSimulation.Click += new System.EventHandler(this.buttonStartSimulation_Click);
             // 
@@ -149,7 +150,7 @@
             this.groupBoxParameters.Controls.Add(this.label1);
             this.groupBoxParameters.Location = new System.Drawing.Point(12, 12);
             this.groupBoxParameters.Name = "groupBoxParameters";
-            this.groupBoxParameters.Size = new System.Drawing.Size(803, 337);
+            this.groupBoxParameters.Size = new System.Drawing.Size(850, 483);
             this.groupBoxParameters.TabIndex = 9;
             this.groupBoxParameters.TabStop = false;
             this.groupBoxParameters.Text = "Parametry";
@@ -159,7 +160,7 @@
             this.groupBoxFactorsPhase2.Enabled = false;
             this.groupBoxFactorsPhase2.Location = new System.Drawing.Point(439, 86);
             this.groupBoxFactorsPhase2.Name = "groupBoxFactorsPhase2";
-            this.groupBoxFactorsPhase2.Size = new System.Drawing.Size(358, 245);
+            this.groupBoxFactorsPhase2.Size = new System.Drawing.Size(405, 245);
             this.groupBoxFactorsPhase2.TabIndex = 9;
             this.groupBoxFactorsPhase2.TabStop = false;
             this.groupBoxFactorsPhase2.Text = "Współczynniki Faza 2";
@@ -555,7 +556,7 @@
             // 
             // buttonClose
             // 
-            this.buttonClose.Location = new System.Drawing.Point(821, 307);
+            this.buttonClose.Location = new System.Drawing.Point(868, 456);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(98, 39);
             this.buttonClose.TabIndex = 10;
@@ -565,7 +566,7 @@
             // 
             // buttonChangePhase
             // 
-            this.buttonChangePhase.Location = new System.Drawing.Point(821, 57);
+            this.buttonChangePhase.Location = new System.Drawing.Point(868, 102);
             this.buttonChangePhase.Name = "buttonChangePhase";
             this.buttonChangePhase.Size = new System.Drawing.Size(98, 39);
             this.buttonChangePhase.TabIndex = 11;
@@ -573,11 +574,21 @@
             this.buttonChangePhase.UseVisualStyleBackColor = true;
             this.buttonChangePhase.Click += new System.EventHandler(this.buttonChangePhase_Click);
             // 
+            // buttonStop
+            // 
+            this.buttonStop.Location = new System.Drawing.Point(868, 57);
+            this.buttonStop.Name = "buttonStop";
+            this.buttonStop.Size = new System.Drawing.Size(98, 39);
+            this.buttonStop.TabIndex = 12;
+            this.buttonStop.Text = "Przerwij";
+            this.buttonStop.UseVisualStyleBackColor = true;
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(931, 358);
+            this.ClientSize = new System.Drawing.Size(978, 507);
+            this.Controls.Add(this.buttonStop);
             this.Controls.Add(this.buttonChangePhase);
             this.Controls.Add(this.buttonClose);
             this.Controls.Add(this.groupBoxParameters);
@@ -654,6 +665,7 @@
         private System.Windows.Forms.Button buttonClose;
         private System.Windows.Forms.GroupBox groupBoxFactorsPhase2;
         private System.Windows.Forms.Button buttonChangePhase;
+        private System.Windows.Forms.Button buttonStop;
     }
 }
 

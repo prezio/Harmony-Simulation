@@ -186,7 +186,7 @@ namespace MusicPopulation
             {
                 rank -= (count[i] - mean) * (count[i] - mean);
             }
-
+            rank -= (_numberOfNotes - PrefferedLength) * (_numberOfNotes - PrefferedLength)*60;
                return rank;
         }
         public override void Mutate(Random randContext)
