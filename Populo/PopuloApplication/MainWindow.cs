@@ -16,15 +16,13 @@ namespace PopuloApplication
     {
         private OutputDevice outDevice;
         private Sequencer sequencer;
-        void ChannelMessagePlayed(object sender, ChannelMessageEventArgs e)
+        private void ChannelMessagePlayed(object sender, ChannelMessageEventArgs e)
         {
-
-
             outDevice.Send(e.Message);
-
         }
         private void LoadParameters()
         {
+            // First phase
             numericUpDownPercentDeath.Value = SimulationParameters.PercentDeath;
             numericUpDownMaxSteps.Value = SimulationParameters.MaxSteps;
             numericUpDownAlfa.Value = (decimal)SimulationParameters.Alfa;
@@ -54,6 +52,7 @@ namespace PopuloApplication
         }
         private void SaveParameters()
         {
+            // First phase
             SimulationParameters.PercentDeath = (int)numericUpDownPercentDeath.Value;
             SimulationParameters.MaxSteps = (int)numericUpDownMaxSteps.Value;
             SimulationParameters.Alfa = (double)numericUpDownAlfa.Value;
@@ -93,77 +92,28 @@ namespace PopuloApplication
                     break;
             }
         }
-
-        private Task _taskSimulation = null;
-        private Task _taskPlay = null;
-
-        public MainWindow()
+        private void PlaySimulation()
         {
-            InitializeComponent();
-            LoadParameters();
-        }
-
-        #region Events
-        private void buttonNextStep_Click(object sender, EventArgs e)
-        {
-            if (_taskSimulation != null)
-            {
-                Task.WaitAll(_taskSimulation);
-            }
-
-            SaveParameters();
-            _taskSimulation = Task.Factory.StartNew(() => Simulation.EvolveUsingThreads());
-        }
-        private void buttonClose_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-        private void buttonNewPhase_Click(object sender, EventArgs e)
-        {
-            ChangePhase();
-        }
-        #endregion
-
-        private void MainWindow_Load(object sender, EventArgs e)
-        {
-            sequencer = new Sanford.Multimedia.Midi.Sequencer();
-            sequencer.ChannelMessagePlayed += ChannelMessagePlayed;
-            int instrument = 0;
-            outDevice = new OutputDevice(0);
-            for (int channel = 0; channel < 16; channel++)
-            {
-                ChannelMessageBuilder builder = new ChannelMessageBuilder();
-
-                builder.Command = ChannelCommand.ProgramChange;
-                builder.MidiChannel = channel;
-                builder.Data1 = channel*3;
-                builder.Data2 = 127;
-                builder.Build();
-                outDevice.Send(builder.Result);
-            }
-        }
-        private void play(int[] numberOfNotes, int[ , ][] notes)
-        {
-            
+            var boardState = Simulation.SimulationBoardState;
             sequencer.Sequence = new Sequence();
-            
+
             int pitch=0;
             ChannelMessageBuilder builder = new ChannelMessageBuilder();
             for (int channel = 0; channel < 16; channel++)
             {
                 Track track = new Track();
                 int i = 0;
-                for (int index = 0; index < numberOfNotes[channel]; index++)
+                for (int index = 0; index < boardState[channel].Item1; index++)
                 {
                     //channel = (((int)notes[index,0]) % 100) / 25;
-                    pitch = notes[index, 0][channel];
+                    pitch = boardState[channel].Item2[index, 0];
                     builder.Command = ChannelCommand.NoteOn;
                     builder.MidiChannel = channel;
                     builder.Data1 = pitch;
-                    builder.Data2 = notes[index, 2][channel];
+                    builder.Data2 = boardState[channel].Item2[index, 2];
                     builder.Build();
                     track.Insert(i, builder.Result);
-                    i += notes[index, 1][channel] * 5;
+                    i += boardState[channel].Item2[index, 1] * 5;
                     builder.Data2 = 0;
                     builder.Build();
                     track.Insert(i, builder.Result);
@@ -174,46 +124,131 @@ namespace PopuloApplication
             sequencer.Start();
         }
 
-        private void PlayMelody_Click(object sender, EventArgs e)
+        private Task _taskSimulation = null;
+        private Task _taskPlay = null;
+        private int _iEvolveDuration = 1000;
+        private void DoSimulation()
         {
-            int[,] temp = { { 63,2,110}, 
-                          { 60,2,100},
-                          { 60,2,100},
-                          { 61,2,110}, 
-                          { 58,2,100},
-                          { 58,2,100},
-                          { 56,1,100}, 
-                          { 60,1,100},
-                          { 63,4,120},
-                          { 63,2,110}, 
-                          { 60,2,100},
-                          { 60,2,100},
-                          { 61,2,110}, 
-                          { 58,2,100},
-                          { 58,2,100},
-                          { 56,1,100}, 
-                          { 60,1,100},
-                          { 56,4,120},
-                          { 63,2,110}, 
-                          { 60,2,100},
-                          { 60,2,100},
-                          { 61,2,110}, 
-                          { 58,2,100},
-                          { 58,2,100},
-                          { 56,1,100}, 
-                          { 60,1,100},
-                          { 63,4,120},
-                          { 63,2,110}, 
-                          { 60,2,100},
-                          { 60,2,100},
-                          { 61,2,110}, 
-                          { 58,2,100},
-                          { 58,2,100},
-                          { 56,1,100}, 
-                          { 60,1,100},
-                          { 56,4,120}
-                          };
-            //play(36, temp);
+            _taskSimulation = Task.Factory.StartNew(() => { for (int i = 0; i < _iEvolveDuration; i++) Simulation.EvolveUsingThreads(); });
         }
+        private void DoPlay()
+        {
+            _taskPlay = Task.Factory.StartNew(() => PlaySimulation());
+        }
+
+        private enum SimulationState { During, Before };
+        private SimulationState _simState;
+
+        public MainWindow()
+        {
+            InitializeComponent();
+            LoadParameters();
+            _simState = SimulationState.Before;
+        }
+
+        #region Events
+        private void MainWindow_Paint(object sender, PaintEventArgs e)
+        {
+            if (_simState == SimulationState.Before)
+                return;
+
+            // _simState == SimulationState.During
+            SaveParameters();
+            if (_taskSimulation == null)
+            {
+                DoSimulation();
+            }
+            else if (_taskSimulation.IsCompleted == true)
+            {
+                if (_taskPlay == null || _taskPlay.IsCompleted)
+                {
+                    DoPlay();
+                    DoSimulation();
+                }
+            }
+        }
+        private void buttonStartSimulation_Click(object sender, EventArgs e)
+        {
+            _simState = SimulationState.During;
+            Simulation.ResetSimulation();
+            _taskSimulation = null;
+            _taskPlay = null;
+        }
+        private void buttonClose_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+        private void buttonChangePhase_Click(object sender, EventArgs e)
+        {
+            ChangePhase();
+        }
+        private void MainWindow_Load(object sender, EventArgs e)
+        {
+            sequencer = new Sanford.Multimedia.Midi.Sequencer();
+            sequencer.ChannelMessagePlayed += ChannelMessagePlayed;
+            outDevice = new OutputDevice(0);
+
+            for (int channel = 0; channel < 16; channel++)
+            {
+                ChannelMessageBuilder builder = new ChannelMessageBuilder();
+
+                builder.Command = ChannelCommand.ProgramChange;
+                builder.MidiChannel = channel;
+                builder.Data1 = channel * 3;
+                builder.Data2 = 127;
+                builder.Build();
+                outDevice.Send(builder.Result);
+            }
+        }
+        #endregion
+        //private void PlayMelody_Click(object sender, EventArgs e)
+        //{
+        //    int[,] temp = { { 63,2,110}, 
+        //                  { 60,2,100},
+        //                  { 60,2,100},
+        //                  { 61,2,110}, 
+        //                  { 58,2,100},
+        //                  { 58,2,100},
+        //                  { 56,1,100}, 
+        //                  { 60,1,100},
+        //                  { 63,4,120},
+        //                  { 63,2,110}, 
+        //                  { 60,2,100},
+        //                  { 60,2,100},
+        //                  { 61,2,110}, 
+        //                  { 58,2,100},
+        //                  { 58,2,100},
+        //                  { 56,1,100}, 
+        //                  { 60,1,100},
+        //                  { 56,4,120},
+        //                  { 63,2,110}, 
+        //                  { 60,2,100},
+        //                  { 60,2,100},
+        //                  { 61,2,110}, 
+        //                  { 58,2,100},
+        //                  { 58,2,100},
+        //                  { 56,1,100}, 
+        //                  { 60,1,100},
+        //                  { 63,4,120},
+        //                  { 63,2,110}, 
+        //                  { 60,2,100},
+        //                  { 60,2,100},
+        //                  { 61,2,110}, 
+        //                  { 58,2,100},
+        //                  { 58,2,100},
+        //                  { 56,1,100}, 
+        //                  { 60,1,100},
+        //                  { 56,4,120}
+        //                  };
+        //    List<int> arg1 = new List<int>();
+        //    List<int[,]> arg2 = new List<int[,]>();
+
+        //    for (int i = 0; i < 16; i++)
+        //    {
+        //        arg1.Add(36);
+        //        arg2.Add(temp);
+        //    }
+        //    play(arg1.ToArray(), arg2.ToArray());
+        //}
     }
 }

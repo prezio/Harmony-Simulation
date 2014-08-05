@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.buttonNextStep = new System.Windows.Forms.Button();
+            this.buttonStartSimulation = new System.Windows.Forms.Button();
             this.numericUpDownPercentDeath = new System.Windows.Forms.NumericUpDown();
             this.labelPercentDeath = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -63,8 +63,7 @@
             this.numericUpDownModifyAmount2 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDownAlfa = new System.Windows.Forms.NumericUpDown();
             this.buttonClose = new System.Windows.Forms.Button();
-            this.buttonNewPhase = new System.Windows.Forms.Button();
-            this.PlayMelody = new System.Windows.Forms.Button();
+            this.buttonChangePhase = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPercentDeath)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxSteps)).BeginInit();
             this.groupBoxParameters.SuspendLayout();
@@ -89,15 +88,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAlfa)).BeginInit();
             this.SuspendLayout();
             // 
-            // buttonNextStep
+            // buttonStartSimulation
             // 
-            this.buttonNextStep.Location = new System.Drawing.Point(821, 12);
-            this.buttonNextStep.Name = "buttonNextStep";
-            this.buttonNextStep.Size = new System.Drawing.Size(98, 39);
-            this.buttonNextStep.TabIndex = 3;
-            this.buttonNextStep.Text = "Następny krok";
-            this.buttonNextStep.UseVisualStyleBackColor = true;
-            this.buttonNextStep.Click += new System.EventHandler(this.buttonNextStep_Click);
+            this.buttonStartSimulation.Location = new System.Drawing.Point(821, 12);
+            this.buttonStartSimulation.Name = "buttonStartSimulation";
+            this.buttonStartSimulation.Size = new System.Drawing.Size(98, 39);
+            this.buttonStartSimulation.TabIndex = 3;
+            this.buttonStartSimulation.Text = "Rozpocznij symulację";
+            this.buttonStartSimulation.UseVisualStyleBackColor = true;
+            this.buttonStartSimulation.Click += new System.EventHandler(this.buttonStartSimulation_Click);
             // 
             // numericUpDownPercentDeath
             // 
@@ -564,42 +563,31 @@
             this.buttonClose.UseVisualStyleBackColor = true;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
-            // buttonNewPhase
+            // buttonChangePhase
             // 
-            this.buttonNewPhase.Location = new System.Drawing.Point(821, 57);
-            this.buttonNewPhase.Name = "buttonNewPhase";
-            this.buttonNewPhase.Size = new System.Drawing.Size(98, 39);
-            this.buttonNewPhase.TabIndex = 11;
-            this.buttonNewPhase.Text = "Nowa faza";
-            this.buttonNewPhase.UseVisualStyleBackColor = true;
-            this.buttonNewPhase.Click += new System.EventHandler(this.buttonNewPhase_Click);
-            // 
-            // PlayMelody
-            // 
-            this.PlayMelody.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.PlayMelody.Location = new System.Drawing.Point(821, 102);
-            this.PlayMelody.Name = "PlayMelody";
-            this.PlayMelody.Size = new System.Drawing.Size(98, 39);
-            this.PlayMelody.TabIndex = 12;
-            this.PlayMelody.Text = "Play";
-            this.PlayMelody.UseVisualStyleBackColor = true;
-            this.PlayMelody.Click += new System.EventHandler(this.PlayMelody_Click);
+            this.buttonChangePhase.Location = new System.Drawing.Point(821, 57);
+            this.buttonChangePhase.Name = "buttonChangePhase";
+            this.buttonChangePhase.Size = new System.Drawing.Size(98, 39);
+            this.buttonChangePhase.TabIndex = 11;
+            this.buttonChangePhase.Text = "Zmień fazę";
+            this.buttonChangePhase.UseVisualStyleBackColor = true;
+            this.buttonChangePhase.Click += new System.EventHandler(this.buttonChangePhase_Click);
             // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(931, 358);
-            this.Controls.Add(this.PlayMelody);
-            this.Controls.Add(this.buttonNewPhase);
+            this.Controls.Add(this.buttonChangePhase);
             this.Controls.Add(this.buttonClose);
             this.Controls.Add(this.groupBoxParameters);
-            this.Controls.Add(this.buttonNextStep);
+            this.Controls.Add(this.buttonStartSimulation);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.Name = "MainWindow";
             this.Text = "Populo Simulator";
             this.Load += new System.EventHandler(this.MainWindow_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.MainWindow_Paint);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPercentDeath)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxSteps)).EndInit();
             this.groupBoxParameters.ResumeLayout(false);
@@ -630,7 +618,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button buttonNextStep;
+        private System.Windows.Forms.Button buttonStartSimulation;
         private System.Windows.Forms.NumericUpDown numericUpDownPercentDeath;
         private System.Windows.Forms.Label labelPercentDeath;
         private System.Windows.Forms.Label label1;
@@ -665,8 +653,7 @@
         private System.Windows.Forms.NumericUpDown numericUpDownModifyChance1;
         private System.Windows.Forms.Button buttonClose;
         private System.Windows.Forms.GroupBox groupBoxFactorsPhase2;
-        private System.Windows.Forms.Button buttonNewPhase;
-        private System.Windows.Forms.Button PlayMelody;
+        private System.Windows.Forms.Button buttonChangePhase;
     }
 }
 
