@@ -127,8 +127,8 @@ namespace MusicPopulation
             for (int i = 0; i < NumberOfNotes; ++i)
             {
                 Notes[i, 0] += (int)(InfluenceAmount[0] * (influencer.Notes[i % influencer.NumberOfNotes, 0] - Notes[i, 0]));
-                Notes[i, 2] += (int)(InfluenceAmount[1] * (influencer.Notes[i % influencer.NumberOfNotes, 1] - Notes[i, 1]));
-                Notes[i, 3] += (int)(InfluenceAmount[2] * (influencer.Notes[i % influencer.NumberOfNotes, 2] - Notes[i, 2]));
+                Notes[i, 2] += (int)(InfluenceAmount[2] * (influencer.Notes[i % influencer.NumberOfNotes, 2] - Notes[i, 2]));
+                Notes[i, 3] += (int)(InfluenceAmount[3] * (influencer.Notes[i % influencer.NumberOfNotes, 3] - Notes[i, 3]));
             }
         }
         public override int Rank()
