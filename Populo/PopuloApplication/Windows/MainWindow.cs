@@ -135,10 +135,11 @@ namespace PopuloApplication
         {
             _taskSimulation = Task.Factory.StartNew(() => { for (int i = 0; i < _iEvolveDuration; i++) 
                                                                 Simulation.EvolveUsingThreads();
-                                                            //UdpWriter writer = new UdpWriter(_oscIP, _oscPort);
-                                                            //StreamWriter stream = new StreamWriter();
+                                                            UdpWriter writer = new UdpWriter(_oscIP, _oscPort);
+                                                            StreamWriter stream = new StreamWriter();
                                                             
-                                                            //Simulation.SimulationBoard.RankTable
+                                                            // Send RankTable
+                                                            // Simulation.SimulationBoard.RankTable
                                                             });
         }
         private void DoPlay()
@@ -213,54 +214,5 @@ namespace PopuloApplication
             }
         }
         #endregion
-        //private void PlayMelody_Click(object sender, EventArgs e)
-        //{
-        //    int[,] temp = { { 63,2,110}, 
-        //                  { 60,2,100},
-        //                  { 60,2,100},
-        //                  { 61,2,110}, 
-        //                  { 58,2,100},
-        //                  { 58,2,100},
-        //                  { 56,1,100}, 
-        //                  { 60,1,100},
-        //                  { 63,4,120},
-        //                  { 63,2,110}, 
-        //                  { 60,2,100},
-        //                  { 60,2,100},
-        //                  { 61,2,110}, 
-        //                  { 58,2,100},
-        //                  { 58,2,100},
-        //                  { 56,1,100}, 
-        //                  { 60,1,100},
-        //                  { 56,4,120},
-        //                  { 63,2,110}, 
-        //                  { 60,2,100},
-        //                  { 60,2,100},
-        //                  { 61,2,110}, 
-        //                  { 58,2,100},
-        //                  { 58,2,100},
-        //                  { 56,1,100}, 
-        //                  { 60,1,100},
-        //                  { 63,4,120},
-        //                  { 63,2,110}, 
-        //                  { 60,2,100},
-        //                  { 60,2,100},
-        //                  { 61,2,110}, 
-        //                  { 58,2,100},
-        //                  { 58,2,100},
-        //                  { 56,1,100}, 
-        //                  { 60,1,100},
-        //                  { 56,4,120}
-        //                  };
-        //    List<int> arg1 = new List<int>();
-        //    List<int[,]> arg2 = new List<int[,]>();
-
-        //    for (int i = 0; i < 16; i++)
-        //    {
-        //        arg1.Add(36);
-        //        arg2.Add(temp);
-        //    }
-        //    play(arg1.ToArray(), arg2.ToArray());
-        //}
     }
 }
