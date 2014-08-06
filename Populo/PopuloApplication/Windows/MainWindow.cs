@@ -30,24 +30,24 @@ namespace PopuloApplication
             numericUpDownAlfa.Value = (decimal)SimulationParameters.Alfa;
 
             numericUpDownModifyAmount1.Value = Member1.ModifyAmount[0];
-            numericUpDownModifyAmount2.Value = Member1.ModifyAmount[1];
-            numericUpDownModifyAmount3.Value = Member1.ModifyAmount[2];
+            numericUpDownModifyAmount2.Value = Member1.ModifyAmount[2];
+            numericUpDownModifyAmount3.Value = Member1.ModifyAmount[3];
 
             numericUpDownInfluenceAmount1.Value = (decimal)Member1.InfluenceAmount[0];
-            numericUpDownInfluenceAmount2.Value = (decimal)Member1.InfluenceAmount[1];
-            numericUpDownInfluenceAmount3.Value = (decimal)Member1.InfluenceAmount[2];
+            numericUpDownInfluenceAmount2.Value = (decimal)Member1.InfluenceAmount[2];
+            numericUpDownInfluenceAmount3.Value = (decimal)Member1.InfluenceAmount[3];
 
             numericUpDownTransposeChance1.Value = (decimal)Member1.TransposeChance[0];
-            numericUpDownTransposeChance2.Value = (decimal)Member1.TransposeChance[1];
-            numericUpDownTransposeChance3.Value = (decimal)Member1.TransposeChance[2];
+            numericUpDownTransposeChance2.Value = (decimal)Member1.TransposeChance[2];
+            numericUpDownTransposeChance3.Value = (decimal)Member1.TransposeChance[3];
 
             numericUpDownExchangeChance1.Value = (decimal)Member1.ExchangeChance[0];
-            numericUpDownExchangeChance2.Value = (decimal)Member1.ExchangeChance[1];
-            numericUpDownExchangeChance3.Value = (decimal)Member1.ExchangeChance[2];
+            numericUpDownExchangeChance2.Value = (decimal)Member1.ExchangeChance[2];
+            numericUpDownExchangeChance3.Value = (decimal)Member1.ExchangeChance[3];
 
             numericUpDownModifyChance1.Value = (decimal)Member1.ModifyChance[0];
-            numericUpDownModifyChance2.Value = (decimal)Member1.ModifyChance[1];
-            numericUpDownModifyChance3.Value = (decimal)Member1.ModifyChance[2];
+            numericUpDownModifyChance2.Value = (decimal)Member1.ModifyChance[2];
+            numericUpDownModifyChance3.Value = (decimal)Member1.ModifyChance[3];
 
             numericUpDownGrowthChance.Value = (decimal)Member1.GrowthChance;
             numericUpDownShrinkChance.Value = (decimal)Member1.ShrinkChance;
@@ -60,24 +60,24 @@ namespace PopuloApplication
             SimulationParameters.Alfa = (double)numericUpDownAlfa.Value;
 
             Member1.ModifyAmount[0] = (int)numericUpDownModifyAmount1.Value;
-            Member1.ModifyAmount[1] = (int)numericUpDownModifyAmount2.Value;
-            Member1.ModifyAmount[2] = (int)numericUpDownModifyAmount3.Value;
+            Member1.ModifyAmount[2] = (int)numericUpDownModifyAmount2.Value;
+            Member1.ModifyAmount[3] = (int)numericUpDownModifyAmount3.Value;
 
             Member1.InfluenceAmount[0] = (double)numericUpDownInfluenceAmount1.Value;
-            Member1.InfluenceAmount[1] = (double)numericUpDownInfluenceAmount2.Value;
-            Member1.InfluenceAmount[2] = (double)numericUpDownInfluenceAmount3.Value;
+            Member1.InfluenceAmount[2] = (double)numericUpDownInfluenceAmount2.Value;
+            Member1.InfluenceAmount[3] = (double)numericUpDownInfluenceAmount3.Value;
 
             Member1.TransposeChance[0] = (double)numericUpDownTransposeChance1.Value;
-            Member1.TransposeChance[1] = (double)numericUpDownTransposeChance2.Value;
-            Member1.TransposeChance[2] = (double)numericUpDownTransposeChance3.Value;
+            Member1.TransposeChance[2] = (double)numericUpDownTransposeChance2.Value;
+            Member1.TransposeChance[3] = (double)numericUpDownTransposeChance3.Value;
 
             Member1.ExchangeChance[0] = (double)numericUpDownExchangeChance1.Value;
-            Member1.ExchangeChance[1] = (double)numericUpDownExchangeChance2.Value;
-            Member1.ExchangeChance[2] = (double)numericUpDownExchangeChance3.Value;
+            Member1.ExchangeChance[2] = (double)numericUpDownExchangeChance2.Value;
+            Member1.ExchangeChance[3] = (double)numericUpDownExchangeChance3.Value;
 
             Member1.ModifyChance[0] = (double)numericUpDownModifyChance1.Value;
-            Member1.ModifyChance[1] = (double)numericUpDownModifyChance2.Value;
-            Member1.ModifyChance[2] = (double)numericUpDownModifyChance3.Value;
+            Member1.ModifyChance[2] = (double)numericUpDownModifyChance2.Value;
+            Member1.ModifyChance[3] = (double)numericUpDownModifyChance3.Value;
 
             Member1.GrowthChance = (double)numericUpDownGrowthChance.Value;
             Member1.ShrinkChance = (double)numericUpDownShrinkChance.Value;
@@ -125,6 +125,17 @@ namespace PopuloApplication
             
             sequencer.Start();
         }
+        private void SendRankTable()
+        {
+            UdpWriter writer = new UdpWriter(_oscIP, _oscPort);
+            MemoryStream memStream = new MemoryStream();
+
+            string strToWrite = Simulation.SimulationBoard.RankTableMsg;
+            byte[] bytes = new byte[strToWrite.Length * sizeof(char)];
+
+            System.Buffer.BlockCopy(strToWrite.ToCharArray(), 0, bytes, 0, bytes.Length);
+            memStream.Write(bytes, 0, bytes.Length);
+        }
         private int _oscPort;
         private string _oscIP;
 
@@ -135,11 +146,7 @@ namespace PopuloApplication
         {
             _taskSimulation = Task.Factory.StartNew(() => { for (int i = 0; i < _iEvolveDuration; i++) 
                                                                 Simulation.EvolveUsingThreads();
-                                                            //UdpWriter writer = new UdpWriter(_oscIP, _oscPort);
-                                                            //StreamWriter stream = new StreamWriter();
-                                                            
-                                                            // Send RankTable
-                                                            // Simulation.SimulationBoard.RankTable
+                                                                // SendRankTable();
                                                             });
         }
         private void DoPlay()
