@@ -67,20 +67,22 @@ namespace MusicPopulation
                 return _indexOfPhase;
             }
         }
-        //public string RankTableMsg
-        //{
-        //    get
-        //    {
-        //        StringBuilder result = new StringBuilder();
-        //        for (int i = 0; i < BoardWidth; i++)
-        //        {
-        //            for (int j = 0; j < BoardHeight; j++)
-        //            {
-        //                result.Append(string.Format("{0} ", _rankTable[
-        //            }
-        //        }
-        //    }
-        //}
+        public string RankTableMsg
+        {
+            get
+            {
+                StringBuilder result = new StringBuilder();
+                for (int i = 0; i < BoardWidth; i++)
+                {
+                    for (int j = 0; j < BoardHeight; j++)
+                    {
+                        result.Append(string.Format("{0} ", _rankTable[i, j]));
+                    }
+                    result.Append("\n");
+                }
+                return result.ToString();
+            }
+        }
         public int PopulationGrowth
         {
             get
