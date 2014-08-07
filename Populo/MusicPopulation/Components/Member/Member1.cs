@@ -78,7 +78,7 @@ namespace MusicPopulation
             _numberOfNotes++;
         }
 
-        protected static readonly int[] limits = new int[] { 20,0, 60, 128 };
+        protected static readonly int[] limits = new int[] { 20,0, 24, 50 };
 
         public Member1(Random randContext)
             : base(randContext)
@@ -166,7 +166,7 @@ namespace MusicPopulation
                 }
                 prevDifference = difference;
                 difference = Notes[i-1, 3] - Notes[i, 3];
-                if (difference > 40)
+                if (difference > 20)
                     rank += 40;
                 if (difference * prevDifference < 0)
                 {

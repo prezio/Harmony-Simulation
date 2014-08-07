@@ -108,14 +108,14 @@ namespace PopuloApplication
                 for (int index = 0; index < boardState[channel].Item1; index++)
                 {
                     //channel = (((int)notes[index,0]) % 100) / 25;
-                    pitch = boardState[channel].Item2[index, 0];
+                    pitch = boardState[channel].Item2[index, 0]+40;
                     builder.Command = ChannelCommand.NoteOn;
                     builder.MidiChannel = channel;
                     builder.Data1 = pitch;
-                    builder.Data2 = boardState[channel].Item2[index, 2];
+                    builder.Data2 = boardState[channel].Item2[index, 3];
                     builder.Build();
                     track.Insert(i, builder.Result);
-                    i += boardState[channel].Item2[index, 1] * 5;
+                    i += boardState[channel].Item2[index, 2] * 5;
                     builder.Data2 = 0;
                     builder.Build();
                     track.Insert(i, builder.Result);
@@ -135,8 +135,8 @@ namespace PopuloApplication
         {
             _taskSimulation = Task.Factory.StartNew(() => { for (int i = 0; i < _iEvolveDuration; i++) 
                                                                 Simulation.EvolveUsingThreads();
-                                                            UdpWriter writer = new UdpWriter(_oscIP, _oscPort);
-                                                            StreamWriter stream = new StreamWriter();
+                                                            //UdpWriter writer = new UdpWriter(_oscIP, _oscPort);
+                                                            //StreamWriter stream = new StreamWriter();
                                                             
                                                             // Send RankTable
                                                             // Simulation.SimulationBoard.RankTable
