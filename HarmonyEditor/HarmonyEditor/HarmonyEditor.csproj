@@ -36,10 +36,10 @@
       <HintPath>..\..\packages\Newtonsoft.Json.6.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Sanford.Multimedia">
-      <HintPath>..\Sanford.Multimedia.dll</HintPath>
+      <HintPath>..\..\packages\Sanford\Sanford.Multimedia.dll</HintPath>
     </Reference>
     <Reference Include="Sanford.Multimedia.Midi">
-      <HintPath>..\Sanford.Multimedia.Midi.dll</HintPath>
+      <HintPath>..\..\packages\Sanford\Sanford.Multimedia.Midi.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -56,6 +56,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppConfiguration.cs" />
+    <Compile Include="Controls\DraggableComponent.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\DraggableComponent.Designer.cs">
+      <DependentUpon>DraggableComponent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\EndPoint.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\Spectrum.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Serialization\ChordData.cs" />
     <Compile Include="Serialization\Serialization.cs" />
     <Compile Include="Windows\ChordEditor.cs">
@@ -83,12 +95,6 @@
     </Compile>
     <Compile Include="Windows\SimpleChordEditor.Designer.cs">
       <DependentUpon>SimpleChordEditor.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Spectrum.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Controls\Spectrum.Designer.cs">
-      <DependentUpon>Spectrum.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Windows\ChordEditor.resx">
       <DependentUpon>ChordEditor.cs</DependentUpon>

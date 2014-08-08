@@ -23,12 +23,23 @@ namespace HarmonyEditor
         private int _selectedIndex = -1;
         private void RefreshData()
         {
-            foreach (Spectrum sp in flowLayoutPanel.Controls)
+            foreach (DraggableComponent dc in flowLayoutPanel.Controls)
             {
-                sp.FreqNotes = radioButtonFrequencies.Checked;
-                sp.Width = (int)numericUpDownWidth.Value;
-                sp.Height = (int)numericUpDownHeight.Value;
-                sp.Invalidate();
+                if (dc is Spectrum)
+                {
+                    Spectrum sp = dc as Spectrum;
+                    sp.FreqNotes = radioButtonFrequencies.Checked;
+                    sp.Width = (int)numericUpDownWidth.Value;
+                    sp.Height = (int)numericUpDownHeight.Value;
+                    sp.Invalidate();
+                }
+                else if (dc is EndPoint)
+                {
+                    EndPoint ep = dc as EndPoint;
+                    ep.Width = (int)((int)numericUpDownWidth.Value * 0.5);
+                    ep.Height = (int)numericUpDownHeight.Value;
+                    ep.Invalidate();
+                }
             }
             buttonRemoveAccord.Enabled = _selectedIndex != -1;
             buttonEditAccord.Enabled = _selectedIndex != -1;
@@ -101,34 +112,45 @@ namespace HarmonyEditor
         private void AddSpectrum(Spectrum sp)
         {
             sp.Rotated = true;
-            sp.MouseClick += spectrum_MouseClick;
-            sp.DoubleClick += spectrum_DoubleClick;
+            sp.MouseClick += component_MouseClick;
+            sp.DoubleClick += component_DoubleClick;
 
             flowLayoutPanel.Controls.Add(sp);
         }
-        private void EditCurrentChord()
+        private void AddEndPoint(EndPoint ep)
         {
-            Spectrum sp = (Spectrum)flowLayoutPanel.Controls[_selectedIndex];
-            if (sp.CurChord is PeriodicChord)
-            {
-                PeriodicChord pc = (PeriodicChord)sp.CurChord;
-                ChordEditor window = new ChordEditor(pc);
-                window.ShowDialog();
+            ep.MouseClick += component_MouseClick;
+            ep.DoubleClick += component_DoubleClick;
 
-                if (window.OkClicked)
+            flowLayoutPanel.Controls.Add(ep);
+        }
+        private void EditCurrentItem()
+        {
+            DraggableComponent dc = flowLayoutPanel.Controls[_selectedIndex] as DraggableComponent;
+            if (dc is Spectrum)
+            {
+                Spectrum sp = (Spectrum)flowLayoutPanel.Controls[_selectedIndex];
+                if (sp.CurChord is PeriodicChord)
                 {
-                    sp.CurChord = window.Result;
+                    PeriodicChord pc = (PeriodicChord)sp.CurChord;
+                    ChordEditor window = new ChordEditor(pc);
+                    window.ShowDialog();
+
+                    if (window.OkClicked)
+                    {
+                        sp.CurChord = window.Result;
+                    }
                 }
-            }
-            else if (sp.CurChord is SimpleChord)
-            {
-                SimpleChord sc = (SimpleChord)sp.CurChord;
-                SimpleChordEditor window = new SimpleChordEditor(sc);
-                window.ShowDialog();
-
-                if (window.OkClicked)
+                else if (sp.CurChord is SimpleChord)
                 {
-                    sp.CurChord = window.Result;
+                    SimpleChord sc = (SimpleChord)sp.CurChord;
+                    SimpleChordEditor window = new SimpleChordEditor(sc);
+                    window.ShowDialog();
+
+                    if (window.OkClicked)
+                    {
+                        sp.CurChord = window.Result;
+                    }
                 }
             }
             RefreshData();
@@ -162,43 +184,44 @@ namespace HarmonyEditor
             {
                 return;
             }
-            Spectrum sp = (Spectrum)flowLayoutPanel.Controls[_selectedIndex];
-            sp.Selected = false;
+            DraggableComponent dc = flowLayoutPanel.Controls[_selectedIndex] as DraggableComponent;
+            dc.Selected = false;
             _selectedIndex = -1;
             RefreshData();
         }
-        private void spectrum_DoubleClick(object sender, EventArgs e)
+        private void component_DoubleClick(object sender, EventArgs e)
         {
-            Spectrum sp = (Spectrum)sender;
+            DraggableComponent dc = sender as DraggableComponent;
             if (_selectedIndex == -1)
             {
-                sp.Selected = true;
-                _selectedIndex = flowLayoutPanel.Controls.IndexOf(sp);
+                dc.Selected = true;
+                _selectedIndex = flowLayoutPanel.Controls.IndexOf(dc);
             }
             else
             {
-                Spectrum tmp = (Spectrum)flowLayoutPanel.Controls[_selectedIndex];
+                DraggableComponent tmp = flowLayoutPanel.Controls[_selectedIndex] as DraggableComponent;
                 tmp.Selected = false;
-                _selectedIndex = flowLayoutPanel.Controls.IndexOf(sp);
-                sp.Selected = true;
+                _selectedIndex = flowLayoutPanel.Controls.IndexOf(dc);
+                dc.Selected = true;
             }
+
             RefreshData();
-            EditCurrentChord();
+            EditCurrentItem();
         }
-        private void spectrum_MouseClick(object sender, MouseEventArgs e)
+        private void component_MouseClick(object sender, MouseEventArgs e)
         {
-            Spectrum sp = (Spectrum) sender;
+            DraggableComponent dc = sender as DraggableComponent;
             if (_selectedIndex == -1)
             {
-                sp.Selected = true;
-                _selectedIndex = flowLayoutPanel.Controls.IndexOf(sp);
+                dc.Selected = true;
+                _selectedIndex = flowLayoutPanel.Controls.IndexOf(dc);
             }
             else
             {
-                Spectrum tmp = (Spectrum)flowLayoutPanel.Controls[_selectedIndex];
+                DraggableComponent tmp = flowLayoutPanel.Controls[_selectedIndex] as DraggableComponent;
                 tmp.Selected = false;
-                _selectedIndex = flowLayoutPanel.Controls.IndexOf(sp);
-                sp.Selected = true;
+                _selectedIndex = flowLayoutPanel.Controls.IndexOf(dc);
+                dc.Selected = true;
             }
             RefreshData();
         }
@@ -262,7 +285,7 @@ namespace HarmonyEditor
         }
         private void buttonEditAccord_Click(object sender, EventArgs e)
         {
-            EditCurrentChord();
+            EditCurrentItem();
         }
         private void flowLayoutPanel_DragEnter(object sender, DragEventArgs e)
         {
@@ -270,17 +293,15 @@ namespace HarmonyEditor
         }
         private void flowLayoutPanel_DragDrop(object sender, DragEventArgs e)
         {
-            Spectrum data = (Spectrum)e.Data.GetData(typeof(Spectrum));
+            DraggableComponent data = e.Data.GetData(typeof(DraggableComponent)) as DraggableComponent;
             Point p = flowLayoutPanel.PointToClient(new Point(e.X, e.Y));
             var item = flowLayoutPanel.GetChildAtPoint(p);
             int index = flowLayoutPanel.Controls.GetChildIndex(item, false);
-
             if (_selectedIndex != -1 && !data.Selected)
             {
-                Spectrum tmp = (Spectrum)flowLayoutPanel.Controls[_selectedIndex];
+                DraggableComponent tmp = flowLayoutPanel.Controls[_selectedIndex] as DraggableComponent;
                 tmp.Selected = false;
             }
-
             flowLayoutPanel.Controls.SetChildIndex(data, index);
             _selectedIndex = index;
             data.Selected = true;
@@ -292,6 +313,7 @@ namespace HarmonyEditor
         }
         private void otwórzToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // do zmiany
             OpenFileDialog wnd = new OpenFileDialog();
             wnd.RestoreDirectory = true;
 
@@ -309,7 +331,7 @@ namespace HarmonyEditor
                 Spectrum sp = new Spectrum();
                 sp.CurChord = ch;
                 sp.Rotated = true;
-                sp.MouseClick += spectrum_MouseClick;
+                //sp.MouseClick += spectrum_MouseClick;
                 flowLayoutPanel.Controls.Add(sp);
             }
 
@@ -327,8 +349,6 @@ namespace HarmonyEditor
             if (fileName != null)
                 ToListOfChord().WriteToPitch(fileName);
         }
-        #endregion
-
         private void MainWindow_Load(object sender, EventArgs e)
         {
             int instrument = 0;
@@ -437,11 +457,20 @@ namespace HarmonyEditor
             Program.outDevice.Send(builder.Result);
 
         }
-
         private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
         {
             Program.outDevice.Close();
         }
+        private void buttonAddEndPoint_Click(object sender, EventArgs e)
+        {
+            int width = (int)((int)numericUpDownWidth.Value * 0.5);
+            int height = (int)numericUpDownHeight.Value;
 
+            EndPoint ep = new EndPoint(0, 0, width, height);
+            AddEndPoint(ep);
+
+            RefreshData();
+        }
+        #endregion
     }
 }

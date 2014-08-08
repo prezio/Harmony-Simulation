@@ -45,6 +45,7 @@
             this.zapiszToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eksportujToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zamknijToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.buttonAddEndPoint = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownHeight)).BeginInit();
             this.menuStrip.SuspendLayout();
@@ -251,11 +252,22 @@
             this.zamknijToolStripMenuItem.Text = "Zamknij";
             this.zamknijToolStripMenuItem.Click += new System.EventHandler(this.zamknijToolStripMenuItem_Click);
             // 
+            // buttonAddEndPoint
+            // 
+            this.buttonAddEndPoint.Location = new System.Drawing.Point(275, 27);
+            this.buttonAddEndPoint.Name = "buttonAddEndPoint";
+            this.buttonAddEndPoint.Size = new System.Drawing.Size(134, 38);
+            this.buttonAddEndPoint.TabIndex = 12;
+            this.buttonAddEndPoint.Text = "Dodaj koniec odcinka";
+            this.buttonAddEndPoint.UseVisualStyleBackColor = true;
+            this.buttonAddEndPoint.Click += new System.EventHandler(this.buttonAddEndPoint_Click);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(973, 766);
+            this.Controls.Add(this.buttonAddEndPoint);
             this.Controls.Add(this.buttonEditAccord);
             this.Controls.Add(this.buttonRemoveAccord);
             this.Controls.Add(this.numericUpDownWidth);
@@ -301,6 +313,7 @@
         private System.Windows.Forms.ToolStripMenuItem zapiszToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem eksportujToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem zamknijToolStripMenuItem;
+        private System.Windows.Forms.Button buttonAddEndPoint;
 
     }
 }
