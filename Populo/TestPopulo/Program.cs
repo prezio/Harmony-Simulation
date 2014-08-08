@@ -94,9 +94,11 @@ namespace populo
         {
             int tries = 1000;
 
+            Simulation.SimulationBoard.ChangePhase();
+
             for (int i = 0; i < tries; i++)
             {
-                Simulation.EvolveUsingThreads();
+                Simulation.EvolveWithoutThreads();
                 Console.WriteLine(i);
             }
 

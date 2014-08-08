@@ -10,12 +10,13 @@ namespace MusicPopulation
     public partial class Board
     {
         private int _indexOfPhase; // index of current phase
-        private int _numberOfPhases = 1;
+        private int _numberOfPhases = 2;
         private void SetPhase(int indOfPh)
         {
             _indexOfPhase = indOfPh;
             Random randContext = RandomGenerator.GenerateRandomGen();
             int[] population = RandomGenerator.RandomPermutation(BoardHeight * BoardWidth, InitPopulationGrowth, randContext);
+            _board = new Member[BoardWidth, BoardHeight];
 
             foreach (int k in population)
             {
@@ -25,6 +26,9 @@ namespace MusicPopulation
                 {
                     case 0:
                         _board[i, j] = new Member1(randContext);
+                        break;
+                    case 1:
+                        _board[i, j] = new Member2(randContext);
                         break;
                 }
             }
@@ -38,7 +42,6 @@ namespace MusicPopulation
         public Board()
         {
             Debug.WriteLine("Create Board");
-            _board = new Member[BoardWidth, BoardHeight];
             _rankTable = new int[BoardWidth, BoardHeight];
             SetPhase(0);
         }
@@ -46,7 +49,7 @@ namespace MusicPopulation
         {
             get
             {
-                if (i < 0 || j<0 || i>=BoardWidth || j >= BoardHeight)
+                if (i < 0 || j < 0 || i >= BoardWidth || j >= BoardHeight)
                     return null;
                 return _board[i, j];
             }
@@ -154,6 +157,9 @@ namespace MusicPopulation
             {
                 case 0:
                     this[dX, dY] = new Member1(this[sX, sY]);
+                    break;
+                case 1:
+                    this[dX, dY] = new Member2(this[sX, sY]);
                     break;
             }
         }

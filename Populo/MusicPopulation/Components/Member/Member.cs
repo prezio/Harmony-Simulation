@@ -16,7 +16,9 @@ namespace MusicPopulation
         public Tuple<int, int[,]> CloneParameters()
         {
             int[,] notes = new int[_maxNotes + 1, 4];
-            Array.Copy(Notes, notes, (_maxNotes + 1) * 4);
+            int[,] notesToCopy = Notes;
+
+            Array.Copy(notesToCopy, notes, (_maxNotes + 1) * 4);
 
             return new Tuple<int, int[,]>(NumberOfNotes, notes);
         }

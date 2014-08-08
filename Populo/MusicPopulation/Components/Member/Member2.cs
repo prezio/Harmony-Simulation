@@ -20,6 +20,7 @@ namespace MusicPopulation
         const int maxLength = 25;
         const int minLength = 3;
         const int maxPause = 101;
+
         public override int NumberOfNotes
         {
             get { return _numberOfNotes+1; }
@@ -36,7 +37,7 @@ namespace MusicPopulation
                 notes[0, 2] = _initialRhythm;
                 notes[0, 3] = _initialDynamics;
                 
-                for(int i=0; (i<=_peak)&&(i<_numberOfNotes); i++)
+                for(int i=1; (i<=_peak)&&(i<_numberOfNotes); i++)
                 {
                     notes[i, 0] = _notes[i, 0];
                     notes[i, 1] = (notes[i - 1, 1] + _notes[0, 1]) % numberOfChords;
@@ -119,7 +120,7 @@ namespace MusicPopulation
                     rank -= 30;
                 }
             }
-            for (int i = _peak; i < _numberOfNotes; i++)
+            for (int i = Math.Max(_peak, 0); i < _numberOfNotes; i++)
             {
                 rhythm += _notes[i, 2] * _notes[i, 3];
                 if (rhythm < 1)
@@ -326,13 +327,20 @@ namespace MusicPopulation
                 _notes[randContext.Next(_numberOfNotes), 5] = -1;
             }
         }
+        public Member2(Member original)
+            : base(original)
+        {
+        }
         public override void Clone(Member member)
         {
             Member2 m = (member as Member2);
             _initialChord = m._initialChord;
             _initialDynamics = m._initialDynamics;
             _initialRhythm = m._initialRhythm;
+
+            _notes = new int[_maxNotes, 6];
             Array.Copy(m._notes, _notes, 6 * _maxNotes);
+
             _numberOfNotes = m._numberOfNotes;
             _pauseDuration = m._pauseDuration;
             _peak = m._peak;

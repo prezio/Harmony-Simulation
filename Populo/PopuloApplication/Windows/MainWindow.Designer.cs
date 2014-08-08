@@ -582,6 +582,7 @@
             this.buttonStop.TabIndex = 12;
             this.buttonStop.Text = "Przerwij";
             this.buttonStop.UseVisualStyleBackColor = true;
+            this.buttonStop.Click += new System.EventHandler(this.buttonStop_Click);
             // 
             // MainWindow
             // 

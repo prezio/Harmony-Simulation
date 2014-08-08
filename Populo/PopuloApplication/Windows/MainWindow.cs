@@ -84,6 +84,7 @@ namespace PopuloApplication
         }
         private void ChangePhase()
         {
+            StopPlaying();
             Simulation.SimulationBoard.ChangePhase();
             groupBoxFactorsPhase1.Enabled = false;
             groupBoxFactorsPhase2.Enabled = false;
@@ -92,7 +93,14 @@ namespace PopuloApplication
                 case 0:
                     groupBoxFactorsPhase1.Enabled = true;
                     break;
+                case 1:
+                    groupBoxFactorsPhase2.Enabled = true;
+                    break;
             }
+        }
+        private void StopPlaying()
+        {
+            sequencer.Stop();
         }
         private void PlaySimulation()
         {
@@ -146,15 +154,15 @@ namespace PopuloApplication
         {
             _taskSimulation = Task.Factory.StartNew(() => { for (int i = 0; i < _iEvolveDuration; i++) 
                                                                 Simulation.EvolveUsingThreads();
-<<<<<<< HEAD
+//<<<<<<< HEAD
                                                             //UdpWriter writer = new UdpWriter(_oscIP, _oscPort);
                                                             //StreamWriter stream = new StreamWriter();
                                                             
                                                             // Send RankTable
                                                             // Simulation.SimulationBoard.RankTable
-=======
+//=======
                                                                 // SendRankTable();
->>>>>>> origin/master
+//>>>>>>> origin/master
                                                             });
         }
         private void DoPlay()
@@ -227,6 +235,10 @@ namespace PopuloApplication
                 builder.Build();
                 outDevice.Send(builder.Result);
             }
+        }
+        private void buttonStop_Click(object sender, EventArgs e)
+        {
+            sequencer.Stop();
         }
         #endregion
     }
