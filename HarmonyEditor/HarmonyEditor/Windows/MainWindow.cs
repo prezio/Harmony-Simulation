@@ -41,8 +41,27 @@ namespace HarmonyEditor
                     ep.Invalidate();
                 }
             }
-            buttonRemoveAccord.Enabled = _selectedIndex != -1;
-            buttonEditAccord.Enabled = _selectedIndex != -1;
+            if (_selectedIndex != -1)
+            {
+                buttonRemoveAccord.Enabled = true;
+
+                DraggableComponent dc = flowLayoutPanel.Controls[_selectedIndex] as DraggableComponent;
+                if (dc is EndPoint)
+                {
+                    buttonRemoveAccord.Text = "Usuń punkt...";
+                    buttonEditAccord.Enabled = false;
+                }
+                else if (dc is Spectrum)
+                {
+                    buttonRemoveAccord.Text = "Usuń akord...";
+                    buttonEditAccord.Enabled = true;
+                }
+            }
+            else
+            {
+                buttonRemoveAccord.Enabled = false;
+                buttonEditAccord.Enabled = false;
+            }
         }
         private void ResetData()
         {
