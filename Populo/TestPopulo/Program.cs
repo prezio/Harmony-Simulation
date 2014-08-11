@@ -24,6 +24,9 @@ namespace populo
 
             string fileName = "symulacja" + count.ToString() + ".txt";
             File.WriteAllText(fileName, text.ToString());
+
+            fileName = "rankingTable.csv";
+            File.WriteAllText(fileName, Simulation.SimulationBoard.RankTableMsg);
         }
         //private static void automationTest()
         //{
@@ -92,13 +95,13 @@ namespace populo
         //}
         private static void NormalTest()
         {
-            int tries = 1000;
+            int tries = 100;
 
-            Simulation.SimulationBoard.ChangePhase();
+            //Simulation.SimulationBoard.ChangePhase();
 
             for (int i = 0; i < tries; i++)
             {
-                Simulation.EvolveWithoutThreads();
+                Simulation.EvolveUsingThreads();
                 Console.WriteLine(i);
             }
 

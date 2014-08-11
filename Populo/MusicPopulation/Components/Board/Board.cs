@@ -79,7 +79,7 @@ namespace MusicPopulation
                 {
                     for (int j = 0; j < BoardHeight; j++)
                     {
-                        result.Append(string.Format("{0} ", _rankTable[i, j]));
+                        result.Append(string.Format("{0};", _rankTable[i, j]));
                     }
                     result.Append("\n");
                 }

@@ -50,6 +50,10 @@
             this.period2 = new HarmonyEditor.PeriodEditor();
             this.period1 = new HarmonyEditor.PeriodEditor();
             this.Arpeggio = new System.Windows.Forms.Button();
+            this.textBoxLeft = new System.Windows.Forms.TextBox();
+            this.textBoxRight = new System.Windows.Forms.TextBox();
+            this.labelLeft = new System.Windows.Forms.Label();
+            this.labelRight = new System.Windows.Forms.Label();
             this.groupBoxSpectrum.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -270,11 +274,51 @@
             this.Arpeggio.UseVisualStyleBackColor = true;
             this.Arpeggio.Click += new System.EventHandler(this.Arpeggio_Click);
             // 
+            // textBoxLeft
+            // 
+            this.textBoxLeft.Location = new System.Drawing.Point(126, 124);
+            this.textBoxLeft.Name = "textBoxLeft";
+            this.textBoxLeft.Size = new System.Drawing.Size(100, 20);
+            this.textBoxLeft.TabIndex = 22;
+            this.textBoxLeft.Text = "0";
+            this.textBoxLeft.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // textBoxRight
+            // 
+            this.textBoxRight.Location = new System.Drawing.Point(126, 163);
+            this.textBoxRight.Name = "textBoxRight";
+            this.textBoxRight.Size = new System.Drawing.Size(100, 20);
+            this.textBoxRight.TabIndex = 23;
+            this.textBoxRight.Text = "0";
+            this.textBoxRight.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // labelLeft
+            // 
+            this.labelLeft.AutoSize = true;
+            this.labelLeft.Location = new System.Drawing.Point(36, 127);
+            this.labelLeft.Name = "labelLeft";
+            this.labelLeft.Size = new System.Drawing.Size(35, 13);
+            this.labelLeft.TabIndex = 24;
+            this.labelLeft.Text = "Lewy:";
+            // 
+            // labelRight
+            // 
+            this.labelRight.AutoSize = true;
+            this.labelRight.Location = new System.Drawing.Point(36, 166);
+            this.labelRight.Name = "labelRight";
+            this.labelRight.Size = new System.Drawing.Size(39, 13);
+            this.labelRight.TabIndex = 25;
+            this.labelRight.Text = "Prawy:";
+            // 
             // ChordEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(964, 582);
+            this.Controls.Add(this.labelRight);
+            this.Controls.Add(this.labelLeft);
+            this.Controls.Add(this.textBoxRight);
+            this.Controls.Add(this.textBoxLeft);
             this.Controls.Add(this.Arpeggio);
             this.Controls.Add(this.Stop);
             this.Controls.Add(this.buttonPlay);
@@ -329,5 +373,9 @@
         private System.Windows.Forms.Button buttonPlay;
         private System.Windows.Forms.Button Stop;
         private System.Windows.Forms.Button Arpeggio;
+        private System.Windows.Forms.TextBox textBoxLeft;
+        private System.Windows.Forms.TextBox textBoxRight;
+        private System.Windows.Forms.Label labelLeft;
+        private System.Windows.Forms.Label labelRight;
     }
 }

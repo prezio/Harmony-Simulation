@@ -21,6 +21,7 @@ namespace HarmonyEditor
             RightPoint = right;
             Width = width;
             Height = height;
+            AllowDrag = true;
         }
 
         protected override void OnPaint(PaintEventArgs pe)

@@ -43,7 +43,7 @@ namespace HarmonyEditor
             period5.Clear();
             period6.Clear();
         }
-        private void CountSpectrum()
+        private bool CountSpectrum()
         {
             PeriodicChord chord = null;
 
@@ -74,27 +74,40 @@ namespace HarmonyEditor
             if (period6.Valid)
                 periods.Add(period6.Value);
 
-            chord.Periods = periods.ToArray();
             uint temp = 0;
             uint.TryParse(textBoxBaseSound.Text, out temp);
             chord.BaseNote = temp;
 
             try
             {
+                int left, right;
+                if (int.TryParse(textBoxLeft.Text, out left) == false)
+                    throw new Exception();
+                if (int.TryParse(textBoxRight.Text, out right) == false)
+                    throw new Exception();
+
+                chord.Left = left;
+                chord.Right = right;
+                chord.Periods = periods.ToArray();
+
                 spectrumFrequencies.CurChord = chord;
                 spectrumNotes.CurChord = chord;
                 _chord = chord;
                 spectrumFrequencies.Invalidate();
                 spectrumNotes.Invalidate();
             }
-            catch (SoundOutOfRangeException)
+            catch (Exception)
             {
-                MessageBox.Show("Podane dźwięki nie mieszczą się w zakresie obsługiwanym przez program.");
+                return false;
             }
+            return true;
        } 
         private void UploadChord(PeriodicChord chord)
         {
             textBoxBaseSound.Text = chord.BaseNote.ToString();
+            textBoxLeft.Text = chord.Left.ToString();
+            textBoxRight.Text = chord.Right.ToString();
+
             if (chord.Periods.Length >= 1)
             {
                 Period p = chord.Periods[0];
@@ -125,6 +138,39 @@ namespace HarmonyEditor
                 Period p = chord.Periods[5];
                 period6.Value = p;
             }
+        }
+        private void StopSounds()
+        {
+            Program.sequencer.Stop();
+            ChannelMessageBuilder builder = new ChannelMessageBuilder();
+            builder.Command = ChannelCommand.Controller;
+            builder.MidiChannel = 0;
+            builder.Data1 = 120;
+            builder.Data2 = 0;
+            builder.Build();
+
+            Program.outDevice.Send(builder.Result);
+            builder.Command = ChannelCommand.Controller;
+            builder.MidiChannel = 1;
+            builder.Data1 = 120;
+            builder.Data2 = 0;
+            builder.Build();
+
+            Program.outDevice.Send(builder.Result);
+            builder.Command = ChannelCommand.Controller;
+            builder.MidiChannel = 2;
+            builder.Data1 = 120;
+            builder.Data2 = 0;
+            builder.Build();
+
+            Program.outDevice.Send(builder.Result);
+            builder.Command = ChannelCommand.Controller;
+            builder.MidiChannel = 3;
+            builder.Data1 = 120;
+            builder.Data2 = 0;
+            builder.Build();
+
+            Program.outDevice.Send(builder.Result);
         }
         private PeriodicChord _chord;
 
@@ -217,7 +263,11 @@ namespace HarmonyEditor
         }
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            CountSpectrum();
+            if (CountSpectrum() == false)
+            {
+                MessageBox.Show("Nie można dodać akordu");
+                return;
+            }
             _okClicked = true;
             Close();
         }
@@ -239,73 +289,28 @@ namespace HarmonyEditor
             }
 
         }
-        #endregion
-
-        private void Stop_Click(object sender, EventArgs e)
-        {
-            StopSounds();
-        }
-        private void StopSounds()
-        {
-            Program.sequencer.Stop();
-            ChannelMessageBuilder builder = new ChannelMessageBuilder();
-            builder.Command = ChannelCommand.Controller;
-            builder.MidiChannel = 0;
-            builder.Data1 = 120;
-            builder.Data2 = 0;
-            builder.Build();
-
-            Program.outDevice.Send(builder.Result);
-            builder.Command = ChannelCommand.Controller;
-            builder.MidiChannel = 1;
-            builder.Data1 = 120;
-            builder.Data2 = 0;
-            builder.Build();
-
-            Program.outDevice.Send(builder.Result);
-            builder.Command = ChannelCommand.Controller;
-            builder.MidiChannel = 2;
-            builder.Data1 = 120;
-            builder.Data2 = 0;
-            builder.Build();
-
-            Program.outDevice.Send(builder.Result);
-            builder.Command = ChannelCommand.Controller;
-            builder.MidiChannel = 3;
-            builder.Data1 = 120;
-            builder.Data2 = 0;
-            builder.Build();
-
-            Program.outDevice.Send(builder.Result);
-        }
-
-        private void ChordEditor_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            StopSounds();
-        }
-
         private void Arpeggio_Click(object sender, EventArgs e)
         {
             int channel = 0;
             int pitch = 0;
             CountSpectrum();
             StopSounds();
-            Program.sequencer.Sequence= new Sequence();
+            Program.sequencer.Sequence = new Sequence();
             Track track = new Track();
             int i = 0;
             ChannelMessageBuilder builder = new ChannelMessageBuilder();
             double[] notes = _chord.Notes;
             foreach (double note in notes)
             {
-                channel= (((int)note) % 100) / 25;
-                pitch=(int)note / 100;
+                channel = (((int)note) % 100) / 25;
+                pitch = (int)note / 100;
                 builder.Command = ChannelCommand.NoteOn;
                 builder.MidiChannel = channel;
                 builder.Data1 = pitch;
                 builder.Data2 = 120;
                 builder.Build();
                 track.Insert(i, builder.Result);
-                i+=20;
+                i += 20;
                 builder.Data2 = 0;
                 builder.Build();
                 track.Insert(i, builder.Result);
@@ -313,5 +318,14 @@ namespace HarmonyEditor
             Program.sequencer.Sequence.Add(track);
             Program.sequencer.Start();
         }
+        private void ChordEditor_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            StopSounds();
+        }
+        private void Stop_Click(object sender, EventArgs e)
+        {
+            StopSounds();
+        }
+        #endregion
     }
 }

@@ -174,12 +174,23 @@ namespace HarmonyEditor
             }
             RefreshData();
         }
-        private List<Chord> ToListOfChord()
+        private List<List<Chord>> ToChords()
         {
-            List<Chord> result = new List<Chord>();
-            foreach (Spectrum sp in flowLayoutPanel.Controls)
+            List<List<Chord>> result = new List<List<Chord>>(1);
+            result[0] = new List<Chord>();
+            int index = 0;
+
+            foreach (DraggableComponent dc in flowLayoutPanel.Controls)
             {
-                result.Add(sp.CurChord);
+                if (dc is Spectrum)
+                {
+                    result[index].Add((dc as Spectrum).CurChord);
+                }
+                else if (dc is EndPoint)
+                {
+                    index++;
+                    result.Add(new List<Chord>());
+                }
             }
             return result;
         }
@@ -312,7 +323,11 @@ namespace HarmonyEditor
         }
         private void flowLayoutPanel_DragDrop(object sender, DragEventArgs e)
         {
-            DraggableComponent data = e.Data.GetData(typeof(DraggableComponent)) as DraggableComponent;
+            DraggableComponent data = null;
+            data = e.Data.GetData(typeof(Spectrum)) as DraggableComponent;
+            if (data == null)
+                data = e.Data.GetData(typeof(EndPoint)) as DraggableComponent;
+
             Point p = flowLayoutPanel.PointToClient(new Point(e.X, e.Y));
             var item = flowLayoutPanel.GetChildAtPoint(p);
             int index = flowLayoutPanel.Controls.GetChildIndex(item, false);
@@ -360,13 +375,13 @@ namespace HarmonyEditor
         {
             string fileName = GetSaveDirectory();
             if (fileName != null)
-                ToListOfChord().WriteToJson(fileName);
+                ToChords().WriteToJson(fileName);
         }
         private void eksportujToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string fileName = GetSaveDirectory();
             if (fileName != null)
-                ToListOfChord().WriteToPitch(fileName);
+                ToChords().WriteToPitch(fileName);
         }
         private void MainWindow_Load(object sender, EventArgs e)
         {

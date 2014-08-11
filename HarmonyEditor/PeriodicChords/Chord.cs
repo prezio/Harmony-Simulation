@@ -7,6 +7,11 @@ namespace PeriodicChords
 {
     public abstract partial class Chord
     {
+        [DataMember]
+        public int Left { get; set; }
+        [DataMember]
+        public int Right { get; set; }
+
         public abstract double[] Frequencies
         {
             get;
