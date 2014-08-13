@@ -199,11 +199,11 @@ namespace MusicPopulation
             {
                 Exchange(0, randContext);
             }
-            if (randContext.NextDouble() < ExchangeChance[1])
+            if (randContext.NextDouble() < ExchangeChance[2])
             {
                 Exchange(2, randContext);
             }
-            if (randContext.NextDouble() < ExchangeChance[2])
+            if (randContext.NextDouble() < ExchangeChance[3])
             {
                 Exchange(3, randContext);
             }
@@ -211,11 +211,11 @@ namespace MusicPopulation
             {
                 Transpose(0, randContext);
             }
-            if (randContext.NextDouble() < TransposeChance[1])
+            if (randContext.NextDouble() < TransposeChance[2])
             {
                 Transpose(2, randContext);
             }
-            if (randContext.NextDouble() < TransposeChance[2])
+            if (randContext.NextDouble() < TransposeChance[3])
             {
                 Transpose(3, randContext);
             }
@@ -223,11 +223,11 @@ namespace MusicPopulation
             {
                 Modify(0, randContext);
             }
-            if (randContext.NextDouble() < ModifyChance[1])
+            if (randContext.NextDouble() < ModifyChance[2])
             {
                 Modify(2, randContext);
             }
-            if (randContext.NextDouble() < ModifyChance[2])
+            if (randContext.NextDouble() < ModifyChance[3])
             {
                 Modify(3, randContext);
             }

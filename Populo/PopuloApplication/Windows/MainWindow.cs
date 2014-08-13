@@ -223,10 +223,10 @@ namespace PopuloApplication
             sequencer = new Sanford.Multimedia.Midi.Sequencer();
             sequencer.ChannelMessagePlayed += ChannelMessagePlayed;
             outDevice = new OutputDevice(0);
-
+            ChannelMessageBuilder builder = new ChannelMessageBuilder();
             for (int channel = 0; channel < 16; channel++)
             {
-                ChannelMessageBuilder builder = new ChannelMessageBuilder();
+                
 
                 builder.Command = ChannelCommand.ProgramChange;
                 builder.MidiChannel = channel;
@@ -239,6 +239,18 @@ namespace PopuloApplication
         private void buttonStop_Click(object sender, EventArgs e)
         {
             sequencer.Stop();
+            ChannelMessageBuilder builder = new ChannelMessageBuilder();
+            for (int channel = 0; channel < 16; channel++)
+            {
+
+
+                builder.Command = ChannelCommand.Controller;
+                builder.MidiChannel = channel;
+                builder.Data1 = 120;
+                builder.Data2 = 0;
+                builder.Build();
+                outDevice.Send(builder.Result);
+            }
         }
         #endregion
     }

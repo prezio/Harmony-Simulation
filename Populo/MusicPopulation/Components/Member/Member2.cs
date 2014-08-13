@@ -14,12 +14,12 @@ namespace MusicPopulation
         private int _initialDynamics;
         private int _initialChord;
         private int _pauseDuration;
-        const int numberOfChords = 3;
+        
         private int[,] _notes; //pitch, chord change, rhythm, rhythm distortion, dynamics, dynamics distortion
-        static int[] limits={24,2,20,1,127,1};
+        static int[] limits={24,2,12,1,127,1};
         const int maxLength = 25;
         const int minLength = 3;
-        const int maxPause = 101;
+        const int maxPause = 40;
 
         public override int NumberOfNotes
         {
@@ -33,14 +33,14 @@ namespace MusicPopulation
                 
                 int[,] notes = new int[_maxNotes + 1, 4];
                 notes[0, 0] = _notes[0, 0];
-                notes[0, 1] = (_initialChord+ _notes[0, 1])%numberOfChords;
+                notes[0, 1] = (_initialChord+ _notes[0, 1]);
                 notes[0, 2] = _initialRhythm;
                 notes[0, 3] = _initialDynamics;
                 
                 for(int i=1; (i<=_peak)&&(i<_numberOfNotes); i++)
                 {
                     notes[i, 0] = _notes[i, 0];
-                    notes[i, 1] = (notes[i - 1, 1] + _notes[0, 1]) % numberOfChords;
+                    notes[i, 1] = (notes[i - 1, 1] + _notes[0, 1]);
                     notes[i, 2] = notes[i - 1, 2] - _notes[i, 2] * _notes[i, 3];
                     if(notes[i,2]<1)
                     {
@@ -63,7 +63,7 @@ namespace MusicPopulation
                 for (int i = _peak; i < _numberOfNotes; i++)
                 {
                     notes[i, 0] = _notes[i, 0];
-                    notes[i, 1] = (notes[i - 1, 1] + _notes[0, 1]) % numberOfChords;
+                    notes[i, 1] = (notes[i - 1, 1] + _notes[0, 1]);
                     notes[i, 2] = notes[i - 1, 2] + _notes[i, 2] * _notes[i, 3];
                     if (notes[i, 2] < 1)
                     {
@@ -204,7 +204,7 @@ namespace MusicPopulation
             if (randContext.NextDouble() < InitialChordChangeChance)
             {
                 _initialChord++;
-                _initialChord %= numberOfChords;
+                
             }
             if (randContext.NextDouble() < RhythmDistortionChangeChance)
             {
@@ -300,7 +300,7 @@ namespace MusicPopulation
         }
         public Member2(Random randContext):base(randContext)
         {
-            _initialChord = randContext.Next(numberOfChords);
+            _initialChord = randContext.Next(10); //UGLY!
             _initialDynamics = randContext.Next(limits[4]);
             _initialRhythm = randContext.Next(limits[2]);
             _numberOfNotes = randContext.Next(minLength, maxLength);
