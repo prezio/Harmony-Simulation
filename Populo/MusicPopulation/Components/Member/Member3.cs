@@ -10,9 +10,9 @@ namespace MusicPopulation
     {
         int _numberOfGroups;
         const int maxGroups=30;
-        int[,] _groups; //pitch, chord change, repeats, rhythm, initial dynamics, dynamic difference
+        int[,] _groups; //pitch, chord change, repeats, rhythm, initial dynamics, dynamic difference, group number
         //int _initialChord;
-        static int[] limits = { 9, 3, 11, 9, 127, 10 };
+        static int[] limits = { 9, 3, 11, 9, 127, 10, 10 };
         protected void Transpose(uint n, Random randContext)
         {
             if (_numberOfGroups <= 1)
@@ -71,6 +71,7 @@ namespace MusicPopulation
             _groups[_numberOfGroups, 3] = randContext.Next(limits[3]);
             _groups[_numberOfGroups, 4] = randContext.Next(limits[4]);
             _groups[_numberOfGroups, 5] = randContext.Next(limits[5]);
+            _groups[_numberOfGroups, 6] = randContext.Next(limits[6]);
 
             _numberOfGroups++;
         }
@@ -96,6 +97,8 @@ namespace MusicPopulation
                 for(int i=0, group=0;i<_maxNotes&&group<_numberOfGroups;i++)
                 {
                     dynamics=_groups[group,4];
+                    if(_groups[group,6]<PrefferedGroups)
+                        dynamics=0;
                     for(int j=0; j<_groups[group,2]&&i<_maxNotes)
                     {
                         notes[i,0]=_groups[group,0];
@@ -122,7 +125,7 @@ namespace MusicPopulation
             {
                 Grow(randContext);
             }
-            for (uint i = 0; i < 6;i++)
+            for (uint i = 0; i < 7;i++)
             {
                 if (randContext.NextDouble() < ExchangeChance[i])
                 {
@@ -130,14 +133,14 @@ namespace MusicPopulation
                 }
             }
 
-            for (uint i = 0; i < 6; i++)
+            for (uint i = 0; i < 7; i++)
             {
                 if (randContext.NextDouble() < TransposeChance[i])
                 {
                     Transpose(i, randContext);
                 }
             }
-            for (uint i = 0; i < 6; i++)
+            for (uint i = 0; i < 7; i++)
             {
                 if (randContext.NextDouble() < ModifyChance[i])
                 {
@@ -176,14 +179,14 @@ namespace MusicPopulation
         public override void Clone(Member member)
         {
             Member3 m = member as Member3;
-            _groups = new int [maxGroups,6];
+            _groups = new int [maxGroups,7];
             _numberOfGroups = m._numberOfGroups;
-            Array.Copy(m._groups, _groups, _numberOfGroups * 6);
+            Array.Copy(m._groups, _groups, _numberOfGroups * 7);
 
         }
         public Member3(Random randContext):base(randContext)
         {
-            _groups = new int[maxGroups, 6];
+            _groups = new int[maxGroups, 7];
             _numberOfGroups = randContext.Next(maxGroups);
             for (int i = 0; i < _numberOfGroups; i++)
             {
@@ -193,6 +196,7 @@ namespace MusicPopulation
                 _groups[i, 3] = randContext.Next(limits[3]);
                 _groups[i, 4] = randContext.Next(limits[4]);
                 _groups[i, 5] = randContext.Next(limits[5]);
+                _groups[i, 6] = randContext.Next(limits[6]);
             }
 
         }
