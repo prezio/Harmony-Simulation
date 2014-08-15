@@ -99,15 +99,15 @@ namespace MusicPopulation
                     dynamics=_groups[group,4];
                     if(_groups[group,6]<PrefferedGroups)
                         dynamics=0;
-                    for(int j=0; j<_groups[group,2]&&i<_maxNotes)
+                    for (int j = 0; j < _groups[group, 2] && i < _maxNotes;j++ )
                     {
-                        notes[i,0]=_groups[group,0];
-                        notes[i,1]=_groups[group,1];
-                        notes[i,2]=_groups[group,3];
-                        notes[i,3]=dynamics;
-                        dynamics-=_groups[group,5];
-                        if(dynamics<0)
-                            dynamics=0;
+                        notes[i, 0] = _groups[group, 0];
+                        notes[i, 1] = _groups[group, 1];
+                        notes[i, 2] = _groups[group, 3];
+                        notes[i, 3] = dynamics;
+                        dynamics -= _groups[group, 5];
+                        if (dynamics < 0)
+                            dynamics = 0;
                     }
                 }
                 return notes;
@@ -116,7 +116,37 @@ namespace MusicPopulation
 
         public override int Rank()
         {
-            throw new NotImplementedException();
+            //pitch, chord change, repeats, rhythm, initial dynamics, dynamic difference, group number
+            int[] count = new int[limits[6]];
+            int rank = 0;
+            rank -= (_numberOfGroups - PrefferedGroups) * (_numberOfGroups - PrefferedGroups)*30;
+            int length = _groups[0, 2]*_groups[0, 3];
+            int notes = _groups[0, 2];
+            count[_groups[0, 6]]++;
+            for (int i = 1; i < _numberOfGroups;i++)
+            {
+                if (Math.Abs((_groups[i, 0] - _groups[i - 1, 0]) % limits[0]) <= 1)
+                    rank -= 20;
+                if (_groups[i,2]==_groups[i-1,2])
+                    rank -= 15;
+                if (_groups[i, 3] == _groups[i - 1, 3])
+                    rank -= 100;
+                if (_groups[i, 5] * _groups[i, 2]>=_groups[i,4])
+                    rank -= 269;
+                count[_groups[i, 6]]++;
+                length += _groups[i, 2] * _groups[i, 3];
+                notes += _groups[i, 2];
+            }
+            int mean = _numberOfGroups / limits[6];
+            for (int i = 0; i < limits[6]; i++)
+            {
+                rank -= (count[i] - mean) * (count[i] - mean);
+            }
+            rank -= (length - PrefferedLength) * (length - PrefferedLength);
+            rank -= (notes - PrefferedNotes) * (notes - PrefferedNotes) * 10;
+            if (notes > _maxNotes)
+                rank -= 1000;
+            return rank;
         }
 
         public override void Mutate(Random randContext)
