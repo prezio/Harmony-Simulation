@@ -18,6 +18,7 @@ namespace PopuloApplication
     {
         private OutputDevice outDevice;
         private Sequencer sequencer;
+        private ChannelMessage[, , ] messageArray;
         private void ChannelMessagePlayed(object sender, ChannelMessageEventArgs e)
         {
             outDevice.Send(e.Message);
@@ -104,29 +105,26 @@ namespace PopuloApplication
         }
         private void PlaySimulation()
         {
-            var boardState = Simulation.SimulationBoardState;
+            var boardState = Simulation.SimulationBoardState.ToArray();
             sequencer.Sequence = new Sequence();
-
+            int numberOfNotes;
+            int[,] notes;
             int pitch=0;
-            ChannelMessageBuilder builder = new ChannelMessageBuilder();
+            
             for (int channel = 0; channel < 16; channel++)
             {
+                numberOfNotes = boardState[channel].Item1;
+                notes = boardState[channel].Item2;
                 Track track = new Track();
                 int i = 0;
-                for (int index = 0; index < boardState[channel].Item1; index++)
+                for (int index = 0; index < numberOfNotes; index++)
                 {
                     //channel = (((int)notes[index,0]) % 100) / 25;
-                    pitch = boardState[channel].Item2[index, 0]+40;
-                    builder.Command = ChannelCommand.NoteOn;
-                    builder.MidiChannel = channel;
-                    builder.Data1 = pitch;
-                    builder.Data2 = boardState[channel].Item2[index, 3];
-                    builder.Build();
-                    track.Insert(i, builder.Result);
-                    i += boardState[channel].Item2[index, 2];
-                    builder.Data2 = 0;
-                    builder.Build();
-                    track.Insert(i, builder.Result);
+                    pitch = notes[index, 0] + 40;
+
+                    track.Insert(i, messageArray[channel, pitch, notes[index, 3]]);
+                    i += notes[index, 2];
+                    track.Insert(i, messageArray[channel,pitch,0]);
                 }
                 sequencer.Sequence.Add(track);
             }
@@ -234,6 +232,28 @@ namespace PopuloApplication
                 builder.Data2 = 127;
                 builder.Build();
                 outDevice.Send(builder.Result);
+            }
+            PrepareMessages();
+        }
+
+        private void PrepareMessages()
+        {
+            messageArray = new ChannelMessage[16, 128, 128];
+            ChannelMessageBuilder builder = new ChannelMessageBuilder();
+            builder.Command = ChannelCommand.NoteOn;
+            for(int channel=0; channel<16;channel++)
+            {
+                builder.MidiChannel=channel;
+                for(int pitch =0; pitch<128; pitch++)
+                {
+                    builder.Data1=pitch;
+                    for(int velocity=0; velocity<128; velocity++)
+                    {
+                        builder.Data2 = velocity;
+                        builder.Build();
+                        messageArray[channel, pitch, velocity] = builder.Result;
+                    }
+                }
             }
         }
         private void buttonStop_Click(object sender, EventArgs e)
