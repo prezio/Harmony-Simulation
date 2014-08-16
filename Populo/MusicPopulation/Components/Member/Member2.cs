@@ -14,7 +14,7 @@ namespace MusicPopulation
         private int _initialDynamics;
         private int _initialChord;
         private int _pauseDuration;
-        
+        private int _type; //0-r, 1-ar, 2-a
         private int[,] _notes; //pitch, chord change, rhythm, rhythm distortion, dynamics, dynamics distortion
         static int[] limits={24,2,12,1,127,1};
         const int maxLength = 25;
@@ -30,14 +30,22 @@ namespace MusicPopulation
         {
             get 
             {
-                
+                int peak = _peak;
                 int[,] notes = new int[_maxNotes + 1, 4];
+                if(_type == 0)
+                {
+                    peak = 0;
+                }
+                else if (_type == 2)
+                {
+                    peak = _numberOfNotes;
+                }
                 notes[0, 0] = _notes[0, 0];
                 notes[0, 1] = (_initialChord+ _notes[0, 1]);
                 notes[0, 2] = _initialRhythm;
                 notes[0, 3] = _initialDynamics;
                 
-                for(int i=1; (i<=_peak)&&(i<_numberOfNotes); i++)
+                for(int i=1; (i<=peak)&&(i<_numberOfNotes); i++)
                 {
                     notes[i, 0] = _notes[i, 0];
                     notes[i, 1] = (notes[i - 1, 1] + _notes[0, 1]);
@@ -60,7 +68,7 @@ namespace MusicPopulation
                         notes[i, 3] = limits[4];
                     }
                 }
-                for (int i = _peak; i < _numberOfNotes; i++)
+                for (int i = peak; i < _numberOfNotes; i++)
                 {
                     notes[i, 0] = _notes[i, 0];
                     notes[i, 1] = (notes[i - 1, 1] + _notes[0, 1]);
@@ -97,8 +105,17 @@ namespace MusicPopulation
             
             int rhythm = _initialRhythm;
             int dynamics = _initialDynamics;
-
-            for (int i = 0; (i <= _peak) && (i < _numberOfNotes); i++)
+            int peak = _peak;
+            if (_type == 0)
+            {
+                rank += 200;
+            }
+            else if (_type == 2)
+            {
+                peak = _numberOfNotes;
+                rank += 100;
+            }
+            for (int i = 0; (i <= peak) && (i < _numberOfNotes); i++)
             {
 
                 rhythm -=  _notes[i, 2] * _notes[i, 3];
@@ -120,7 +137,7 @@ namespace MusicPopulation
                     rank -= 30;
                 }
             }
-            for (int i = Math.Max(_peak, 0); i < _numberOfNotes; i++)
+            for (int i = peak; i < _numberOfNotes; i++)
             {
                 rhythm += _notes[i, 2] * _notes[i, 3];
                 if (rhythm < 1)
@@ -144,6 +161,10 @@ namespace MusicPopulation
             
             rank -= (_numberOfNotes - PrefferedLength) * (_numberOfNotes - PrefferedLength) * 60;
             rank -= (_pauseDuration - PrefferedPauseLength) * (_pauseDuration - PrefferedPauseLength) * 5;
+            if(_type==1 && Math.Abs(_peak-_numberOfNotes/2)<_numberOfNotes/6)
+            {
+                rank += 150;
+            }
             return rank;
         }
 
@@ -156,13 +177,13 @@ namespace MusicPopulation
             if (randContext.NextDouble() < PeakMoveChance)
             {
                 _peak += (randContext.Next(-PeakMaxMove, PeakMaxMove + 1));
-                if(_peak<-10)
+                if(_peak<0)
                 {
-                    _peak = -10;
+                    _peak = 0;
                 }
-                else if(_peak>maxLength+10)
+                else if(_peak>=_numberOfNotes)
                 {
-                    _peak = maxLength + 10;
+                    _peak = _numberOfNotes - 1;
                 }
             }
             if (randContext.NextDouble() < PauseChangeChance)
@@ -205,6 +226,12 @@ namespace MusicPopulation
             {
                 _initialChord++;
                 
+            }
+            if (randContext.NextDouble() < TypeChangeChance)
+            {
+                _type++;
+                _type %= 3;
+
             }
             if (randContext.NextDouble() < RhythmDistortionChangeChance)
             {
@@ -267,15 +294,19 @@ namespace MusicPopulation
             {
                 _numberOfNotes--;
             }
+            if(randContext.NextDouble()<TypeInfluenceChance)
+            {
+                _type = m._type;
+            }
             _pauseDuration+=(int)((_pauseDuration-m._pauseDuration)*PauseInfluenceAmount);
             for (int i = 0; i < _numberOfNotes; i++)
             {
                 _notes[i, 0] += (int)((_notes[i, 0] - m._notes[i%m._numberOfNotes, 0])*PitchInfluenceAmount);
                 _notes[i, 1] = (_notes[i, 1] + m._notes[i % m._numberOfNotes, 1]) % 2;
                 _notes[i, 2] += (int)((_notes[i, 2] - m._notes[i % m._numberOfNotes, 2]) * RhythmInfluenceAmount);
-                if (randContext.NextDouble() < RhythmDistortionInfluenceProbability) _notes[i, 3] = m._notes[i % m._numberOfNotes, 3];
+                if (randContext.NextDouble() < RhythmDistortionInfluenceChance) _notes[i, 3] = m._notes[i % m._numberOfNotes, 3];
                 _notes[i, 4] += (int)((_notes[i, 4] - m._notes[i % m._numberOfNotes, 4]) * DynamicsInfluenceAmount);
-                if (randContext.NextDouble() < DynamicsDistortionInfluenceProbability) _notes[i, 5] = m._notes[i % m._numberOfNotes, 5];
+                if (randContext.NextDouble() < DynamicsDistortionInfluenceChance) _notes[i, 5] = m._notes[i % m._numberOfNotes, 5];
             }
 
         }
@@ -294,7 +325,7 @@ namespace MusicPopulation
             _notes[_numberOfNotes, 2] = randContext.Next(limits[2]);
             _notes[_numberOfNotes, 3] = 1;
             _notes[_numberOfNotes, 4] = randContext.Next(limits[4]);
-            _notes[_numberOfNotes, 0] = 1;
+            _notes[_numberOfNotes, 5] = 1;
 
             _numberOfNotes++;
         }
@@ -307,6 +338,7 @@ namespace MusicPopulation
             _notes = new int[_maxNotes, 6];
             _peak = randContext.Next(_numberOfNotes);
             _pauseDuration = randContext.Next(maxPause);
+            _type = randContext.Next(3);
             for(int i=0; i<_numberOfNotes;i++)
             {
                 _notes[i, 0] = randContext.Next(limits[0]);
@@ -314,7 +346,7 @@ namespace MusicPopulation
                 _notes[i, 2] = randContext.Next(limits[2]);
                 _notes[i, 3] = 1;
                 _notes[i, 4] = randContext.Next(limits[4]);
-                _notes[i, 0] = 1;
+                _notes[i, 5] = 1;
             }
             int n = randContext.Next(_numberOfNotes/4);
             for(int i=0; i<n;i++)
@@ -337,7 +369,7 @@ namespace MusicPopulation
             _initialChord = m._initialChord;
             _initialDynamics = m._initialDynamics;
             _initialRhythm = m._initialRhythm;
-
+            _type = m._type;
             _notes = new int[_maxNotes, 6];
             Array.Copy(m._notes, _notes, 6 * _maxNotes);
 
