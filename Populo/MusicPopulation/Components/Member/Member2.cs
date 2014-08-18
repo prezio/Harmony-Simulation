@@ -106,8 +106,9 @@ namespace MusicPopulation
             int rhythm = _initialRhythm;
             int dynamics = _initialDynamics;
             int peak = _peak;
-            if (_type == 0)
+            if (_type == 0 || _peak==0)
             {
+                peak = 1;
                 rank += 200;
             }
             else if (_type == 2)
