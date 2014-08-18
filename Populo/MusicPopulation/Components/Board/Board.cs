@@ -153,15 +153,7 @@ namespace MusicPopulation
         }
         public void CopyIndividual(int sX, int sY, int dX, int dY)
         {
-            switch(_indexOfPhase)
-            {
-                case 0:
-                    this[dX, dY] = new Member1(this[sX, sY]);
-                    break;
-                case 1:
-                    this[dX, dY] = new Member2(this[sX, sY]);
-                    break;
-            }
+            this[dX, dY] = this[sX, sY].Clone();
         }
     }
 }

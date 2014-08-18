@@ -359,23 +359,27 @@ namespace MusicPopulation
                 _notes[randContext.Next(_numberOfNotes), 5] = -1;
             }
         }
-        public Member2(Member original)
-            : base(original)
+        public Member2()
+            : base()
         {
         }
-        public override void Clone(Member member)
+        public override Member Clone()
         {
-            Member2 m = (member as Member2);
-            _initialChord = m._initialChord;
-            _initialDynamics = m._initialDynamics;
-            _initialRhythm = m._initialRhythm;
-            _type = m._type;
-            _notes = new int[_maxNotes, 6];
-            Array.Copy(m._notes, _notes, 6 * _maxNotes);
+            Member2 result = new Member2();
 
-            _numberOfNotes = m._numberOfNotes;
-            _pauseDuration = m._pauseDuration;
-            _peak = m._peak;
+            result._initialChord = _initialChord;
+            result._initialDynamics = _initialDynamics;
+            result._initialRhythm = _initialRhythm;
+            result._type = _type;
+            result._notes = new int[_maxNotes, 6];
+
+            Array.Copy(_notes, result._notes, 6 * _maxNotes);
+
+            result._numberOfNotes = _numberOfNotes;
+            result._pauseDuration = _pauseDuration;
+            result._peak = _peak;
+
+            return result;
         }
     }
 }

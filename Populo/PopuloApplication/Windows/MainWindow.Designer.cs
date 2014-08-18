@@ -126,6 +126,7 @@
             this.buttonChangePhase = new System.Windows.Forms.Button();
             this.buttonStop = new System.Windows.Forms.Button();
             this.groupBoxTaskSimulation = new System.Windows.Forms.GroupBox();
+            this.groupBoxFactorsPhase3 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPercentDeath)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxSteps)).BeginInit();
             this.groupBoxParameters.SuspendLayout();
@@ -234,6 +235,7 @@
             // 
             // groupBoxParameters
             // 
+            this.groupBoxParameters.Controls.Add(this.groupBoxFactorsPhase3);
             this.groupBoxParameters.Controls.Add(this.groupBoxTaskSimulation);
             this.groupBoxParameters.Controls.Add(this.groupBoxFactorsPhase2);
             this.groupBoxParameters.Controls.Add(this.groupBoxFactorsPhase1);
@@ -1462,6 +1464,16 @@
             this.groupBoxTaskSimulation.TabStop = false;
             this.groupBoxTaskSimulation.Text = "Symulacja";
             // 
+            // groupBoxFactorsPhase3
+            // 
+            this.groupBoxFactorsPhase3.Enabled = false;
+            this.groupBoxFactorsPhase3.Location = new System.Drawing.Point(6, 352);
+            this.groupBoxFactorsPhase3.Name = "groupBoxFactorsPhase3";
+            this.groupBoxFactorsPhase3.Size = new System.Drawing.Size(356, 277);
+            this.groupBoxFactorsPhase3.TabIndex = 12;
+            this.groupBoxFactorsPhase3.TabStop = false;
+            this.groupBoxFactorsPhase3.Text = "Współczynniki Faza 3";
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1638,6 +1650,7 @@
         private System.Windows.Forms.NumericUpDown numericUpDownTwoTypeChangeChance;
         private System.Windows.Forms.Label labelTwoTypeChangeChance;
         private System.Windows.Forms.GroupBox groupBoxTaskSimulation;
+        private System.Windows.Forms.GroupBox groupBoxFactorsPhase3;
     }
 }
 

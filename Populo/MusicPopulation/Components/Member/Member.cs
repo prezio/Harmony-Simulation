@@ -9,9 +9,8 @@ namespace MusicPopulation
         public Member(Random randContext)
         {
         }
-        public Member(Member original)
+        public Member()
         {
-            Clone(original);
         }
         public Tuple<int, int[,]> CloneParameters()
         {
@@ -29,7 +28,7 @@ namespace MusicPopulation
         public abstract int Rank();
         public abstract void Mutate(Random randContext);
         public abstract void Influence(Member influencer, Random randContext);
-        public abstract void Clone(Member member);
+        public abstract Member Clone();
         #endregion
     }
 }

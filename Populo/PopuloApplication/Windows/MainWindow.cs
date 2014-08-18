@@ -155,6 +155,7 @@ namespace PopuloApplication
             Simulation.SimulationBoard.ChangePhase();
             groupBoxFactorsPhase1.Enabled = false;
             groupBoxFactorsPhase2.Enabled = false;
+            groupBoxFactorsPhase3.Enabled = false;
             switch (Simulation.SimulationBoard.IndexOfPhase)
             {
                 case 0:
@@ -162,6 +163,9 @@ namespace PopuloApplication
                     break;
                 case 1:
                     groupBoxFactorsPhase2.Enabled = true;
+                    break;
+                case 2:
+                    groupBoxFactorsPhase3.Enabled = true;
                     break;
             }
         }
@@ -239,7 +243,7 @@ namespace PopuloApplication
         #region Events
         private void MainWindow_Paint(object sender, PaintEventArgs e)
         {
-            if (_taskSimulation == null || _taskSimulation.IsCompleted || _taskSimulation.IsCanceled)
+            if (_taskSimulation == null || _taskSimulation.IsCompleted || _taskSimulation.IsCanceled || _taskSimulation.IsFaulted)
                 groupBoxTaskSimulation.BackColor = Color.Red;
             else
                 groupBoxTaskSimulation.BackColor = Color.Green;

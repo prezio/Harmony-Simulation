@@ -206,13 +206,15 @@ namespace MusicPopulation
             }
         }
 
-        public override void Clone(Member member)
+        public override Member Clone()
         {
-            Member3 m = member as Member3;
-            _groups = new int [maxGroups,7];
-            _numberOfGroups = m._numberOfGroups;
-            Array.Copy(m._groups, _groups, _numberOfGroups * 7);
+            Member3 result = new Member3();
+            
+            result._groups = new int [maxGroups,7];
+            result._numberOfGroups = _numberOfGroups;
+            Array.Copy(_groups, result._groups, _numberOfGroups * 7);
 
+            return result;
         }
         public Member3(Random randContext):base(randContext)
         {
@@ -228,13 +230,10 @@ namespace MusicPopulation
                 _groups[i, 5] = randContext.Next(limits[5]);
                 _groups[i, 6] = randContext.Next(limits[6]);
             }
-
         }
-        public Member3(Member original)
-            : base(original)
+        public Member3()
+            : base()
         {
         }
-        
-
     }
 }

@@ -94,8 +94,8 @@ namespace MusicPopulation
                 Notes[i, 3] = randContext.Next(limits[3]);
             }
         }
-        public Member1(Member original)
-            : base(original)
+        public Member1()
+            : base()
         {
         }
 
@@ -236,11 +236,15 @@ namespace MusicPopulation
                 Shrink();
             }
         }
-        public override void Clone(Member member)
+        public override Member Clone()
         {
-            _numberOfNotes = member.NumberOfNotes;
-            _notes = new int[_maxNotes + 1, 4];
-            Array.Copy(member.Notes, Notes, (_maxNotes + 1) * 4);
+            Member1 result = new Member1();
+            result._numberOfNotes = NumberOfNotes;
+            int[,] notes = new int[_maxNotes + 1, 4];
+            Array.Copy(_notes, notes, (_maxNotes + 1) * 4);
+            result._notes = notes;
+
+            return result;
         }
         #endregion
     }
