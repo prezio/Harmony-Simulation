@@ -106,9 +106,8 @@ namespace MusicPopulation
             int rhythm = _initialRhythm;
             int dynamics = _initialDynamics;
             int peak = _peak;
-            if (_type == 0 || _peak==0)
+            if (_type == 0)
             {
-                peak = 1;
                 rank += 200;
             }
             else if (_type == 2)
@@ -189,7 +188,7 @@ namespace MusicPopulation
             }
             if (randContext.NextDouble() < PauseChangeChance)
             {
-                _peak += (randContext.Next(-PauseMaxChange, PauseMaxChange + 1));
+                _pauseDuration += (randContext.Next(-PauseMaxChange, PauseMaxChange + 1));
                 if (_pauseDuration < 10)
                 {
                     _pauseDuration = 10;
@@ -201,7 +200,7 @@ namespace MusicPopulation
             }
             if (randContext.NextDouble() < InitialRhythmChangeChance)
             {
-                _peak += (randContext.Next(-InitialRhythmMaxChange, InitialRhythmMaxChange + 1));
+                _initialRhythm += (randContext.Next(-InitialRhythmMaxChange, InitialRhythmMaxChange + 1));
                 if (_initialRhythm < 1)
                 {
                     _initialRhythm = 1;
@@ -213,7 +212,7 @@ namespace MusicPopulation
             }
             if (randContext.NextDouble() < InitialDynamicsChangeChance)
             {
-                _peak += (randContext.Next(-InitialDynamicsMaxChange, InitialDynamicsMaxChange + 1));
+                _initialDynamics += (randContext.Next(-InitialDynamicsMaxChange, InitialDynamicsMaxChange + 1));
                 if (_initialDynamics < 1)
                 {
                     _initialDynamics = 1;
