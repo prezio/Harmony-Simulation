@@ -95,9 +95,9 @@ namespace populo
         //}
         private static void NormalTest()
         {
-            int tries = 100;
+            int tries = 1000;
 
-            //Simulation.SimulationBoard.ChangePhase();
+            Simulation.SimulationBoard.ChangePhase();
 
             for (int i = 0; i < tries; i++)
             {

@@ -16,7 +16,7 @@ namespace PopuloApplication
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new StartWindow());
+            Application.Run(new MainWindow());
         }
     }
 }

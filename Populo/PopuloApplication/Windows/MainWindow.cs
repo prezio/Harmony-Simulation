@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MusicPopulation;
 using Sanford.Multimedia.Midi;
-using Ventuz.OSC;
 using System.IO;
+using System.Threading;
 
 namespace PopuloApplication
 {
@@ -25,67 +25,133 @@ namespace PopuloApplication
         }
         private void LoadParameters()
         {
-            // First phase
+            // Global Parameters
             numericUpDownPercentDeath.Value = SimulationParameters.PercentDeath;
             numericUpDownMaxSteps.Value = SimulationParameters.MaxSteps;
             numericUpDownAlfa.Value = (decimal)SimulationParameters.Alfa;
 
-            numericUpDownModifyAmount1.Value = Member1.ModifyAmount[0];
-            numericUpDownModifyAmount2.Value = Member1.ModifyAmount[2];
-            numericUpDownModifyAmount3.Value = Member1.ModifyAmount[3];
+            // First phase
+            numericUpDownOneModifyAmount1.Value = Member1.ModifyAmount[0];
+            numericUpDownOneModifyAmount2.Value = Member1.ModifyAmount[2];
+            numericUpDownOneModifyAmount3.Value = Member1.ModifyAmount[3];
 
-            numericUpDownInfluenceAmount1.Value = (decimal)Member1.InfluenceAmount[0];
-            numericUpDownInfluenceAmount2.Value = (decimal)Member1.InfluenceAmount[2];
-            numericUpDownInfluenceAmount3.Value = (decimal)Member1.InfluenceAmount[3];
+            numericUpDownOneInfluenceAmount1.Value = (decimal)Member1.InfluenceAmount[0];
+            numericUpDownOneInfluenceAmount2.Value = (decimal)Member1.InfluenceAmount[2];
+            numericUpDownOneInfluenceAmount3.Value = (decimal)Member1.InfluenceAmount[3];
 
-            numericUpDownTransposeChance1.Value = (decimal)Member1.TransposeChance[0];
-            numericUpDownTransposeChance2.Value = (decimal)Member1.TransposeChance[2];
-            numericUpDownTransposeChance3.Value = (decimal)Member1.TransposeChance[3];
+            numericUpDownOneTransposeChance1.Value = (decimal)Member1.TransposeChance[0];
+            numericUpDownOneTransposeChance2.Value = (decimal)Member1.TransposeChance[2];
+            numericUpDownOneTransposeChance3.Value = (decimal)Member1.TransposeChance[3];
 
-            numericUpDownExchangeChance1.Value = (decimal)Member1.ExchangeChance[0];
-            numericUpDownExchangeChance2.Value = (decimal)Member1.ExchangeChance[2];
-            numericUpDownExchangeChance3.Value = (decimal)Member1.ExchangeChance[3];
+            numericUpDownOneExchangeChance1.Value = (decimal)Member1.ExchangeChance[0];
+            numericUpDownOneExchangeChance2.Value = (decimal)Member1.ExchangeChance[2];
+            numericUpDownOneExchangeChance3.Value = (decimal)Member1.ExchangeChance[3];
 
-            numericUpDownModifyChance1.Value = (decimal)Member1.ModifyChance[0];
-            numericUpDownModifyChance2.Value = (decimal)Member1.ModifyChance[2];
-            numericUpDownModifyChance3.Value = (decimal)Member1.ModifyChance[3];
+            numericUpDownOneModifyChance1.Value = (decimal)Member1.ModifyChance[0];
+            numericUpDownOneModifyChance2.Value = (decimal)Member1.ModifyChance[2];
+            numericUpDownOneModifyChance3.Value = (decimal)Member1.ModifyChance[3];
 
-            numericUpDownGrowthChance.Value = (decimal)Member1.GrowthChance;
-            numericUpDownShrinkChance.Value = (decimal)Member1.ShrinkChance;
+            numericUpDownOneGrowthChance.Value = (decimal)Member1.GrowthChance;
+            numericUpDownOneShrinkChance.Value = (decimal)Member1.ShrinkChance;
+
+            // Second Phase
+            numericUpDownTwoPitchInfluence.Value = (decimal)Member2.PitchInfluenceAmount;
+            numericUpDownTwoRythmInfluence.Value = (decimal)Member2.RhythmInfluenceAmount;
+            numericUpDownTwoDynamicsInfluence.Value = (decimal)Member2.DynamicsInfluenceAmount;
+            numericUpDownTwoPauseInfluenceAmount.Value = (decimal)Member2.PauseInfluenceAmount;
+            numericUpDownTwoRythmDistortion.Value = (decimal)Member2.RhythmDistortionInfluenceChance;
+            numericUpDownTwoDynamicsDistortion.Value = (decimal)Member2.DynamicsDistortionInfluenceChance;
+            numericUpDownTwoTypeChance.Value = (decimal)Member2.TypeInfluenceChance;
+            numericUpDownTwoGrowthChance.Value = (decimal)Member2.GrowthChance;
+            numericUpDownTwoShrinkChance.Value = (decimal)Member2.ShrinkChance;
+            numericUpDownTwoPeakMoveChance.Value = (decimal)Member2.PeakMoveChance;
+            numericUpDownTwoPeakMaxMove.Value = (decimal)Member2.PeakMaxMove;
+            numericUpDownTwoPauseChangeChance.Value = (decimal)Member2.PauseChangeChance;
+            numericUpDownTwoPauseMaxChange.Value = (decimal)Member2.PauseMaxChange;
+            numericUpDownTwoInitialRythmChance.Value = (decimal)Member2.InitialRhythmChangeChance;
+            numericUpDownTwoInitialRythmMaxChange.Value = (decimal)Member2.InitialRhythmMaxChange;
+            numericUpDownTwoInitialDynamicsChance.Value = (decimal)Member2.InitialDynamicsChangeChance;
+            numericUpDownTwoInitialDynamicsMaxChange.Value = (decimal)Member2.InitialDynamicsMaxChange;
+            numericUpDownTwoInitialChordChance.Value = (decimal)Member2.InitialChordChangeChance;
+            numericUpDownTwoChordChangeChance.Value = (decimal)Member2.ChordChangeChance;
+            numericUpDownTwoRythmDistortionChange.Value = (decimal)Member2.RhythmDistortionChangeChance;
+            numericUpDownTwoDynamicsDistortionChangeChance.Value = (decimal)Member2.DynamicsDistortionChangeChance;
+            numericUpDownTwoPitchChangeChance.Value = (decimal)Member2.PitchChangeChance;
+            numericUpDownTwoPitchMaxChange.Value = (decimal)Member2.PitchMaxChange;
+            numericUpDownTwoRythmChangeChance.Value = (decimal)Member2.RhythmChangeChance;
+            numericUpDownTwoRythmMaxChange.Value = (decimal)Member2.RhythmMaxChange;
+            numericUpDownTwoDynamicsChangeChance.Value = (decimal)Member2.DynamicsChangeChance;
+            numericUpDownTwoDynamicsMaxChange.Value = (decimal)Member2.DynamicsMaxChange;
+            numericUpDownTwoPrefferedLength.Value = (decimal)Member2.PrefferedLength;
+            numericUpDownTwoPauseLength.Value = (decimal)Member2.PrefferedPauseLength;
+            numericUpDownTwoTypeChangeChance.Value = (decimal)Member2.TypeChangeChance;
         }
         private void SaveParameters()
         {
-            // First phase
+            // Global parameters
             SimulationParameters.PercentDeath = (int)numericUpDownPercentDeath.Value;
             SimulationParameters.MaxSteps = (int)numericUpDownMaxSteps.Value;
             SimulationParameters.Alfa = (double)numericUpDownAlfa.Value;
 
-            Member1.ModifyAmount[0] = (int)numericUpDownModifyAmount1.Value;
-            Member1.ModifyAmount[2] = (int)numericUpDownModifyAmount2.Value;
-            Member1.ModifyAmount[3] = (int)numericUpDownModifyAmount3.Value;
+            // First phase
+            Member1.ModifyAmount[0] = (int)numericUpDownOneModifyAmount1.Value;
+            Member1.ModifyAmount[2] = (int)numericUpDownOneModifyAmount2.Value;
+            Member1.ModifyAmount[3] = (int)numericUpDownOneModifyAmount3.Value;
 
-            Member1.InfluenceAmount[0] = (double)numericUpDownInfluenceAmount1.Value;
-            Member1.InfluenceAmount[2] = (double)numericUpDownInfluenceAmount2.Value;
-            Member1.InfluenceAmount[3] = (double)numericUpDownInfluenceAmount3.Value;
+            Member1.InfluenceAmount[0] = (double)numericUpDownOneInfluenceAmount1.Value;
+            Member1.InfluenceAmount[2] = (double)numericUpDownOneInfluenceAmount2.Value;
+            Member1.InfluenceAmount[3] = (double)numericUpDownOneInfluenceAmount3.Value;
 
-            Member1.TransposeChance[0] = (double)numericUpDownTransposeChance1.Value;
-            Member1.TransposeChance[2] = (double)numericUpDownTransposeChance2.Value;
-            Member1.TransposeChance[3] = (double)numericUpDownTransposeChance3.Value;
+            Member1.TransposeChance[0] = (double)numericUpDownOneTransposeChance1.Value;
+            Member1.TransposeChance[2] = (double)numericUpDownOneTransposeChance2.Value;
+            Member1.TransposeChance[3] = (double)numericUpDownOneTransposeChance3.Value;
 
-            Member1.ExchangeChance[0] = (double)numericUpDownExchangeChance1.Value;
-            Member1.ExchangeChance[2] = (double)numericUpDownExchangeChance2.Value;
-            Member1.ExchangeChance[3] = (double)numericUpDownExchangeChance3.Value;
+            Member1.ExchangeChance[0] = (double)numericUpDownOneExchangeChance1.Value;
+            Member1.ExchangeChance[2] = (double)numericUpDownOneExchangeChance2.Value;
+            Member1.ExchangeChance[3] = (double)numericUpDownOneExchangeChance3.Value;
 
-            Member1.ModifyChance[0] = (double)numericUpDownModifyChance1.Value;
-            Member1.ModifyChance[2] = (double)numericUpDownModifyChance2.Value;
-            Member1.ModifyChance[3] = (double)numericUpDownModifyChance3.Value;
+            Member1.ModifyChance[0] = (double)numericUpDownOneModifyChance1.Value;
+            Member1.ModifyChance[2] = (double)numericUpDownOneModifyChance2.Value;
+            Member1.ModifyChance[3] = (double)numericUpDownOneModifyChance3.Value;
 
-            Member1.GrowthChance = (double)numericUpDownGrowthChance.Value;
-            Member1.ShrinkChance = (double)numericUpDownShrinkChance.Value;
+            Member1.GrowthChance = (double)numericUpDownOneGrowthChance.Value;
+            Member1.ShrinkChance = (double)numericUpDownOneShrinkChance.Value;
+
+            // Second phase
+            Member2.PitchInfluenceAmount = (double)numericUpDownTwoPitchInfluence.Value;
+            Member2.RhythmInfluenceAmount = (double)numericUpDownTwoRythmInfluence.Value;
+            Member2.DynamicsInfluenceAmount = (double)numericUpDownTwoDynamicsInfluence.Value;
+            Member2.PauseInfluenceAmount = (double)numericUpDownTwoPauseInfluenceAmount.Value;
+            Member2.RhythmDistortionInfluenceChance = (double)numericUpDownTwoRythmDistortion.Value;
+            Member2.DynamicsDistortionInfluenceChance = (double)numericUpDownTwoDynamicsDistortion.Value;
+            Member2.TypeInfluenceChance = (double)numericUpDownTwoTypeChance.Value;
+            Member2.GrowthChance = (double)numericUpDownTwoGrowthChance.Value;
+            Member2.ShrinkChance = (double)numericUpDownTwoShrinkChance.Value;
+            Member2.PeakMoveChance = (double)numericUpDownTwoPeakMoveChance.Value;
+            Member2.PeakMaxMove = (int)numericUpDownTwoPeakMaxMove.Value;
+            Member2.PauseChangeChance = (double)numericUpDownTwoPauseChangeChance.Value;
+            Member2.PauseMaxChange = (int)numericUpDownTwoPauseMaxChange.Value;
+            Member2.InitialRhythmChangeChance = (double)numericUpDownTwoInitialRythmChance.Value;
+            Member2.InitialRhythmMaxChange = (int)numericUpDownTwoInitialRythmMaxChange.Value;
+            Member2.InitialChordChangeChance = (double)numericUpDownTwoInitialDynamicsChance.Value;
+            Member2.InitialDynamicsMaxChange = (int)numericUpDownTwoInitialDynamicsMaxChange.Value;
+            Member2.InitialChordChangeChance = (double)numericUpDownTwoInitialChordChance.Value;
+            Member2.ChordChangeChance = (double)numericUpDownTwoChordChangeChance.Value;
+            Member2.RhythmDistortionChangeChance = (double)numericUpDownTwoRythmDistortionChange.Value;
+            Member2.DynamicsDistortionChangeChance = (double)numericUpDownTwoDynamicsDistortionChangeChance.Value;
+            Member2.PitchChangeChance = (double)numericUpDownTwoPitchChangeChance.Value;
+            Member2.PitchMaxChange = (int)numericUpDownTwoPitchMaxChange.Value;
+            Member2.RhythmChangeChance = (double)numericUpDownTwoRythmChangeChance.Value;
+            Member2.RhythmMaxChange = (int)numericUpDownTwoRythmMaxChange.Value;
+            Member2.DynamicsChangeChance = (double)numericUpDownTwoDynamicsChangeChance.Value;
+            Member2.DynamicsMaxChange = (int)numericUpDownTwoDynamicsMaxChange.Value;
+            Member2.PrefferedLength = (int)numericUpDownTwoPeakMoveChance.Value;
+            Member2.PrefferedPauseLength = (int)numericUpDownTwoPauseLength.Value;
+            Member2.TypeChangeChance = (double)numericUpDownTwoTypeChangeChance.Value;
         }
         private void ChangePhase()
         {
-            StopPlaying();
+            ResetSimulation();
             Simulation.SimulationBoard.ChangePhase();
             groupBoxFactorsPhase1.Enabled = false;
             groupBoxFactorsPhase2.Enabled = false;
@@ -98,10 +164,6 @@ namespace PopuloApplication
                     groupBoxFactorsPhase2.Enabled = true;
                     break;
             }
-        }
-        private void StopPlaying()
-        {
-            sequencer.Stop();
         }
         private void PlaySimulation()
         {
@@ -131,58 +193,58 @@ namespace PopuloApplication
             
             sequencer.Start();
         }
-        private void SendRankTable()
+        private void ResetSimulation()
         {
-            UdpWriter writer = new UdpWriter(_oscIP, _oscPort);
-            MemoryStream memStream = new MemoryStream();
+            if (sequencer != null)
+                sequencer.Stop();
+            if (_tokenCancelPlay != null)
+                _tokenCancelPlay.Cancel();
+            if (_tokenCancelSimulation != null)
+                _tokenCancelSimulation.Cancel();
 
-            string strToWrite = Simulation.SimulationBoard.RankTableMsg;
-            byte[] bytes = new byte[strToWrite.Length * sizeof(char)];
-
-            System.Buffer.BlockCopy(strToWrite.ToCharArray(), 0, bytes, 0, bytes.Length);
-            memStream.Write(bytes, 0, bytes.Length);
+            _taskSimulation = null;
+            _taskPlay = null;
         }
-        private int _oscPort;
-        private string _oscIP;
 
         private Task _taskSimulation = null;
+        private CancellationTokenSource _tokenCancelSimulation;
+
         private Task _taskPlay = null;
+        private CancellationTokenSource _tokenCancelPlay;
+
         private int _iEvolveDuration = 100;
         private void DoSimulation()
         {
+            _tokenCancelSimulation = new CancellationTokenSource();
             _taskSimulation = Task.Factory.StartNew(() => { for (int i = 0; i < _iEvolveDuration; i++) 
                                                                 Simulation.EvolveUsingThreads();
-//<<<<<<< HEAD
-                                                            //UdpWriter writer = new UdpWriter(_oscIP, _oscPort);
-                                                            //StreamWriter stream = new StreamWriter();
-                                                            
-                                                            // Send RankTable
-                                                            // Simulation.SimulationBoard.RankTable
-//=======
-                                                                // SendRankTable();
-//>>>>>>> origin/master
-                                                            });
+                                                            }, _tokenCancelSimulation.Token);
         }
         private void DoPlay()
         {
-            _taskPlay = Task.Factory.StartNew(() => PlaySimulation());
+            _tokenCancelPlay = new CancellationTokenSource();
+            _taskPlay = Task.Factory.StartNew(() => PlaySimulation(), _tokenCancelPlay.Token);
         }
 
         private enum SimulationState { During, Before };
         private SimulationState _simState;
 
-        public MainWindow(string ip, int port)
+        public MainWindow()
         {
             InitializeComponent();
             LoadParameters();
             _simState = SimulationState.Before;
-            _oscIP = ip;
-            _oscPort = port;
         }
 
         #region Events
         private void MainWindow_Paint(object sender, PaintEventArgs e)
         {
+            if (_taskSimulation == null || _taskSimulation.IsCompleted || _taskSimulation.IsCanceled)
+                groupBoxTaskSimulation.BackColor = Color.Red;
+            else
+                groupBoxTaskSimulation.BackColor = Color.Green;
+            groupBoxTaskSimulation.Invalidate();
+
             if (_simState == SimulationState.Before)
                 return;
 
@@ -205,8 +267,7 @@ namespace PopuloApplication
         {
             _simState = SimulationState.During;
             Simulation.ResetSimulation();
-            _taskSimulation = null;
-            _taskPlay = null;
+            ResetSimulation();
         }
         private void buttonClose_Click(object sender, EventArgs e)
         {
@@ -224,8 +285,6 @@ namespace PopuloApplication
             ChannelMessageBuilder builder = new ChannelMessageBuilder();
             for (int channel = 0; channel < 16; channel++)
             {
-                
-
                 builder.Command = ChannelCommand.ProgramChange;
                 builder.MidiChannel = channel;
                 builder.Data1 = channel * 3;
@@ -262,8 +321,6 @@ namespace PopuloApplication
             ChannelMessageBuilder builder = new ChannelMessageBuilder();
             for (int channel = 0; channel < 16; channel++)
             {
-
-
                 builder.Command = ChannelCommand.Controller;
                 builder.MidiChannel = channel;
                 builder.Data1 = 120;

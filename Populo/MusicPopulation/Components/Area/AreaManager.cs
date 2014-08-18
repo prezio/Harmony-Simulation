@@ -101,8 +101,11 @@ namespace MusicPopulation
         public void SelectChampionWhoCanBecomeCommissar()
         {
             var pos = Simulation.SimulationBoard.GetBestInArea(_mX, _mY, _mX + _width - 1, _mY + _height - 1);
-            Member best = Simulation.SimulationBoard[pos.Item1, pos.Item2];
-            _championParameters = best.CloneParameters();
+            if (pos != null)
+            {
+                Member best = Simulation.SimulationBoard[pos.Item1, pos.Item2];
+                _championParameters = best.CloneParameters();
+            }
         }
         public void MutateWeaksSoTheyCanServeEmperorBetter() // Mutacje
         {

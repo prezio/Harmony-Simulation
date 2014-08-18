@@ -38,7 +38,7 @@ namespace PopuloApplication
             }
 
             Hide();
-            MainWindow window = new MainWindow(textBoxIP.Text, port);
+            MainWindow window = new MainWindow();
             window.ShowDialog();
 
             Show();
