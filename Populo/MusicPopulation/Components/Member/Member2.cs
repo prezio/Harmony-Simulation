@@ -32,9 +32,9 @@ namespace MusicPopulation
             {
                 int peak = _peak;
                 int[,] notes = new int[_maxNotes + 1, 4];
-                if(_type == 0)
+                if(_type == 0 || _peak==0)
                 {
-                    peak = 0;
+                    peak = 1;
                 }
                 else if (_type == 2)
                 {
