@@ -10,17 +10,18 @@ namespace HarmonyEditor
 {
     public class EndPoint : DraggableComponent
     {
-        public int LeftPoint { get; set; }
-        public int RightPoint { get; set; }
 
-        public EndPoint(int left, int right, int width, int height)
+        public EndPoint(int width, int height)
             : base()
         {
             Selected = false;
-            LeftPoint = left;
-            RightPoint = right;
             Width = width;
             Height = height;
+            AllowDrag = true;
+        }
+        public EndPoint()
+        {
+            Selected = false;
             AllowDrag = true;
         }
 

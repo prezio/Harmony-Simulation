@@ -10,6 +10,9 @@ namespace PeriodicChords
         public uint Repeats { get; set; }
         public double[] Divides { get; set; }
 
+        public Period()
+        {
+        }
         public Period(double period, uint repeats, double[] divides)
         {
             if (repeats < 1) throw new ArgumentOutOfRangeException();

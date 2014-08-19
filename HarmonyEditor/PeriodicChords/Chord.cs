@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 
 namespace PeriodicChords
 {
+    [DataContract]
     public abstract partial class Chord
     {
         [DataMember]

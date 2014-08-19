@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace populo
@@ -107,14 +108,24 @@ namespace populo
 
             WriteToFile(0, tries);
         }
+        private static void Test()
+        {
+            Simulation.StartStimulation(10000000);
+            Thread.Sleep(3000);
+            Simulation.StopSimulation();
+
+            Thread.Sleep(2000);
+            Console.WriteLine("Line");
+            Console.ReadLine();
+        }
 
         public static void Main(string[] args)
         {
 
             //var board =  Simulation.SimulationBoard;
             //automationTest();
-            //Test();
-            NormalTest();
+            Test();
+            //NormalTest();
 
             //Tuple<int, int> a1 = Simulation.SimulationBoard.GetBestInArea(0, 0, 15, 15);
             //Tuple<int, int> a2 = Simulation.SimulationBoard.GetBestInArea(16, 0, 31, 15);

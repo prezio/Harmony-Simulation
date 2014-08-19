@@ -176,8 +176,8 @@ namespace HarmonyEditor
         }
         private List<List<Chord>> ToChords()
         {
-            List<List<Chord>> result = new List<List<Chord>>(1);
-            result[0] = new List<Chord>();
+            List<List<Chord>> result = new List<List<Chord>>();
+            result.Add(new List<Chord>());
             int index = 0;
 
             foreach (DraggableComponent dc in flowLayoutPanel.Controls)
@@ -358,24 +358,27 @@ namespace HarmonyEditor
             }
 
             ResetData();
-            var chords = Serialization.ReadFromJson(wnd.FileName);
-
-            foreach (var ch in chords)
+            List<List<Chord>> data = Serialization.LoadResultsFromJson(wnd.FileName);
+            foreach (List<Chord> list in data)
             {
-                Spectrum sp = new Spectrum();
-                sp.CurChord = ch;
-                sp.Rotated = true;
-                //sp.MouseClick += spectrum_MouseClick;
-                flowLayoutPanel.Controls.Add(sp);
-            }
+                foreach (Chord ch in list)
+                {
+                    Spectrum sp = new Spectrum();
+                    sp.CurChord = ch;
 
+                    AddSpectrum(sp);
+                }
+
+                EndPoint ep = new EndPoint();
+                AddEndPoint(ep);
+            }
             RefreshData();
         }
         private void zapiszToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string fileName = GetSaveDirectory();
             if (fileName != null)
-                ToChords().WriteToJson(fileName);
+                ToChords().SaveResultsToJson(fileName);
         }
         private void eksportujToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -500,10 +503,8 @@ namespace HarmonyEditor
             int width = (int)((int)numericUpDownWidth.Value * 0.5);
             int height = (int)numericUpDownHeight.Value;
 
-            EndPoint ep = new EndPoint(0, 0, width, height);
+            EndPoint ep = new EndPoint(width, height);
             AddEndPoint(ep);
-
-            RefreshData();
         }
         #endregion
     }

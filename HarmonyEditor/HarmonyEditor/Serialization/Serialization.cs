@@ -12,49 +12,71 @@ namespace HarmonyEditor
 {
     public static class Serialization
     {
-        public static void WriteToJson(this List<List<Chord>> list, string fileName)
+        public static void WriteToPitch(this List<List<Chord>> data, string fileName)
         {
-            string text = JsonConvert.SerializeObject(list.Select(odc => odc.Select( ch => new ChordData() { Name = ch.GetType().Name, Content = JsonConvert.SerializeObject(ch) })));
-            File.WriteAllText(fileName, text);
-        }
-        public static void WriteToPitch(this List<List<Chord>> list, string fileName)
-        {
-            List<double[]> pitches = list.Select(ch => ch.Notes).ToList();
-            string text = JsonConvert.SerializeObject(pitches);
+            List<List<PitchData>> result = new List<List<PitchData>>();
 
-            File.WriteAllText(fileName, text);
-        }
-        public static IEnumerable<Chord> ReadFromJson(string fileName)
-        {
-            List<Chord> result = new List<Chord>();
-            var data = JsonConvert.DeserializeObject<IEnumerable<ChordData>>(File.ReadAllText(fileName));
-            foreach (ChordData cd in data)
+            foreach(List<Chord> list in data)
             {
-                Chord ch = null;
-                switch (cd.Name)
+                result.Add(list.Select(ch => new PitchData()
                 {
-                    case "MidiPeriodicChord":
-                        ch = JsonConvert.DeserializeObject<MidiPeriodicChord>(cd.Content);
-                        break;
-                    case "MidiSimpleChord":
-                        ch = JsonConvert.DeserializeObject<MidiSimpleChord>(cd.Content);
-                        break;
+                    Pitches = ch.Notes,
+                    Left = ch.Left,
+                    Right = ch.Right
+                }).ToList());
+            }
+            
+            File.WriteAllText(fileName, JsonConvert.SerializeObject(result));
+        }
+        public static List<List<PitchData>> ReadFromPitch(string fileName)
+        {
+            return JsonConvert.DeserializeObject <List<List<PitchData>>>(File.ReadAllText(fileName));
+        }
 
-                    case "MidiCentPeriodicChord":
-                        ch = JsonConvert.DeserializeObject<MidiCentPeriodicChord>(cd.Content);
-                        break;
-                    case "MidiCentSimpleChord":
-                        JsonConvert.DeserializeObject<MidiCentSimpleChord>(cd.Content);
-                        break;
+        public static void SaveResultsToJson(this List<List<Chord>> list, string fileName)
+        {
+            string text = JsonConvert.SerializeObject(list.Select(odc => odc.Select(ch => new ChordData() { Name = ch.GetType().Name, Content = JsonConvert.SerializeObject(ch) })));
+            File.WriteAllText(fileName, text);
+        }
+        public static List<List<Chord>> LoadResultsFromJson(string fileName)
+        {
+            List<List<Chord>> result = new List<List<Chord>>();
+            var data = JsonConvert.DeserializeObject<List<List<ChordData>>>(File.ReadAllText(fileName));
 
-                    case "HerzPeriodicChord":
-                        JsonConvert.DeserializeObject<HerzPeriodicChord>(cd.Content);
-                        break;
-                    case "HerzSimpleChord":
-                        JsonConvert.DeserializeObject<HerzSimpleChord>(cd.Content);
-                        break;
+            foreach (List<ChordData> list in data)
+            {
+                result.Add(new List<Chord>());
+
+                foreach (ChordData cd in list)
+                {
+                    Chord ch = null;
+
+                    switch (cd.Name)
+                    {
+                        case "MidiPeriodicChord":
+                            ch = JsonConvert.DeserializeObject<MidiPeriodicChord>(cd.Content);
+                            break;
+                        case "MidiSimpleChord":
+                            ch = JsonConvert.DeserializeObject<MidiSimpleChord>(cd.Content);
+                            break;
+
+                        case "MidiCentPeriodicChord":
+                            ch = JsonConvert.DeserializeObject<MidiCentPeriodicChord>(cd.Content);
+                            break;
+                        case "MidiCentSimpleChord":
+                            JsonConvert.DeserializeObject<MidiCentSimpleChord>(cd.Content);
+                            break;
+
+                        case "HerzPeriodicChord":
+                            JsonConvert.DeserializeObject<HerzPeriodicChord>(cd.Content);
+                            break;
+                        case "HerzSimpleChord":
+                            JsonConvert.DeserializeObject<HerzSimpleChord>(cd.Content);
+                            break;
+                    }
+
+                    result.Last().Add(ch);
                 }
-                result.Add(ch);
             }
             return result;
         }

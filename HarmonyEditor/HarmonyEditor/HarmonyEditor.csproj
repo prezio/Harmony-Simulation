@@ -69,6 +69,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Serialization\ChordData.cs" />
+    <Compile Include="Serialization\PitchData.cs" />
     <Compile Include="Serialization\Serialization.cs" />
     <Compile Include="Windows\ChordEditor.cs">
       <SubType>Form</SubType>

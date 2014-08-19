@@ -9,6 +9,8 @@ namespace MusicPopulation
 {
     public static class Simulation
     {
+        private static Task _taskSimulation = null;
+        private static CancellationTokenSource _tokenCancelSimulation;
         private static AreaManager[] CreateAreas()
         {
             Debug.WriteLine("Create Area");
@@ -24,10 +26,19 @@ namespace MusicPopulation
             return result.ToArray();
         }
 
+        public static TaskStatus SimulationStatus
+        {
+            get
+            {
+                if (_taskSimulation == null)
+                    return TaskStatus.Canceled;
+                return _taskSimulation.Status;
+            }
+        }   
         /// <summary>
         /// Simulation Board with Randomly generated individuals.
         /// </summary>
-        public static Board SimulationBoard = new Board();
+        public static Board SimulationBoard;
         /// <summary>
         /// Each AreaManager commands its own seperated area.
         /// </summary>
@@ -145,9 +156,35 @@ namespace MusicPopulation
                 return Areas.Select(area => area.ChampionParameters).ToList();
             }
         }
+        
         public static void ResetSimulation()
         {
-            SimulationBoard = new Board(); 
+            SimulationBoard = new Board();
+        }
+        public static void StartSimulation(int evolveDuration)
+        {
+            ResetSimulation();
+            _tokenCancelSimulation = new CancellationTokenSource();
+            _taskSimulation = Task.Factory.StartNew(() =>
+                {
+                    try
+                    {
+                        for (int i = 0; i < evolveDuration; i++)
+                        {
+                            EvolveUsingThreads();
+                            _tokenCancelSimulation.Token.ThrowIfCancellationRequested();
+                        }
+                    }
+                    catch (OperationCanceledException)
+                    {
+                        // Operation canceled by user
+                    }
+                }, _tokenCancelSimulation.Token);
+        }
+        public static void StopSimulation()
+        {
+            _tokenCancelSimulation.Cancel();
+            _taskSimulation.Wait();
         }
     }
 }
