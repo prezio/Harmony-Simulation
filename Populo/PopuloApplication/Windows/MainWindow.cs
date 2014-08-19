@@ -18,6 +18,8 @@ namespace PopuloApplication
 {
     public partial class MainWindow : Form
     {
+        private bool _isSimRunning = false;
+
         private void LoadParameters()
         {
             // Global Parameters
@@ -280,18 +282,17 @@ namespace PopuloApplication
                 groupBoxTaskSimulation.BackColor = Color.Red;
             groupBoxTaskSimulation.Invalidate();
 
-            if (Simulation.SimulationStatus == TaskStatus.Running)
+            if (_isSimRunning == true)
             {
-                return;
+                
             }
 
             SaveParameters();
             Simulation.StartSimulation(1000);
-
-
         }
         private void buttonStartSimulation_Click(object sender, EventArgs e)
         {
+            _isSimRunning = true;
             Simulation.StartSimulation(1000);
         }
         private void buttonClose_Click(object sender, EventArgs e)
@@ -305,6 +306,7 @@ namespace PopuloApplication
         private void buttonStop_Click(object sender, EventArgs e)
         {
             Melody.StopPlaying();
+            Simulation.StopSimulation();
         }
         private void buttonSetAccord_Click(object sender, EventArgs e)
         {
