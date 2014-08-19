@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PeriodicChords">
+      <HintPath>..\..\HarmonyEditor\HarmonyEditor\bin\Release\PeriodicChords.dll</HintPath>
+    </Reference>
     <Reference Include="Sanford.Collections, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Sanford\Sanford.Collections.dll</HintPath>
@@ -62,9 +65,6 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="Ventuz.OSC">
-      <HintPath>..\..\packages\Ventuz.OSC\Ventuz.OSC.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Melody.cs" />

@@ -11,19 +11,13 @@ using MusicPopulation;
 using Sanford.Multimedia.Midi;
 using System.IO;
 using System.Threading;
+using PeriodicChords;
+
 
 namespace PopuloApplication
 {
     public partial class MainWindow : Form
     {
-        private OutputDevice outDevice;
-        private Sequencer sequencer;
-        private ChannelMessage[, , ] messageArray;
-        private void ChannelMessagePlayed(object sender, ChannelMessageEventArgs e)
-        {
-            outDevice.Send(e.Message);
-        }
- 
         private void LoadParameters()
         {
             // Global Parameters
@@ -246,10 +240,10 @@ namespace PopuloApplication
             Member3.PrefferedNotes = (int)numericUpDownThreePrefferedNotes.Value;
             Member3.PlayedGroup = (int)numericUpDownThreePlayedGroup.Value;
         }
-
         private void ChangePhase()
         {
             Simulation.StopSimulation();
+            Melody.StopPlaying();
             Simulation.SimulationBoard.ChangePhase();
 
             groupBoxFactorsPhase1.Enabled = false;
@@ -269,55 +263,8 @@ namespace PopuloApplication
                     break;
             }
         }
-        private void PlaySimulation()
-        {
-            var boardState = Simulation.SimulationBoardState.ToArray();
-            sequencer.Sequence = new Sequence();
-            int numberOfNotes;
-            int[,] notes;
-            int pitch=0;
 
-            for (int channel = 0; channel < 16; channel++)
-            {
-                numberOfNotes = boardState[channel].Item1;
-                notes = boardState[channel].Item2;
-                Track track = new Track();
-                int i = 0;
-                for (int index = 0; index < numberOfNotes; index++)
-                {
-                    //channel = (((int)notes[index,0]) % 100) / 25;
-                    pitch = notes[index, 0] + 40;
-
-                    track.Insert(i, messageArray[channel, pitch, notes[index, 3]]);
-                    i += notes[index, 2];
-                    track.Insert(i, messageArray[channel, pitch, 0]);
-                }
-                sequencer.Sequence.Add(track);
-            }
-            
-            sequencer.Start();
-        }
-
-        private void ResetSimulation()
-        {
-            if (sequencer != null)
-                sequencer.Stop();
-            if (_tokenCancelPlay != null)
-                _tokenCancelPlay.Cancel();
-
-            _taskPlay = null;
-        }
-
-        private Task _taskPlay = null;
-        private CancellationTokenSource _tokenCancelPlay;
-
-        private int _iEvolveDuration = 100;
-        private void DoPlay()
-        {
-            _tokenCancelPlay = new CancellationTokenSource();
-            _taskPlay = Task.Factory.StartNew(() => PlaySimulation(), _tokenCancelPlay.Token);
-        }
-
+        public List<List<PitchData>> Accord { get; set; }
         public MainWindow()
         {
             InitializeComponent();
@@ -341,14 +288,7 @@ namespace PopuloApplication
             SaveParameters();
             Simulation.StartSimulation(1000);
 
-            //else if (_taskSimulation.IsCompleted == true)
-            //{
-            //    if (_taskPlay == null || _taskPlay.IsCompleted)
-            //    {
-            //        DoPlay();
-            //        DoSimulation();
-            //    }
-            //}
+
         }
         private void buttonStartSimulation_Click(object sender, EventArgs e)
         {
@@ -362,56 +302,28 @@ namespace PopuloApplication
         {
             ChangePhase();
         }
-        private void MainWindow_Load(object sender, EventArgs e)
-        {
-            sequencer = new Sanford.Multimedia.Midi.Sequencer();
-            sequencer.ChannelMessagePlayed += ChannelMessagePlayed;
-            outDevice = new OutputDevice(0);
-            ChannelMessageBuilder builder = new ChannelMessageBuilder();
-            for (int channel = 0; channel < 16; channel++)
-            {
-                builder.Command = ChannelCommand.ProgramChange;
-                builder.MidiChannel = channel;
-                builder.Data1 = channel * 3;
-                builder.Data2 = 127;
-                builder.Build();
-                outDevice.Send(builder.Result);
-            }
-            PrepareMessages();
-        }
-
-        private void PrepareMessages()
-        {
-            messageArray = new ChannelMessage[16, 128, 128];
-            ChannelMessageBuilder builder = new ChannelMessageBuilder();
-            builder.Command = ChannelCommand.NoteOn;
-            for(int channel=0; channel<16;channel++)
-            {
-                builder.MidiChannel=channel;
-                for(int pitch =0; pitch<128; pitch++)
-                {
-                    builder.Data1=pitch;
-                    for(int velocity=0; velocity<128; velocity++)
-                    {
-                        builder.Data2 = velocity;
-                        builder.Build();
-                        messageArray[channel, pitch, velocity] = builder.Result;
-                    }
-                }
-            }
-        }
         private void buttonStop_Click(object sender, EventArgs e)
         {
-            sequencer.Stop();
-            ChannelMessageBuilder builder = new ChannelMessageBuilder();
-            for (int channel = 0; channel < 16; channel++)
+            Melody.StopPlaying();
+        }
+        private void buttonSetAccord_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog wnd = new OpenFileDialog();
+            wnd.RestoreDirectory = true;
+
+            DialogResult result = wnd.ShowDialog();
+            if (result != DialogResult.OK)
             {
-                builder.Command = ChannelCommand.Controller;
-                builder.MidiChannel = channel;
-                builder.Data1 = 120;
-                builder.Data2 = 0;
-                builder.Build();
-                outDevice.Send(builder.Result);
+                return;
+            }
+
+            try
+            {
+                Accord = Serialization.ReadFromPitch(wnd.FileName);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Failed to read accord");
             }
         }
         #endregion

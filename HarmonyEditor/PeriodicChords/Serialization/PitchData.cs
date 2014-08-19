@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 
-namespace HarmonyEditor
+namespace PeriodicChords
 {
     [DataContract]
     public class PitchData
