@@ -254,7 +254,10 @@ namespace HarmonyEditor
         }
         private void buttonCountSpectrum_Click(object sender, EventArgs e)
         {
-            CountSpectrum();
+            if (CountSpectrum() == false)
+            {
+                MessageBox.Show("Podano złe dane.");
+            }
         }
         private void buttonCancel_Click(object sender, EventArgs e)
         {

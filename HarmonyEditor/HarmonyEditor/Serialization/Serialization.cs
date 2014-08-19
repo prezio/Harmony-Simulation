@@ -12,12 +12,12 @@ namespace HarmonyEditor
 {
     public static class Serialization
     {
-        public static void WriteToJson(this List<Chord> list, string fileName)
+        public static void WriteToJson(this List<List<Chord>> list, string fileName)
         {
-            string text = JsonConvert.SerializeObject(list.Select(ch => new ChordData() { Name = ch.GetType().Name, Content = JsonConvert.SerializeObject(ch) }));
+            string text = JsonConvert.SerializeObject(list.Select(odc => odc.Select( ch => new ChordData() { Name = ch.GetType().Name, Content = JsonConvert.SerializeObject(ch) })));
             File.WriteAllText(fileName, text);
         }
-        public static void WriteToPitch(this IEnumerable<Chord> list, string fileName)
+        public static void WriteToPitch(this List<List<Chord>> list, string fileName)
         {
             List<double[]> pitches = list.Select(ch => ch.Notes).ToList();
             string text = JsonConvert.SerializeObject(pitches);
