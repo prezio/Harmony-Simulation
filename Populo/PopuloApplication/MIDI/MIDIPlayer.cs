@@ -39,6 +39,7 @@ namespace PopuloApplication.MIDI
         private MelodySequence[] tracks;
         private int numberOfTracks;
         private Timer timer;
+        public bool need=true;
         public MIDIPlayer(int device, int numberOfTracks, int interval)
         {
             outDevice = new OutputDevice(device);
@@ -95,6 +96,7 @@ namespace PopuloApplication.MIDI
                 }
                 tracks[channel].Correct();
             }
+            need = false;
         }
     }
 }
