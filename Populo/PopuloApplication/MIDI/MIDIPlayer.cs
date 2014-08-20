@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 using Sanford.Multimedia.Midi;
 using System.Timers;
 
-namespace PopuloApplication.MIDI
+namespace PopuloApplication
 {
 
     public class MIDIPlayer
     {
         #region static_members
         private static ChannelMessage[, ,] messageArray;
-        public static MIDIPlayer()
+        static MIDIPlayer()
         {
             messageArray = new ChannelMessage[16, 128, 128];
             ChannelMessageBuilder builder = new ChannelMessageBuilder();
@@ -35,10 +35,12 @@ namespace PopuloApplication.MIDI
                 }
         }
         #endregion
+
         private OutputDevice outDevice;
         private MelodySequence[] tracks;
         private int numberOfTracks;
         private Timer timer;
+
         public bool need=true;
         public MIDIPlayer(int device, int numberOfTracks, int interval)
         {
@@ -49,17 +51,16 @@ namespace PopuloApplication.MIDI
             ChannelMessageBuilder builder = new ChannelMessageBuilder(); //for test only
             for (int i = 0; i < numberOfTracks; i++)
             {
-                tracks[i] = new MelodySequence(outDevice);
+                tracks[i] = new MelodySequence(outDevice,this);
                 timer.Elapsed +=new ElapsedEventHandler(tracks[i].Tick);
                 //for test only
                 builder.Command = ChannelCommand.ProgramChange;
                 builder.MidiChannel = i;
-                builder.Data1 = i * 4;
+                builder.Data1 = i * 3;
                 builder.Data2 = 127;
                 builder.Build();
                 outDevice.Send(builder.Result);
             }
-
         }
         public void Start()
         {
@@ -92,6 +93,7 @@ namespace PopuloApplication.MIDI
 
                     
                     tracks[channel].SimpleAdd(i, messageArray[channel, pitch, notes[index, 3]], messageArray[channel, pitch, 0]);
+                    i += notes[index, 2];
                     
                 }
                 tracks[channel].Correct();

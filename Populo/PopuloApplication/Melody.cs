@@ -4,32 +4,31 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using PopuloApplication.MIDI;
+using PopuloApplication;
+using MusicPopulation;
 
 namespace PopuloApplication
 {
     public static class Melody
     {
 
-        private static MIDIPlayer player;
-        public static Melody()
-        {
-            player = new MIDIPlayer(0, 16, 3);
-        }
+        private static MIDIPlayer _player = new MIDIPlayer(0, 16, 3);
+
         public static bool IsPlaying
         {
             get
             {
-                return player.need;
+                return !_player.need;
             }
         }
         public static void StartPlaying()
         {
-            player.Start();
+            _player.Add(Simulation.SimulationBoardState.ToArray());
+            _player.Start();
         }
         public static void StopPlaying()
         {
-            player.Stop();
+            _player.Stop();
         }
     }
 }

@@ -12,7 +12,7 @@ namespace MusicPopulation
         #region Variables which will change during simulation
         public static double Alfa = 1;
         public static int MaxSteps = 20;
-        public static int PercentDeath = 10;
+        public static int PercentDeath = 0;
         #endregion
     }
 }

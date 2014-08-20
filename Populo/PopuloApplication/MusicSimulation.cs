@@ -23,9 +23,9 @@ namespace PopuloApplication
         }
         public static void Stop()
         {
-            //_timer.Stop();
-            //Melody.StopPlaying();
-            //Simulation.StopSimulation();
+            _timer.Stop();
+            Melody.StopPlaying();
+            Simulation.StopSimulation();
         }
 
         private static void _timer_Elapsed(object sender, ElapsedEventArgs e)
@@ -35,7 +35,7 @@ namespace PopuloApplication
             if (Simulation.SimulationStatus != TaskStatus.Running && Melody.IsPlaying == false)
             {
                 Melody.StartPlaying();
-                //_window.SaveParameters();
+                _window.SaveParameters();
                 Simulation.StartSimulation(_iEvolveDuration);
             }
         }

@@ -11,6 +11,6 @@ namespace MusicPopulation
         public static double[] ModifyChance = new double[] { 0.05,0, 0.05, 0.05 };
         public static double GrowthChance = 0.05;
         public static double ShrinkChance = 0.05;
-        public static int PrefferedLength = 30;
+        public static int PrefferedLength = 10;
     }
 }

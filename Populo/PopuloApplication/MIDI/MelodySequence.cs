@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Sanford.Multimedia.Midi;
 using System.Timers; 
 
-namespace PopuloApplication.MIDI
+namespace PopuloApplication
 {
     public class MelodySequence
     {
@@ -55,9 +55,11 @@ namespace PopuloApplication.MIDI
             if (counter < 0)
                 counter = 1;
         }
-        public MelodySequence(OutputDevice o)
+        public MelodySequence(OutputDevice o,MIDIPlayer player)
         {
             outDevice = o;
+            sequence = new Queue<Tuple<int, ChannelMessage, ChannelMessage>>();
+            this.player = player;
         }
         public void clean()
         {

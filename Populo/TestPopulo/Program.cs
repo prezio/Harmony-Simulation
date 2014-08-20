@@ -96,15 +96,14 @@ namespace populo
         //}
         private static void NormalTest()
         {
-            int tries = 1000;
+            int tries = 10;
+
+            Simulation.SimulationBoard = new Board();
 
             Simulation.SimulationBoard.ChangePhase();
+            Simulation.SimulationBoard.ChangePhase();
 
-            for (int i = 0; i < tries; i++)
-            {
-                Simulation.EvolveUsingThreads();
-                Console.WriteLine(i);
-            }
+            Simulation.StartSimulation(tries);
 
             WriteToFile(0, tries);
         }
@@ -124,8 +123,8 @@ namespace populo
 
             //var board =  Simulation.SimulationBoard;
             //automationTest();
-            Test();
-            //NormalTest();
+            //Test();
+            NormalTest();
 
             //Tuple<int, int> a1 = Simulation.SimulationBoard.GetBestInArea(0, 0, 15, 15);
             //Tuple<int, int> a2 = Simulation.SimulationBoard.GetBestInArea(16, 0, 31, 15);

@@ -41,21 +41,6 @@ namespace PopuloApplication
                     break;
             }
         }
-
-        public List<List<PitchData>> Accord { get; set; }
-        public MainWindow()
-        {
-            InitializeComponent();
-            LoadParameters();
-        }
-        public void RefreshSimulationControls()
-        {
-            if (Simulation.SimulationStatus == TaskStatus.Running)
-                groupBoxTaskSimulation.BackColor = Color.Green;
-            else
-                groupBoxTaskSimulation.BackColor = Color.Red;
-            groupBoxTaskSimulation.Invalidate();
-        }
         private void LoadParameters()
         {
             // Global Parameters
@@ -167,7 +152,22 @@ namespace PopuloApplication
             numericUpDownThreePrefferedNotes.Value = (decimal)Member3.PrefferedNotes;
             numericUpDownThreePlayedGroup.Value = (decimal)Member3.PlayedGroup;
         }
-        private void SaveParameters()
+
+        public List<List<PitchData>> Accord { get; set; }
+        public MainWindow()
+        {
+            InitializeComponent();
+            LoadParameters();
+        }
+        public void RefreshSimulationControls()
+        {
+            if (Simulation.SimulationStatus == TaskStatus.Running)
+                groupBoxTaskSimulation.BackColor = Color.Green;
+            else
+                groupBoxTaskSimulation.BackColor = Color.Red;
+            groupBoxTaskSimulation.Invalidate();
+        }
+        public void SaveParameters()
         {
             // Global parameters
             SimulationParameters.PercentDeath = (int)numericUpDownPercentDeath.Value;
