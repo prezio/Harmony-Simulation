@@ -49,10 +49,11 @@ namespace PopuloApplication
             timer = new Timer(interval);
             tracks = new MelodySequence[numberOfTracks];
             ChannelMessageBuilder builder = new ChannelMessageBuilder(); //for test only
+            timer.Elapsed += new ElapsedEventHandler(Tick);
             for (int i = 0; i < numberOfTracks; i++)
             {
                 tracks[i] = new MelodySequence(outDevice,this);
-                timer.Elapsed +=new ElapsedEventHandler(tracks[i].Tick);
+                
                 //for test only
                 builder.Command = ChannelCommand.ProgramChange;
                 builder.MidiChannel = i;
@@ -75,6 +76,14 @@ namespace PopuloApplication
             }
               
         }
+        public void Tick(object sender, ElapsedEventArgs e)
+        {
+
+            for (int i = 0; i < numberOfTracks; i++)
+            {
+                tracks[i].Tick();
+            }
+        }
         public void Add(Tuple<int,int[,]>[] voices)
         {
             int numberOfNotes;
@@ -85,15 +94,13 @@ namespace PopuloApplication
             {
                 numberOfNotes = voices[channel].Item1;
                 notes = voices[channel].Item2;
-                int i = 0;
                 for (int index = 0; index < numberOfNotes; index++)
                 {
                     //channel = (((int)notes[index,0]) % 100) / 25;
                     pitch = notes[index, 0] + 40;
 
-                    
-                    tracks[channel].SimpleAdd(i, messageArray[channel, pitch, notes[index, 3]], messageArray[channel, pitch, 0]);
-                    i += notes[index, 2];
+
+                    tracks[channel].SimpleAdd(notes[index, 2], messageArray[channel, pitch, notes[index, 3]], messageArray[channel, pitch, 0]);
                     
                 }
                 tracks[channel].Correct();

@@ -15,7 +15,7 @@ namespace PopuloApplication
         ChannelMessage prev = null;
         OutputDevice outDevice;
         MIDIPlayer player;
-        public void Tick(object sender, ElapsedEventArgs e)
+        public void Tick()
         {
             counter--;
             if (counter == 0)
