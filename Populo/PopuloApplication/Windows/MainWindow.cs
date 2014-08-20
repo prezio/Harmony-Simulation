@@ -40,6 +40,8 @@ namespace PopuloApplication
                     groupBoxFactorsPhase3.Enabled = true;
                     break;
             }
+
+            this.Invalidate();
         }
         private void LoadParameters()
         {

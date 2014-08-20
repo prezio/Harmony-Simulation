@@ -16,7 +16,7 @@ namespace PopuloApplication
             _window = context;
             _timer = new Timer(500);
 
-            Simulation.StartSimulation(_iEvolveDuration);
+            Simulation.DoSimulation(_iEvolveDuration);
 
             _timer.Elapsed += _timer_Elapsed;
             _timer.Enabled = true;
@@ -36,7 +36,7 @@ namespace PopuloApplication
             {
                 Melody.StartPlaying();
                 _window.SaveParameters();
-                Simulation.StartSimulation(_iEvolveDuration);
+                Simulation.DoSimulation(_iEvolveDuration);
             }
         }
     }

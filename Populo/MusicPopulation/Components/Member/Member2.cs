@@ -284,8 +284,8 @@ namespace MusicPopulation
         public override void Influence(Member influencer, Random randContext)
         {
             Member2 m = (influencer as Member2);
-            _initialDynamics +=(int) ((_initialDynamics - m._initialDynamics) * DynamicsInfluenceAmount);
-            _initialRhythm += (int)((_initialRhythm - m._initialRhythm) * RhythmInfluenceAmount);
+            _initialDynamics +=(int) ((m._initialDynamics - _initialDynamics) * DynamicsInfluenceAmount);
+            _initialRhythm += (int)((m._initialRhythm - _initialRhythm) * RhythmInfluenceAmount);
             if(_numberOfNotes<m._numberOfNotes)
             {
                 Grow(randContext);
@@ -298,14 +298,14 @@ namespace MusicPopulation
             {
                 _type = m._type;
             }
-            _pauseDuration+=(int)((_pauseDuration-m._pauseDuration)*PauseInfluenceAmount);
+            _pauseDuration += (int)((m._pauseDuration - _pauseDuration) * PauseInfluenceAmount);
             for (int i = 0; i < _numberOfNotes; i++)
             {
-                _notes[i, 0] += (int)((_notes[i, 0] - m._notes[i%m._numberOfNotes, 0])*PitchInfluenceAmount);
-                _notes[i, 1] = (_notes[i, 1] + m._notes[i % m._numberOfNotes, 1]) % 2;
-                _notes[i, 2] += (int)((_notes[i, 2] - m._notes[i % m._numberOfNotes, 2]) * RhythmInfluenceAmount);
+                _notes[i, 0] += (int)((m._notes[i % m._numberOfNotes, 0] - _notes[i, 0]) * PitchInfluenceAmount);
+                _notes[i, 1] = (m._notes[i % m._numberOfNotes, 1] + _notes[i , 1]) % 2;
+                _notes[i, 2] += (int)((m._notes[i % m._numberOfNotes, 2] - _notes[i , 2]) * RhythmInfluenceAmount);
                 if (randContext.NextDouble() < RhythmDistortionInfluenceChance) _notes[i, 3] = m._notes[i % m._numberOfNotes, 3];
-                _notes[i, 4] += (int)((_notes[i, 4] - m._notes[i % m._numberOfNotes, 4]) * DynamicsInfluenceAmount);
+                _notes[i, 4] += (int)((m._notes[i % m._numberOfNotes, 4] - _notes[i , 4]) * DynamicsInfluenceAmount);
                 if (randContext.NextDouble() < DynamicsDistortionInfluenceChance) _notes[i, 5] = m._notes[i % m._numberOfNotes, 5];
             }
 

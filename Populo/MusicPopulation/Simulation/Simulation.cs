@@ -38,7 +38,7 @@ namespace MusicPopulation
         /// <summary>
         /// Simulation Board with Randomly generated individuals.
         /// </summary>
-        public static Board SimulationBoard;
+        public static Board SimulationBoard = new Board();
         /// <summary>
         /// Each AreaManager commands its own seperated area.
         /// </summary>
@@ -156,14 +156,12 @@ namespace MusicPopulation
                 return Areas.Select(area => area.ChampionParameters).ToList();
             }
         }
-        
         public static void ResetSimulation()
         {
             SimulationBoard = new Board();
         }
-        public static void StartSimulation(int evolveDuration)
+        public static void DoSimulation(int evolveDuration)
         {
-            ResetSimulation();
             _tokenCancelSimulation = new CancellationTokenSource();
             _taskSimulation = Task.Factory.StartNew(() =>
                 {

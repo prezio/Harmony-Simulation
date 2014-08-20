@@ -96,20 +96,20 @@ namespace populo
         //}
         private static void NormalTest()
         {
-            int tries = 10;
+            int tries = 100;
 
             Simulation.SimulationBoard = new Board();
 
             Simulation.SimulationBoard.ChangePhase();
-            Simulation.SimulationBoard.ChangePhase();
+            //Simulation.SimulationBoard.ChangePhase();
 
-            Simulation.StartSimulation(tries);
+            Simulation.DoSimulation(tries);
 
             WriteToFile(0, tries);
         }
         private static void Test()
         {
-            Simulation.StartSimulation(10000000);
+            Simulation.DoSimulation(10000000);
             Thread.Sleep(100000);
             Simulation.StopSimulation();
 
