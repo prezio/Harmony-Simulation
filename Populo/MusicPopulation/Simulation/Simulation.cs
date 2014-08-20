@@ -171,7 +171,7 @@ namespace MusicPopulation
                     {
                         for (int i = 0; i < evolveDuration; i++)
                         {
-                            EvolveUsingThreads();
+                            EvolveWithoutThreads();
                             _tokenCancelSimulation.Token.ThrowIfCancellationRequested();
                         }
                     }

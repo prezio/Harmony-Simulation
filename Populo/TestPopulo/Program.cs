@@ -111,7 +111,7 @@ namespace populo
         private static void Test()
         {
             Simulation.StartSimulation(10000000);
-            Thread.Sleep(3000);
+            Thread.Sleep(100000);
             Simulation.StopSimulation();
 
             Thread.Sleep(2000);

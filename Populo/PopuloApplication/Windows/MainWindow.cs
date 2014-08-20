@@ -18,8 +18,44 @@ namespace PopuloApplication
 {
     public partial class MainWindow : Form
     {
-        private bool _isSimRunning = false;
+        private void ChangePhase()
+        {
+            MusicSimulation.Stop();
+            Simulation.SimulationBoard.ChangePhase();
+            MusicSimulation.Start(this);
 
+            groupBoxFactorsPhase1.Enabled = false;
+            groupBoxFactorsPhase2.Enabled = false;
+            groupBoxFactorsPhase3.Enabled = false;
+
+            switch (Simulation.SimulationBoard.IndexOfPhase)
+            {
+                case 0:
+                    groupBoxFactorsPhase1.Enabled = true;
+                    break;
+                case 1:
+                    groupBoxFactorsPhase2.Enabled = true;
+                    break;
+                case 2:
+                    groupBoxFactorsPhase3.Enabled = true;
+                    break;
+            }
+        }
+
+        public List<List<PitchData>> Accord { get; set; }
+        public MainWindow()
+        {
+            InitializeComponent();
+            LoadParameters();
+        }
+        public void RefreshSimulationControls()
+        {
+            if (Simulation.SimulationStatus == TaskStatus.Running)
+                groupBoxTaskSimulation.BackColor = Color.Green;
+            else
+                groupBoxTaskSimulation.BackColor = Color.Red;
+            groupBoxTaskSimulation.Invalidate();
+        }
         private void LoadParameters()
         {
             // Global Parameters
@@ -242,58 +278,16 @@ namespace PopuloApplication
             Member3.PrefferedNotes = (int)numericUpDownThreePrefferedNotes.Value;
             Member3.PlayedGroup = (int)numericUpDownThreePlayedGroup.Value;
         }
-        private void ChangePhase()
-        {
-            Simulation.StopSimulation();
-            Melody.StopPlaying();
-            Simulation.SimulationBoard.ChangePhase();
-
-            groupBoxFactorsPhase1.Enabled = false;
-            groupBoxFactorsPhase2.Enabled = false;
-            groupBoxFactorsPhase3.Enabled = false;
-
-            switch (Simulation.SimulationBoard.IndexOfPhase)
-            {
-                case 0:
-                    groupBoxFactorsPhase1.Enabled = true;
-                    break;
-                case 1:
-                    groupBoxFactorsPhase2.Enabled = true;
-                    break;
-                case 2:
-                    groupBoxFactorsPhase3.Enabled = true;
-                    break;
-            }
-        }
-
-        public List<List<PitchData>> Accord { get; set; }
-        public MainWindow()
-        {
-            InitializeComponent();
-            LoadParameters();
-        }
 
         #region Events
-        private void MainWindow_Paint(object sender, PaintEventArgs e)
-        {
-            if (Simulation.SimulationStatus == TaskStatus.Running)
-                groupBoxTaskSimulation.BackColor = Color.Green;
-            else
-                groupBoxTaskSimulation.BackColor = Color.Red;
-            groupBoxTaskSimulation.Invalidate();
-
-            if (_isSimRunning == true)
-            {
-                
-            }
-
-            SaveParameters();
-            Simulation.StartSimulation(1000);
-        }
         private void buttonStartSimulation_Click(object sender, EventArgs e)
         {
-            _isSimRunning = true;
-            Simulation.StartSimulation(1000);
+            MusicSimulation.Start(this);
+
+            buttonStartSimulation.Enabled = false;
+            buttonChangePhase.Enabled = true;
+            buttonSetAccord.Enabled = false;
+            buttonStop.Enabled = true;
         }
         private void buttonClose_Click(object sender, EventArgs e)
         {
@@ -305,8 +299,12 @@ namespace PopuloApplication
         }
         private void buttonStop_Click(object sender, EventArgs e)
         {
-            Melody.StopPlaying();
-            Simulation.StopSimulation();
+            MusicSimulation.Stop();
+
+            buttonStartSimulation.Enabled = true;
+            buttonStop.Enabled = false;
+            buttonSetAccord.Enabled = true;
+            buttonChangePhase.Enabled = false;
         }
         private void buttonSetAccord_Click(object sender, EventArgs e)
         {

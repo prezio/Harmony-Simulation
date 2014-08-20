@@ -2362,7 +2362,6 @@
             this.MaximizeBox = false;
             this.Name = "MainWindow";
             this.Text = "Populo Simulator";
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.MainWindow_Paint);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPercentDeath)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxSteps)).EndInit();
             this.groupBoxParameters.ResumeLayout(false);
