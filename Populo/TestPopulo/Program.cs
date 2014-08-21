@@ -106,11 +106,11 @@ namespace populo
             Simulation.DoSimulation(tries);
 
             WriteToFile(0, tries);
+            Console.WriteLine("Finished");
         }
         private static void Test()
         {
             Simulation.DoSimulation(10000000);
-            Thread.Sleep(100000);
             Simulation.StopSimulation();
 
             Thread.Sleep(2000);
