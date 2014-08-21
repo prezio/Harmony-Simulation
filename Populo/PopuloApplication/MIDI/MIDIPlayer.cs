@@ -103,6 +103,7 @@ namespace PopuloApplication
                     tracks[channel].SimpleAdd(notes[index, 2], messageArray[channel, pitch, notes[index, 3]], messageArray[channel, pitch, 0]);
                     
                 }
+                //tracks[channel].SimpleAdd(0, messageArray[channel, 0, 0], messageArray[channel, 0, 0]);
                 tracks[channel].Correct();
             }
             need = false;

@@ -12,7 +12,7 @@ namespace PopuloApplication
     public static class Melody
     {
 
-        private static MIDIPlayer _player = new MIDIPlayer(0, 16, 3);
+        private static MIDIPlayer _player = new MIDIPlayer(0, 16, 10);
 
         public static bool IsPlaying
         {

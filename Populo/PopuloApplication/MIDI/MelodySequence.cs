@@ -17,23 +17,27 @@ namespace PopuloApplication
         MIDIPlayer player;
         public void Tick()
         {
-            counter--;
-            if (counter == 0)
+            lock (sequence)
             {
-                if(prev!=null)
+                counter--;
+
+                if (counter == 0)
                 {
-                    outDevice.Send(prev);
-                }
-                
-                if(sequence.Count>0)
-                {
-                    Tuple<int, ChannelMessage, ChannelMessage> t = sequence.Dequeue();
-                    outDevice.Send(t.Item2);
-                    counter = t.Item1;
-                    prev = t.Item3;
-                    if(sequence.Count<4)
+                    if (prev != null)
                     {
-                        player.need = true;
+                        outDevice.Send(prev);
+                    }
+
+                    if (sequence.Count > 0)
+                    {
+                        Tuple<int, ChannelMessage, ChannelMessage> t = sequence.Dequeue();
+                        outDevice.Send(t.Item2);
+                        counter = t.Item1;
+                        prev = t.Item3;
+                        if (sequence.Count < 4)
+                        {
+                            player.need = true;
+                        }
                     }
                 }
             }
