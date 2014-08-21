@@ -84,7 +84,7 @@ namespace MusicPopulation
             : base(randContext)
         {
             _numberOfNotes = randContext.Next(_maxNotes - 1) + 1;
-            _notes = new int[_maxNotes + 1, 4];
+            _notes = new int[_maxNotes, 4];
 
             for (int i = 0; i < NumberOfNotes; i++)
             {
@@ -240,8 +240,8 @@ namespace MusicPopulation
         {
             Member1 result = new Member1();
             result._numberOfNotes = NumberOfNotes;
-            int[,] notes = new int[_maxNotes + 1, 4];
-            Array.Copy(_notes, notes, (_maxNotes + 1) * 4);
+            int[,] notes = new int[_maxNotes, 4];
+            Array.Copy(_notes, notes, _maxNotes * 4);
             result._notes = notes;
 
             return result;

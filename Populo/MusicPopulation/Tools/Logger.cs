@@ -46,13 +46,17 @@ namespace MusicPopulation
             {
                 res.Append(string.Format("Area number {0}\n", area));
 
-                int number = sound.Item1;
-                int[,] array = sound.Item2;
-
-                for (int i = 0; i < number; i++)
+                if (sound != null)
                 {
-                    res.Append(string.Format("{0};{1};{2};{3}\n", array[i, 0], array[i, 1], array[i, 2], array[i, 3]));
+                    int number = sound.Item1;
+                    int[,] array = sound.Item2;
+
+                    for (int i = 0; i < number; i++)
+                    {
+                        res.Append(string.Format("{0};{1};{2};{3}\n", array[i, 0], array[i, 1], array[i, 2], array[i, 3]));
+                    }
                 }
+
                 res.Append(string.Format("End of area {0}\n", area));
                 area++;
             }
