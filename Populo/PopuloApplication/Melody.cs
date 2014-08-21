@@ -13,12 +13,11 @@ namespace PopuloApplication
     {
 
         private static MIDIPlayer _player = new MIDIPlayer(0, 16, 10);
-
         public static bool IsPlaying
         {
             get
             {
-                return !_player.need;
+                return (!_player.need)||_player.adding;
             }
         }
         public static void StartPlaying()

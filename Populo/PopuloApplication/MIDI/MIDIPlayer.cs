@@ -42,6 +42,7 @@ namespace PopuloApplication
         private Timer timer;
 
         public bool need=true;
+        public bool adding = false;
         public MIDIPlayer(int device, int numberOfTracks, int interval)
         {
             outDevice = new OutputDevice(device);
@@ -86,6 +87,7 @@ namespace PopuloApplication
         }
         public void Add(Tuple<int,int[,]>[] voices)
         {
+            adding = true;
             int numberOfNotes;
             int[,] notes;
             int pitch = 0;
@@ -107,6 +109,7 @@ namespace PopuloApplication
                 tracks[channel].Correct();
             }
             need = false;
+            adding = false;
         }
     }
 }
