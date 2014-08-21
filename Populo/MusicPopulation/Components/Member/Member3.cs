@@ -106,8 +106,8 @@ namespace MusicPopulation
                         notes[i, 2] = _groups[group, 3];
                         notes[i, 3] = dynamics;
                         dynamics -= _groups[group, 5];
-                        if (dynamics < 1)
-                            dynamics = 1;
+                        if (dynamics < 0)
+                            dynamics = 0;
                     }
                 }
                 return notes;
