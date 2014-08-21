@@ -187,7 +187,7 @@ namespace MusicPopulation
 
                     if (best_mem.NumberOfNotes <= 0)
                     {
-                        Console.WriteLine("line");
+                        //Console.WriteLine("line");
                         continue;
                     }
 

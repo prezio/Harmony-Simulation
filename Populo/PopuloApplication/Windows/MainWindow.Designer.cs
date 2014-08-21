@@ -180,6 +180,8 @@
             this.buttonChangePhase = new System.Windows.Forms.Button();
             this.buttonStop = new System.Windows.Forms.Button();
             this.buttonSetAccord = new System.Windows.Forms.Button();
+            this.labelOnePrefferedLength = new System.Windows.Forms.Label();
+            this.numericUpDownOnePrefferedLength = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPercentDeath)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxSteps)).BeginInit();
             this.groupBoxParameters.SuspendLayout();
@@ -275,6 +277,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOneModifyAmount3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOneModifyAmount2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAlfa)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOnePrefferedLength)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonStartSimulation
@@ -1922,6 +1925,8 @@
             // 
             // groupBoxFactorsPhase1
             // 
+            this.groupBoxFactorsPhase1.Controls.Add(this.numericUpDownOnePrefferedLength);
+            this.groupBoxFactorsPhase1.Controls.Add(this.labelOnePrefferedLength);
             this.groupBoxFactorsPhase1.Controls.Add(this.labelOneShrinkChance);
             this.groupBoxFactorsPhase1.Controls.Add(this.labelOneGrowthChance);
             this.groupBoxFactorsPhase1.Controls.Add(this.labelOneExchangeChance);
@@ -1948,7 +1953,7 @@
             this.groupBoxFactorsPhase1.Controls.Add(this.numericUpDownOneModifyAmount2);
             this.groupBoxFactorsPhase1.Location = new System.Drawing.Point(9, 162);
             this.groupBoxFactorsPhase1.Name = "groupBoxFactorsPhase1";
-            this.groupBoxFactorsPhase1.Size = new System.Drawing.Size(353, 249);
+            this.groupBoxFactorsPhase1.Size = new System.Drawing.Size(353, 261);
             this.groupBoxFactorsPhase1.TabIndex = 8;
             this.groupBoxFactorsPhase1.TabStop = false;
             this.groupBoxFactorsPhase1.Text = "Współczynniki Faza 1";
@@ -2347,6 +2352,22 @@
             this.buttonSetAccord.UseVisualStyleBackColor = true;
             this.buttonSetAccord.Click += new System.EventHandler(this.buttonSetAccord_Click);
             // 
+            // labelOnePrefferedLength
+            // 
+            this.labelOnePrefferedLength.AutoSize = true;
+            this.labelOnePrefferedLength.Location = new System.Drawing.Point(6, 220);
+            this.labelOnePrefferedLength.Name = "labelOnePrefferedLength";
+            this.labelOnePrefferedLength.Size = new System.Drawing.Size(86, 13);
+            this.labelOnePrefferedLength.TabIndex = 34;
+            this.labelOnePrefferedLength.Text = "PrefferedLength:";
+            // 
+            // numericUpDownOnePrefferedLength
+            // 
+            this.numericUpDownOnePrefferedLength.Location = new System.Drawing.Point(167, 218);
+            this.numericUpDownOnePrefferedLength.Name = "numericUpDownOnePrefferedLength";
+            this.numericUpDownOnePrefferedLength.Size = new System.Drawing.Size(56, 20);
+            this.numericUpDownOnePrefferedLength.TabIndex = 35;
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2461,6 +2482,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOneModifyAmount3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOneModifyAmount2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAlfa)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOnePrefferedLength)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2619,6 +2641,8 @@
         private System.Windows.Forms.NumericUpDown numericUpDownThreeInfluenceAmount7;
         private System.Windows.Forms.NumericUpDown numericUpDownThreeModifyAmount7;
         private System.Windows.Forms.Button buttonSetAccord;
+        private System.Windows.Forms.NumericUpDown numericUpDownOnePrefferedLength;
+        private System.Windows.Forms.Label labelOnePrefferedLength;
     }
 }
 

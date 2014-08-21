@@ -14,15 +14,16 @@ namespace MusicPopulation
             int phase = Simulation.SimulationBoard.IndexOfPhase;
             StringBuilder res = new StringBuilder();
 
+            res.Append(string.Format("Percent death: {0}\n", SimulationParameters.PercentDeath));
+            res.Append(string.Format("Population growth: {0}\n", Simulation.SimulationBoard.PopulationGrowth));
+
             switch(phase)
             {
                 case 0:
-                    res.Append(string.Format("Percent death: {0}\n", SimulationParameters.PercentDeath));
                     res.Append(string.Format("Modify amount: {0}, {1}, {2}\n", Member1.ModifyAmount[0], Member1.ModifyAmount[1], Member1.ModifyAmount[2]));
                     res.Append(string.Format("Influence amount: {0}, {1}, {2}\n", Member1.InfluenceAmount[0], Member1.InfluenceAmount[1], Member1.InfluenceAmount[2]));
                     res.Append(string.Format("Growth chance: {0}\n", Member1.GrowthChance));
                     res.Append(string.Format("Shrink chance: {0}\n", Member1.ShrinkChance));
-                    res.Append(string.Format("Population growth: {0}\n", Simulation.SimulationBoard.PopulationGrowth));
                     break;
             }
             return res.ToString();

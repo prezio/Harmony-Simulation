@@ -12,8 +12,7 @@ using System.Threading.Tasks;
 namespace populo
 {
     public class Program
-    {
-        private static int[] tries = { 10 };      
+    {     
         private static void WriteToFile(int count, int tries)
         {
             StringBuilder text = new StringBuilder();
@@ -98,12 +97,11 @@ namespace populo
         {
             int tries = 100;
 
-            Simulation.SimulationBoard = new Board();
-
             Simulation.SimulationBoard.ChangePhase();
-            //Simulation.SimulationBoard.ChangePhase();
+            Simulation.SimulationBoard.ChangePhase();
 
             Simulation.DoSimulation(tries);
+            Simulation.Wait();
 
             WriteToFile(0, tries);
             Console.WriteLine("Finished");

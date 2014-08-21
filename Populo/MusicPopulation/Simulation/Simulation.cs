@@ -170,6 +170,7 @@ namespace MusicPopulation
                         for (int i = 0; i < evolveDuration; i++)
                         {
                             EvolveUsingThreads();
+                            //Console.WriteLine("{0} / {1}", i, evolveDuration);
                             _tokenCancelSimulation.Token.ThrowIfCancellationRequested();
                         }
                     }
@@ -178,6 +179,10 @@ namespace MusicPopulation
                         // Operation canceled by user
                     }
                 }, _tokenCancelSimulation.Token);
+        }
+        public static void Wait()
+        {
+            _taskSimulation.Wait();
         }
         public static void StopSimulation()
         {

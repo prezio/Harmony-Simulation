@@ -73,6 +73,7 @@ namespace PopuloApplication
 
             numericUpDownOneGrowthChance.Value = (decimal)Member1.GrowthChance;
             numericUpDownOneShrinkChance.Value = (decimal)Member1.ShrinkChance;
+            numericUpDownOnePrefferedLength.Value = (decimal)Member1.PrefferedLength;
 
             // Second Phase
             numericUpDownTwoPitchInfluence.Value = (decimal)Member2.PitchInfluenceAmount;
@@ -199,6 +200,7 @@ namespace PopuloApplication
 
             Member1.GrowthChance = (double)numericUpDownOneGrowthChance.Value;
             Member1.ShrinkChance = (double)numericUpDownOneShrinkChance.Value;
+            Member1.PrefferedLength = (int)numericUpDownOnePrefferedLength.Value;
 
             // Second phase
             Member2.PitchInfluenceAmount = (double)numericUpDownTwoPitchInfluence.Value;
