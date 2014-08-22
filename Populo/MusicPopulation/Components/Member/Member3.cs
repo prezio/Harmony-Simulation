@@ -94,12 +94,12 @@ namespace MusicPopulation
             {
                 int dynamics;
                 int [,] notes = new int[_maxNotes, 4];
-                for(int i=0, group=0;i<_maxNotes&&group<_numberOfGroups;i++)
+                for(int i=0, group=0;i<_maxNotes&&group<_numberOfGroups;group++)
                 {
                     dynamics=_groups[group,4];
-                    if(_groups[group,6]<PrefferedGroups)
-                        dynamics=0;
-                    for (int j = 0; j < _groups[group, 2] && i < _maxNotes;j++ )
+                    if (_groups[group, 6] < PlayedGroup)
+                        dynamics = 0;
+                    for (int j = 0; j < _groups[group, 2] && i < _maxNotes;j++,i++ )
                     {
                         notes[i, 0] = _groups[group, 0];
                         notes[i, 1] = _groups[group, 1];

@@ -54,9 +54,9 @@ namespace MusicPopulation
                     {
                         notes[i, 2] = 1;
                     }
-                    else if(notes[i,2]>limits[2])
+                    else if(notes[i,2]>40)
                     {
-                        notes[i, 2] = limits[2];
+                        notes[i, 2] = 40;
                     }
                     notes[i, 3] = notes[i - 1, 3] + _notes[i, 4] * _notes[i, 5];
                     if (notes[i, 3] < 1)

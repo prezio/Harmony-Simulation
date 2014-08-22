@@ -13,15 +13,15 @@ namespace MusicPopulation
 
         protected void Transpose(uint n, Random randContext)
         {
-            if (NumberOfNotes <= 1)
+            if (_numberOfNotes <= 1)
             {
                 return;
             }
             int temp;
-            int place = randContext.Next(NumberOfNotes - 1);
-            temp = Notes[place, n];
-            Notes[place, n] = Notes[place + 1, n];
-            Notes[place + 1, n] = temp;
+            int place = randContext.Next(_numberOfNotes - 1);
+            temp = _notes[place, n];
+            _notes[place, n] = _notes[place + 1, n];
+            _notes[place + 1, n] = temp;
             //place = random.Next(numberOfNotes - 1);
             //temp = notes[place, 1];
             //notes[place, 1] = notes[place + 1, 1];
@@ -33,47 +33,47 @@ namespace MusicPopulation
         }
         protected void Exchange(uint n, Random randContext)
         {
-            if (NumberOfNotes <= 1)
+            if (_numberOfNotes <= 1)
             {
                 return;
             }
-            int place = randContext.Next(NumberOfNotes - 1);
-            Notes[place, n] = randContext.Next(limits[n]);
+            int place = randContext.Next(_numberOfNotes - 1);
+            _notes[place, n] = randContext.Next(limits[n]);
         }
         protected void Modify(uint n, Random randContext)
         {
-            if (NumberOfNotes <= 1)
+            if (_numberOfNotes <= 1)
             {
                 return;
             }
             int temp;
-            
-            int place = randContext.Next(NumberOfNotes - 1);
+
+            int place = randContext.Next(_numberOfNotes - 1);
             temp = randContext.Next(-ModifyAmount[n], ModifyAmount[n] + 1);
-            Notes[place, n] += temp;
-            if (Notes[place, n] >= limits[n])
+            _notes[place, n] += temp;
+            if (_notes[place, n] >= limits[n])
             {
-                Notes[place, n] = limits[n] - 1;
+                _notes[place, n] = limits[n] - 1;
             }
-            else if (Notes[place,n] < 0)
+            else if (_notes[place, n] < 0)
             {
-                Notes[place, n] = 0;
+                _notes[place, n] = 0;
             }
         }
         protected void Shrink()
         {
-            if (NumberOfNotes > 1)
+            if (_numberOfNotes > 1)
                 _numberOfNotes --;
         }
         protected void Grow(Random randContext)
         {
-            if (NumberOfNotes >= _maxNotes)
+            if (_numberOfNotes >= _maxNotes)
                 return;
 
-            Notes[NumberOfNotes, 0] = randContext.Next(limits[0]);
-            Notes[NumberOfNotes, 1] = 0;
-            Notes[NumberOfNotes, 2] = randContext.Next(limits[2]);
-            Notes[NumberOfNotes, 3] = randContext.Next(limits[3]);
+            _notes[_numberOfNotes, 0] = randContext.Next(limits[0]);
+            _notes[_numberOfNotes, 1] = 0;
+            _notes[_numberOfNotes, 2] = randContext.Next(limits[2]);
+            _notes[_numberOfNotes, 3] = randContext.Next(limits[3]);
 
             _numberOfNotes++;
         }
@@ -88,10 +88,10 @@ namespace MusicPopulation
 
             for (int i = 0; i < NumberOfNotes; i++)
             {
-                Notes[i, 0] = randContext.Next(limits[0]);
-                Notes[i, 1] = 0;
-                Notes[i, 2] = randContext.Next(limits[2]);
-                Notes[i, 3] = randContext.Next(limits[3]);
+                _notes[i, 0] = randContext.Next(limits[0]);
+                _notes[i, 1] = 0;
+                _notes[i, 2] = randContext.Next(limits[2]);
+                _notes[i, 3] = randContext.Next(limits[3]);
             }
         }
         public Member1()
@@ -114,42 +114,43 @@ namespace MusicPopulation
                 return _notes;
             }
         }
-        public override void Influence(Member influencer, Random randContext)
+        public override void Influence(Member influencer , Random randContext)
         {
-            if (NumberOfNotes < influencer.NumberOfNotes)
+            Member1 member = influencer as Member1;
+            if (_numberOfNotes < member._numberOfNotes)
             {
                 Grow(randContext);
             }
-            else if (NumberOfNotes > influencer.NumberOfNotes)
+            else if (_numberOfNotes > member._numberOfNotes)
             {
                 _numberOfNotes --;
             }
             for (int i = 0; i < NumberOfNotes; ++i)
             {
-                Notes[i, 0] += (int)(InfluenceAmount[0] * (influencer.Notes[i % influencer.NumberOfNotes, 0] - Notes[i, 0]));
-                Notes[i, 2] += (int)(InfluenceAmount[2] * (influencer.Notes[i % influencer.NumberOfNotes, 2] - Notes[i, 2]));
-                Notes[i, 3] += (int)(InfluenceAmount[3] * (influencer.Notes[i % influencer.NumberOfNotes, 3] - Notes[i, 3]));
+                _notes[i, 0] += (int)(InfluenceAmount[0] * (member._notes[i % member._numberOfNotes, 0] - _notes[i, 0]));
+                _notes[i, 2] += (int)(InfluenceAmount[2] * (member._notes[i % member._numberOfNotes, 2] - _notes[i, 2]));
+                _notes[i, 3] += (int)(InfluenceAmount[3] * (member._notes[i % member._numberOfNotes, 3] - _notes[i, 3]));
             }
         }
         public override int Rank()
         {
             int[] count = new int[limits[0]];
             int rank = 0;
-            double proportion = ((double)Notes[0, 2]) / Notes[1, 2];
+            double proportion = ((double)_notes[0, 2]) / _notes[1, 2];
             double prevProportion = proportion;
-            int difference = Notes[1, 3] - Notes[0, 3];
+            int difference = _notes[1, 3] - _notes[0, 3];
             int prevDifference = difference;
             int sameDirectionRhythm = 0;
             int sameDirectionDynamics = 0;
-            count[Notes[0, 0]]++;
-            count[Notes[1, 0]]++;
+            count[_notes[0, 0]]++;
+            count[_notes[1, 0]]++;
             if (difference > 40)
                 rank += 40;
             for (int i = 2; i < NumberOfNotes; i++)
             {
-                count[Notes[i, 0]]++;
+                count[_notes[i, 0]]++;
                 prevProportion = proportion;
-                proportion = ((double)Notes[i-1, 2]) / Notes[i, 2];
+                proportion = ((double)_notes[i - 1, 2]) / _notes[i, 2];
                 if (Math.Abs(proportion) == Math.Abs(prevProportion))
                     rank -= 30;
                 if(proportion*prevProportion<0)
@@ -165,7 +166,7 @@ namespace MusicPopulation
                     }
                 }
                 prevDifference = difference;
-                difference = Notes[i-1, 3] - Notes[i, 3];
+                difference = _notes[i - 1, 3] - _notes[i, 3];
                 if (difference > 20)
                     rank += 40;
                 if (difference * prevDifference < 0)

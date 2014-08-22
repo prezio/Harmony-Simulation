@@ -17,7 +17,7 @@ namespace PopuloApplication
         {
             get
             {
-                return (!_player.need)||_player.adding;
+                return (!_player.need);//||_player.adding;
             }
         }
         public static void StartPlaying()

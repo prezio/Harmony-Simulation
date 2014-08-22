@@ -17,8 +17,7 @@ namespace PopuloApplication
         MIDIPlayer player;
         public void Tick()
         {
-            lock (sequence)
-            {
+            
                 counter--;
 
                 if (counter == 0)
@@ -34,13 +33,14 @@ namespace PopuloApplication
                         outDevice.Send(t.Item2);
                         counter = t.Item1;
                         prev = t.Item3;
-                        if (sequence.Count < 4)
-                        {
-                            player.need = true;
-                        }
+                        
                     }
                 }
-            }
+                if (sequence.Count < 4)
+                {
+                    player.need = true;
+                }
+
         }
         public void Add(int i, ChannelMessage On, ChannelMessage Off)
         {

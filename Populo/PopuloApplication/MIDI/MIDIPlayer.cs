@@ -13,6 +13,17 @@ namespace PopuloApplication
     {
         #region static_members
         private static ChannelMessage[, ,] messageArray;
+        static Tuple<int, int[,]> silence = new Tuple<int, int[,]>(10, new int[,] {
+        { 0, 8, 0 }, 
+        { 0, 8, 0 }, 
+        { 0, 8, 0 }, 
+        { 0, 8, 0 }, 
+        { 0, 8, 0 },
+        { 0, 8, 0 }, 
+        { 0, 8, 0 }, 
+        { 0, 8, 0 }, 
+        { 0, 8, 0 }, 
+        { 0, 8, 0 } });
         static MIDIPlayer()
         {
             messageArray = new ChannelMessage[16, 128, 128];
@@ -91,18 +102,19 @@ namespace PopuloApplication
             int numberOfNotes;
             int[,] notes;
             int pitch = 0;
-
+            Tuple<int, int[,]> current;
             for (int channel = 0; channel < 16; channel++)
             {
-                numberOfNotes = voices[channel].Item1;
-                notes = voices[channel].Item2;
+                current=voices[channel]??silence;
+                numberOfNotes = current.Item1;
+                notes = current.Item2;
                 for (int index = 0; index < numberOfNotes; index++)
                 {
                     //channel = (((int)notes[index,0]) % 100) / 25;
                     pitch = notes[index, 0] + 40;
 
 
-                    tracks[channel].SimpleAdd(notes[index, 2], messageArray[channel, pitch, notes[index, 3]], messageArray[channel, pitch, 0]);
+                    tracks[channel].SimpleAdd(notes[index, 2]>0?notes[index, 2]:1, messageArray[channel, pitch, notes[index, 3]], messageArray[channel, pitch, 0]);
                     
                 }
                 //tracks[channel].SimpleAdd(0, messageArray[channel, 0, 0], messageArray[channel, 0, 0]);
