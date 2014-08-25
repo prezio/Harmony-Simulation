@@ -82,7 +82,7 @@ namespace MusicPopulation
                 int sum = 0;
                 for(int i=0; i<_numberOfGroups;i++)
                 {
-                    sum+=_groups[i,3];
+                    sum+=_groups[i,2];
                 }
                 return sum;
             }
@@ -99,6 +99,7 @@ namespace MusicPopulation
                     dynamics=_groups[group,4];
                     if (_groups[group, 6] < PlayedGroup)
                         dynamics = 0;
+
                     for (int j = 0; j < _groups[group, 2] && i < _maxNotes;j++,i++ )
                     {
                         notes[i, 0] = _groups[group, 0];

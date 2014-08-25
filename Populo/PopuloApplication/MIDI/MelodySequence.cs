@@ -36,7 +36,7 @@ namespace PopuloApplication
                         
                     }
                 }
-                if (sequence.Count < 4)
+                if (sequence.Count < 2)
                 {
                     player.need = true;
                 }
