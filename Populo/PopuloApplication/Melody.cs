@@ -11,7 +11,7 @@ namespace PopuloApplication
 {
     public static class Melody
     {
-
+        public static int tempo = 10;
         private static MIDIPlayer _player = new MIDIPlayer(0, 16, 10);
         public static bool IsPlaying
         {
@@ -26,7 +26,7 @@ namespace PopuloApplication
         }
         public static void StartPlaying()
         {
-            _player.Add(Simulation.SimulationBoardState.ToArray());
+            _player.Add(Simulation.SimulationBoardState.ToArray(),tempo);
             _player.Start();
         }
         public static void StopPlaying()

@@ -79,14 +79,23 @@ namespace PopuloApplication
         {
             timer.Enabled = true;
         }
+        public void Pause()
+        {
+            timer.Enabled = false;
+            for (int i = 0; i < numberOfTracks; i++)
+            {
+                tracks[i].Clean();
+            }
+              
+        }
         public void Stop()
         {
             timer.Enabled = false;
             for (int i = 0; i < numberOfTracks; i++)
             {
-                tracks[i].clean();
+                tracks[i].Clear();
             }
-              
+
         }
         public void Tick(object sender, ElapsedEventArgs e)
         {
@@ -96,8 +105,9 @@ namespace PopuloApplication
                 tracks[i].Tick();
             }
         }
-        public void Add(Tuple<int,int[,]>[] voices)
+        public void Add(Tuple<int,int[,]>[] voices, int tempo)
         {
+            double baseTime = (100.0 / (double)tempo);
             adding = true;
             int numberOfNotes;
             int[,] notes;
@@ -114,7 +124,7 @@ namespace PopuloApplication
                     pitch = notes[index, 0] + 40;
 
 
-                    tracks[channel].SimpleAdd(notes[index, 2]>0?notes[index, 2]:1, messageArray[channel, pitch, notes[index, 3]], messageArray[channel, pitch, 0]);
+                    tracks[channel].SimpleAdd((int)((notes[index, 2]>0?notes[index, 2]:1)*baseTime), messageArray[channel, pitch, notes[index, 3]], messageArray[channel, pitch, 0]);
                     
                 }
                 //tracks[channel].SimpleAdd(0, messageArray[channel, 0, 0], messageArray[channel, 0, 0]);

@@ -65,12 +65,21 @@ namespace PopuloApplication
             sequence = new Queue<Tuple<int, ChannelMessage, ChannelMessage>>();
             this.player = player;
         }
-        public void clean()
+        public void Clean()
         {
             if (prev != null)
             {
                 outDevice.Send(prev);
             }
+        }
+        public void Clear()
+        {
+            if (prev != null)
+            {
+                outDevice.Send(prev);
+            }
+            sequence.Clear();
+            counter = 1;
         }
     }
 }

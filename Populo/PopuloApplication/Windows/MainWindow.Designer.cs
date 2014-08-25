@@ -151,6 +151,8 @@
             this.numericUpDownTwoRythmInfluence = new System.Windows.Forms.NumericUpDown();
             this.numericUpDownTwoPitchInfluence = new System.Windows.Forms.NumericUpDown();
             this.groupBoxFactorsPhase1 = new System.Windows.Forms.GroupBox();
+            this.numericUpDownOnePrefferedLength = new System.Windows.Forms.NumericUpDown();
+            this.labelOnePrefferedLength = new System.Windows.Forms.Label();
             this.labelOneShrinkChance = new System.Windows.Forms.Label();
             this.labelOneGrowthChance = new System.Windows.Forms.Label();
             this.labelOneExchangeChance = new System.Windows.Forms.Label();
@@ -180,8 +182,7 @@
             this.buttonChangePhase = new System.Windows.Forms.Button();
             this.buttonStop = new System.Windows.Forms.Button();
             this.buttonSetAccord = new System.Windows.Forms.Button();
-            this.labelOnePrefferedLength = new System.Windows.Forms.Label();
-            this.numericUpDownOnePrefferedLength = new System.Windows.Forms.NumericUpDown();
+            this.tempo = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPercentDeath)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxSteps)).BeginInit();
             this.groupBoxParameters.SuspendLayout();
@@ -259,6 +260,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTwoRythmInfluence)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTwoPitchInfluence)).BeginInit();
             this.groupBoxFactorsPhase1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOnePrefferedLength)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOneExchangeChance3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOneExchangeChance2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOneExchangeChance1)).BeginInit();
@@ -277,7 +279,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOneModifyAmount3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOneModifyAmount2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAlfa)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOnePrefferedLength)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tempo)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonStartSimulation
@@ -333,6 +335,7 @@
             // 
             // groupBoxParameters
             // 
+            this.groupBoxParameters.Controls.Add(this.tempo);
             this.groupBoxParameters.Controls.Add(this.groupBoxFactorsPhase3);
             this.groupBoxParameters.Controls.Add(this.groupBoxTaskSimulation);
             this.groupBoxParameters.Controls.Add(this.groupBoxFactorsPhase2);
@@ -1106,6 +1109,7 @@
             this.numericUpDownThreeInfluenceAmount1.Name = "numericUpDownThreeInfluenceAmount1";
             this.numericUpDownThreeInfluenceAmount1.Size = new System.Drawing.Size(56, 20);
             this.numericUpDownThreeInfluenceAmount1.TabIndex = 37;
+            this.numericUpDownThreeInfluenceAmount1.ValueChanged += new System.EventHandler(this.numericUpDownThreeInfluenceAmount1_ValueChanged);
             // 
             // numericUpDownThreeModifyAmount1
             // 
@@ -1958,6 +1962,22 @@
             this.groupBoxFactorsPhase1.TabStop = false;
             this.groupBoxFactorsPhase1.Text = "Współczynniki Faza 1";
             // 
+            // numericUpDownOnePrefferedLength
+            // 
+            this.numericUpDownOnePrefferedLength.Location = new System.Drawing.Point(167, 218);
+            this.numericUpDownOnePrefferedLength.Name = "numericUpDownOnePrefferedLength";
+            this.numericUpDownOnePrefferedLength.Size = new System.Drawing.Size(56, 20);
+            this.numericUpDownOnePrefferedLength.TabIndex = 35;
+            // 
+            // labelOnePrefferedLength
+            // 
+            this.labelOnePrefferedLength.AutoSize = true;
+            this.labelOnePrefferedLength.Location = new System.Drawing.Point(6, 220);
+            this.labelOnePrefferedLength.Name = "labelOnePrefferedLength";
+            this.labelOnePrefferedLength.Size = new System.Drawing.Size(86, 13);
+            this.labelOnePrefferedLength.TabIndex = 34;
+            this.labelOnePrefferedLength.Text = "PrefferedLength:";
+            // 
             // labelOneShrinkChance
             // 
             this.labelOneShrinkChance.AutoSize = true;
@@ -2352,21 +2372,23 @@
             this.buttonSetAccord.UseVisualStyleBackColor = true;
             this.buttonSetAccord.Click += new System.EventHandler(this.buttonSetAccord_Click);
             // 
-            // labelOnePrefferedLength
+            // tempo
             // 
-            this.labelOnePrefferedLength.AutoSize = true;
-            this.labelOnePrefferedLength.Location = new System.Drawing.Point(6, 220);
-            this.labelOnePrefferedLength.Name = "labelOnePrefferedLength";
-            this.labelOnePrefferedLength.Size = new System.Drawing.Size(86, 13);
-            this.labelOnePrefferedLength.TabIndex = 34;
-            this.labelOnePrefferedLength.Text = "PrefferedLength:";
-            // 
-            // numericUpDownOnePrefferedLength
-            // 
-            this.numericUpDownOnePrefferedLength.Location = new System.Drawing.Point(167, 218);
-            this.numericUpDownOnePrefferedLength.Name = "numericUpDownOnePrefferedLength";
-            this.numericUpDownOnePrefferedLength.Size = new System.Drawing.Size(56, 20);
-            this.numericUpDownOnePrefferedLength.TabIndex = 35;
+            this.tempo.Location = new System.Drawing.Point(399, 29);
+            this.tempo.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.tempo.Name = "tempo";
+            this.tempo.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.tempo.Size = new System.Drawing.Size(49, 20);
+            this.tempo.TabIndex = 13;
+            this.tempo.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // MainWindow
             // 
@@ -2464,6 +2486,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTwoPitchInfluence)).EndInit();
             this.groupBoxFactorsPhase1.ResumeLayout(false);
             this.groupBoxFactorsPhase1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOnePrefferedLength)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOneExchangeChance3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOneExchangeChance2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOneExchangeChance1)).EndInit();
@@ -2482,7 +2505,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOneModifyAmount3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOneModifyAmount2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAlfa)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOnePrefferedLength)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tempo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2643,6 +2666,7 @@
         private System.Windows.Forms.Button buttonSetAccord;
         private System.Windows.Forms.NumericUpDown numericUpDownOnePrefferedLength;
         private System.Windows.Forms.Label labelOnePrefferedLength;
+        private System.Windows.Forms.NumericUpDown tempo;
     }
 }
 

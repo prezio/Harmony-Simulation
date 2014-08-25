@@ -154,6 +154,7 @@ namespace PopuloApplication
             numericUpDownThreePrefferedGroups.Value = (decimal)Member3.PrefferedGroups;
             numericUpDownThreePrefferedNotes.Value = (decimal)Member3.PrefferedNotes;
             numericUpDownThreePlayedGroup.Value = (decimal)Member3.PlayedGroup;
+            tempo.Value = Melody.tempo;
         }
 
         public List<List<PitchData>> Accord { get; set; }
@@ -172,6 +173,7 @@ namespace PopuloApplication
         }
         public void SaveParameters()
         {
+            Melody.tempo = (int)tempo.Value;
             // Global parameters
             SimulationParameters.PercentDeath = (int)numericUpDownPercentDeath.Value;
             SimulationParameters.MaxSteps = (int)numericUpDownMaxSteps.Value;
@@ -331,5 +333,10 @@ namespace PopuloApplication
             }
         }
         #endregion
+
+        private void numericUpDownThreeInfluenceAmount1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
