@@ -161,8 +161,9 @@ namespace MusicPopulation
             SimulationBoard = new Board();
         }
         public delegate bool MelodyNeededDelegate();
+        public delegate void RefreshParametersDelegate();
 
-        public static void DoSimulation(int evolveDuration,MelodyNeededDelegate unneeded)
+        public static void DoSimulation(int evolveDuration,MelodyNeededDelegate unneeded, RefreshParametersDelegate parameters)
         {
             _tokenCancelSimulation = new CancellationTokenSource();
             _taskSimulation = Task.Factory.StartNew(() =>
@@ -171,6 +172,7 @@ namespace MusicPopulation
                     {
                         for (int i = 0; i < evolveDuration && unneeded(); i++)
                         {
+                            parameters();
                             EvolveUsingThreads();
                             //Console.WriteLine("{0} / {1}", i, evolveDuration);
                             _tokenCancelSimulation.Token.ThrowIfCancellationRequested();

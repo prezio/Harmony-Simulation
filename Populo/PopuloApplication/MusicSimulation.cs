@@ -16,7 +16,7 @@ namespace PopuloApplication
             _window = context;
             _timer = new Timer(500);
 
-            Simulation.DoSimulation(_iEvolveDuration, new Simulation.MelodyNeededDelegate(() => { return true; }));
+            Simulation.DoSimulation(_iEvolveDuration, new Simulation.MelodyNeededDelegate(() => { return true; }), new Simulation.RefreshParametersDelegate(_window.SaveParameters));
 
             _timer.Elapsed += _timer_Elapsed;
             _timer.Enabled = true;
@@ -35,8 +35,8 @@ namespace PopuloApplication
             if (Simulation.SimulationStatus != TaskStatus.Running && Melody.IsPlaying == false)
             {
                 Melody.StartPlaying();
-                _window.SaveParameters();
-                Simulation.DoSimulation(_iEvolveDuration, new Simulation.MelodyNeededDelegate(Melody.Unneeded));
+                //_window.SaveParameters();
+                Simulation.DoSimulation(_iEvolveDuration, new Simulation.MelodyNeededDelegate(Melody.Unneeded), new Simulation.RefreshParametersDelegate(_window.SaveParameters));
             }
         }
     }

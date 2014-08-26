@@ -105,26 +105,31 @@ namespace PopuloApplication
                 tracks[i].Tick();
             }
         }
-        public void Add(Tuple<int,int[,]>[] voices, int tempo)
+        public void Add(Tuple<int,int[,]>[] voices)
         {
-            double baseTime = (100.0 / (double)tempo);
+            double baseTime = (60*100.0*4.0 / (double)Melody.tempo);
             adding = true;
             int numberOfNotes;
             int[,] notes;
+            double time = 0;
             int pitch = 0;
             Tuple<int, int[,]> current;
             for (int channel = 0; channel < 16; channel++)
             {
+                int[] chord = Melody.chords[Melody.phase];
+                int range = chord.Length;
+                time = Melody.common_tempo ? baseTime : (60.0 * 100.0*4.0 / (double)Melody.tempi[channel]);
+                time /= Melody.common_divider ? Melody.divider : Melody.dividers[channel];
                 current=voices[channel]??silence;
                 numberOfNotes = current.Item1;
                 notes = current.Item2;
                 for (int index = 0; index < numberOfNotes; index++)
                 {
                     //channel = (((int)notes[index,0]) % 100) / 25;
-                    pitch = notes[index, 0] + 40;
+                    pitch = chord[notes[index, 0] % range];
 
 
-                    tracks[channel].SimpleAdd((int)((notes[index, 2]>0?notes[index, 2]:1)*baseTime), messageArray[channel, pitch, notes[index, 3]], messageArray[channel, pitch, 0]);
+                    tracks[channel].SimpleAdd((int)((notes[index, 2]>0?notes[index, 2]:1)*time), messageArray[channel, pitch, notes[index, 3]], messageArray[channel, pitch, 0]);
                     
                 }
                 //tracks[channel].SimpleAdd(0, messageArray[channel, 0, 0], messageArray[channel, 0, 0]);
