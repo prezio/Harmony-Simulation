@@ -7,6 +7,10 @@ using System.Threading;
 
 namespace MusicPopulation
 {
+    /// <summary>
+    /// Class responsible for area management.
+    /// It implements evolutionary algorithms which 
+    /// </summary>
     public class AreaManager : IEnumerator, IEnumerable
     {
         private int _mX, _mY;
@@ -28,6 +32,10 @@ namespace MusicPopulation
             return x >= _mX && x < _mX + _width && y >= _mY && y < _mY + _height;
         }
 
+        /// <summary>
+        /// Counstructs area responsible for area between
+        /// (x, y) and (x+w, y+h) in static board Simulation.SimulationBoard.
+        /// </summary>
         public AreaManager(int x, int y, int w, int h)
         {
             _mX = x;
@@ -49,6 +57,9 @@ namespace MusicPopulation
                 _areaRandOrder[ind] = new Tuple<int, int>(i + x, j + y);
             }
         }
+        /// <summary>
+        /// Property which counts Population Growth in area of responsibility.
+        /// </summary>
         public int PopulationGrowth
         {
             get
@@ -62,6 +73,11 @@ namespace MusicPopulation
                 return res;
             }
         }
+        /// <summary>
+        /// Property which saves parameters of champion in area of object's responsibility.
+        /// Item1 is number of notes
+        /// Item2 is array of notes
+        /// </summary>
         public Tuple<int, int[,]> ChampionParameters
         {
             get
@@ -71,7 +87,10 @@ namespace MusicPopulation
         }
 
         #region Algorithm Steps
-        public void KillWeaksWhoDoesNotServeTheEmperorWell() // Wymieranie najgorszych osobników
+        /// <summary>
+        /// Kills the weakest individuals in area of responsibility.
+        /// </summary>
+        public void KillWeaksWhoDoesNotServeTheEmperorWell()
         {
             List<Tuple<int, int, int>> values = new List<Tuple<int, int, int>>();
 
@@ -98,6 +117,9 @@ namespace MusicPopulation
             }
             Debug.WriteLine("Kill weaks: " + done + "/" + all );
         }
+        /// <summary>
+        /// Selects the champion of area and copies his parameters to ChampionParameters property.
+        /// </summary>
         public void SelectChampionWhoCanBecomeCommissar()
         {
             var pos = Simulation.SimulationBoard.GetBestInArea(_mX, _mY, _mX + _width - 1, _mY + _height - 1);
@@ -107,7 +129,10 @@ namespace MusicPopulation
                 _championParameters = best.CloneParameters();
             }
         }
-        public void MutateWeaksSoTheyCanServeEmperorBetter() // Mutacje
+        /// <summary>
+        /// Mutates each individual in area of responsibility.
+        /// </summary>
+        public void MutateWeaksSoTheyCanServeEmperorBetter()
         {
             int done = 0;
             int all = 0;
@@ -122,6 +147,9 @@ namespace MusicPopulation
             }
             Debug.WriteLine("Mutate: " + done + "/" + all);
         }
+        /// <summary>
+        /// Reproduces individuals
+        /// </summary>
         public void ReproduceMenToHaveMoreServantsOfTheEmperor()
         {
             int n = PopulationGrowth, n_max = _width * _height;
