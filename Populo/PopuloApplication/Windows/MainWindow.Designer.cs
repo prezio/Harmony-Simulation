@@ -773,7 +773,6 @@
             0,
             0,
             0});
-            this.divider11.ValueChanged += new System.EventHandler(this.numericUpDown23_ValueChanged);
             // 
             // divider10
             // 
@@ -866,7 +865,6 @@
             0,
             0,
             0});
-            this.divider7.ValueChanged += new System.EventHandler(this.numericUpDown27_ValueChanged);
             // 
             // divider6
             // 
@@ -1235,7 +1233,6 @@
             0,
             0,
             0});
-            this.tempo7.ValueChanged += new System.EventHandler(this.numericUpDown10_ValueChanged);
             // 
             // tempo6
             // 
@@ -1856,6 +1853,11 @@
             // numericUpDownThreePrefferedNotes
             // 
             this.numericUpDownThreePrefferedNotes.Location = new System.Drawing.Point(834, 55);
+            this.numericUpDownThreePrefferedNotes.Maximum = new decimal(new int[] {
+            110,
+            0,
+            0,
+            0});
             this.numericUpDownThreePrefferedNotes.Name = "numericUpDownThreePrefferedNotes";
             this.numericUpDownThreePrefferedNotes.Size = new System.Drawing.Size(56, 20);
             this.numericUpDownThreePrefferedNotes.TabIndex = 63;
@@ -1888,6 +1890,11 @@
             // numericUpDownThreePrefferedLength
             // 
             this.numericUpDownThreePrefferedLength.Location = new System.Drawing.Point(662, 78);
+            this.numericUpDownThreePrefferedLength.Maximum = new decimal(new int[] {
+            400,
+            0,
+            0,
+            0});
             this.numericUpDownThreePrefferedLength.Name = "numericUpDownThreePrefferedLength";
             this.numericUpDownThreePrefferedLength.Size = new System.Drawing.Size(56, 20);
             this.numericUpDownThreePrefferedLength.TabIndex = 59;
@@ -2215,7 +2222,6 @@
             this.numericUpDownThreeInfluenceAmount1.Name = "numericUpDownThreeInfluenceAmount1";
             this.numericUpDownThreeInfluenceAmount1.Size = new System.Drawing.Size(56, 20);
             this.numericUpDownThreeInfluenceAmount1.TabIndex = 37;
-            this.numericUpDownThreeInfluenceAmount1.ValueChanged += new System.EventHandler(this.numericUpDownThreeInfluenceAmount1_ValueChanged);
             // 
             // numericUpDownThreeModifyAmount1
             // 
@@ -3493,6 +3499,7 @@
             this.MaximizeBox = false;
             this.Name = "MainWindow";
             this.Text = "Populo Simulator";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPercentDeath)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxSteps)).EndInit();
             this.groupBoxParameters.ResumeLayout(false);

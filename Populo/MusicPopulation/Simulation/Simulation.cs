@@ -163,7 +163,7 @@ namespace MusicPopulation
         public delegate bool MelodyNeededDelegate();
         public delegate void RefreshParametersDelegate();
 
-        public static void DoSimulation(int evolveDuration,MelodyNeededDelegate unneeded, RefreshParametersDelegate parameters)
+        public static void DoSimulation(int evolveDuration, MelodyNeededDelegate unneeded, RefreshParametersDelegate parameters)
         {
             _tokenCancelSimulation = new CancellationTokenSource();
             _taskSimulation = Task.Factory.StartNew(() =>

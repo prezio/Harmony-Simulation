@@ -12,7 +12,7 @@ namespace MusicPopulation
         const int maxGroups=30;
         int[,] _groups; //pitch, chord change, repeats, rhythm, initial dynamics, dynamic difference, group number
         //int _initialChord;
-        static int[] limits = { 9, 3, 11, 9, 127, 10, 10 };
+        static int[] limits = { 9, 3, 11, 20, 127, 40, 10 };
         protected void Transpose(uint n, Random randContext)
         {
             if (_numberOfGroups <= 1)
@@ -133,7 +133,9 @@ namespace MusicPopulation
                 if (_groups[i, 3] == _groups[i - 1, 3])
                     rank -= 100;
                 if (_groups[i, 5] * _groups[i, 2]>=_groups[i,4])
-                    rank -= 269;
+                    rank -= 240;
+                if (_groups[i, 5] >= 15)
+                    rank += 40;
                 count[_groups[i, 6]]++;
                 length += _groups[i, 2] * _groups[i, 3];
                 notes += _groups[i, 2];

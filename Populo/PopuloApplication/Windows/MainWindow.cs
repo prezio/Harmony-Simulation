@@ -359,7 +359,7 @@ namespace PopuloApplication
                 Member3.PrefferedNotes = (int)numericUpDownThreePrefferedNotes.Value;
                 Member3.PlayedGroup = (int)numericUpDownThreePlayedGroup.Value;
             }
-            catch (System.InvalidOperationException e)
+            catch (System.InvalidOperationException)
             {
                 
             }
@@ -412,26 +412,10 @@ namespace PopuloApplication
                 MessageBox.Show("Failed to read accord");
             }
         }
+        private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            MusicSimulation.Stop();
+        }
         #endregion
-
-        private void numericUpDownThreeInfluenceAmount1_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void numericUpDown10_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void numericUpDown27_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void numericUpDown23_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

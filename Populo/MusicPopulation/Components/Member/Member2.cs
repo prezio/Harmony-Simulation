@@ -17,8 +17,8 @@ namespace MusicPopulation
         private int _type; //0-r, 1-ar, 2-a
         private int[,] _notes; //pitch, chord change, rhythm, rhythm distortion, dynamics, dynamics distortion
         static int[] limits={24,2,12,1,127,1};
-        const int maxLength = 25;
-        const int minLength = 3;
+        const int maxLength = 40;
+        const int minLength = 10;
         const int maxPause = 40;
 
         public override int NumberOfNotes
@@ -54,9 +54,9 @@ namespace MusicPopulation
                     {
                         notes[i, 2] = 1;
                     }
-                    else if(notes[i,2]>40)
+                    else if(notes[i,2]>80)
                     {
-                        notes[i, 2] = 40;
+                        notes[i, 2] = 80;
                     }
                     notes[i, 3] = notes[i - 1, 3] + _notes[i, 4] * _notes[i, 5];
                     if (notes[i, 3] < 1)
@@ -159,7 +159,7 @@ namespace MusicPopulation
                 }
             }
             
-            rank -= (_numberOfNotes - PrefferedLength) * (_numberOfNotes - PrefferedLength) * 60;
+            rank -= (_numberOfNotes - PrefferedLength) * (_numberOfNotes - PrefferedLength) * 80;
             rank -= (_pauseDuration - PrefferedPauseLength) * (_pauseDuration - PrefferedPauseLength) * 5;
             if(_type==1 && Math.Abs(_peak-_numberOfNotes/2)<_numberOfNotes/6)
             {

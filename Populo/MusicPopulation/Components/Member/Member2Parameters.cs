@@ -15,7 +15,7 @@ namespace MusicPopulation
         public static double RhythmDistortionInfluenceChance = 0.05;
         public static double DynamicsDistortionInfluenceChance = 0.05;
         public static double TypeInfluenceChance = 0.2;
-        public static double GrowthChance = 0.05;
+        public static double GrowthChance = 0.5;
         public static double ShrinkChance = 0.05;
         public static double PeakMoveChance = 0.05;
         public static int PeakMaxMove = 7;
@@ -35,7 +35,7 @@ namespace MusicPopulation
         public static int RhythmMaxChange = 5;
         public static double DynamicsChangeChance = 0.05;
         public static int DynamicsMaxChange = 20;
-        public static int PrefferedLength = 20;
+        public static int PrefferedLength = 25;
         public static int PrefferedPauseLength = 12;
         public static double TypeChangeChance = 0.1;
     }
