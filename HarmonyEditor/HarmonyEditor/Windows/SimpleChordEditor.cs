@@ -51,6 +51,8 @@ namespace HarmonyEditor
             spectrumFrequencies.FreqNotes = true;
             spectrumNotes.FreqNotes = false;
             textBoxChord.Text = chord.Peaks.Select(a => a.ToString()).Aggregate((s, s1) => s + "; " + s1);
+            textBoxLeft.Text = chord.Left.ToString();
+            textBoxRight.Text = chord.Right.ToString();
             buttonAdd.Text = "Zmień";
             this.Text = "Zmień Akord...";
         }
@@ -71,6 +73,13 @@ namespace HarmonyEditor
         }
         private void buttonAdd_Click(object sender, EventArgs e)
         {
+            int left, right;
+            if (int.TryParse(textBoxLeft.Text, out left) == false || int.TryParse(textBoxRight.Text, out right) == false)
+            {
+                MessageBox.Show("Wartości w lewym i prawym są niepoprawne.");
+                return;
+            }
+
             double[] peaks = Peaks;
 
             if (peaks == null)
@@ -88,6 +97,8 @@ namespace HarmonyEditor
                 chord = new MidiSimpleChord();
 
             chord.Peaks = peaks;
+            chord.Left = left;
+            chord.Right = right;
             _chord = chord;
             _okClicked = true;
 

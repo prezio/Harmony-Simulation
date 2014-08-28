@@ -16,6 +16,9 @@ using Sanford.Multimedia.Midi;
 
 namespace HarmonyEditor
 {
+    /// <summary>
+    /// Main window of application.
+    /// </summary>
     public partial class MainWindow : Form
     {
         private double _fMin = AppConfiguration.GetFreqMin(), _fMax = AppConfiguration.GetFreqMax(), 

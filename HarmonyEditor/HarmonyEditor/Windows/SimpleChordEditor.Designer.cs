@@ -37,10 +37,14 @@
             this.groupBoxSpectrum = new System.Windows.Forms.GroupBox();
             this.labelNotes = new System.Windows.Forms.Label();
             this.labelFrequencies = new System.Windows.Forms.Label();
-            this.buttonCountSpectrum = new System.Windows.Forms.Button();
             this.spectrumNotes = new HarmonyEditor.Spectrum();
             this.spectrumFrequencies = new HarmonyEditor.Spectrum();
+            this.buttonCountSpectrum = new System.Windows.Forms.Button();
             this.buttonPlay = new System.Windows.Forms.Button();
+            this.textBoxRight = new System.Windows.Forms.TextBox();
+            this.textBoxLeft = new System.Windows.Forms.TextBox();
+            this.labelRight = new System.Windows.Forms.Label();
+            this.labelLeft = new System.Windows.Forms.Label();
             this.groupBoxSpectrum.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,7 +57,7 @@
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(12, 137);
+            this.buttonAdd.Location = new System.Drawing.Point(12, 163);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(105, 30);
             this.buttonAdd.TabIndex = 1;
@@ -63,7 +67,7 @@
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(421, 137);
+            this.buttonCancel.Location = new System.Drawing.Point(423, 163);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(102, 30);
             this.buttonCancel.TabIndex = 2;
@@ -134,16 +138,6 @@
             this.labelFrequencies.TabIndex = 2;
             this.labelFrequencies.Text = "Częstotliwości:";
             // 
-            // buttonCountSpectrum
-            // 
-            this.buttonCountSpectrum.Location = new System.Drawing.Point(148, 81);
-            this.buttonCountSpectrum.Name = "buttonCountSpectrum";
-            this.buttonCountSpectrum.Size = new System.Drawing.Size(92, 30);
-            this.buttonCountSpectrum.TabIndex = 7;
-            this.buttonCountSpectrum.Text = "Policz spektra";
-            this.buttonCountSpectrum.UseVisualStyleBackColor = true;
-            this.buttonCountSpectrum.Click += new System.EventHandler(this.buttonCountSpectrum_Click);
-            // 
             // spectrumNotes
             // 
             this.spectrumNotes.AllowDrag = false;
@@ -172,6 +166,16 @@
             this.spectrumFrequencies.TabIndex = 0;
             this.spectrumFrequencies.Text = "spectrum2";
             // 
+            // buttonCountSpectrum
+            // 
+            this.buttonCountSpectrum.Location = new System.Drawing.Point(148, 81);
+            this.buttonCountSpectrum.Name = "buttonCountSpectrum";
+            this.buttonCountSpectrum.Size = new System.Drawing.Size(92, 30);
+            this.buttonCountSpectrum.TabIndex = 7;
+            this.buttonCountSpectrum.Text = "Policz spektra";
+            this.buttonCountSpectrum.UseVisualStyleBackColor = true;
+            this.buttonCountSpectrum.Click += new System.EventHandler(this.buttonCountSpectrum_Click);
+            // 
             // buttonPlay
             // 
             this.buttonPlay.Location = new System.Drawing.Point(50, 81);
@@ -181,11 +185,51 @@
             this.buttonPlay.Text = "Odtwórz dźwięk";
             this.buttonPlay.UseVisualStyleBackColor = true;
             // 
+            // textBoxRight
+            // 
+            this.textBoxRight.Location = new System.Drawing.Point(423, 137);
+            this.textBoxRight.Name = "textBoxRight";
+            this.textBoxRight.Size = new System.Drawing.Size(100, 20);
+            this.textBoxRight.TabIndex = 9;
+            this.textBoxRight.Text = "0";
+            this.textBoxRight.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // textBoxLeft
+            // 
+            this.textBoxLeft.Location = new System.Drawing.Point(272, 137);
+            this.textBoxLeft.Name = "textBoxLeft";
+            this.textBoxLeft.Size = new System.Drawing.Size(100, 20);
+            this.textBoxLeft.TabIndex = 10;
+            this.textBoxLeft.Text = "0";
+            this.textBoxLeft.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // labelRight
+            // 
+            this.labelRight.AutoSize = true;
+            this.labelRight.Location = new System.Drawing.Point(378, 140);
+            this.labelRight.Name = "labelRight";
+            this.labelRight.Size = new System.Drawing.Size(39, 13);
+            this.labelRight.TabIndex = 11;
+            this.labelRight.Text = "Prawy:";
+            // 
+            // labelLeft
+            // 
+            this.labelLeft.AutoSize = true;
+            this.labelLeft.Location = new System.Drawing.Point(231, 140);
+            this.labelLeft.Name = "labelLeft";
+            this.labelLeft.Size = new System.Drawing.Size(35, 13);
+            this.labelLeft.TabIndex = 12;
+            this.labelLeft.Text = "Lewy:";
+            // 
             // SimpleChordEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(535, 175);
+            this.ClientSize = new System.Drawing.Size(535, 203);
+            this.Controls.Add(this.labelLeft);
+            this.Controls.Add(this.labelRight);
+            this.Controls.Add(this.textBoxLeft);
+            this.Controls.Add(this.textBoxRight);
             this.Controls.Add(this.buttonPlay);
             this.Controls.Add(this.buttonCountSpectrum);
             this.Controls.Add(this.groupBoxSpectrum);
@@ -221,5 +265,9 @@
         private Spectrum spectrumFrequencies;
         private System.Windows.Forms.Button buttonCountSpectrum;
         private System.Windows.Forms.Button buttonPlay;
+        private System.Windows.Forms.TextBox textBoxRight;
+        private System.Windows.Forms.TextBox textBoxLeft;
+        private System.Windows.Forms.Label labelRight;
+        private System.Windows.Forms.Label labelLeft;
     }
 }
