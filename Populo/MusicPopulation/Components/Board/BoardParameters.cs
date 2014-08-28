@@ -2,6 +2,9 @@
 
 namespace MusicPopulation
 {
+    /// <summary>
+    /// Global Parameters used in board.
+    /// </summary>
     public partial class Board
     {
         public const int BoardWidth = 256, BoardHeight = 256;

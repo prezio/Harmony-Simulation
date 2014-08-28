@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace MusicPopulation
 {
+    /// <summary>
+    /// Implementation of third phase member.
+    /// </summary>
     public partial class Member3:Member
     {
         int _numberOfGroups;

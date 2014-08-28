@@ -93,28 +93,28 @@ namespace populo
         //        Console.WriteLine(i);
         //    }
         //}
-        private static void NormalTest()
-        {
-            int tries = 100;
+        //private static void NormalTest()
+        //{
+        //    int tries = 100;
 
-            Simulation.SimulationBoard.ChangePhase();
-            Simulation.SimulationBoard.ChangePhase();
+        //    Simulation.SimulationBoard.ChangePhase();
+        //    Simulation.SimulationBoard.ChangePhase();
 
-            Simulation.DoSimulation(tries);
-            Simulation.Wait();
+        //    //Simulation.DoSimulation(tries);
+        //    Simulation.Wait();
 
-            WriteToFile(0, tries);
-            Console.WriteLine("Finished");
-        }
-        private static void Test()
-        {
-            Simulation.DoSimulation(10000000);
-            Simulation.StopSimulation();
+        //    WriteToFile(0, tries);
+        //    Console.WriteLine("Finished");
+        //}
+        //private static void Test()
+        //{
+        //    //Simulation.DoSimulation(10000000);
+        //    Simulation.StopSimulation();
 
-            Thread.Sleep(2000);
-            Console.WriteLine("Line");
-            Console.ReadLine();
-        }
+        //    Thread.Sleep(2000);
+        //    Console.WriteLine("Line");
+        //    Console.ReadLine();
+        //}
 
         public static void Main(string[] args)
         {
@@ -122,7 +122,7 @@ namespace populo
             //var board =  Simulation.SimulationBoard;
             //automationTest();
             //Test();
-            NormalTest();
+            //NormalTest();
 
             //Tuple<int, int> a1 = Simulation.SimulationBoard.GetBestInArea(0, 0, 15, 15);
             //Tuple<int, int> a2 = Simulation.SimulationBoard.GetBestInArea(16, 0, 31, 15);

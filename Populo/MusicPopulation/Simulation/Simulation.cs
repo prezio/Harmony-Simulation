@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace MusicPopulation
 {
+    /// <summary>
+    /// Static class responsible for Simulation.
+    /// </summary>
     public static class Simulation
     {
         private static Task _taskSimulation = null;
@@ -26,6 +29,9 @@ namespace MusicPopulation
             return result.ToArray();
         }
 
+        /// <summary>
+        /// Returns status of simulation.
+        /// </summary>
         public static TaskStatus SimulationStatus
         {
             get
@@ -149,6 +155,11 @@ namespace MusicPopulation
                 area.RegroupYourMenToOtherFront(3);
             }
         }
+        /// <summary>
+        /// Returns Simulation Board State
+        /// Item1 is number of notes,
+        /// Item2 is an array of notes.
+        /// </summary>
         public static List<Tuple<int, int[,]>> SimulationBoardState
         {
             get
@@ -156,6 +167,9 @@ namespace MusicPopulation
                 return Areas.Select(area => area.ChampionParameters).ToList();
             }
         }
+        /// <summary>
+        /// Reset Simulation.
+        /// </summary>
         public static void ResetSimulation()
         {
             SimulationBoard = new Board();
@@ -163,6 +177,12 @@ namespace MusicPopulation
         public delegate bool MelodyNeededDelegate();
         public delegate void RefreshParametersDelegate();
 
+        /// <summary>
+        /// Does one given amount of simulation using threads.
+        /// </summary>
+        /// <param name="evolveDuration">evolve duration</param>
+        /// <param name="unneeded">delegate indicating if melody is needed</param>
+        /// <param name="parameters">delegate for refreshing parameters</param>
         public static void DoSimulation(int evolveDuration, MelodyNeededDelegate unneeded, RefreshParametersDelegate parameters)
         {
             _tokenCancelSimulation = new CancellationTokenSource();
@@ -184,10 +204,16 @@ namespace MusicPopulation
                     }
                 }, _tokenCancelSimulation.Token);
         }
+        /// <summary>
+        /// Waits until the end of simulation.
+        /// </summary>
         public static void Wait()
         {
             _taskSimulation.Wait();
         }
+        /// <summary>
+        /// Stops simulation.
+        /// </summary>
         public static void StopSimulation()
         {
             _tokenCancelSimulation.Cancel();

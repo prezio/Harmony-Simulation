@@ -16,8 +16,13 @@ using PeriodicChords;
 
 namespace PopuloApplication
 {
+    /// <summary>
+    /// Main window of PopuloApplication
+    /// </summary>
     public partial class MainWindow : Form
     {
+        private int _perCentKnob;
+        private delegate int TempoCount(int lastVal, int minVal, int maxVal);
         private void ChangePhase()
         {
             MusicSimulation.Stop();
@@ -194,12 +199,23 @@ namespace PopuloApplication
             
         }
 
+        /// <summary>
+        /// Public property for setting accord
+        /// </summary>
         public List<List<PitchData>> Accord { get; set; }
+        /// <summary>
+        /// Constructor of MainWindow
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();
             LoadParameters();
+            _perCentKnob = (int)perCentNumericUpDownKnob.Value;
         }
+        /// <summary>
+        /// Method used for refreshing controls in main window. Can be used outside the class.
+        /// Sets the color of progress control: green- if simulation is running, red- otherwise
+        /// </summary>
         public void RefreshSimulationControls()
         {
             if (Simulation.SimulationStatus == TaskStatus.Running)
@@ -208,6 +224,9 @@ namespace PopuloApplication
                 groupBoxTaskSimulation.BackColor = Color.Red;
             groupBoxTaskSimulation.Invalidate();
         }
+        /// <summary>
+        /// Method used for saving parameters from application to Simulation
+        /// </summary>
         public void SaveParameters()
         {
             try
@@ -415,6 +434,37 @@ namespace PopuloApplication
         private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
         {
             MusicSimulation.Stop();
+        }
+        private void perCentNumericUpDownKnob_ValueChanged(object sender, EventArgs e)
+        {
+            TempoCount count = delegate(int lastVal, int minVal, int maxVal) 
+            { 
+                        int res = (int)Math.Ceiling((double)lastVal * (double)perCentNumericUpDownKnob.Value / _perCentKnob);
+                        if (res > maxVal)
+                            return maxVal;
+                        if (res < minVal)
+                            return minVal;
+                        return res;
+            };
+
+            tempo1.Value = count((int)tempo1.Value, (int)tempo1.Minimum, (int)tempo1.Maximum);
+            tempo2.Value = count((int)tempo2.Value, (int)tempo2.Minimum, (int)tempo2.Maximum);
+            tempo3.Value = count((int)tempo3.Value, (int)tempo3.Minimum, (int)tempo3.Maximum);
+            tempo4.Value = count((int)tempo4.Value, (int)tempo4.Minimum, (int)tempo4.Maximum);
+            tempo5.Value = count((int)tempo5.Value, (int)tempo5.Minimum, (int)tempo5.Maximum);
+            tempo6.Value = count((int)tempo6.Value, (int)tempo6.Minimum, (int)tempo6.Maximum);
+            tempo7.Value = count((int)tempo7.Value, (int)tempo7.Minimum, (int)tempo7.Maximum);
+            tempo8.Value = count((int)tempo8.Value, (int)tempo8.Minimum, (int)tempo8.Maximum);
+            tempo9.Value = count((int)tempo9.Value, (int)tempo9.Minimum, (int)tempo9.Maximum);
+            tempo10.Value = count((int)tempo10.Value, (int)tempo10.Minimum, (int)tempo10.Maximum);
+            tempo11.Value = count((int)tempo11.Value, (int)tempo11.Minimum, (int)tempo11.Maximum);
+            tempo12.Value = count((int)tempo12.Value, (int)tempo12.Minimum, (int)tempo12.Maximum);
+            tempo13.Value = count((int)tempo13.Value, (int)tempo13.Minimum, (int)tempo13.Maximum);
+            tempo14.Value = count((int)tempo14.Value, (int)tempo14.Minimum, (int)tempo14.Maximum);
+            tempo15.Value = count((int)tempo15.Value, (int)tempo15.Minimum, (int)tempo15.Maximum);
+            tempo16.Value = count((int)tempo16.Value, (int)tempo16.Minimum, (int)tempo16.Maximum);
+
+            _perCentKnob = (int)perCentNumericUpDownKnob.Value;
         }
         #endregion
     }

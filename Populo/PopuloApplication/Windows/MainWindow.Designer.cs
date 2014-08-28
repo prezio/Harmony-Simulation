@@ -236,6 +236,8 @@
             this.buttonChangePhase = new System.Windows.Forms.Button();
             this.buttonStop = new System.Windows.Forms.Button();
             this.buttonSetAccord = new System.Windows.Forms.Button();
+            this.perCentNumericUpDownKnob = new PopuloApplication.PerCentNumericUpDown();
+            this.labelKnob = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPercentDeath)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxSteps)).BeginInit();
             this.groupBoxParameters.SuspendLayout();
@@ -366,6 +368,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOneModifyAmount3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOneModifyAmount2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAlfa)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.perCentNumericUpDownKnob)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonStartSimulation
@@ -421,6 +424,8 @@
             // 
             // groupBoxParameters
             // 
+            this.groupBoxParameters.Controls.Add(this.labelKnob);
+            this.groupBoxParameters.Controls.Add(this.perCentNumericUpDownKnob);
             this.groupBoxParameters.Controls.Add(this.label19);
             this.groupBoxParameters.Controls.Add(this.label18);
             this.groupBoxParameters.Controls.Add(this.label17);
@@ -487,7 +492,7 @@
             this.groupBoxParameters.Controls.Add(this.labelAlfa);
             this.groupBoxParameters.Location = new System.Drawing.Point(12, 12);
             this.groupBoxParameters.Name = "groupBoxParameters";
-            this.groupBoxParameters.Size = new System.Drawing.Size(1057, 835);
+            this.groupBoxParameters.Size = new System.Drawing.Size(1057, 856);
             this.groupBoxParameters.TabIndex = 9;
             this.groupBoxParameters.TabStop = false;
             this.groupBoxParameters.Text = "Parametry";
@@ -638,7 +643,7 @@
             // 
             // divider16
             // 
-            this.divider16.Location = new System.Drawing.Point(1002, 181);
+            this.divider16.Location = new System.Drawing.Point(1002, 182);
             this.divider16.Maximum = new decimal(new int[] {
             128,
             0,
@@ -1006,7 +1011,7 @@
             // 
             // tempo16
             // 
-            this.tempo16.Location = new System.Drawing.Point(1002, 155);
+            this.tempo16.Location = new System.Drawing.Point(1002, 156);
             this.tempo16.Maximum = new decimal(new int[] {
             240,
             0,
@@ -1511,7 +1516,7 @@
             this.groupBoxFactorsPhase3.Controls.Add(this.numericUpDownThreeModifyAmount3);
             this.groupBoxFactorsPhase3.Controls.Add(this.numericUpDownThreeModifyAmount2);
             this.groupBoxFactorsPhase3.Enabled = false;
-            this.groupBoxFactorsPhase3.Location = new System.Drawing.Point(18, 682);
+            this.groupBoxFactorsPhase3.Location = new System.Drawing.Point(55, 682);
             this.groupBoxFactorsPhase3.Name = "groupBoxFactorsPhase3";
             this.groupBoxFactorsPhase3.Size = new System.Drawing.Size(902, 164);
             this.groupBoxFactorsPhase3.TabIndex = 12;
@@ -2246,7 +2251,7 @@
             // 
             // groupBoxTaskSimulation
             // 
-            this.groupBoxTaskSimulation.Location = new System.Drawing.Point(805, 16);
+            this.groupBoxTaskSimulation.Location = new System.Drawing.Point(936, 19);
             this.groupBoxTaskSimulation.Name = "groupBoxTaskSimulation";
             this.groupBoxTaskSimulation.Size = new System.Drawing.Size(115, 44);
             this.groupBoxTaskSimulation.TabIndex = 11;
@@ -2316,9 +2321,9 @@
             this.groupBoxFactorsPhase2.Controls.Add(this.numericUpDownTwoRythmInfluence);
             this.groupBoxFactorsPhase2.Controls.Add(this.numericUpDownTwoPitchInfluence);
             this.groupBoxFactorsPhase2.Enabled = false;
-            this.groupBoxFactorsPhase2.Location = new System.Drawing.Point(375, 241);
+            this.groupBoxFactorsPhase2.Location = new System.Drawing.Point(448, 241);
             this.groupBoxFactorsPhase2.Name = "groupBoxFactorsPhase2";
-            this.groupBoxFactorsPhase2.Size = new System.Drawing.Size(552, 435);
+            this.groupBoxFactorsPhase2.Size = new System.Drawing.Size(575, 435);
             this.groupBoxFactorsPhase2.TabIndex = 9;
             this.groupBoxFactorsPhase2.TabStop = false;
             this.groupBoxFactorsPhase2.Text = "Współczynniki Faza 2";
@@ -3069,14 +3074,14 @@
             this.groupBoxFactorsPhase1.Controls.Add(this.numericUpDownOneModifyAmount2);
             this.groupBoxFactorsPhase1.Location = new System.Drawing.Point(9, 241);
             this.groupBoxFactorsPhase1.Name = "groupBoxFactorsPhase1";
-            this.groupBoxFactorsPhase1.Size = new System.Drawing.Size(353, 261);
+            this.groupBoxFactorsPhase1.Size = new System.Drawing.Size(398, 261);
             this.groupBoxFactorsPhase1.TabIndex = 8;
             this.groupBoxFactorsPhase1.TabStop = false;
             this.groupBoxFactorsPhase1.Text = "Współczynniki Faza 1";
             // 
             // numericUpDownOnePrefferedLength
             // 
-            this.numericUpDownOnePrefferedLength.Location = new System.Drawing.Point(167, 218);
+            this.numericUpDownOnePrefferedLength.Location = new System.Drawing.Point(201, 219);
             this.numericUpDownOnePrefferedLength.Name = "numericUpDownOnePrefferedLength";
             this.numericUpDownOnePrefferedLength.Size = new System.Drawing.Size(56, 20);
             this.numericUpDownOnePrefferedLength.TabIndex = 35;
@@ -3084,7 +3089,7 @@
             // labelOnePrefferedLength
             // 
             this.labelOnePrefferedLength.AutoSize = true;
-            this.labelOnePrefferedLength.Location = new System.Drawing.Point(6, 220);
+            this.labelOnePrefferedLength.Location = new System.Drawing.Point(27, 221);
             this.labelOnePrefferedLength.Name = "labelOnePrefferedLength";
             this.labelOnePrefferedLength.Size = new System.Drawing.Size(86, 13);
             this.labelOnePrefferedLength.TabIndex = 34;
@@ -3093,7 +3098,7 @@
             // labelOneShrinkChance
             // 
             this.labelOneShrinkChance.AutoSize = true;
-            this.labelOneShrinkChance.Location = new System.Drawing.Point(6, 194);
+            this.labelOneShrinkChance.Location = new System.Drawing.Point(27, 195);
             this.labelOneShrinkChance.Name = "labelOneShrinkChance";
             this.labelOneShrinkChance.Size = new System.Drawing.Size(74, 13);
             this.labelOneShrinkChance.TabIndex = 33;
@@ -3102,7 +3107,7 @@
             // labelOneGrowthChance
             // 
             this.labelOneGrowthChance.AutoSize = true;
-            this.labelOneGrowthChance.Location = new System.Drawing.Point(6, 168);
+            this.labelOneGrowthChance.Location = new System.Drawing.Point(27, 169);
             this.labelOneGrowthChance.Name = "labelOneGrowthChance";
             this.labelOneGrowthChance.Size = new System.Drawing.Size(81, 13);
             this.labelOneGrowthChance.TabIndex = 32;
@@ -3111,7 +3116,7 @@
             // labelOneExchangeChance
             // 
             this.labelOneExchangeChance.AutoSize = true;
-            this.labelOneExchangeChance.Location = new System.Drawing.Point(6, 116);
+            this.labelOneExchangeChance.Location = new System.Drawing.Point(27, 117);
             this.labelOneExchangeChance.Name = "labelOneExchangeChance";
             this.labelOneExchangeChance.Size = new System.Drawing.Size(95, 13);
             this.labelOneExchangeChance.TabIndex = 31;
@@ -3125,7 +3130,7 @@
             0,
             0,
             196608});
-            this.numericUpDownOneExchangeChance3.Location = new System.Drawing.Point(291, 113);
+            this.numericUpDownOneExchangeChance3.Location = new System.Drawing.Point(325, 114);
             this.numericUpDownOneExchangeChance3.Maximum = new decimal(new int[] {
             1,
             0,
@@ -3143,7 +3148,7 @@
             0,
             0,
             196608});
-            this.numericUpDownOneExchangeChance2.Location = new System.Drawing.Point(229, 113);
+            this.numericUpDownOneExchangeChance2.Location = new System.Drawing.Point(263, 114);
             this.numericUpDownOneExchangeChance2.Maximum = new decimal(new int[] {
             1,
             0,
@@ -3161,7 +3166,7 @@
             0,
             0,
             196608});
-            this.numericUpDownOneExchangeChance1.Location = new System.Drawing.Point(167, 114);
+            this.numericUpDownOneExchangeChance1.Location = new System.Drawing.Point(201, 115);
             this.numericUpDownOneExchangeChance1.Maximum = new decimal(new int[] {
             1,
             0,
@@ -3179,7 +3184,7 @@
             0,
             0,
             196608});
-            this.numericUpDownOneShrinkChance.Location = new System.Drawing.Point(167, 192);
+            this.numericUpDownOneShrinkChance.Location = new System.Drawing.Point(201, 193);
             this.numericUpDownOneShrinkChance.Maximum = new decimal(new int[] {
             1,
             0,
@@ -3197,7 +3202,7 @@
             0,
             0,
             196608});
-            this.numericUpDownOneGrowthChance.Location = new System.Drawing.Point(167, 166);
+            this.numericUpDownOneGrowthChance.Location = new System.Drawing.Point(201, 167);
             this.numericUpDownOneGrowthChance.Maximum = new decimal(new int[] {
             1,
             0,
@@ -3210,7 +3215,7 @@
             // labelOneModifyChance
             // 
             this.labelOneModifyChance.AutoSize = true;
-            this.labelOneModifyChance.Location = new System.Drawing.Point(6, 142);
+            this.labelOneModifyChance.Location = new System.Drawing.Point(27, 143);
             this.labelOneModifyChance.Name = "labelOneModifyChance";
             this.labelOneModifyChance.Size = new System.Drawing.Size(78, 13);
             this.labelOneModifyChance.TabIndex = 25;
@@ -3224,7 +3229,7 @@
             0,
             0,
             196608});
-            this.numericUpDownOneModifyChance3.Location = new System.Drawing.Point(291, 139);
+            this.numericUpDownOneModifyChance3.Location = new System.Drawing.Point(325, 140);
             this.numericUpDownOneModifyChance3.Maximum = new decimal(new int[] {
             1,
             0,
@@ -3242,7 +3247,7 @@
             0,
             0,
             196608});
-            this.numericUpDownOneModifyChance2.Location = new System.Drawing.Point(229, 139);
+            this.numericUpDownOneModifyChance2.Location = new System.Drawing.Point(263, 140);
             this.numericUpDownOneModifyChance2.Maximum = new decimal(new int[] {
             1,
             0,
@@ -3260,7 +3265,7 @@
             0,
             0,
             196608});
-            this.numericUpDownOneModifyChance1.Location = new System.Drawing.Point(167, 140);
+            this.numericUpDownOneModifyChance1.Location = new System.Drawing.Point(201, 141);
             this.numericUpDownOneModifyChance1.Maximum = new decimal(new int[] {
             1,
             0,
@@ -3273,7 +3278,7 @@
             // labelOneTransposeChance
             // 
             this.labelOneTransposeChance.AutoSize = true;
-            this.labelOneTransposeChance.Location = new System.Drawing.Point(6, 90);
+            this.labelOneTransposeChance.Location = new System.Drawing.Point(27, 91);
             this.labelOneTransposeChance.Name = "labelOneTransposeChance";
             this.labelOneTransposeChance.Size = new System.Drawing.Size(97, 13);
             this.labelOneTransposeChance.TabIndex = 21;
@@ -3287,7 +3292,7 @@
             0,
             0,
             196608});
-            this.numericUpDownOneTransposeChance3.Location = new System.Drawing.Point(291, 87);
+            this.numericUpDownOneTransposeChance3.Location = new System.Drawing.Point(325, 88);
             this.numericUpDownOneTransposeChance3.Maximum = new decimal(new int[] {
             1,
             0,
@@ -3305,7 +3310,7 @@
             0,
             0,
             196608});
-            this.numericUpDownOneTransposeChance2.Location = new System.Drawing.Point(229, 87);
+            this.numericUpDownOneTransposeChance2.Location = new System.Drawing.Point(263, 88);
             this.numericUpDownOneTransposeChance2.Maximum = new decimal(new int[] {
             1,
             0,
@@ -3323,7 +3328,7 @@
             0,
             0,
             196608});
-            this.numericUpDownOneTransposeChance1.Location = new System.Drawing.Point(167, 88);
+            this.numericUpDownOneTransposeChance1.Location = new System.Drawing.Point(201, 89);
             this.numericUpDownOneTransposeChance1.Maximum = new decimal(new int[] {
             1,
             0,
@@ -3336,7 +3341,7 @@
             // labelOneInfluenceAmount
             // 
             this.labelOneInfluenceAmount.AutoSize = true;
-            this.labelOneInfluenceAmount.Location = new System.Drawing.Point(6, 63);
+            this.labelOneInfluenceAmount.Location = new System.Drawing.Point(27, 64);
             this.labelOneInfluenceAmount.Name = "labelOneInfluenceAmount";
             this.labelOneInfluenceAmount.Size = new System.Drawing.Size(90, 13);
             this.labelOneInfluenceAmount.TabIndex = 17;
@@ -3345,7 +3350,7 @@
             // labelOneModifyAmount
             // 
             this.labelOneModifyAmount.AutoSize = true;
-            this.labelOneModifyAmount.Location = new System.Drawing.Point(6, 37);
+            this.labelOneModifyAmount.Location = new System.Drawing.Point(27, 38);
             this.labelOneModifyAmount.Name = "labelOneModifyAmount";
             this.labelOneModifyAmount.Size = new System.Drawing.Size(77, 13);
             this.labelOneModifyAmount.TabIndex = 16;
@@ -3359,7 +3364,7 @@
             0,
             0,
             131072});
-            this.numericUpDownOneInfluenceAmount3.Location = new System.Drawing.Point(291, 61);
+            this.numericUpDownOneInfluenceAmount3.Location = new System.Drawing.Point(325, 62);
             this.numericUpDownOneInfluenceAmount3.Maximum = new decimal(new int[] {
             5,
             0,
@@ -3377,7 +3382,7 @@
             0,
             0,
             131072});
-            this.numericUpDownOneInfluenceAmount2.Location = new System.Drawing.Point(229, 61);
+            this.numericUpDownOneInfluenceAmount2.Location = new System.Drawing.Point(263, 62);
             this.numericUpDownOneInfluenceAmount2.Maximum = new decimal(new int[] {
             5,
             0,
@@ -3395,7 +3400,7 @@
             0,
             0,
             131072});
-            this.numericUpDownOneInfluenceAmount1.Location = new System.Drawing.Point(167, 61);
+            this.numericUpDownOneInfluenceAmount1.Location = new System.Drawing.Point(201, 62);
             this.numericUpDownOneInfluenceAmount1.Maximum = new decimal(new int[] {
             5,
             0,
@@ -3407,21 +3412,21 @@
             // 
             // numericUpDownOneModifyAmount1
             // 
-            this.numericUpDownOneModifyAmount1.Location = new System.Drawing.Point(167, 35);
+            this.numericUpDownOneModifyAmount1.Location = new System.Drawing.Point(201, 36);
             this.numericUpDownOneModifyAmount1.Name = "numericUpDownOneModifyAmount1";
             this.numericUpDownOneModifyAmount1.Size = new System.Drawing.Size(56, 20);
             this.numericUpDownOneModifyAmount1.TabIndex = 12;
             // 
             // numericUpDownOneModifyAmount3
             // 
-            this.numericUpDownOneModifyAmount3.Location = new System.Drawing.Point(291, 35);
+            this.numericUpDownOneModifyAmount3.Location = new System.Drawing.Point(325, 36);
             this.numericUpDownOneModifyAmount3.Name = "numericUpDownOneModifyAmount3";
             this.numericUpDownOneModifyAmount3.Size = new System.Drawing.Size(56, 20);
             this.numericUpDownOneModifyAmount3.TabIndex = 11;
             // 
             // numericUpDownOneModifyAmount2
             // 
-            this.numericUpDownOneModifyAmount2.Location = new System.Drawing.Point(229, 35);
+            this.numericUpDownOneModifyAmount2.Location = new System.Drawing.Point(263, 36);
             this.numericUpDownOneModifyAmount2.Name = "numericUpDownOneModifyAmount2";
             this.numericUpDownOneModifyAmount2.Size = new System.Drawing.Size(56, 20);
             this.numericUpDownOneModifyAmount2.TabIndex = 10;
@@ -3446,7 +3451,7 @@
             // 
             // buttonClose
             // 
-            this.buttonClose.Location = new System.Drawing.Point(1084, 772);
+            this.buttonClose.Location = new System.Drawing.Point(1084, 829);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(98, 39);
             this.buttonClose.TabIndex = 10;
@@ -3484,11 +3489,43 @@
             this.buttonSetAccord.UseVisualStyleBackColor = true;
             this.buttonSetAccord.Click += new System.EventHandler(this.buttonSetAccord_Click);
             // 
+            // perCentNumericUpDownKnob
+            // 
+            this.perCentNumericUpDownKnob.Location = new System.Drawing.Point(978, 208);
+            this.perCentNumericUpDownKnob.Maximum = new decimal(new int[] {
+            150,
+            0,
+            0,
+            0});
+            this.perCentNumericUpDownKnob.Minimum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.perCentNumericUpDownKnob.Name = "perCentNumericUpDownKnob";
+            this.perCentNumericUpDownKnob.Size = new System.Drawing.Size(73, 20);
+            this.perCentNumericUpDownKnob.TabIndex = 68;
+            this.perCentNumericUpDownKnob.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.perCentNumericUpDownKnob.ValueChanged += new System.EventHandler(this.perCentNumericUpDownKnob_ValueChanged);
+            // 
+            // labelKnob
+            // 
+            this.labelKnob.AutoSize = true;
+            this.labelKnob.Location = new System.Drawing.Point(921, 210);
+            this.labelKnob.Name = "labelKnob";
+            this.labelKnob.Size = new System.Drawing.Size(51, 13);
+            this.labelKnob.TabIndex = 69;
+            this.labelKnob.Text = "Pokrętło:";
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1193, 870);
+            this.ClientSize = new System.Drawing.Size(1193, 880);
             this.Controls.Add(this.buttonSetAccord);
             this.Controls.Add(this.buttonStop);
             this.Controls.Add(this.buttonChangePhase);
@@ -3634,6 +3671,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOneModifyAmount3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOneModifyAmount2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAlfa)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.perCentNumericUpDownKnob)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -3848,6 +3886,8 @@
         private System.Windows.Forms.NumericUpDown common_divider;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.NumericUpDown divider8;
+        private PerCentNumericUpDown perCentNumericUpDownKnob;
+        private System.Windows.Forms.Label labelKnob;
     }
 }
 

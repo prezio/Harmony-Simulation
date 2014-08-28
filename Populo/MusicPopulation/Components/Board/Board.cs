@@ -7,6 +7,9 @@ using System.Text;
 
 namespace MusicPopulation
 {
+    /// <summary>
+    /// Represents simulation board.
+    /// </summary>
     public partial class Board
     {
         private int _indexOfPhase; // index of current phase
@@ -40,7 +43,8 @@ namespace MusicPopulation
         private int[,] _rankTable;
 
         /// <summary>
-        /// Constructs new Board
+        /// Constructs new Board filled with random values
+        /// and in first phase.
         /// </summary>
         public Board()
         {
@@ -48,6 +52,9 @@ namespace MusicPopulation
             _rankTable = new int[BoardWidth, BoardHeight];
             SetPhase(0);
         }
+        /// <summary>
+        /// Basic board getter, if index is out of range returns null.
+        /// </summary>
         public Member this[int i, int j]
         {
             get
@@ -61,11 +68,17 @@ namespace MusicPopulation
                 _board[i, j] = value;
             }
         }
+        /// <summary>
+        /// Method responsible for changing simulation phase.
+        /// </summary>
         public void ChangePhase()
         {
             SetPhase((_indexOfPhase + 1) % _numberOfPhases);
         }
 
+        /// <summary>
+        /// Getter which returns index of phase.
+        /// </summary>
         public int IndexOfPhase
         {
             get
@@ -73,6 +86,9 @@ namespace MusicPopulation
                 return _indexOfPhase;
             }
         }
+        /// <summary>
+        /// Retrurns string representing all ranks in board.
+        /// </summary>
         public string RankTableMsg
         {
             get
@@ -89,6 +105,9 @@ namespace MusicPopulation
                 return result.ToString();
             }
         }
+        /// <summary>
+        /// Returns Population Growth in board.
+        /// </summary>
         public int PopulationGrowth
         {
             get
@@ -149,11 +168,17 @@ namespace MusicPopulation
             else
                 return new Tuple<int, int>(best_x, best_y);
         }
+        /// <summary>
+        /// Moves individual in (sX, sY) to (dX, dY).
+        /// </summary>
         public void MoveIndividual(int sX, int sY, int dX, int dY)
         {
             this[dX, dY] = this[sX, sY];
             this[sX, sY] = null;
         }
+        /// <summary>
+        /// Copies individual in (sX,sY) to (dX, dY).
+        /// </summary>
         public void CopyIndividual(int sX, int sY, int dX, int dY)
         {
             this[dX, dY] = this[sX, sY].Clone();

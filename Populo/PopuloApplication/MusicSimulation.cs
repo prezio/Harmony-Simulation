@@ -5,12 +5,19 @@ using System.Timers;
 
 namespace PopuloApplication
 {
+    /// <summary>
+    /// Static class responsible for Simulation
+    /// </summary>
     public static class MusicSimulation
     {
         private static Timer _timer;
         private static MainWindow _window;
         private static int _iEvolveDuration = 100;
 
+        /// <summary>
+        /// Static method responsible for starting simulation
+        /// </summary>
+        /// <param name="context">Window context of simulation</param>
         public static void Start(MainWindow context)
         {
             _window = context;
@@ -21,13 +28,22 @@ namespace PopuloApplication
             _timer.Elapsed += _timer_Elapsed;
             _timer.Enabled = true;
         }
+        /// <summary>
+        /// Static method responsible for stopping simulation
+        /// </summary>
         public static void Stop()
         {
-            _timer.Stop();
-            Melody.StopPlaying();
-            Simulation.StopSimulation();
+            if (_timer != null)
+            {
+                _timer.Stop();
+                Melody.StopPlaying();
+                Simulation.StopSimulation();
+            }
         }
 
+        /// <summary>
+        /// Event responsible for Simulation Iteration
+        /// </summary>
         private static void _timer_Elapsed(object sender, ElapsedEventArgs e)
         {
             _window.RefreshSimulationControls();
@@ -35,7 +51,6 @@ namespace PopuloApplication
             if (Simulation.SimulationStatus != TaskStatus.Running && Melody.IsPlaying == false)
             {
                 Melody.StartPlaying();
-                //_window.SaveParameters();
                 Simulation.DoSimulation(_iEvolveDuration, new Simulation.MelodyNeededDelegate(Melody.Unneeded), new Simulation.RefreshParametersDelegate(_window.SaveParameters));
             }
         }
