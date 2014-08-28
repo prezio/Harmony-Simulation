@@ -5,6 +5,9 @@ using System.Text;
 
 namespace MusicPopulation
 {
+    /// <summary>
+    /// Tool used to store some logs representing state of simulation.
+    /// </summary>
     public static class Logger
     {
         private static StreamWriter _logger = new StreamWriter("log.txt");
@@ -29,6 +32,11 @@ namespace MusicPopulation
             return res.ToString();
         }
 
+        /// <summary>
+        /// Generates Overall simulation description, especially board parameters.
+        /// </summary>
+        /// <param name="numberOfTries">number of simulation iterations</param>
+        /// <returns>string representing board description</returns>
         public static string GenBoardDescription(int numberOfTries)
         {
             StringBuilder res = new StringBuilder();
@@ -37,6 +45,13 @@ namespace MusicPopulation
             res.Append("========================\n");
             return res.ToString();
         }
+        /// <summary>
+        /// Static method which generates all areas description:
+        ///  - population growth,
+        ///  - area Champions,
+        ///  etc.
+        /// </summary>
+        /// <returns>string representing areas description</returns>
         public static string GenAreaDescription()
         {
             List<Tuple<int, int[,]>> sounds = Simulation.SimulationBoardState;
@@ -63,6 +78,11 @@ namespace MusicPopulation
             }
             return res.ToString();
         }
+        /// <summary>
+        /// Store information about error.
+        /// </summary>
+        /// <param name="ex">exception</param>
+        /// <param name="note">additional note</param>
         public static void AddError(Exception ex, string note)
         {
             lock (_syncLog)
