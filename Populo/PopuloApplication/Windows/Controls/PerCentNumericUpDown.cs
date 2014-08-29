@@ -3,6 +3,9 @@ using System.Windows.Forms;
 
 namespace PopuloApplication
 {
+    /// <summary>
+    /// Defined Percent numericupdown control
+    /// </summary>
     public class PerCentNumericUpDown : NumericUpDown
     {
         public PerCentNumericUpDown()

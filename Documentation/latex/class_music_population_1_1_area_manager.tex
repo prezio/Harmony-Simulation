@@ -1,0 +1,161 @@
+\hypertarget{class_music_population_1_1_area_manager}{\section{Music\+Population.\+Area\+Manager Class Reference}
+\label{class_music_population_1_1_area_manager}\index{Music\+Population.\+Area\+Manager@{Music\+Population.\+Area\+Manager}}
+}
+
+
+Class responsible for area management. It implements evolutionary algorithms which  
+
+
+Inheritance diagram for Music\+Population.\+Area\+Manager\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_music_population_1_1_area_manager}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_music_population_1_1_area_manager_ac5549e56b610d304a84e5d27dc859e29}{Area\+Manager} (int x, int y, int w, int h)
+\begin{DoxyCompactList}\small\item\em Counstructs area responsible for area between (x, y) and (x+w, y+h) in static board Simulation.\+Simulation\+Board. \end{DoxyCompactList}\item 
+void \hyperlink{class_music_population_1_1_area_manager_aea2e8695966595f3319c3997e051c7fc}{Kill\+Weaks\+Who\+Does\+Not\+Serve\+The\+Emperor\+Well} ()
+\begin{DoxyCompactList}\small\item\em Kills the weakest individuals in area of responsibility. \end{DoxyCompactList}\item 
+void \hyperlink{class_music_population_1_1_area_manager_a1cd5bdd37af092d90006e0f4899fd29d}{Select\+Champion\+Who\+Can\+Become\+Commissar} ()
+\begin{DoxyCompactList}\small\item\em Selects the champion of area and copies his parameters to Champion\+Parameters property. \end{DoxyCompactList}\item 
+void \hyperlink{class_music_population_1_1_area_manager_a906954fb7f6be490564d5aacc950af89}{Mutate\+Weaks\+So\+They\+Can\+Serve\+Emperor\+Better} ()
+\begin{DoxyCompactList}\small\item\em Mutates each individual in area of responsibility. \end{DoxyCompactList}\item 
+void \hyperlink{class_music_population_1_1_area_manager_a02826d1f1271dd9a92dc11cc43eaaf2e}{Reproduce\+Men\+To\+Have\+More\+Servants\+Of\+The\+Emperor} ()
+\begin{DoxyCompactList}\small\item\em Reproduces individuals \end{DoxyCompactList}\item 
+\hypertarget{class_music_population_1_1_area_manager_a56fcf125c781dd2a2435bd0f91f42fb4}{void {\bfseries Influence\+Men\+With\+Songs\+Glorifying\+Emperor} ()}\label{class_music_population_1_1_area_manager_a56fcf125c781dd2a2435bd0f91f42fb4}
+
+\item 
+\hypertarget{class_music_population_1_1_area_manager_a2429a1af1ec0f63206688874845fc314}{void {\bfseries Move\+Your\+Men\+Sergant} ()}\label{class_music_population_1_1_area_manager_a2429a1af1ec0f63206688874845fc314}
+
+\item 
+void \hyperlink{class_music_population_1_1_area_manager_ac42aef4ec8c4a3789b9e94bf40f31b04}{Regroup\+Your\+Men\+To\+Other\+Front} (int dir)
+\begin{DoxyCompactList}\small\item\em Moves Individuals in given direction \end{DoxyCompactList}\item 
+\hypertarget{class_music_population_1_1_area_manager_a6acfc222bc4baa96a6f3a32b9e154cc3}{I\+Enumerator {\bfseries Get\+Enumerator} ()}\label{class_music_population_1_1_area_manager_a6acfc222bc4baa96a6f3a32b9e154cc3}
+
+\item 
+\hypertarget{class_music_population_1_1_area_manager_ab91f224fd25e2ae5715496c881a2c90a}{bool {\bfseries Move\+Next} ()}\label{class_music_population_1_1_area_manager_ab91f224fd25e2ae5715496c881a2c90a}
+
+\item 
+\hypertarget{class_music_population_1_1_area_manager_a2639a5ef9ebb562d9bd1dcfd2c0f83e3}{void {\bfseries Reset} ()}\label{class_music_population_1_1_area_manager_a2639a5ef9ebb562d9bd1dcfd2c0f83e3}
+
+\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{class_music_population_1_1_area_manager_aefd6bf2d6e3330f4648b2e4f1f43bec9}{Population\+Growth}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Property which counts Population Growth in area of responsibility. \end{DoxyCompactList}\item 
+Tuple$<$ int, int\mbox{[},\mbox{]}$>$ \hyperlink{class_music_population_1_1_area_manager_a86c18c633b2331918caed26574120933}{Champion\+Parameters}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Property which saves parameters of champion in area of object's responsibility. Item1 is number of notes Item2 is array of notes \end{DoxyCompactList}\item 
+\hypertarget{class_music_population_1_1_area_manager_ab12ffa91c850c5a510f248e87c2cfd63}{object {\bfseries Current}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}}\label{class_music_population_1_1_area_manager_ab12ffa91c850c5a510f248e87c2cfd63}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class responsible for area management. It implements evolutionary algorithms which 
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_music_population_1_1_area_manager_ac5549e56b610d304a84e5d27dc859e29}{\index{Music\+Population\+::\+Area\+Manager@{Music\+Population\+::\+Area\+Manager}!Area\+Manager@{Area\+Manager}}
+\index{Area\+Manager@{Area\+Manager}!Music\+Population\+::\+Area\+Manager@{Music\+Population\+::\+Area\+Manager}}
+\subsubsection[{Area\+Manager}]{\setlength{\rightskip}{0pt plus 5cm}Music\+Population.\+Area\+Manager.\+Area\+Manager (
+\begin{DoxyParamCaption}
+\item[{int}]{x, }
+\item[{int}]{y, }
+\item[{int}]{w, }
+\item[{int}]{h}
+\end{DoxyParamCaption}
+)}}\label{class_music_population_1_1_area_manager_ac5549e56b610d304a84e5d27dc859e29}
+
+
+Counstructs area responsible for area between (x, y) and (x+w, y+h) in static board Simulation.\+Simulation\+Board. 
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_music_population_1_1_area_manager_aea2e8695966595f3319c3997e051c7fc}{\index{Music\+Population\+::\+Area\+Manager@{Music\+Population\+::\+Area\+Manager}!Kill\+Weaks\+Who\+Does\+Not\+Serve\+The\+Emperor\+Well@{Kill\+Weaks\+Who\+Does\+Not\+Serve\+The\+Emperor\+Well}}
+\index{Kill\+Weaks\+Who\+Does\+Not\+Serve\+The\+Emperor\+Well@{Kill\+Weaks\+Who\+Does\+Not\+Serve\+The\+Emperor\+Well}!Music\+Population\+::\+Area\+Manager@{Music\+Population\+::\+Area\+Manager}}
+\subsubsection[{Kill\+Weaks\+Who\+Does\+Not\+Serve\+The\+Emperor\+Well}]{\setlength{\rightskip}{0pt plus 5cm}void Music\+Population.\+Area\+Manager.\+Kill\+Weaks\+Who\+Does\+Not\+Serve\+The\+Emperor\+Well (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_music_population_1_1_area_manager_aea2e8695966595f3319c3997e051c7fc}
+
+
+Kills the weakest individuals in area of responsibility. 
+
+\hypertarget{class_music_population_1_1_area_manager_a906954fb7f6be490564d5aacc950af89}{\index{Music\+Population\+::\+Area\+Manager@{Music\+Population\+::\+Area\+Manager}!Mutate\+Weaks\+So\+They\+Can\+Serve\+Emperor\+Better@{Mutate\+Weaks\+So\+They\+Can\+Serve\+Emperor\+Better}}
+\index{Mutate\+Weaks\+So\+They\+Can\+Serve\+Emperor\+Better@{Mutate\+Weaks\+So\+They\+Can\+Serve\+Emperor\+Better}!Music\+Population\+::\+Area\+Manager@{Music\+Population\+::\+Area\+Manager}}
+\subsubsection[{Mutate\+Weaks\+So\+They\+Can\+Serve\+Emperor\+Better}]{\setlength{\rightskip}{0pt plus 5cm}void Music\+Population.\+Area\+Manager.\+Mutate\+Weaks\+So\+They\+Can\+Serve\+Emperor\+Better (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_music_population_1_1_area_manager_a906954fb7f6be490564d5aacc950af89}
+
+
+Mutates each individual in area of responsibility. 
+
+\hypertarget{class_music_population_1_1_area_manager_ac42aef4ec8c4a3789b9e94bf40f31b04}{\index{Music\+Population\+::\+Area\+Manager@{Music\+Population\+::\+Area\+Manager}!Regroup\+Your\+Men\+To\+Other\+Front@{Regroup\+Your\+Men\+To\+Other\+Front}}
+\index{Regroup\+Your\+Men\+To\+Other\+Front@{Regroup\+Your\+Men\+To\+Other\+Front}!Music\+Population\+::\+Area\+Manager@{Music\+Population\+::\+Area\+Manager}}
+\subsubsection[{Regroup\+Your\+Men\+To\+Other\+Front}]{\setlength{\rightskip}{0pt plus 5cm}void Music\+Population.\+Area\+Manager.\+Regroup\+Your\+Men\+To\+Other\+Front (
+\begin{DoxyParamCaption}
+\item[{int}]{dir}
+\end{DoxyParamCaption}
+)}}\label{class_music_population_1_1_area_manager_ac42aef4ec8c4a3789b9e94bf40f31b04}
+
+
+Moves Individuals in given direction 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dir} & 0 -\/ north, 1 -\/ south, 2 -\/ west, 3 -\/ east\\
+\hline
+\end{DoxyParams}
+\hypertarget{class_music_population_1_1_area_manager_a02826d1f1271dd9a92dc11cc43eaaf2e}{\index{Music\+Population\+::\+Area\+Manager@{Music\+Population\+::\+Area\+Manager}!Reproduce\+Men\+To\+Have\+More\+Servants\+Of\+The\+Emperor@{Reproduce\+Men\+To\+Have\+More\+Servants\+Of\+The\+Emperor}}
+\index{Reproduce\+Men\+To\+Have\+More\+Servants\+Of\+The\+Emperor@{Reproduce\+Men\+To\+Have\+More\+Servants\+Of\+The\+Emperor}!Music\+Population\+::\+Area\+Manager@{Music\+Population\+::\+Area\+Manager}}
+\subsubsection[{Reproduce\+Men\+To\+Have\+More\+Servants\+Of\+The\+Emperor}]{\setlength{\rightskip}{0pt plus 5cm}void Music\+Population.\+Area\+Manager.\+Reproduce\+Men\+To\+Have\+More\+Servants\+Of\+The\+Emperor (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_music_population_1_1_area_manager_a02826d1f1271dd9a92dc11cc43eaaf2e}
+
+
+Reproduces individuals 
+
+\hypertarget{class_music_population_1_1_area_manager_a1cd5bdd37af092d90006e0f4899fd29d}{\index{Music\+Population\+::\+Area\+Manager@{Music\+Population\+::\+Area\+Manager}!Select\+Champion\+Who\+Can\+Become\+Commissar@{Select\+Champion\+Who\+Can\+Become\+Commissar}}
+\index{Select\+Champion\+Who\+Can\+Become\+Commissar@{Select\+Champion\+Who\+Can\+Become\+Commissar}!Music\+Population\+::\+Area\+Manager@{Music\+Population\+::\+Area\+Manager}}
+\subsubsection[{Select\+Champion\+Who\+Can\+Become\+Commissar}]{\setlength{\rightskip}{0pt plus 5cm}void Music\+Population.\+Area\+Manager.\+Select\+Champion\+Who\+Can\+Become\+Commissar (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_music_population_1_1_area_manager_a1cd5bdd37af092d90006e0f4899fd29d}
+
+
+Selects the champion of area and copies his parameters to Champion\+Parameters property. 
+
+
+
+\subsection{Property Documentation}
+\hypertarget{class_music_population_1_1_area_manager_a86c18c633b2331918caed26574120933}{\index{Music\+Population\+::\+Area\+Manager@{Music\+Population\+::\+Area\+Manager}!Champion\+Parameters@{Champion\+Parameters}}
+\index{Champion\+Parameters@{Champion\+Parameters}!Music\+Population\+::\+Area\+Manager@{Music\+Population\+::\+Area\+Manager}}
+\subsubsection[{Champion\+Parameters}]{\setlength{\rightskip}{0pt plus 5cm}Tuple$<$int, int\mbox{[},\mbox{]}$>$ Music\+Population.\+Area\+Manager.\+Champion\+Parameters\hspace{0.3cm}{\ttfamily [get]}}}\label{class_music_population_1_1_area_manager_a86c18c633b2331918caed26574120933}
+
+
+Property which saves parameters of champion in area of object's responsibility. Item1 is number of notes Item2 is array of notes 
+
+\hypertarget{class_music_population_1_1_area_manager_aefd6bf2d6e3330f4648b2e4f1f43bec9}{\index{Music\+Population\+::\+Area\+Manager@{Music\+Population\+::\+Area\+Manager}!Population\+Growth@{Population\+Growth}}
+\index{Population\+Growth@{Population\+Growth}!Music\+Population\+::\+Area\+Manager@{Music\+Population\+::\+Area\+Manager}}
+\subsubsection[{Population\+Growth}]{\setlength{\rightskip}{0pt plus 5cm}int Music\+Population.\+Area\+Manager.\+Population\+Growth\hspace{0.3cm}{\ttfamily [get]}}}\label{class_music_population_1_1_area_manager_aefd6bf2d6e3330f4648b2e4f1f43bec9}
+
+
+Property which counts Population Growth in area of responsibility. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/praktykant/\+Documents/\+Git\+Hub/\+Harmony-\/\+Simulation/\+Populo/\+Music\+Population/\+Components/\+Area/Area\+Manager.\+cs\end{DoxyCompactItemize}

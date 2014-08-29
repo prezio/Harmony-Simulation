@@ -1,0 +1,167 @@
+\hypertarget{class_music_population_1_1_board}{\section{Music\+Population.\+Board Class Reference}
+\label{class_music_population_1_1_board}\index{Music\+Population.\+Board@{Music\+Population.\+Board}}
+}
+
+
+Represents simulation board.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_music_population_1_1_board_af3767b8609c26674c30bf536db221db3}{Board} ()
+\begin{DoxyCompactList}\small\item\em Constructs new \hyperlink{class_music_population_1_1_board}{Board} filled with random values and in first phase. \end{DoxyCompactList}\item 
+void \hyperlink{class_music_population_1_1_board_aa3525b70d6179fc9b9377431e7a09303}{Change\+Phase} ()
+\begin{DoxyCompactList}\small\item\em Method responsible for changing simulation phase. \end{DoxyCompactList}\item 
+bool \hyperlink{class_music_population_1_1_board_a2d2aed951c7749bab64d447979e11db2}{Is\+Legal} (int x, int y)
+\begin{DoxyCompactList}\small\item\em Returns whether point (x, y) is legal or not. \end{DoxyCompactList}\item 
+Tuple$<$ int, int $>$ \hyperlink{class_music_population_1_1_board_aace7e7443efbe0e3b1298dd553c7b8e8}{Get\+Best\+In\+Area} (int x1, int y1, int x2, int y2)
+\begin{DoxyCompactList}\small\item\em Returns best individual in rectangle determined by positions (x1, y1), (x2, y2) \end{DoxyCompactList}\item 
+void \hyperlink{class_music_population_1_1_board_a1e1ececc516d74bbdcf254fd61075253}{Move\+Individual} (int s\+X, int s\+Y, int d\+X, int d\+Y)
+\begin{DoxyCompactList}\small\item\em Moves individual in (s\+X, s\+Y) to (d\+X, d\+Y). \end{DoxyCompactList}\item 
+void \hyperlink{class_music_population_1_1_board_aad68697f57bb84e480c448e85eb0128e}{Copy\+Individual} (int s\+X, int s\+Y, int d\+X, int d\+Y)
+\begin{DoxyCompactList}\small\item\em Copies individual in (s\+X,s\+Y) to (d\+X, d\+Y). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_music_population_1_1_board_ac394649f4b46b9df6162738673548e5f}{const int {\bfseries Board\+Width} = 256}\label{class_music_population_1_1_board_ac394649f4b46b9df6162738673548e5f}
+
+\item 
+\hypertarget{class_music_population_1_1_board_a703b732a7e262d7e973ce12f4d0bb53c}{const int {\bfseries Init\+Population\+Growth} = 256 $\ast$ 256 / 2}\label{class_music_population_1_1_board_a703b732a7e262d7e973ce12f4d0bb53c}
+
+\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_music_population_1_1_member}{Member} \hyperlink{class_music_population_1_1_board_abd14bb128680a5f37fc29f006e65e4f0}{this\mbox{[}int i, int j\mbox{]}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Basic board getter, if index is out of range returns null. \end{DoxyCompactList}\item 
+int \hyperlink{class_music_population_1_1_board_abaf64b14d42081829501c6958e2199aa}{Index\+Of\+Phase}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Getter which returns index of phase. \end{DoxyCompactList}\item 
+string \hyperlink{class_music_population_1_1_board_af0fe9cecfaf3577bf9ea697c4e909e96}{Rank\+Table\+Msg}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Retrurns string representing all ranks in board. \end{DoxyCompactList}\item 
+int \hyperlink{class_music_population_1_1_board_aedfe71556d1fe32c58a134a868e827c1}{Population\+Growth}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Returns Population Growth in board. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Represents simulation board. 
+
+Global Parameters used in board. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_music_population_1_1_board_af3767b8609c26674c30bf536db221db3}{\index{Music\+Population\+::\+Board@{Music\+Population\+::\+Board}!Board@{Board}}
+\index{Board@{Board}!Music\+Population\+::\+Board@{Music\+Population\+::\+Board}}
+\subsubsection[{Board}]{\setlength{\rightskip}{0pt plus 5cm}Music\+Population.\+Board.\+Board (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_music_population_1_1_board_af3767b8609c26674c30bf536db221db3}
+
+
+Constructs new \hyperlink{class_music_population_1_1_board}{Board} filled with random values and in first phase. 
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_music_population_1_1_board_aa3525b70d6179fc9b9377431e7a09303}{\index{Music\+Population\+::\+Board@{Music\+Population\+::\+Board}!Change\+Phase@{Change\+Phase}}
+\index{Change\+Phase@{Change\+Phase}!Music\+Population\+::\+Board@{Music\+Population\+::\+Board}}
+\subsubsection[{Change\+Phase}]{\setlength{\rightskip}{0pt plus 5cm}void Music\+Population.\+Board.\+Change\+Phase (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_music_population_1_1_board_aa3525b70d6179fc9b9377431e7a09303}
+
+
+Method responsible for changing simulation phase. 
+
+\hypertarget{class_music_population_1_1_board_aad68697f57bb84e480c448e85eb0128e}{\index{Music\+Population\+::\+Board@{Music\+Population\+::\+Board}!Copy\+Individual@{Copy\+Individual}}
+\index{Copy\+Individual@{Copy\+Individual}!Music\+Population\+::\+Board@{Music\+Population\+::\+Board}}
+\subsubsection[{Copy\+Individual}]{\setlength{\rightskip}{0pt plus 5cm}void Music\+Population.\+Board.\+Copy\+Individual (
+\begin{DoxyParamCaption}
+\item[{int}]{s\+X, }
+\item[{int}]{s\+Y, }
+\item[{int}]{d\+X, }
+\item[{int}]{d\+Y}
+\end{DoxyParamCaption}
+)}}\label{class_music_population_1_1_board_aad68697f57bb84e480c448e85eb0128e}
+
+
+Copies individual in (s\+X,s\+Y) to (d\+X, d\+Y). 
+
+\hypertarget{class_music_population_1_1_board_aace7e7443efbe0e3b1298dd553c7b8e8}{\index{Music\+Population\+::\+Board@{Music\+Population\+::\+Board}!Get\+Best\+In\+Area@{Get\+Best\+In\+Area}}
+\index{Get\+Best\+In\+Area@{Get\+Best\+In\+Area}!Music\+Population\+::\+Board@{Music\+Population\+::\+Board}}
+\subsubsection[{Get\+Best\+In\+Area}]{\setlength{\rightskip}{0pt plus 5cm}Tuple$<$int, int$>$ Music\+Population.\+Board.\+Get\+Best\+In\+Area (
+\begin{DoxyParamCaption}
+\item[{int}]{x1, }
+\item[{int}]{y1, }
+\item[{int}]{x2, }
+\item[{int}]{y2}
+\end{DoxyParamCaption}
+)}}\label{class_music_population_1_1_board_aace7e7443efbe0e3b1298dd553c7b8e8}
+
+
+Returns best individual in rectangle determined by positions (x1, y1), (x2, y2) 
+
+\hypertarget{class_music_population_1_1_board_a2d2aed951c7749bab64d447979e11db2}{\index{Music\+Population\+::\+Board@{Music\+Population\+::\+Board}!Is\+Legal@{Is\+Legal}}
+\index{Is\+Legal@{Is\+Legal}!Music\+Population\+::\+Board@{Music\+Population\+::\+Board}}
+\subsubsection[{Is\+Legal}]{\setlength{\rightskip}{0pt plus 5cm}bool Music\+Population.\+Board.\+Is\+Legal (
+\begin{DoxyParamCaption}
+\item[{int}]{x, }
+\item[{int}]{y}
+\end{DoxyParamCaption}
+)}}\label{class_music_population_1_1_board_a2d2aed951c7749bab64d447979e11db2}
+
+
+Returns whether point (x, y) is legal or not. 
+
+\hypertarget{class_music_population_1_1_board_a1e1ececc516d74bbdcf254fd61075253}{\index{Music\+Population\+::\+Board@{Music\+Population\+::\+Board}!Move\+Individual@{Move\+Individual}}
+\index{Move\+Individual@{Move\+Individual}!Music\+Population\+::\+Board@{Music\+Population\+::\+Board}}
+\subsubsection[{Move\+Individual}]{\setlength{\rightskip}{0pt plus 5cm}void Music\+Population.\+Board.\+Move\+Individual (
+\begin{DoxyParamCaption}
+\item[{int}]{s\+X, }
+\item[{int}]{s\+Y, }
+\item[{int}]{d\+X, }
+\item[{int}]{d\+Y}
+\end{DoxyParamCaption}
+)}}\label{class_music_population_1_1_board_a1e1ececc516d74bbdcf254fd61075253}
+
+
+Moves individual in (s\+X, s\+Y) to (d\+X, d\+Y). 
+
+
+
+\subsection{Property Documentation}
+\hypertarget{class_music_population_1_1_board_abaf64b14d42081829501c6958e2199aa}{\index{Music\+Population\+::\+Board@{Music\+Population\+::\+Board}!Index\+Of\+Phase@{Index\+Of\+Phase}}
+\index{Index\+Of\+Phase@{Index\+Of\+Phase}!Music\+Population\+::\+Board@{Music\+Population\+::\+Board}}
+\subsubsection[{Index\+Of\+Phase}]{\setlength{\rightskip}{0pt plus 5cm}int Music\+Population.\+Board.\+Index\+Of\+Phase\hspace{0.3cm}{\ttfamily [get]}}}\label{class_music_population_1_1_board_abaf64b14d42081829501c6958e2199aa}
+
+
+Getter which returns index of phase. 
+
+\hypertarget{class_music_population_1_1_board_aedfe71556d1fe32c58a134a868e827c1}{\index{Music\+Population\+::\+Board@{Music\+Population\+::\+Board}!Population\+Growth@{Population\+Growth}}
+\index{Population\+Growth@{Population\+Growth}!Music\+Population\+::\+Board@{Music\+Population\+::\+Board}}
+\subsubsection[{Population\+Growth}]{\setlength{\rightskip}{0pt plus 5cm}int Music\+Population.\+Board.\+Population\+Growth\hspace{0.3cm}{\ttfamily [get]}}}\label{class_music_population_1_1_board_aedfe71556d1fe32c58a134a868e827c1}
+
+
+Returns Population Growth in board. 
+
+\hypertarget{class_music_population_1_1_board_af0fe9cecfaf3577bf9ea697c4e909e96}{\index{Music\+Population\+::\+Board@{Music\+Population\+::\+Board}!Rank\+Table\+Msg@{Rank\+Table\+Msg}}
+\index{Rank\+Table\+Msg@{Rank\+Table\+Msg}!Music\+Population\+::\+Board@{Music\+Population\+::\+Board}}
+\subsubsection[{Rank\+Table\+Msg}]{\setlength{\rightskip}{0pt plus 5cm}string Music\+Population.\+Board.\+Rank\+Table\+Msg\hspace{0.3cm}{\ttfamily [get]}}}\label{class_music_population_1_1_board_af0fe9cecfaf3577bf9ea697c4e909e96}
+
+
+Retrurns string representing all ranks in board. 
+
+\hypertarget{class_music_population_1_1_board_abd14bb128680a5f37fc29f006e65e4f0}{\index{Music\+Population\+::\+Board@{Music\+Population\+::\+Board}!this\mbox{[}int i, int j\mbox{]}@{this[int i, int j]}}
+\index{this\mbox{[}int i, int j\mbox{]}@{this[int i, int j]}!Music\+Population\+::\+Board@{Music\+Population\+::\+Board}}
+\subsubsection[{this[int i, int j]}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Member} Music\+Population.\+Board.\+this\mbox{[}int i, int j\mbox{]}\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}}\label{class_music_population_1_1_board_abd14bb128680a5f37fc29f006e65e4f0}
+
+
+Basic board getter, if index is out of range returns null. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/praktykant/\+Documents/\+Git\+Hub/\+Harmony-\/\+Simulation/\+Populo/\+Music\+Population/\+Components/\+Board/Board.\+cs\item 
+C\+:/\+Users/praktykant/\+Documents/\+Git\+Hub/\+Harmony-\/\+Simulation/\+Populo/\+Music\+Population/\+Components/\+Board/Board\+Parameters.\+cs\end{DoxyCompactItemize}

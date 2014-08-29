@@ -1,0 +1,153 @@
+\hypertarget{class_music_population_1_1_member}{\section{Music\+Population.\+Member Class Reference}
+\label{class_music_population_1_1_member}\index{Music\+Population.\+Member@{Music\+Population.\+Member}}
+}
+
+
+Each class representing member should be inherit this abstract class.  
+
+
+Inheritance diagram for Music\+Population.\+Member\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_music_population_1_1_member}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_music_population_1_1_member_ac82cc845ee466649dc698f60a20043c9}{{\bfseries Member} (Random rand\+Context)}\label{class_music_population_1_1_member_ac82cc845ee466649dc698f60a20043c9}
+
+\item 
+\hypertarget{class_music_population_1_1_member_a240df0f16bc7879f56f50d4eb00352b5}{Tuple$<$ int, int\mbox{[},\mbox{]}$>$ {\bfseries Clone\+Parameters} ()}\label{class_music_population_1_1_member_a240df0f16bc7879f56f50d4eb00352b5}
+
+\item 
+abstract int \hyperlink{class_music_population_1_1_member_a238549ad669c4f8eda036e608beba422}{Rank} ()
+\begin{DoxyCompactList}\small\item\em Rank of the member. \end{DoxyCompactList}\item 
+abstract void \hyperlink{class_music_population_1_1_member_affe5eeed6ac4b042d5729991f0c39eba}{Mutate} (Random rand\+Context)
+\begin{DoxyCompactList}\small\item\em Method responsible for member mutation. \end{DoxyCompactList}\item 
+abstract void \hyperlink{class_music_population_1_1_member_a99042d0181ef0e48ad71d45313a176b6}{Influence} (\hyperlink{class_music_population_1_1_member}{Member} influencer, Random rand\+Context)
+\begin{DoxyCompactList}\small\item\em Method responible for influencing individual. \end{DoxyCompactList}\item 
+abstract \hyperlink{class_music_population_1_1_member}{Member} \hyperlink{class_music_population_1_1_member_af310ebdf342531da3edc882987574a16}{Clone} ()
+\begin{DoxyCompactList}\small\item\em Clone member. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_music_population_1_1_member_a2224ee5f8d0c6be59f85fd4e12f62741}{const int {\bfseries \+\_\+max\+Notes} = 255}\label{class_music_population_1_1_member_a2224ee5f8d0c6be59f85fd4e12f62741}
+
+\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+abstract int \hyperlink{class_music_population_1_1_member_af0a14babb0cd654761c327e927ebdd8d}{Number\+Of\+Notes}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Getter which returns number of notes. \end{DoxyCompactList}\item 
+abstract int\mbox{[},\mbox{]} \hyperlink{class_music_population_1_1_member_a0c7562c7c67ef2fbdf57fa1c6cab9b70}{Notes}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Getter which returns array of notes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Each class representing member should be inherit this abstract class. 
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_music_population_1_1_member_af310ebdf342531da3edc882987574a16}{\index{Music\+Population\+::\+Member@{Music\+Population\+::\+Member}!Clone@{Clone}}
+\index{Clone@{Clone}!Music\+Population\+::\+Member@{Music\+Population\+::\+Member}}
+\subsubsection[{Clone}]{\setlength{\rightskip}{0pt plus 5cm}abstract {\bf Member} Music\+Population.\+Member.\+Clone (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_music_population_1_1_member_af310ebdf342531da3edc882987574a16}
+
+
+Clone member. 
+
+\begin{DoxyReturn}{Returns}
+copy of member
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{class_music_population_1_1_member2_a6e676c34e7af1ef9ffbbe68cfa38424f}{Music\+Population.\+Member2}, \hyperlink{class_music_population_1_1_member1_a6f3395ebd0d2c9ebe4834eeece0df200}{Music\+Population.\+Member1}, and \hyperlink{class_music_population_1_1_member3_ae37f77498a7c3ccec6b8531746eff1ec}{Music\+Population.\+Member3}.
+
+\hypertarget{class_music_population_1_1_member_a99042d0181ef0e48ad71d45313a176b6}{\index{Music\+Population\+::\+Member@{Music\+Population\+::\+Member}!Influence@{Influence}}
+\index{Influence@{Influence}!Music\+Population\+::\+Member@{Music\+Population\+::\+Member}}
+\subsubsection[{Influence}]{\setlength{\rightskip}{0pt plus 5cm}abstract void Music\+Population.\+Member.\+Influence (
+\begin{DoxyParamCaption}
+\item[{{\bf Member}}]{influencer, }
+\item[{Random}]{rand\+Context}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_music_population_1_1_member_a99042d0181ef0e48ad71d45313a176b6}
+
+
+Method responible for influencing individual. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em influencer} & \hyperlink{class_music_population_1_1_member}{Member} which should be influenced\\
+\hline
+{\em rand\+Context} & random context\\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{class_music_population_1_1_member2_af413c7ad74a1979698f87fece3d02f3e}{Music\+Population.\+Member2}, \hyperlink{class_music_population_1_1_member3_aabde212fac4cd75573a3ed07b6522e1d}{Music\+Population.\+Member3}, and \hyperlink{class_music_population_1_1_member1_a1661d1dcac2b013fc77b669611648365}{Music\+Population.\+Member1}.
+
+\hypertarget{class_music_population_1_1_member_affe5eeed6ac4b042d5729991f0c39eba}{\index{Music\+Population\+::\+Member@{Music\+Population\+::\+Member}!Mutate@{Mutate}}
+\index{Mutate@{Mutate}!Music\+Population\+::\+Member@{Music\+Population\+::\+Member}}
+\subsubsection[{Mutate}]{\setlength{\rightskip}{0pt plus 5cm}abstract void Music\+Population.\+Member.\+Mutate (
+\begin{DoxyParamCaption}
+\item[{Random}]{rand\+Context}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_music_population_1_1_member_affe5eeed6ac4b042d5729991f0c39eba}
+
+
+Method responsible for member mutation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rand\+Context} & random context\\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{class_music_population_1_1_member1_ae0f96683b9fdfdfee1418f5b606b772c}{Music\+Population.\+Member1}, \hyperlink{class_music_population_1_1_member2_a30e51d2e61399a954b006cdbd6a37952}{Music\+Population.\+Member2}, and \hyperlink{class_music_population_1_1_member3_a443d06792b6e3566308a67d56e31c2d8}{Music\+Population.\+Member3}.
+
+\hypertarget{class_music_population_1_1_member_a238549ad669c4f8eda036e608beba422}{\index{Music\+Population\+::\+Member@{Music\+Population\+::\+Member}!Rank@{Rank}}
+\index{Rank@{Rank}!Music\+Population\+::\+Member@{Music\+Population\+::\+Member}}
+\subsubsection[{Rank}]{\setlength{\rightskip}{0pt plus 5cm}abstract int Music\+Population.\+Member.\+Rank (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_music_population_1_1_member_a238549ad669c4f8eda036e608beba422}
+
+
+Rank of the member. 
+
+\begin{DoxyReturn}{Returns}
+integer representing rank of member
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{class_music_population_1_1_member1_acb90358a28ed446f2373fe0be35a8b01}{Music\+Population.\+Member1}, \hyperlink{class_music_population_1_1_member3_a3148bb13399637bb2cf2addf6d8ecbec}{Music\+Population.\+Member3}, and \hyperlink{class_music_population_1_1_member2_a1978ab05a86b98491d5ce7d201cfd4f0}{Music\+Population.\+Member2}.
+
+
+
+\subsection{Property Documentation}
+\hypertarget{class_music_population_1_1_member_a0c7562c7c67ef2fbdf57fa1c6cab9b70}{\index{Music\+Population\+::\+Member@{Music\+Population\+::\+Member}!Notes@{Notes}}
+\index{Notes@{Notes}!Music\+Population\+::\+Member@{Music\+Population\+::\+Member}}
+\subsubsection[{Notes}]{\setlength{\rightskip}{0pt plus 5cm}abstract int \mbox{[},\mbox{]} Music\+Population.\+Member.\+Notes\hspace{0.3cm}{\ttfamily [get]}}}\label{class_music_population_1_1_member_a0c7562c7c67ef2fbdf57fa1c6cab9b70}
+
+
+Getter which returns array of notes. 
+
+\hypertarget{class_music_population_1_1_member_af0a14babb0cd654761c327e927ebdd8d}{\index{Music\+Population\+::\+Member@{Music\+Population\+::\+Member}!Number\+Of\+Notes@{Number\+Of\+Notes}}
+\index{Number\+Of\+Notes@{Number\+Of\+Notes}!Music\+Population\+::\+Member@{Music\+Population\+::\+Member}}
+\subsubsection[{Number\+Of\+Notes}]{\setlength{\rightskip}{0pt plus 5cm}abstract int Music\+Population.\+Member.\+Number\+Of\+Notes\hspace{0.3cm}{\ttfamily [get]}}}\label{class_music_population_1_1_member_af0a14babb0cd654761c327e927ebdd8d}
+
+
+Getter which returns number of notes. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/praktykant/\+Documents/\+Git\+Hub/\+Harmony-\/\+Simulation/\+Populo/\+Music\+Population/\+Components/\+Member/Member.\+cs\end{DoxyCompactItemize}
