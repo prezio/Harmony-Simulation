@@ -12,7 +12,7 @@ namespace PopuloApplication
     {
         private static Timer _timer;
         private static MainWindow _window;
-        private static int _iEvolveDuration = 100;
+        private static int _iEvolveDuration = 500;
 
         /// <summary>
         /// Static method responsible for starting simulation
@@ -36,7 +36,7 @@ namespace PopuloApplication
             if (_timer != null)
             {
                 _timer.Stop();
-                Melody.StopPlaying();
+                //Melody.StopPlaying();
                 Simulation.StopSimulation();
             }
         }

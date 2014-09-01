@@ -123,8 +123,10 @@ namespace MusicPopulation
             //pitch, chord change, repeats, rhythm, initial dynamics, dynamic difference, group number
             int[] count = new int[limits[6]];
             int rank = 0;
+            int newLength = 0;
             rank -= (_numberOfGroups - PrefferedGroups) * (_numberOfGroups - PrefferedGroups)*30;
             int length = _groups[0, 2]*_groups[0, 3];
+            newLength = length;
             int notes = _groups[0, 2];
             count[_groups[0, 6]]++;
             for (int i = 1; i < _numberOfGroups;i++)
@@ -140,15 +142,17 @@ namespace MusicPopulation
                 if (_groups[i, 5] >= 15)
                     rank += 40;
                 count[_groups[i, 6]]++;
-                length += _groups[i, 2] * _groups[i, 3];
+                newLength = _groups[i, 2] * _groups[i, 3];
+                length += newLength;
                 notes += _groups[i, 2];
+                rank -= (newLength - PrefferedGroupLength) * (newLength - PrefferedGroupLength);
             }
             int mean = _numberOfGroups / limits[6];
             for (int i = 0; i < limits[6]; i++)
             {
                 rank -= (count[i] - mean) * (count[i] - mean);
             }
-            rank -= (length - PrefferedLength) * (length - PrefferedLength);
+            
             rank -= (notes - PrefferedNotes) * (notes - PrefferedNotes) * 10;
             if (notes > _maxNotes)
                 rank -= 1000;

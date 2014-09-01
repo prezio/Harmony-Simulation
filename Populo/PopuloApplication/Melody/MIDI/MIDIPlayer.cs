@@ -69,7 +69,7 @@ namespace PopuloApplication
                 //for test only
                 builder.Command = ChannelCommand.ProgramChange;
                 builder.MidiChannel = i;
-                builder.Data1 = i * 3;
+                builder.Data1 = i * 7;
                 builder.Data2 = 127;
                 builder.Build();
                 outDevice.Send(builder.Result);

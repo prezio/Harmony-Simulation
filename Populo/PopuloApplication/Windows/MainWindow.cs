@@ -192,7 +192,7 @@ namespace PopuloApplication
 
             numericUpDownThreeGrowthChance.Value = (decimal)Member3.GrowthChance;
             numericUpDownThreeShrinkChance.Value = (decimal)Member3.ShrinkChance;
-            numericUpDownThreePrefferedLength.Value = (decimal)Member3.PrefferedLength;
+            numericUpDownThreePrefferedLength.Value = (decimal)Member3.PrefferedGroupLength;
             numericUpDownThreePrefferedGroups.Value = (decimal)Member3.PrefferedGroups;
             numericUpDownThreePrefferedNotes.Value = (decimal)Member3.PrefferedNotes;
             numericUpDownThreePlayedGroup.Value = (decimal)Member3.PlayedGroup;
@@ -373,7 +373,7 @@ namespace PopuloApplication
 
                 Member3.GrowthChance = (double)numericUpDownThreeGrowthChance.Value;
                 Member3.ShrinkChance = (double)numericUpDownThreeShrinkChance.Value;
-                Member3.PrefferedLength = (int)numericUpDownThreePrefferedLength.Value;
+                Member3.PrefferedGroupLength = (int)numericUpDownThreePrefferedLength.Value;
                 Member3.PrefferedGroups = (int)numericUpDownThreePrefferedGroups.Value;
                 Member3.PrefferedNotes = (int)numericUpDownThreePrefferedNotes.Value;
                 Member3.PlayedGroup = (int)numericUpDownThreePlayedGroup.Value;

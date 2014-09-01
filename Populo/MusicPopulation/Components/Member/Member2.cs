@@ -19,10 +19,10 @@ namespace MusicPopulation
         private int _pauseDuration;
         private int _type; //0-r, 1-ar, 2-a
         private int[,] _notes; //pitch, chord change, rhythm, rhythm distortion, dynamics, dynamics distortion
-        static int[] limits={24,2,12,1,127,1};
+        static int[] limits={24,2,10,1,60,1};
         const int maxLength = 40;
         const int minLength = 10;
-        const int maxPause = 40;
+        const int maxPause = 100;
 
         public override int NumberOfNotes
         {
@@ -35,22 +35,27 @@ namespace MusicPopulation
             {
                 int peak = _peak;
                 int[,] notes = new int[_maxNotes + 1, 4];
+                notes[0, 3] = _initialDynamics;
                 if(_type == 0 || _peak==0)
                 {
                     peak = 1;
+                    notes[0, 3] *= 4;
+                    if (notes[0, 3] > 127)
+                        notes[0, 3] = 127;
                 }
                 else if (_type == 2)
                 {
                     peak = _numberOfNotes;
                 }
+                
                 notes[0, 0] = _notes[0, 0];
                 notes[0, 1] = (_initialChord+ _notes[0, 1]);
                 notes[0, 2] = _initialRhythm;
-                notes[0, 3] = _initialDynamics;
                 
-                for(int i=1; (i<=peak)&&(i<_numberOfNotes); i++)
+                
+                for(int i=1; (i<peak)&&(i<_numberOfNotes); i++)
                 {
-                    notes[i, 0] = _notes[i, 0];
+                    notes[i, 0] = _notes[0, 0];
                     notes[i, 1] = (notes[i - 1, 1] + _notes[0, 1]);
                     notes[i, 2] = notes[i - 1, 2] - _notes[i, 2] * _notes[i, 3];
                     if(notes[i,2]<1)
@@ -73,7 +78,7 @@ namespace MusicPopulation
                 }
                 for (int i = peak; i < _numberOfNotes; i++)
                 {
-                    notes[i, 0] = _notes[i, 0];
+                    notes[i, 0] = _notes[0, 0];
                     notes[i, 1] = (notes[i - 1, 1] + _notes[0, 1]);
                     notes[i, 2] = notes[i - 1, 2] + _notes[i, 2] * _notes[i, 3];
                     if (notes[i, 2] < 1)
@@ -111,12 +116,12 @@ namespace MusicPopulation
             int peak = _peak;
             if (_type == 0)
             {
-                rank += 200;
+                rank += 100;
             }
             else if (_type == 2)
             {
                 peak = _numberOfNotes;
-                rank += 100;
+                rank += 50;
             }
             for (int i = 0; (i <= peak) && (i < _numberOfNotes); i++)
             {
@@ -124,20 +129,24 @@ namespace MusicPopulation
                 rhythm -=  _notes[i, 2] * _notes[i, 3];
                 if (rhythm < 1)
                 {
-                    rank -= 40;
+                    rank -= 10;
                 }
                 else if (rhythm > limits[2])
                 {
-                    rank -= 30;
+                    rank -= 10;
                 }
                 dynamics+= _notes[i, 4] * _notes[i, 5];
                 if (dynamics < 1)
                 {
-                    rank -= 40;
+                    rank -= 20;
                 }
                 else if (dynamics > limits[4])
                 {
-                    rank -= 30;
+                    rank -= 20;
+                }
+                if (_notes[i, 4] < 20)
+                {
+                    rank -= 15;
                 }
             }
             for (int i = peak; i < _numberOfNotes; i++)
@@ -145,24 +154,28 @@ namespace MusicPopulation
                 rhythm += _notes[i, 2] * _notes[i, 3];
                 if (rhythm < 1)
                 {
-                    rank -= 40;
+                    rank -= 10;
                 }
                 else if (rhythm > limits[2])
                 {
-                    rank -= 30;
+                    rank -= 10;
                 }
                 dynamics -= _notes[i, 4] * _notes[i, 5];
                 if (dynamics < 1)
                 {
-                    rank -= 40;
+                    rank -= 10;
                 }
                 else if (dynamics > limits[4])
                 {
-                    rank -= 30;
+                    rank -= 20;
+                }
+                if (_notes[i, 4] < 20)
+                {
+                    rank -= 15;
                 }
             }
             
-            rank -= (_numberOfNotes - PrefferedLength) * (_numberOfNotes - PrefferedLength) * 80;
+            rank -= (_numberOfNotes - PrefferedLength) * (_numberOfNotes - PrefferedLength) * 300;
             rank -= (_pauseDuration - PrefferedPauseLength) * (_pauseDuration - PrefferedPauseLength) * 5;
             if(_type==1 && Math.Abs(_peak-_numberOfNotes/2)<_numberOfNotes/6)
             {
