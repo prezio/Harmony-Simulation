@@ -23,7 +23,7 @@ namespace PopuloApplication
         public static int[] tempi = { 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100, 105 };
         public static int[] dividers = { 16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31 };
         public static int phase = 0;
-        public static int[][] chords = new int[][] { new int[] { 42, 43, 47, 49, 50, 54 }, new int[] { 45, 48, 52, 57, 60, 64 }, new int[] { 48, 52, 55, 59, 60, 64, 67, 71, 72 } };
+        public static int[][] chords = new int[][] { new int[] { 42, 43, 47, 49, 50, 54 }, new int[] { 45, 49, 52, 57, 61, 64 }, new int[] { 48, 52, 55, 59, 60, 64, 67, 71, 72 } };
 
         /// <summary>
         /// Returns whether music is playing or not.

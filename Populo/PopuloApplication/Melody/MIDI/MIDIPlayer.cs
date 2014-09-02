@@ -62,6 +62,7 @@ namespace PopuloApplication
             tracks = new MelodySequence[numberOfTracks];
             ChannelMessageBuilder builder = new ChannelMessageBuilder(); //for test only
             timer.Elapsed += new ElapsedEventHandler(Tick);
+            int[] instruments = new int[] { 1, 4, 12, 14, 11, 26, 47, 56, 3, 55, 107, 59, 29, 71, 21, 8};
             for (int i = 0; i < numberOfTracks; i++)
             {
                 tracks[i] = new MelodySequence(outDevice,this);
@@ -69,7 +70,7 @@ namespace PopuloApplication
                 //for test only
                 builder.Command = ChannelCommand.ProgramChange;
                 builder.MidiChannel = i;
-                builder.Data1 = i * 7;
+                builder.Data1 = instruments[i];
                 builder.Data2 = 127;
                 builder.Build();
                 outDevice.Send(builder.Result);

@@ -144,9 +144,13 @@ namespace MusicPopulation
                 {
                     rank -= 20;
                 }
-                if (_notes[i, 4] < 20)
+                if (_notes[i, 4] > 20)
                 {
-                    rank -= 15;
+                    rank += 15;
+                }
+                if (_notes[i, 2] > _notes[i + 1, 2] && _notes[i, 3]==1)
+                {
+                    rank +=20;
                 }
             }
             for (int i = peak; i < _numberOfNotes; i++)
@@ -169,9 +173,13 @@ namespace MusicPopulation
                 {
                     rank -= 20;
                 }
-                if (_notes[i, 4] < 20)
+                if (_notes[i, 4] > 20)
                 {
-                    rank -= 15;
+                    rank += 15;
+                }
+                if (_notes[i, 2] < _notes[i + 1, 2] && _notes[i, 3] == 1)
+                {
+                    rank += 25;
                 }
             }
             
