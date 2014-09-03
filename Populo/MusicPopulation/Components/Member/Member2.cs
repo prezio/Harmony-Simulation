@@ -49,14 +49,14 @@ namespace MusicPopulation
                 }
                 
                 notes[0, 0] = _notes[0, 0];
-                notes[0, 1] = (_initialChord+ _notes[0, 1]);
+                notes[0, 1] = 0;
                 notes[0, 2] = _initialRhythm;
                 
                 
                 for(int i=1; (i<peak)&&(i<_numberOfNotes); i++)
                 {
                     notes[i, 0] = _notes[0, 0];
-                    notes[i, 1] = (notes[i - 1, 1] + _notes[0, 1]);
+                    notes[i, 1] = 0;
                     notes[i, 2] = notes[i - 1, 2] - _notes[i, 2] * _notes[i, 3];
                     if(notes[i,2]<1)
                     {
@@ -79,7 +79,7 @@ namespace MusicPopulation
                 for (int i = peak; i < _numberOfNotes; i++)
                 {
                     notes[i, 0] = _notes[0, 0];
-                    notes[i, 1] = (notes[i - 1, 1] + _notes[0, 1]);
+                    notes[i, 1] = 0;
                     notes[i, 2] = notes[i - 1, 2] + _notes[i, 2] * _notes[i, 3];
                     if (notes[i, 2] < 1)
                     {
@@ -99,6 +99,8 @@ namespace MusicPopulation
                         notes[i, 3] = limits[4];
                     }
                 }
+
+                notes[_numberOfNotes, 1] = 1;
                 notes[_numberOfNotes, 2] = _pauseDuration;
                 notes[_numberOfNotes, 3] = 0;
                 return notes;
@@ -116,12 +118,12 @@ namespace MusicPopulation
             int peak = _peak;
             if (_type == 0)
             {
-                rank += 100;
+                rank += 80;
             }
             else if (_type == 2)
             {
                 peak = _numberOfNotes;
-                rank += 50;
+                rank += 30;
             }
             for (int i = 0; (i <= peak) && (i < _numberOfNotes); i++)
             {
@@ -184,7 +186,7 @@ namespace MusicPopulation
             }
             
             rank -= (_numberOfNotes - PrefferedLength) * (_numberOfNotes - PrefferedLength) * 300;
-            rank -= (_pauseDuration - PrefferedPauseLength) * (_pauseDuration - PrefferedPauseLength) * 5;
+            rank -= (_pauseDuration - PrefferedPauseLength) * (_pauseDuration - PrefferedPauseLength);
             if(_type==1 && Math.Abs(_peak-_numberOfNotes/2)<_numberOfNotes/6)
             {
                 rank += 150;

@@ -62,7 +62,7 @@ namespace PopuloApplication
             tracks = new MelodySequence[numberOfTracks];
             ChannelMessageBuilder builder = new ChannelMessageBuilder(); //for test only
             timer.Elapsed += new ElapsedEventHandler(Tick);
-            int[] instruments = new int[] { 1, 4, 12, 14, 11, 26, 47, 56, 3, 55, 107, 59, 29, 71, 21, 8};
+            int[] instruments = new int[] { 1, 4, 12, 14, 11, 26, 47, 56, 3, 55, 84, 59, 29, 71, 21, 8};
             for (int i = 0; i < numberOfTracks; i++)
             {
                 tracks[i] = new MelodySequence(outDevice,this);
@@ -114,11 +114,16 @@ namespace PopuloApplication
             int[,] notes;
             double time = 0;
             int pitch = 0;
+            int[][] stage;
+            lock (Melody.currentChords)
+            {
+                stage = Melody.chords[Melody.phase][Melody.stage];
+            }
             Tuple<int, int[,]> current;
             for (int channel = 0; channel < 16; channel++)
             {
-                int[] chord = Melody.chords[Melody.phase];
-                int range = chord.Length;
+                int[] chord = stage[Melody.currentChords[channel]];
+
                 time = Melody.common_tempo ? baseTime : (60.0 * 100.0*4.0 / (double)Melody.tempi[channel]);
                 time /= Melody.common_divider ? Melody.divider : Melody.dividers[channel];
                 current=voices[channel]??silence;
@@ -127,7 +132,13 @@ namespace PopuloApplication
                 for (int index = 0; index < numberOfNotes; index++)
                 {
                     //channel = (((int)notes[index,0]) % 100) / 25;
-                    pitch = chord[notes[index, 0] % range];
+                    if (notes[index, 1] == 1)
+                    {
+                        Melody.currentChords[channel]++;
+                        Melody.currentChords[channel] %= stage.Length;
+                        chord = stage[Melody.currentChords[channel]];
+                    }
+                    pitch = chord[notes[index, 0] % chord.Length];
 
 
                     tracks[channel].SimpleAdd((int)((notes[index, 2]>0?notes[index, 2]:1)*time), messageArray[channel, pitch, notes[index, 3]], messageArray[channel, pitch, 0]);

@@ -23,6 +23,7 @@ namespace PopuloApplication
     {
         private int _perCentKnob;
         private delegate int TempoCount(int lastVal, int minVal, int maxVal);
+
         private void ChangePhase()
         {
             MusicSimulation.Stop();
@@ -32,7 +33,7 @@ namespace PopuloApplication
             groupBoxFactorsPhase1.Enabled = false;
             groupBoxFactorsPhase2.Enabled = false;
             groupBoxFactorsPhase3.Enabled = false;
-            Melody.phase = Simulation.SimulationBoard.IndexOfPhase;
+            Melody.ChangePhase(Simulation.SimulationBoard.IndexOfPhase);
             switch (Simulation.SimulationBoard.IndexOfPhase)
             {
                 case 0:
@@ -401,6 +402,7 @@ namespace PopuloApplication
         private void buttonChangePhase_Click(object sender, EventArgs e)
         {
             ChangePhase();
+            Odcinek.Text = Melody.stage.ToString();
         }
         private void buttonStop_Click(object sender, EventArgs e)
         {
@@ -434,6 +436,7 @@ namespace PopuloApplication
         private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
         {
             MusicSimulation.Stop();
+            Melody.StopPlaying();
         }
         private void perCentNumericUpDownKnob_ValueChanged(object sender, EventArgs e)
         {
@@ -467,5 +470,16 @@ namespace PopuloApplication
             _perCentKnob = (int)perCentNumericUpDownKnob.Value;
         }
         #endregion
+
+        private void ChangeStage_Click(object sender, EventArgs e)
+        {
+            Melody.ChangeStage();
+            Odcinek.Text = Melody.stage.ToString();
+        }
+
+        private void Odcinek_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

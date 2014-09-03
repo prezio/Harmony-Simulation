@@ -102,11 +102,17 @@ namespace MusicPopulation
                     dynamics=_groups[group,4];
                     if (_groups[group, 6] < PlayedGroup)
                         dynamics = 0;
-
-                    for (int j = 0; j < _groups[group, 2] && i < _maxNotes;j++,i++ )
+                    notes[i, 0] = _groups[group, 0];
+                    notes[i, 1] = 1;
+                    notes[i, 2] = _groups[group, 3];
+                    notes[i, 3] = dynamics;
+                    dynamics -= _groups[group, 5];
+                    if (dynamics < 0)
+                        dynamics = 0;
+                    for (int j = 1; j < _groups[group, 2] && i < _maxNotes;j++,i++ )
                     {
                         notes[i, 0] = _groups[group, 0];
-                        notes[i, 1] = _groups[group, 1];
+                        notes[i, 1] = 0;
                         notes[i, 2] = _groups[group, 3];
                         notes[i, 3] = dynamics;
                         dynamics -= _groups[group, 5];

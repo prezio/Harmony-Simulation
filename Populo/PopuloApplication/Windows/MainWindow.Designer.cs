@@ -35,6 +35,7 @@
             this.numericUpDownMaxSteps = new System.Windows.Forms.NumericUpDown();
             this.labelAlfa = new System.Windows.Forms.Label();
             this.groupBoxParameters = new System.Windows.Forms.GroupBox();
+            this.labelKnob = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
@@ -236,8 +237,9 @@
             this.buttonChangePhase = new System.Windows.Forms.Button();
             this.buttonStop = new System.Windows.Forms.Button();
             this.buttonSetAccord = new System.Windows.Forms.Button();
+            this.ChangeStage = new System.Windows.Forms.Button();
             this.perCentNumericUpDownKnob = new PopuloApplication.PerCentNumericUpDown();
-            this.labelKnob = new System.Windows.Forms.Label();
+            this.Odcinek = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPercentDeath)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxSteps)).BeginInit();
             this.groupBoxParameters.SuspendLayout();
@@ -496,6 +498,15 @@
             this.groupBoxParameters.TabIndex = 9;
             this.groupBoxParameters.TabStop = false;
             this.groupBoxParameters.Text = "Parametry";
+            // 
+            // labelKnob
+            // 
+            this.labelKnob.AutoSize = true;
+            this.labelKnob.Location = new System.Drawing.Point(921, 210);
+            this.labelKnob.Name = "labelKnob";
+            this.labelKnob.Size = new System.Drawing.Size(51, 13);
+            this.labelKnob.TabIndex = 69;
+            this.labelKnob.Text = "Pokrętło:";
             // 
             // label19
             // 
@@ -3481,13 +3492,23 @@
             // 
             // buttonSetAccord
             // 
-            this.buttonSetAccord.Location = new System.Drawing.Point(1084, 155);
+            this.buttonSetAccord.Location = new System.Drawing.Point(1083, 200);
             this.buttonSetAccord.Name = "buttonSetAccord";
             this.buttonSetAccord.Size = new System.Drawing.Size(98, 39);
             this.buttonSetAccord.TabIndex = 13;
             this.buttonSetAccord.Text = "Ustaw akord";
             this.buttonSetAccord.UseVisualStyleBackColor = true;
             this.buttonSetAccord.Click += new System.EventHandler(this.buttonSetAccord_Click);
+            // 
+            // ChangeStage
+            // 
+            this.ChangeStage.Location = new System.Drawing.Point(1083, 155);
+            this.ChangeStage.Name = "ChangeStage";
+            this.ChangeStage.Size = new System.Drawing.Size(98, 39);
+            this.ChangeStage.TabIndex = 14;
+            this.ChangeStage.Text = "Zmień odcinek";
+            this.ChangeStage.UseVisualStyleBackColor = true;
+            this.ChangeStage.Click += new System.EventHandler(this.ChangeStage_Click);
             // 
             // perCentNumericUpDownKnob
             // 
@@ -3512,20 +3533,23 @@
             0});
             this.perCentNumericUpDownKnob.ValueChanged += new System.EventHandler(this.perCentNumericUpDownKnob_ValueChanged);
             // 
-            // labelKnob
+            // Odcinek
             // 
-            this.labelKnob.AutoSize = true;
-            this.labelKnob.Location = new System.Drawing.Point(921, 210);
-            this.labelKnob.Name = "labelKnob";
-            this.labelKnob.Size = new System.Drawing.Size(51, 13);
-            this.labelKnob.TabIndex = 69;
-            this.labelKnob.Text = "Pokrętło:";
+            this.Odcinek.AutoSize = true;
+            this.Odcinek.Location = new System.Drawing.Point(1111, 253);
+            this.Odcinek.Name = "Odcinek";
+            this.Odcinek.Size = new System.Drawing.Size(13, 13);
+            this.Odcinek.TabIndex = 15;
+            this.Odcinek.Text = "0";
+            this.Odcinek.Click += new System.EventHandler(this.Odcinek_Click);
             // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1193, 880);
+            this.Controls.Add(this.Odcinek);
+            this.Controls.Add(this.ChangeStage);
             this.Controls.Add(this.buttonSetAccord);
             this.Controls.Add(this.buttonStop);
             this.Controls.Add(this.buttonChangePhase);
@@ -3673,6 +3697,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAlfa)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.perCentNumericUpDownKnob)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -3888,6 +3913,8 @@
         private System.Windows.Forms.NumericUpDown divider8;
         private PerCentNumericUpDown perCentNumericUpDownKnob;
         private System.Windows.Forms.Label labelKnob;
+        private System.Windows.Forms.Button ChangeStage;
+        private System.Windows.Forms.Label Odcinek;
     }
 }
 
