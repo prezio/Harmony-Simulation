@@ -122,6 +122,8 @@ namespace PopuloApplication
             Tuple<int, int[,]> current;
             for (int channel = 0; channel < 16; channel++)
             {
+                if (!tracks[channel].need)
+                    continue;
                 int[] chord = stage[Melody.currentChords[channel]];
 
                 time = Melody.common_tempo ? baseTime : (60.0 * 100.0*4.0 / (double)Melody.tempi[channel]);
@@ -146,6 +148,7 @@ namespace PopuloApplication
                 }
                 //tracks[channel].SimpleAdd(0, messageArray[channel, 0, 0], messageArray[channel, 0, 0]);
                 tracks[channel].Correct();
+                tracks[channel].need = false;
             }
             need = false;
             adding = false;

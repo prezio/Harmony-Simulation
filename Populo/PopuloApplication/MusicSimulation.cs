@@ -12,7 +12,7 @@ namespace PopuloApplication
     {
         private static Timer _timer;
         private static MainWindow _window;
-        private static int _iEvolveDuration = 500;
+        private static int _iEvolveDuration = 300;
 
         /// <summary>
         /// Static method responsible for starting simulation

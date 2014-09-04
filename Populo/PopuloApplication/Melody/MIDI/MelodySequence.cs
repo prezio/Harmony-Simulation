@@ -12,6 +12,7 @@ namespace PopuloApplication
     {
         Queue<Tuple<int, ChannelMessage, ChannelMessage>> sequence;
         int counter = -1;
+        public bool need = true;
         ChannelMessage prev = null;
         OutputDevice outDevice;
         MIDIPlayer player;
@@ -39,6 +40,7 @@ namespace PopuloApplication
                 if (sequence.Count < 2)
                 {
                     player.need = true;
+                    need = true;
                 }
 
         }
