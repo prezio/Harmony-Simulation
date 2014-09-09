@@ -35,7 +35,7 @@ namespace MusicPopulation
         public static int RhythmMaxChange = 5;
         public static double DynamicsChangeChance = 0.05;
         public static int DynamicsMaxChange = 20;
-        public static int PrefferedLength = 15;
+        public static int PrefferedLength = 10;
         public static int PrefferedPauseLength = 60;
         public static double TypeChangeChance = 0.1;
     }
