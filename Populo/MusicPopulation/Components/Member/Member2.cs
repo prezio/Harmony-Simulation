@@ -13,15 +13,15 @@ namespace MusicPopulation
     {
         private int _numberOfNotes;
         private int _peak;
-        private int _initialRhythm;
-        private int _initialDynamics;
+        private int _peakRhythm;
+        private int _peakDynamics;
         private int _initialChord;
         private int _pauseDuration;
         private int _type; //0-r, 1-ar, 2-a
         private int[,] _notes; //pitch, chord change, rhythm, rhythm distortion, dynamics, dynamics distortion
-        static int[] limits={24,2,10,1,60,1};
-        const int maxLength = 40;
-        const int minLength = 10;
+        static int[] limits={24,2,5,1,30,1};
+        const int maxLength = 24;
+        const int minLength = 5;
         const int maxPause = 100;
 
         public override int NumberOfNotes
@@ -35,39 +35,29 @@ namespace MusicPopulation
             {
                 int peak = _peak;
                 int[,] notes = new int[_maxNotes + 1, 4];
-                notes[0, 3] = _initialDynamics;
-                notes[0, 2] = _initialRhythm;
-                if(_type == 0 || _peak==0)
+               
+                if(_type == 0)
                 {
                     peak = 0;
-                    notes[0, 3] *= 4;
-                    if (notes[0, 3] > 127)
-                        notes[0, 3] = 127;
-                    notes[0, 2] /= 4;
-                    if (notes[0, 2] < 1)
-                        notes[0, 2] = 1;
+                   
                 }
                 else if (_type == 2)
                 {
-                    peak = _numberOfNotes;
-                    notes[0, 2] *= 4;
-                    if (notes[0, 2] > 45)
-                        notes[0, 2] = 45;
-                    notes[0, 3] /= 4;
-                    if (notes[0, 3] < 15)
-                        notes[0, 3] = 15;
+                    peak = _numberOfNotes-1;
+                    
                 }
+
+                notes[peak, 0] = _notes[peak, 0];
+                notes[peak, 1] = 0;
+                notes[peak, 3] = _peakDynamics;
+                notes[peak, 2] = _peakRhythm;
                 
-                notes[0, 0] = _notes[0, 0];
-                notes[0, 1] = 0;
                 
-                
-                
-                for(int i=1; (i<=peak)&&(i<_numberOfNotes); i++)
+                for(int i=peak-1; i>=0; i--)
                 {
                     notes[i, 0] = _notes[i, 0];
                     notes[i, 1] = 0;
-                    notes[i, 2] = notes[i - 1, 2] - _notes[i, 2];
+                    notes[i, 2] = notes[i + 1, 2] + _notes[i, 2];
                     if(notes[i,2]<1)
                     {
                         notes[i, 2] = 1;
@@ -76,7 +66,7 @@ namespace MusicPopulation
                     {
                         notes[i, 2] = 45;
                     }
-                    notes[i, 3] = notes[i - 1, 3] + _notes[i, 4];
+                    notes[i, 3] = notes[i + 1, 3] - _notes[i, 4];
                     if (notes[i, 3] < 15)
                     {
                         notes[i, 3] = 15;
@@ -123,28 +113,28 @@ namespace MusicPopulation
             int rank = 0;
             
             
-            int rhythm = _initialRhythm;
-            int dynamics = _initialDynamics;
+            int rhythm = _peakRhythm;
+            int dynamics = _peakDynamics;
             int peak = _peak;
             if (_type == 0)
             {
                 peak = 0;
-                rank += 150;
-                dynamics *= 4;
+                //rank +=30;
+               
             }
             else if (_type == 2)
             {
-                peak = _numberOfNotes;
-                rank += 100;
-                rhythm *= 4;
+                peak = _numberOfNotes-1;
+                //rank += 100;
+                
             }
             int initialDynamics = dynamics;
             int initialRhythm = rhythm;
             
-            for (int i = 0; (i <= peak) && (i < _numberOfNotes); i++)
+            for (int i = peak-1; i>=0; i--)
             {
 
-                rhythm -=  _notes[i, 2];
+                rhythm +=  _notes[i, 2];
                 if (rhythm < 1)
                 {
                     rank -= 10;
@@ -153,7 +143,7 @@ namespace MusicPopulation
                 {
                     rank -= 50;
                 }
-                dynamics+= _notes[i, 4];
+                dynamics-= _notes[i, 4];
                 if (dynamics < 20)
                 {
                     rank -= 30;
@@ -175,10 +165,17 @@ namespace MusicPopulation
                     rank +=20;
                 }
             }
-            int peakRhythm = rhythm;
-            if (peakRhythm == 0)
-                peakRhythm = 1;
-            int peakDynamics = dynamics;
+            if (rhythm / _peakRhythm >= 10)
+            {
+                rank += 100;
+            }
+            if (_peakDynamics - dynamics > 50)
+            {
+                rank += 100;
+            }
+            rhythm = _peakRhythm;
+            dynamics = _peakDynamics;
+            
             for (int i = peak+1; i < _numberOfNotes; i++)
             {
                 rhythm += _notes[i, 2] ;
@@ -213,23 +210,21 @@ namespace MusicPopulation
                 }
             }
             
-            rank -= (_numberOfNotes - PrefferedLength) * (_numberOfNotes - PrefferedLength) * 300;
+            rank -= (_numberOfNotes - PrefferedLength) * (_numberOfNotes - PrefferedLength) * 400;
             rank -= (_pauseDuration - PrefferedPauseLength) * (_pauseDuration - PrefferedPauseLength);
             if(Math.Abs(_peak-_numberOfNotes/2)<_numberOfNotes/7)
             {
                 rank += 300;
             }
-            if (peakDynamics - initialDynamics > 50)
+            if (rhythm / _peakRhythm >= 10)
             {
                 rank += 100;
             }
-            if (peakDynamics - dynamics > 50)
+           
+            if (_peakDynamics - dynamics > 50)
             {
                 rank += 100;
             }
-            rank += (initialRhythm / peakRhythm - 7) * 100;
-            
-            rank += (rhythm / peakRhythm - 7) * 100;
             
             return rank;
         }
@@ -266,26 +261,26 @@ namespace MusicPopulation
             }
             if (randContext.NextDouble() < InitialRhythmChangeChance)
             {
-                _initialRhythm += (randContext.Next(-InitialRhythmMaxChange, InitialRhythmMaxChange + 1));
-                if (_initialRhythm < 1)
+                _peakRhythm += (randContext.Next(-InitialRhythmMaxChange, InitialRhythmMaxChange + 1));
+                if (_peakRhythm < 1)
                 {
-                    _initialRhythm = 1;
+                    _peakRhythm = 1;
                 }
-                else if (_initialRhythm > 45)
+                else if (_peakRhythm > 4)
                 {
-                    _initialRhythm = 45;
+                    _peakRhythm = 4;
                 }
             }
             if (randContext.NextDouble() < InitialDynamicsChangeChance)
             {
-                _initialDynamics += (randContext.Next(-InitialDynamicsMaxChange, InitialDynamicsMaxChange + 1));
-                if (_initialDynamics < 1)
+                _peakDynamics += (randContext.Next(-InitialDynamicsMaxChange, InitialDynamicsMaxChange + 1));
+                if (_peakDynamics < 60)
                 {
-                    _initialDynamics = 1;
+                    _peakDynamics = 60;
                 }
-                else if (_initialDynamics > limits[4])
+                else if (_peakDynamics > 127)
                 {
-                    _initialDynamics = limits[4];
+                    _peakDynamics = 127;
                 }
             }
             if (randContext.NextDouble() < InitialChordChangeChance)
@@ -350,8 +345,8 @@ namespace MusicPopulation
         public override void Influence(Member influencer, Random randContext)
         {
             Member2 m = (influencer as Member2);
-            _initialDynamics +=(int) ((m._initialDynamics - _initialDynamics) * DynamicsInfluenceAmount);
-            _initialRhythm += (int)((m._initialRhythm - _initialRhythm) * RhythmInfluenceAmount);
+            _peakDynamics +=(int) ((m._peakDynamics - _peakDynamics) * DynamicsInfluenceAmount);
+            _peakRhythm += (int)((m._peakRhythm - _peakRhythm) * RhythmInfluenceAmount);
             if(_numberOfNotes<m._numberOfNotes)
             {
                 Grow(randContext);
@@ -398,8 +393,8 @@ namespace MusicPopulation
         public Member2(Random randContext):base(randContext)
         {
             _initialChord = randContext.Next(10); //UGLY!
-            _initialDynamics = randContext.Next(limits[4]);
-            _initialRhythm = randContext.Next(limits[2]);
+            _peakDynamics = randContext.Next(60, 127);
+            _peakRhythm = randContext.Next(4)+1;
             _numberOfNotes = randContext.Next(minLength, maxLength);
             _notes = new int[_maxNotes, 6];
             _peak = randContext.Next(_numberOfNotes);
@@ -434,8 +429,8 @@ namespace MusicPopulation
             Member2 result = new Member2();
 
             result._initialChord = _initialChord;
-            result._initialDynamics = _initialDynamics;
-            result._initialRhythm = _initialRhythm;
+            result._peakDynamics = _peakDynamics;
+            result._peakRhythm = _peakRhythm;
             result._type = _type;
             result._notes = new int[_maxNotes, 6];
 

@@ -140,7 +140,7 @@ namespace PopuloApplication
                         Melody.currentChords[channel] %= stage.Length;
                         chord = stage[Melody.currentChords[channel]];
                     }
-                    pitch = chord[notes[index, 0] % chord.Length];
+                    pitch = chord[((notes[index, 0])%3+channel) % chord.Length];
 
 
                     tracks[channel].SimpleAdd((int)((notes[index, 2]>0?notes[index, 2]:1)*time), messageArray[channel, pitch, notes[index, 3]], messageArray[channel, pitch, 0]);

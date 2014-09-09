@@ -22,7 +22,7 @@ namespace MusicPopulation
         public static double PauseChangeChance = 0.05;
         public static int PauseMaxChange = 20;
         public static double InitialRhythmChangeChance = 0.15;
-        public static int InitialRhythmMaxChange = 7;
+        public static int InitialRhythmMaxChange = 2;
         public static double InitialDynamicsChangeChance = 0.15;
         public static int InitialDynamicsMaxChange = 20;
         public static double InitialChordChangeChance = 0.05;
@@ -35,7 +35,7 @@ namespace MusicPopulation
         public static int RhythmMaxChange = 5;
         public static double DynamicsChangeChance = 0.05;
         public static int DynamicsMaxChange = 20;
-        public static int PrefferedLength = 25;
+        public static int PrefferedLength = 15;
         public static int PrefferedPauseLength = 60;
         public static double TypeChangeChance = 0.1;
     }
