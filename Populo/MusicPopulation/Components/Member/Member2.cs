@@ -19,9 +19,9 @@ namespace MusicPopulation
         private int _pauseDuration;
         private int _type; //0-r, 1-ar, 2-a
         private int[,] _notes; //pitch, chord change, rhythm, rhythm distortion, dynamics, dynamics distortion
-        static int[] limits={24,2,3,1,30,1};
+        static int[] limits={24,2,3,1,20,1};
         const int maxLength = 24;
-        const int minLength = 3;
+        const int minLength = 5;
         const int maxPause = 100;
 
         public override int NumberOfNotes
@@ -60,9 +60,9 @@ namespace MusicPopulation
                     notes[i, 2] = notes[i + 1, 2] + difference;
                     difference+=_notes[i, 2];
                     
-                    if(notes[i,2]>45)
+                    if(notes[i,2]>30)
                     {
-                        notes[i, 2] = 45;
+                        notes[i, 2] = 30;
                     }
                     notes[i, 3] = notes[i + 1, 3] - _notes[i, 4];
                     if (notes[i, 3] < 15)
@@ -76,11 +76,11 @@ namespace MusicPopulation
                 {
                     notes[i, 0] = _notes[i, 0];
                     notes[i, 1] = 0;
-                    notes[i, 2] = notes[i + 1, 2] + difference;
+                    notes[i, 2] = notes[i - 1, 2] + difference;
                     difference += _notes[i, 2];
-                    if (notes[i, 2] > 45)
+                    if (notes[i, 2] > 30)
                     {
-                        notes[i, 2] = 45;
+                        notes[i, 2] = 30;
                     }
                     notes[i, 3] = notes[i - 1, 3] - _notes[i, 4];
                     if (notes[i, 3] < 15)
@@ -119,7 +119,7 @@ namespace MusicPopulation
                 //rank += 100;
                 
             }
-            
+            rank -= _peakRhythm * _peakRhythm * 200;
             
             for (int i = peak-1; i>=0; i--)
             {
@@ -128,23 +128,22 @@ namespace MusicPopulation
                 difference+=  _notes[i, 2];
                 if (rhythm > 40)
                 {
-                    rank -= 50;
+                    rank -= 15;
                 }
                 dynamics-= _notes[i, 4];
-                if (dynamics < 20)
+                if (dynamics > 20)
                 {
-                    rank -= 30;
+                    rank += 10;
                 }
                 
-                if (_notes[i, 4] > 5)
+                if (_notes[i, 4] > 2)
                 {
                     rank += 15;
                 }
-                if (_notes[i, 4] > 30)
+                if (_notes[i, 2] >= _notes[i+1,2])
                 {
-                    rank -= 45;
+                    rank += 15;
                 }
-                
             }
             if (rhythm / _peakRhythm >= 10)
             {
@@ -163,26 +162,26 @@ namespace MusicPopulation
                 difference += _notes[i, 2];
                 if (rhythm > 40)
                 {
-                    rank -= 50;
+                    rank -= 15;
                 }
                 dynamics -= _notes[i, 4];
-                if (dynamics < 20)
+                if (dynamics > 20)
                 {
-                    rank -= 30;
+                    rank += 10;
                 }
-               
-                if (_notes[i, 4] > 5)
+                if (_notes[i, 4] > 2)
                 {
                     rank += 15;
                 }
-                if (_notes[i, 4] > 30)
+
+                if (_notes[i, 2] >= _notes[i - 1, 2])
                 {
-                    rank -= 45;
+                    rank += 15;
                 }
                 
             }
             
-            rank -= (_numberOfNotes - PrefferedLength) * (_numberOfNotes - PrefferedLength) * 400;
+            //rank -= (_numberOfNotes - PrefferedLength) * (_numberOfNotes - PrefferedLength) * 1000;
             rank -= (_pauseDuration - PrefferedPauseLength) * (_pauseDuration - PrefferedPauseLength);
             if(Math.Abs(_peak-_numberOfNotes/2)<_numberOfNotes/7)
             {
@@ -347,6 +346,8 @@ namespace MusicPopulation
         {
             if (_numberOfNotes > minLength)
                 _numberOfNotes--;
+            if(_peak>=_numberOfNotes)
+                _peak=_numberOfNotes-1;
         }
         protected void Grow(Random randContext)
         {
