@@ -110,13 +110,13 @@ namespace MusicPopulation
             if (_type == 0)
             {
                 peak = 0;
-                //rank +=30;
+                rank +=100;
                
             }
             else if (_type == 2)
             {
                 peak = _numberOfNotes-1;
-                //rank += 100;
+                rank += 300;
                 
             }
             rank -= _peakRhythm * _peakRhythm * 200;
@@ -181,7 +181,15 @@ namespace MusicPopulation
                 
             }
             
-            //rank -= (_numberOfNotes - PrefferedLength) * (_numberOfNotes - PrefferedLength) * 1000;
+
+            if (Math.Abs(_numberOfNotes - PrefferedLength) < 5)
+            {
+                rank += 1000;
+                if (_numberOfNotes == PrefferedLength)
+                {
+                    rank += 2000;
+                }
+            }
             rank -= (_pauseDuration - PrefferedPauseLength) * (_pauseDuration - PrefferedPauseLength);
             if(Math.Abs(_peak-_numberOfNotes/2)<_numberOfNotes/7)
             {
