@@ -15,8 +15,8 @@ namespace MusicPopulation
         public static double RhythmDistortionInfluenceChance = 0.05;
         public static double DynamicsDistortionInfluenceChance = 0.05;
         public static double TypeInfluenceChance = 0.2;
-        public static double GrowthChance = 0.3;
-        public static double ShrinkChance = 0.3;
+        public static double GrowthChance = 0.1;
+        public static double ShrinkChance = 0.1;
         public static double PeakMoveChance = 0.15;
         public static int PeakMaxMove = 7;
         public static double PauseChangeChance = 0.05;

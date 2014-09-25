@@ -182,15 +182,16 @@ namespace MusicPopulation
             }
             
 
-            if (Math.Abs(_numberOfNotes - PrefferedLength) < 5)
-            {
-                rank += 1000;
-                if (_numberOfNotes == PrefferedLength)
-                {
-                    rank += 2000;
-                }
-            }
-            rank -= (_pauseDuration - PrefferedPauseLength) * (_pauseDuration - PrefferedPauseLength);
+            //if (Math.Abs(_numberOfNotes - PrefferedLength) < 5)
+            //{
+            //    rank += 1000;
+            //    if (_numberOfNotes == PrefferedLength)
+            //    {
+            //        rank += 2000;
+            //    }
+            //}
+            rank -= (_numberOfNotes - PrefferedLength) * (_numberOfNotes - PrefferedLength) * 400;
+            rank -= (_pauseDuration - PrefferedPauseLength) * (_pauseDuration - PrefferedPauseLength)*5;
             if(Math.Abs(_peak-_numberOfNotes/2)<_numberOfNotes/7)
             {
                 rank += 300;
