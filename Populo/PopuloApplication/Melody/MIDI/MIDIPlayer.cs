@@ -30,20 +30,20 @@ namespace PopuloApplication
             ChannelMessageBuilder builder = new ChannelMessageBuilder();
             builder.Command = ChannelCommand.NoteOn;
             for (int channel = 0; channel < 16; channel++)
+            {
+                builder.MidiChannel = channel;
+                for (int pitch = 0; pitch < 128; pitch++)
                 {
-                    builder.MidiChannel = channel;
-                    for (int pitch = 0; pitch < 128; pitch++)
+                    builder.Data1 = pitch;
+                    for (int velocity = 0; velocity < 128; velocity++)
                     {
-                        builder.Data1 = pitch;
-                        for (int velocity = 0; velocity < 128; velocity++)
-                        {
-                            builder.Data2 = velocity;
-                            builder.Build();
-                            messageArray[channel, pitch, velocity] = builder.Result;
-                        }
+                        builder.Data2 = velocity;
+                        builder.Build();
+                        messageArray[channel, pitch, velocity] = builder.Result;
                     }
-
                 }
+
+            }
         }
         #endregion
 
@@ -52,7 +52,7 @@ namespace PopuloApplication
         private int numberOfTracks;
         private Timer timer;
         public static int staccato = 100;
-        public bool need=true;
+        public bool need = true;
         public bool adding = false;
         public MIDIPlayer(int device, int numberOfTracks, int interval)
         {
@@ -62,11 +62,17 @@ namespace PopuloApplication
             tracks = new MelodySequence[numberOfTracks];
             ChannelMessageBuilder builder = new ChannelMessageBuilder(); //for test only
             timer.Elapsed += new ElapsedEventHandler(Tick);
-            int[] instruments = new int[] { 1, 4, 12, 14, 11, 26, 47, 56, 3, 55, 84, 59, 29, 71, 21, 8};
+            int[] instruments = new int[] { 1, 4, 12, 14, 11, 26, 47, 56, 3, 55, 84, 59, 29, 71, 21, 8 };
             for (int i = 0; i < numberOfTracks; i++)
             {
-                tracks[i] = new MelodySequence(outDevice,this);
-                
+
+                builder.Command = ChannelCommand.Controller;
+                builder.MidiChannel = i;
+                builder.Data1 = 120;
+                builder.Data2 = 0;
+                builder.Build();
+                tracks[i] = new MelodySequence(outDevice, this, builder.Result);
+
                 //for test only
                 builder.Command = ChannelCommand.ProgramChange;
                 builder.MidiChannel = i;
@@ -87,7 +93,7 @@ namespace PopuloApplication
             {
                 tracks[i].Clean();
             }
-              
+
         }
         public void Stop()
         {
@@ -106,9 +112,9 @@ namespace PopuloApplication
                 tracks[i].Tick();
             }
         }
-        public void Add(Tuple<int,int[,]>[] voices)
+        public void Add(Tuple<int, int[,]>[] voices)
         {
-            double baseTime = (60*100.0*4.0 / (double)Melody.tempo);
+            double baseTime = (60 * 100.0 * 4.0 / (double)Melody.tempo);
             adding = true;
             int numberOfNotes;
             int[,] notes;
@@ -129,9 +135,9 @@ namespace PopuloApplication
                     continue;
                 int[] chord = stage[Melody.currentChords[channel]];
 
-                time = Melody.common_tempo ? baseTime : (60.0 * 100.0*4.0 / (double)Melody.tempi[channel]);
+                time = Melody.common_tempo ? baseTime : (60.0 * 100.0 * 4.0 / (double)Melody.tempi[channel]);
                 time /= Melody.common_divider ? Melody.divider : Melody.dividers[channel];
-                current=voices[channel]??silence;
+                current = voices[channel] ?? silence;
                 numberOfNotes = current.Item1;
                 notes = current.Item2;
                 for (int index = 0; index < numberOfNotes; index++)
@@ -143,12 +149,12 @@ namespace PopuloApplication
                         Melody.currentChords[channel] %= stage.Length;
                         chord = stage[Melody.currentChords[channel]];
                     }
-                    pitch = chord[((notes[index, 0])%3+channel) % chord.Length];
+                    pitch = chord[((notes[index, 0]) % 3 + channel) % chord.Length];
                     length = (int)((notes[index, 2] > 0 ? notes[index, 2] : 1) * time);
-                    pause = Math.Max((int)(length * pausePart),1);
+                    pause = Math.Max((int)(length * pausePart), 0);
                     length -= pause;
-                    tracks[channel].SimpleAdd(length, messageArray[channel, pitch, notes[index, 3]], messageArray[channel, pitch, 0]);
-                    tracks[channel].SimpleAdd(pause, messageArray[channel, pitch, 0], messageArray[channel, pitch, 0]);
+                    tracks[channel].SimpleAdd(length, messageArray[channel, pitch, notes[index, 3]]);
+                    tracks[channel].SimpleAdd(pause, messageArray[channel, pitch, 0]);
                 }
                 //tracks[channel].SimpleAdd(0, messageArray[channel, 0, 0], messageArray[channel, 0, 0]);
                 tracks[channel].Correct();
