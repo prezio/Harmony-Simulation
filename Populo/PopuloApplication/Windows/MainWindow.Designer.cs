@@ -36,6 +36,7 @@
             this.labelAlfa = new System.Windows.Forms.Label();
             this.groupBoxParameters = new System.Windows.Forms.GroupBox();
             this.labelKnob = new System.Windows.Forms.Label();
+            this.perCentNumericUpDownKnob = new PopuloApplication.PerCentNumericUpDown();
             this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
@@ -238,11 +239,13 @@
             this.buttonStop = new System.Windows.Forms.Button();
             this.buttonSetAccord = new System.Windows.Forms.Button();
             this.ChangeStage = new System.Windows.Forms.Button();
-            this.perCentNumericUpDownKnob = new PopuloApplication.PerCentNumericUpDown();
             this.Odcinek = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.StaccatoField = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPercentDeath)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxSteps)).BeginInit();
             this.groupBoxParameters.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.perCentNumericUpDownKnob)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.divider16)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.divider15)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.divider14)).BeginInit();
@@ -370,7 +373,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOneModifyAmount3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOneModifyAmount2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAlfa)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.perCentNumericUpDownKnob)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StaccatoField)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonStartSimulation
@@ -426,6 +429,8 @@
             // 
             // groupBoxParameters
             // 
+            this.groupBoxParameters.Controls.Add(this.StaccatoField);
+            this.groupBoxParameters.Controls.Add(this.label20);
             this.groupBoxParameters.Controls.Add(this.labelKnob);
             this.groupBoxParameters.Controls.Add(this.perCentNumericUpDownKnob);
             this.groupBoxParameters.Controls.Add(this.label19);
@@ -507,6 +512,29 @@
             this.labelKnob.Size = new System.Drawing.Size(51, 13);
             this.labelKnob.TabIndex = 69;
             this.labelKnob.Text = "Pokrętło:";
+            // 
+            // perCentNumericUpDownKnob
+            // 
+            this.perCentNumericUpDownKnob.Location = new System.Drawing.Point(978, 208);
+            this.perCentNumericUpDownKnob.Maximum = new decimal(new int[] {
+            150,
+            0,
+            0,
+            0});
+            this.perCentNumericUpDownKnob.Minimum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.perCentNumericUpDownKnob.Name = "perCentNumericUpDownKnob";
+            this.perCentNumericUpDownKnob.Size = new System.Drawing.Size(73, 20);
+            this.perCentNumericUpDownKnob.TabIndex = 68;
+            this.perCentNumericUpDownKnob.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.perCentNumericUpDownKnob.ValueChanged += new System.EventHandler(this.perCentNumericUpDownKnob_ValueChanged);
             // 
             // label19
             // 
@@ -3510,29 +3538,6 @@
             this.ChangeStage.UseVisualStyleBackColor = true;
             this.ChangeStage.Click += new System.EventHandler(this.ChangeStage_Click);
             // 
-            // perCentNumericUpDownKnob
-            // 
-            this.perCentNumericUpDownKnob.Location = new System.Drawing.Point(978, 208);
-            this.perCentNumericUpDownKnob.Maximum = new decimal(new int[] {
-            150,
-            0,
-            0,
-            0});
-            this.perCentNumericUpDownKnob.Minimum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.perCentNumericUpDownKnob.Name = "perCentNumericUpDownKnob";
-            this.perCentNumericUpDownKnob.Size = new System.Drawing.Size(73, 20);
-            this.perCentNumericUpDownKnob.TabIndex = 68;
-            this.perCentNumericUpDownKnob.Value = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.perCentNumericUpDownKnob.ValueChanged += new System.EventHandler(this.perCentNumericUpDownKnob_ValueChanged);
-            // 
             // Odcinek
             // 
             this.Odcinek.AutoSize = true;
@@ -3542,6 +3547,22 @@
             this.Odcinek.TabIndex = 15;
             this.Odcinek.Text = "0";
             this.Odcinek.Click += new System.EventHandler(this.Odcinek_Click);
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(338, 21);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(48, 13);
+            this.label20.TabIndex = 70;
+            this.label20.Text = "staccato";
+            // 
+            // StaccatoField
+            // 
+            this.StaccatoField.Location = new System.Drawing.Point(385, 19);
+            this.StaccatoField.Name = "StaccatoField";
+            this.StaccatoField.Size = new System.Drawing.Size(46, 20);
+            this.StaccatoField.TabIndex = 71;
             // 
             // MainWindow
             // 
@@ -3565,6 +3586,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxSteps)).EndInit();
             this.groupBoxParameters.ResumeLayout(false);
             this.groupBoxParameters.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.perCentNumericUpDownKnob)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.divider16)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.divider15)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.divider14)).EndInit();
@@ -3695,7 +3717,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOneModifyAmount3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOneModifyAmount2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAlfa)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.perCentNumericUpDownKnob)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StaccatoField)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3915,6 +3937,8 @@
         private System.Windows.Forms.Label labelKnob;
         private System.Windows.Forms.Button ChangeStage;
         private System.Windows.Forms.Label Odcinek;
+        private System.Windows.Forms.NumericUpDown StaccatoField;
+        private System.Windows.Forms.Label label20;
     }
 }
 

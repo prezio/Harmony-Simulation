@@ -51,7 +51,7 @@ namespace PopuloApplication
         private MelodySequence[] tracks;
         private int numberOfTracks;
         private Timer timer;
-
+        public static int staccato = 100;
         public bool need=true;
         public bool adding = false;
         public MIDIPlayer(int device, int numberOfTracks, int interval)
@@ -115,6 +115,9 @@ namespace PopuloApplication
             double time = 0;
             int pitch = 0;
             int[][] stage;
+            int length;
+            int pause;
+            double pausePart = ((100.0 - (double)staccato) / 100.0);
             lock (Melody.currentChords)
             {
                 stage = Melody.chords[Melody.phase][Melody.stage];
@@ -141,10 +144,11 @@ namespace PopuloApplication
                         chord = stage[Melody.currentChords[channel]];
                     }
                     pitch = chord[((notes[index, 0])%3+channel) % chord.Length];
-
-
-                    tracks[channel].SimpleAdd((int)((notes[index, 2]>0?notes[index, 2]:1)*time), messageArray[channel, pitch, notes[index, 3]], messageArray[channel, pitch, 0]);
-                    
+                    length = (int)((notes[index, 2] > 0 ? notes[index, 2] : 1) * time);
+                    pause = Math.Max((int)(length * pausePart),1);
+                    length -= pause;
+                    tracks[channel].SimpleAdd(length, messageArray[channel, pitch, notes[index, 3]], messageArray[channel, pitch, 0]);
+                    tracks[channel].SimpleAdd(pause, messageArray[channel, pitch, 0], messageArray[channel, pitch, 0]);
                 }
                 //tracks[channel].SimpleAdd(0, messageArray[channel, 0, 0], messageArray[channel, 0, 0]);
                 tracks[channel].Correct();

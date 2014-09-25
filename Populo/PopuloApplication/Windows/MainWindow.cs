@@ -52,6 +52,7 @@ namespace PopuloApplication
         private void LoadParameters()
         {
             //rhythm
+            StaccatoField.Value = MIDIPlayer.staccato;
             common_tempo.Value = Melody.tempo;
             common_divider.Value = Melody.divider;
             commonDividerCheck.Checked = Melody.common_divider;
@@ -232,6 +233,7 @@ namespace PopuloApplication
         {
             try
             {
+                MIDIPlayer.staccato = (int)StaccatoField.Value;
                 //rhythm
                 Melody.tempo = (int)common_tempo.Value;
                 Melody.divider = (int)common_divider.Value;
