@@ -12,10 +12,10 @@ namespace MusicPopulation
     public partial class Member3:Member
     {
         int _numberOfGroups;
-        const int maxGroups=30;
+        const int maxGroups=10;
         int[,] _groups; //pitch, chord change, repeats, rhythm, initial dynamics, dynamic difference, group number
         //int _initialChord;
-        static int[] limits = { 9, 3, 11, 20, 127, 40, 10 };
+        static int[] limits = { 9, 3, 11, 12, 127, 40, 4 };
         protected void Transpose(uint n, Random randContext)
         {
             if (_numberOfGroups <= 1)
@@ -95,29 +95,30 @@ namespace MusicPopulation
         {
             get 
             {
+                bool play = true;
                 int dynamics;
                 int [,] notes = new int[_maxNotes, 4];
                 for(int i=0, group=0;i<_maxNotes&&group<_numberOfGroups;group++)
                 {
                     dynamics=_groups[group,4];
-                    if (_groups[group, 6] < PlayedGroup)
-                        dynamics = 0;
+                    play = (_groups[group, 6] > PlayedGroup);
                     notes[i, 0] = _groups[group, 0];
                     notes[i, 1] = 1;
                     notes[i, 2] = _groups[group, 3];
-                    notes[i, 3] = dynamics;
+                    notes[i, 3] = play? dynamics: 0;
                     dynamics -= _groups[group, 5];
-                    if (dynamics < 0)
-                        dynamics = 0;
+                    if (dynamics < 5)
+                        dynamics = 5;
+                    i++;
                     for (int j = 1; j < _groups[group, 2] && i < _maxNotes;j++,i++ )
                     {
                         notes[i, 0] = _groups[group, 0];
                         notes[i, 1] = 0;
                         notes[i, 2] = _groups[group, 3];
-                        notes[i, 3] = dynamics;
+                        notes[i, 3] = play? dynamics: 0;;
                         dynamics -= _groups[group, 5];
-                        if (dynamics < 0)
-                            dynamics = 0;
+                        if (dynamics < 5)
+                            dynamics = 5;
                     }
                 }
                 return notes;

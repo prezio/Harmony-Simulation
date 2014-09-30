@@ -120,7 +120,7 @@ namespace PopuloApplication
             int[,] notes;
             double time = 0;
             int pitch = 0;
-            int[][] stage;
+            int[][][] stage;
             int length;
             int pause;
             double pausePart = ((100.0 - (double)staccato) / 100.0);
@@ -133,7 +133,7 @@ namespace PopuloApplication
             {
                 if (!tracks[channel].need)
                     continue;
-                int[] chord = stage[Melody.currentChords[channel]];
+                int[] chord = stage[Melody.currentChords[channel]][channel];
 
                 time = Melody.common_tempo ? baseTime : (60.0 * 100.0 * 4.0 / (double)Melody.tempi[channel]);
                 time /= Melody.common_divider ? Melody.divider : Melody.dividers[channel];
@@ -147,9 +147,9 @@ namespace PopuloApplication
                     {
                         Melody.currentChords[channel]++;
                         Melody.currentChords[channel] %= stage.Length;
-                        chord = stage[Melody.currentChords[channel]];
+                        chord = stage[Melody.currentChords[channel]][channel];
                     }
-                    pitch = chord[((notes[index, 0]) % 3 + channel) % chord.Length];
+                    pitch = chord[((notes[index, 0])) % chord.Length];
                     length = (int)((notes[index, 2] > 0 ? notes[index, 2] : 1) * time);
                     pause = Math.Max((int)(length * pausePart), 0);
                     length -= pause;

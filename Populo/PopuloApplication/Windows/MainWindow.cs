@@ -50,6 +50,43 @@ namespace PopuloApplication
                     groupBoxFactorsPhase4.Enabled = true;
                     break;
             }
+            //rhythm
+            common_tempo.Value = Melody.mainTempiInStages[Melody.phase][Melody.stage];
+            common_divider.Value = Melody.mainDividersInStages[Melody.phase][Melody.stage];
+            commonDividerCheck.Checked = Melody.commonDividersInStages[Melody.phase][Melody.stage];
+            commonTempoCheck.Checked = Melody.commonTempiInStages[Melody.phase][Melody.stage];
+            tempo1.Value = Melody.tempiInStages[Melody.phase][Melody.stage][0];
+            tempo2.Value = Melody.tempiInStages[Melody.phase][Melody.stage][1];
+            tempo3.Value = Melody.tempiInStages[Melody.phase][Melody.stage][2];
+            tempo4.Value = Melody.tempiInStages[Melody.phase][Melody.stage][3];
+            tempo5.Value = Melody.tempiInStages[Melody.phase][Melody.stage][4];
+            tempo6.Value = Melody.tempiInStages[Melody.phase][Melody.stage][5];
+            tempo7.Value = Melody.tempiInStages[Melody.phase][Melody.stage][6];
+            tempo8.Value = Melody.tempiInStages[Melody.phase][Melody.stage][7];
+            tempo9.Value = Melody.tempiInStages[Melody.phase][Melody.stage][8];
+            tempo10.Value = Melody.tempiInStages[Melody.phase][Melody.stage][9];
+            tempo11.Value = Melody.tempiInStages[Melody.phase][Melody.stage][10];
+            tempo12.Value = Melody.tempiInStages[Melody.phase][Melody.stage][11];
+            tempo13.Value = Melody.tempiInStages[Melody.phase][Melody.stage][12];
+            tempo14.Value = Melody.tempiInStages[Melody.phase][Melody.stage][13];
+            tempo15.Value = Melody.tempiInStages[Melody.phase][Melody.stage][14];
+            tempo16.Value = Melody.tempiInStages[Melody.phase][Melody.stage][15];
+            divider1.Value = Melody.dividersInStages[Melody.phase][Melody.stage][0];
+            divider2.Value = Melody.dividersInStages[Melody.phase][Melody.stage][1];
+            divider3.Value = Melody.dividersInStages[Melody.phase][Melody.stage][2];
+            divider4.Value = Melody.dividersInStages[Melody.phase][Melody.stage][3];
+            divider5.Value = Melody.dividersInStages[Melody.phase][Melody.stage][4];
+            divider6.Value = Melody.dividersInStages[Melody.phase][Melody.stage][5];
+            divider7.Value = Melody.dividersInStages[Melody.phase][Melody.stage][6];
+            divider8.Value = Melody.dividersInStages[Melody.phase][Melody.stage][7];
+            divider9.Value = Melody.dividersInStages[Melody.phase][Melody.stage][8];
+            divider10.Value = Melody.dividersInStages[Melody.phase][Melody.stage][9];
+            divider11.Value = Melody.dividersInStages[Melody.phase][Melody.stage][10];
+            divider12.Value = Melody.dividersInStages[Melody.phase][Melody.stage][11];
+            divider13.Value = Melody.dividersInStages[Melody.phase][Melody.stage][12];
+            divider14.Value = Melody.dividersInStages[Melody.phase][Melody.stage][13];
+            divider15.Value = Melody.dividersInStages[Melody.phase][Melody.stage][14];
+            divider16.Value = Melody.dividersInStages[Melody.phase][Melody.stage][15];
 
             this.Invalidate();
         }
@@ -57,42 +94,43 @@ namespace PopuloApplication
         {
             //rhythm
             StaccatoField.Value = MIDIPlayer.staccato;
-            common_tempo.Value = Melody.tempo;
-            common_divider.Value = Melody.divider;
-            commonDividerCheck.Checked = Melody.common_divider;
-            commonTempoCheck.Checked = Melody.common_tempo;
-            tempo1.Value = Melody.tempi[0];
-            tempo2.Value = Melody.tempi[1];
-            tempo3.Value = Melody.tempi[2];
-            tempo4.Value = Melody.tempi[3];
-            tempo5.Value = Melody.tempi[4];
-            tempo6.Value = Melody.tempi[5];
-            tempo7.Value = Melody.tempi[6];
-            tempo8.Value = Melody.tempi[7];
-            tempo9.Value = Melody.tempi[8];
-            tempo10.Value = Melody.tempi[9];
-            tempo11.Value = Melody.tempi[10];
-            tempo12.Value = Melody.tempi[11];
-            tempo13.Value = Melody.tempi[12];
-            tempo14.Value = Melody.tempi[13];
-            tempo15.Value = Melody.tempi[14];
-            tempo16.Value = Melody.tempi[15];
-            divider1.Value = Melody.dividers[0];
-            divider2.Value = Melody.dividers[1];
-            divider3.Value = Melody.dividers[2];
-            divider4.Value = Melody.dividers[3];
-            divider5.Value = Melody.dividers[4];
-            divider6.Value = Melody.dividers[5];
-            divider7.Value = Melody.dividers[6];
-            divider8.Value = Melody.dividers[7];
-            divider9.Value = Melody.dividers[8];
-            divider10.Value = Melody.dividers[9];
-            divider11.Value = Melody.dividers[10];
-            divider12.Value = Melody.dividers[11];
-            divider13.Value = Melody.dividers[12];
-            divider14.Value = Melody.dividers[13];
-            divider15.Value = Melody.dividers[14];
-            divider16.Value = Melody.dividers[15];
+            //rhythm
+            common_tempo.Value = Melody.mainTempiInStages[Melody.phase][Melody.stage];
+            common_divider.Value = Melody.mainDividersInStages[Melody.phase][Melody.stage];
+            commonDividerCheck.Checked = Melody.commonDividersInStages[Melody.phase][Melody.stage];
+            commonTempoCheck.Checked = Melody.commonTempiInStages[Melody.phase][Melody.stage];
+            tempo1.Value = Melody.tempiInStages[Melody.phase][Melody.stage][0];
+            tempo2.Value = Melody.tempiInStages[Melody.phase][Melody.stage][1];
+            tempo3.Value = Melody.tempiInStages[Melody.phase][Melody.stage][2];
+            tempo4.Value = Melody.tempiInStages[Melody.phase][Melody.stage][3];
+            tempo5.Value = Melody.tempiInStages[Melody.phase][Melody.stage][4];
+            tempo6.Value = Melody.tempiInStages[Melody.phase][Melody.stage][5];
+            tempo7.Value = Melody.tempiInStages[Melody.phase][Melody.stage][6];
+            tempo8.Value = Melody.tempiInStages[Melody.phase][Melody.stage][7];
+            tempo9.Value = Melody.tempiInStages[Melody.phase][Melody.stage][8];
+            tempo10.Value = Melody.tempiInStages[Melody.phase][Melody.stage][9];
+            tempo11.Value = Melody.tempiInStages[Melody.phase][Melody.stage][10];
+            tempo12.Value = Melody.tempiInStages[Melody.phase][Melody.stage][11];
+            tempo13.Value = Melody.tempiInStages[Melody.phase][Melody.stage][12];
+            tempo14.Value = Melody.tempiInStages[Melody.phase][Melody.stage][13];
+            tempo15.Value = Melody.tempiInStages[Melody.phase][Melody.stage][14];
+            tempo16.Value = Melody.tempiInStages[Melody.phase][Melody.stage][15];
+            divider1.Value = Melody.dividersInStages[Melody.phase][Melody.stage][0];
+            divider2.Value = Melody.dividersInStages[Melody.phase][Melody.stage][1];
+            divider3.Value = Melody.dividersInStages[Melody.phase][Melody.stage][2];
+            divider4.Value = Melody.dividersInStages[Melody.phase][Melody.stage][3];
+            divider5.Value = Melody.dividersInStages[Melody.phase][Melody.stage][4];
+            divider6.Value = Melody.dividersInStages[Melody.phase][Melody.stage][5];
+            divider7.Value = Melody.dividersInStages[Melody.phase][Melody.stage][6];
+            divider8.Value = Melody.dividersInStages[Melody.phase][Melody.stage][7];
+            divider9.Value = Melody.dividersInStages[Melody.phase][Melody.stage][8];
+            divider10.Value = Melody.dividersInStages[Melody.phase][Melody.stage][9];
+            divider11.Value = Melody.dividersInStages[Melody.phase][Melody.stage][10];
+            divider12.Value = Melody.dividersInStages[Melody.phase][Melody.stage][11];
+            divider13.Value = Melody.dividersInStages[Melody.phase][Melody.stage][12];
+            divider14.Value = Melody.dividersInStages[Melody.phase][Melody.stage][13];
+            divider15.Value = Melody.dividersInStages[Melody.phase][Melody.stage][14];
+            divider16.Value = Melody.dividersInStages[Melody.phase][Melody.stage][15];
             // Global Parameters
             numericUpDownPercentDeath.Value = SimulationParameters.PercentDeath;
             numericUpDownMaxSteps.Value = SimulationParameters.MaxSteps;
@@ -481,6 +519,7 @@ namespace PopuloApplication
         {
             MusicSimulation.Stop();
             Melody.StopPlaying();
+            Application.Exit();
         }
         private void perCentNumericUpDownKnob_ValueChanged(object sender, EventArgs e)
         {
@@ -519,11 +558,53 @@ namespace PopuloApplication
         {
             Melody.ChangeStage();
             Odcinek.Text = Melody.stage.ToString();
+            //rhythm
+            common_tempo.Value = Melody.mainTempiInStages[Melody.phase][Melody.stage];
+            common_divider.Value = Melody.mainDividersInStages[Melody.phase][Melody.stage];
+            commonDividerCheck.Checked = Melody.commonDividersInStages[Melody.phase][Melody.stage];
+            commonTempoCheck.Checked = Melody.commonTempiInStages[Melody.phase][Melody.stage];
+            tempo1.Value = Melody.tempiInStages[Melody.phase][Melody.stage][0];
+            tempo2.Value = Melody.tempiInStages[Melody.phase][Melody.stage][1];
+            tempo3.Value = Melody.tempiInStages[Melody.phase][Melody.stage][2];
+            tempo4.Value = Melody.tempiInStages[Melody.phase][Melody.stage][3];
+            tempo5.Value = Melody.tempiInStages[Melody.phase][Melody.stage][4];
+            tempo6.Value = Melody.tempiInStages[Melody.phase][Melody.stage][5];
+            tempo7.Value = Melody.tempiInStages[Melody.phase][Melody.stage][6];
+            tempo8.Value = Melody.tempiInStages[Melody.phase][Melody.stage][7];
+            tempo9.Value = Melody.tempiInStages[Melody.phase][Melody.stage][8];
+            tempo10.Value = Melody.tempiInStages[Melody.phase][Melody.stage][9];
+            tempo11.Value = Melody.tempiInStages[Melody.phase][Melody.stage][10];
+            tempo12.Value = Melody.tempiInStages[Melody.phase][Melody.stage][11];
+            tempo13.Value = Melody.tempiInStages[Melody.phase][Melody.stage][12];
+            tempo14.Value = Melody.tempiInStages[Melody.phase][Melody.stage][13];
+            tempo15.Value = Melody.tempiInStages[Melody.phase][Melody.stage][14];
+            tempo16.Value = Melody.tempiInStages[Melody.phase][Melody.stage][15];
+            divider1.Value = Melody.dividersInStages[Melody.phase][Melody.stage][0];
+            divider2.Value = Melody.dividersInStages[Melody.phase][Melody.stage][1];
+            divider3.Value = Melody.dividersInStages[Melody.phase][Melody.stage][2];
+            divider4.Value = Melody.dividersInStages[Melody.phase][Melody.stage][3];
+            divider5.Value = Melody.dividersInStages[Melody.phase][Melody.stage][4];
+            divider6.Value = Melody.dividersInStages[Melody.phase][Melody.stage][5];
+            divider7.Value = Melody.dividersInStages[Melody.phase][Melody.stage][6];
+            divider8.Value = Melody.dividersInStages[Melody.phase][Melody.stage][7];
+            divider9.Value = Melody.dividersInStages[Melody.phase][Melody.stage][8];
+            divider10.Value = Melody.dividersInStages[Melody.phase][Melody.stage][9];
+            divider11.Value = Melody.dividersInStages[Melody.phase][Melody.stage][10];
+            divider12.Value = Melody.dividersInStages[Melody.phase][Melody.stage][11];
+            divider13.Value = Melody.dividersInStages[Melody.phase][Melody.stage][12];
+            divider14.Value = Melody.dividersInStages[Melody.phase][Melody.stage][13];
+            divider15.Value = Melody.dividersInStages[Melody.phase][Melody.stage][14];
+            divider16.Value = Melody.dividersInStages[Melody.phase][Melody.stage][15];
         }
 
         private void Odcinek_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void MainWindow_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            
         }
     }
 }

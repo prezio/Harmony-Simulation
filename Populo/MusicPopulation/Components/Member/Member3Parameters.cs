@@ -12,8 +12,8 @@ namespace MusicPopulation
         public static double GrowthChance = 0.05;
         public static double ShrinkChance = 0.05;
         public static int PrefferedGroupLength = 20;
-        public static int PrefferedGroups =7;
-        public static int PrefferedNotes = 32;
-        public static int PlayedGroup = 5;
+        public static int PrefferedGroups =4;
+        public static int PrefferedNotes = 23;
+        public static int PlayedGroup = 0;
     }
 }

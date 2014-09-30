@@ -81,7 +81,7 @@ namespace MusicPopulation
             _numberOfNotes++;
         }
 
-        protected static readonly int[] limits = new int[] { 20,0, 24, 50 };
+        protected static readonly int[] limits = new int[] { 20,0, 24, 127 };
 
         public Member1(Random randContext)
             : base(randContext)
