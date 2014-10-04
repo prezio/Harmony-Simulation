@@ -51,7 +51,7 @@ namespace PopuloApplication
         private MelodySequence[] tracks;
         private int numberOfTracks;
         private Timer timer;
-        public static int staccato = 100;
+        public static int sustain = 100;
         public bool need = true;
         public bool adding = false;
         public MIDIPlayer(int device, int numberOfTracks, int interval)
@@ -123,7 +123,7 @@ namespace PopuloApplication
             int[][][] stage;
             int length;
             int pause;
-            double pausePart = ((100.0 - (double)staccato) / 100.0);
+            double pausePart = ((100.0 - (double)sustain) / 100.0);
             lock (Melody.currentChords)
             {
                 stage = Melody.chords[Melody.phase][Melody.stage];

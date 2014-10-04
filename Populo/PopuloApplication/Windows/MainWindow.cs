@@ -51,6 +51,7 @@ namespace PopuloApplication
                     break;
             }
             //rhythm
+            SustainField.Value = Melody.sustainInStages[Melody.phase][Melody.stage];
             common_tempo.Value = Melody.mainTempiInStages[Melody.phase][Melody.stage];
             common_divider.Value = Melody.mainDividersInStages[Melody.phase][Melody.stage];
             commonDividerCheck.Checked = Melody.commonDividersInStages[Melody.phase][Melody.stage];
@@ -93,7 +94,7 @@ namespace PopuloApplication
         private void LoadParameters()
         {
             //rhythm
-            StaccatoField.Value = MIDIPlayer.staccato;
+            SustainField.Value = MIDIPlayer.sustain;
             //rhythm
             common_tempo.Value = Melody.mainTempiInStages[Melody.phase][Melody.stage];
             common_divider.Value = Melody.mainDividersInStages[Melody.phase][Melody.stage];
@@ -294,7 +295,7 @@ namespace PopuloApplication
         {
             try
             {
-                MIDIPlayer.staccato = (int)StaccatoField.Value;
+                MIDIPlayer.sustain = (int)SustainField.Value;
                 //rhythm
                 Melody.tempo = (int)common_tempo.Value;
                 Melody.divider = (int)common_divider.Value;
@@ -559,6 +560,7 @@ namespace PopuloApplication
             Melody.ChangeStage();
             Odcinek.Text = Melody.stage.ToString();
             //rhythm
+            SustainField.Value = Melody.sustainInStages[Melody.phase][Melody.stage];
             common_tempo.Value = Melody.mainTempiInStages[Melody.phase][Melody.stage];
             common_divider.Value = Melody.mainDividersInStages[Melody.phase][Melody.stage];
             commonDividerCheck.Checked = Melody.commonDividersInStages[Melody.phase][Melody.stage];
@@ -605,6 +607,17 @@ namespace PopuloApplication
         private void MainWindow_FormClosed(object sender, FormClosedEventArgs e)
         {
             
+        }
+
+        private void MainWindow_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1)
+            {
+                ChangePhase();
+                Odcinek.Text = Melody.stage.ToString();
+            }
+            if (e.KeyCode == Keys.F5)
+                ChangeStage_Click(sender, null);
         }
     }
 }

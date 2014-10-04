@@ -146,14 +146,16 @@ namespace MusicPopulation
             for (int i = 1; i < _numberOfNotes; i++)
             {
                 rank -= _notes[i, 2] & (_notes[i, 2] - 1) * 20;
-                if (_notes[i, 2] != _notes[i - 1, 2])
-                    rhythmChange++;
+                if (_notes[i, 2] != _notes[i - 1, 2] && Math.Abs(_notes[i, 2] - _notes[i - 1, 2]) < 3)
+                    rank += 30;
+                if (_notes[i, 0] != _notes[i - 1, 0] && Math.Abs(_notes[i, 0] - _notes[i - 1, 0]) < 3)
+                    rank += 30;
                 //if (Math.Abs(_notes[i, 3] - _notes[i - 1, 3]) < 6)
                 //    rank -= 60;
                 if (Math.Abs(_notes[i, 3] - _notes[i - 1, 3]) < 20)
                     rank += 30;
             }
-            rank -= (2*_numberOfNotes / 3 - rhythmChange) * (2*_numberOfNotes / 3 - rhythmChange) * 30;
+            //rank -= (2*_numberOfNotes / 3 - rhythmChange) * (2*_numberOfNotes / 3 - rhythmChange) * 30;
             rank -= (_numberOfNotes - PrefferedLength) * (_numberOfNotes - PrefferedLength) * 60;
  
 

@@ -26,8 +26,13 @@ namespace PopuloApplication
                     if (sequence.Count > 0)
                     {
                         Tuple<int, ChannelMessage> t = sequence.Dequeue();
-                        outDevice.Send(t.Item2);
-                        counter = t.Item1;
+                        if (t != null)
+                        {
+                            outDevice.Send(t.Item2);
+                            counter = t.Item1;
+                        }
+                        else 
+                            counter--;
 
                     }
                     else

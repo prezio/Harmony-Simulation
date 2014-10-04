@@ -35,7 +35,34 @@
             this.numericUpDownMaxSteps = new System.Windows.Forms.NumericUpDown();
             this.labelAlfa = new System.Windows.Forms.Label();
             this.groupBoxParameters = new System.Windows.Forms.GroupBox();
-            this.StaccatoField = new System.Windows.Forms.NumericUpDown();
+            this.groupBoxFactorsPhase4 = new System.Windows.Forms.GroupBox();
+            this.prefferedlengthphase4 = new System.Windows.Forms.NumericUpDown();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.exchange3phase4 = new System.Windows.Forms.NumericUpDown();
+            this.exchange2phase4 = new System.Windows.Forms.NumericUpDown();
+            this.exchange1phase4 = new System.Windows.Forms.NumericUpDown();
+            this.shrinkphase4 = new System.Windows.Forms.NumericUpDown();
+            this.growphase4 = new System.Windows.Forms.NumericUpDown();
+            this.label25 = new System.Windows.Forms.Label();
+            this.modchance3phase4 = new System.Windows.Forms.NumericUpDown();
+            this.modchance2phase4 = new System.Windows.Forms.NumericUpDown();
+            this.modchance1phase4 = new System.Windows.Forms.NumericUpDown();
+            this.label26 = new System.Windows.Forms.Label();
+            this.transpose3phase4 = new System.Windows.Forms.NumericUpDown();
+            this.transpose2phase4 = new System.Windows.Forms.NumericUpDown();
+            this.transpose1phase4 = new System.Windows.Forms.NumericUpDown();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.influence3phase4 = new System.Windows.Forms.NumericUpDown();
+            this.influence2phase4 = new System.Windows.Forms.NumericUpDown();
+            this.influence1phase4 = new System.Windows.Forms.NumericUpDown();
+            this.modify1Phase4 = new System.Windows.Forms.NumericUpDown();
+            this.modify3Phase4 = new System.Windows.Forms.NumericUpDown();
+            this.modify2Phase4 = new System.Windows.Forms.NumericUpDown();
+            this.SustainField = new System.Windows.Forms.NumericUpDown();
             this.label20 = new System.Windows.Forms.Label();
             this.labelKnob = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
@@ -241,38 +268,30 @@
             this.buttonSetAccord = new System.Windows.Forms.Button();
             this.ChangeStage = new System.Windows.Forms.Button();
             this.Odcinek = new System.Windows.Forms.Label();
-            this.groupBoxFactorsPhase4 = new System.Windows.Forms.GroupBox();
-            this.prefferedlengthphase4 = new System.Windows.Forms.NumericUpDown();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.exchange3phase4 = new System.Windows.Forms.NumericUpDown();
-            this.exchange2phase4 = new System.Windows.Forms.NumericUpDown();
-            this.exchange1phase4 = new System.Windows.Forms.NumericUpDown();
-            this.shrinkphase4 = new System.Windows.Forms.NumericUpDown();
-            this.growphase4 = new System.Windows.Forms.NumericUpDown();
-            this.label25 = new System.Windows.Forms.Label();
-            this.modchance3phase4 = new System.Windows.Forms.NumericUpDown();
-            this.modchance2phase4 = new System.Windows.Forms.NumericUpDown();
-            this.modchance1phase4 = new System.Windows.Forms.NumericUpDown();
-            this.label26 = new System.Windows.Forms.Label();
-            this.transpose3phase4 = new System.Windows.Forms.NumericUpDown();
-            this.transpose2phase4 = new System.Windows.Forms.NumericUpDown();
-            this.transpose1phase4 = new System.Windows.Forms.NumericUpDown();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
-            this.influence3phase4 = new System.Windows.Forms.NumericUpDown();
-            this.influence2phase4 = new System.Windows.Forms.NumericUpDown();
-            this.influence1phase4 = new System.Windows.Forms.NumericUpDown();
-            this.modify1Phase4 = new System.Windows.Forms.NumericUpDown();
-            this.modify3Phase4 = new System.Windows.Forms.NumericUpDown();
-            this.modify2Phase4 = new System.Windows.Forms.NumericUpDown();
             this.perCentNumericUpDownKnob = new PopuloApplication.PerCentNumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPercentDeath)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxSteps)).BeginInit();
             this.groupBoxParameters.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.StaccatoField)).BeginInit();
+            this.groupBoxFactorsPhase4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.prefferedlengthphase4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.exchange3phase4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.exchange2phase4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.exchange1phase4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.shrinkphase4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.growphase4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.modchance3phase4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.modchance2phase4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.modchance1phase4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.transpose3phase4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.transpose2phase4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.transpose1phase4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.influence3phase4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.influence2phase4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.influence1phase4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.modify1Phase4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.modify3Phase4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.modify2Phase4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SustainField)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.divider16)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.divider15)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.divider14)).BeginInit();
@@ -400,25 +419,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOneModifyAmount3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOneModifyAmount2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAlfa)).BeginInit();
-            this.groupBoxFactorsPhase4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.prefferedlengthphase4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.exchange3phase4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.exchange2phase4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.exchange1phase4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.shrinkphase4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.growphase4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.modchance3phase4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.modchance2phase4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.modchance1phase4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.transpose3phase4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.transpose2phase4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.transpose1phase4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.influence3phase4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.influence2phase4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.influence1phase4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.modify1Phase4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.modify3Phase4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.modify2Phase4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.perCentNumericUpDownKnob)).BeginInit();
             this.SuspendLayout();
             // 
@@ -460,6 +460,11 @@
             // numericUpDownMaxSteps
             // 
             this.numericUpDownMaxSteps.Location = new System.Drawing.Point(237, 45);
+            this.numericUpDownMaxSteps.Maximum = new decimal(new int[] {
+            1200,
+            0,
+            0,
+            0});
             this.numericUpDownMaxSteps.Name = "numericUpDownMaxSteps";
             this.numericUpDownMaxSteps.Size = new System.Drawing.Size(56, 20);
             this.numericUpDownMaxSteps.TabIndex = 7;
@@ -476,7 +481,7 @@
             // groupBoxParameters
             // 
             this.groupBoxParameters.Controls.Add(this.groupBoxFactorsPhase4);
-            this.groupBoxParameters.Controls.Add(this.StaccatoField);
+            this.groupBoxParameters.Controls.Add(this.SustainField);
             this.groupBoxParameters.Controls.Add(this.label20);
             this.groupBoxParameters.Controls.Add(this.labelKnob);
             this.groupBoxParameters.Controls.Add(this.perCentNumericUpDownKnob);
@@ -551,21 +556,409 @@
             this.groupBoxParameters.TabStop = false;
             this.groupBoxParameters.Text = "Parametry";
             // 
-            // StaccatoField
+            // groupBoxFactorsPhase4
             // 
-            this.StaccatoField.Location = new System.Drawing.Point(385, 19);
-            this.StaccatoField.Name = "StaccatoField";
-            this.StaccatoField.Size = new System.Drawing.Size(46, 20);
-            this.StaccatoField.TabIndex = 71;
+            this.groupBoxFactorsPhase4.Controls.Add(this.prefferedlengthphase4);
+            this.groupBoxFactorsPhase4.Controls.Add(this.label21);
+            this.groupBoxFactorsPhase4.Controls.Add(this.label22);
+            this.groupBoxFactorsPhase4.Controls.Add(this.label23);
+            this.groupBoxFactorsPhase4.Controls.Add(this.label24);
+            this.groupBoxFactorsPhase4.Controls.Add(this.exchange3phase4);
+            this.groupBoxFactorsPhase4.Controls.Add(this.exchange2phase4);
+            this.groupBoxFactorsPhase4.Controls.Add(this.exchange1phase4);
+            this.groupBoxFactorsPhase4.Controls.Add(this.shrinkphase4);
+            this.groupBoxFactorsPhase4.Controls.Add(this.growphase4);
+            this.groupBoxFactorsPhase4.Controls.Add(this.label25);
+            this.groupBoxFactorsPhase4.Controls.Add(this.modchance3phase4);
+            this.groupBoxFactorsPhase4.Controls.Add(this.modchance2phase4);
+            this.groupBoxFactorsPhase4.Controls.Add(this.modchance1phase4);
+            this.groupBoxFactorsPhase4.Controls.Add(this.label26);
+            this.groupBoxFactorsPhase4.Controls.Add(this.transpose3phase4);
+            this.groupBoxFactorsPhase4.Controls.Add(this.transpose2phase4);
+            this.groupBoxFactorsPhase4.Controls.Add(this.transpose1phase4);
+            this.groupBoxFactorsPhase4.Controls.Add(this.label27);
+            this.groupBoxFactorsPhase4.Controls.Add(this.label28);
+            this.groupBoxFactorsPhase4.Controls.Add(this.influence3phase4);
+            this.groupBoxFactorsPhase4.Controls.Add(this.influence2phase4);
+            this.groupBoxFactorsPhase4.Controls.Add(this.influence1phase4);
+            this.groupBoxFactorsPhase4.Controls.Add(this.modify1Phase4);
+            this.groupBoxFactorsPhase4.Controls.Add(this.modify3Phase4);
+            this.groupBoxFactorsPhase4.Controls.Add(this.modify2Phase4);
+            this.groupBoxFactorsPhase4.Enabled = false;
+            this.groupBoxFactorsPhase4.Location = new System.Drawing.Point(9, 511);
+            this.groupBoxFactorsPhase4.Name = "groupBoxFactorsPhase4";
+            this.groupBoxFactorsPhase4.Size = new System.Drawing.Size(398, 261);
+            this.groupBoxFactorsPhase4.TabIndex = 36;
+            this.groupBoxFactorsPhase4.TabStop = false;
+            this.groupBoxFactorsPhase4.Text = "Współczynniki Faza 4";
+            // 
+            // prefferedlengthphase4
+            // 
+            this.prefferedlengthphase4.Location = new System.Drawing.Point(201, 219);
+            this.prefferedlengthphase4.Name = "prefferedlengthphase4";
+            this.prefferedlengthphase4.Size = new System.Drawing.Size(56, 20);
+            this.prefferedlengthphase4.TabIndex = 35;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(27, 221);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(86, 13);
+            this.label21.TabIndex = 34;
+            this.label21.Text = "PrefferedLength:";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(27, 195);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(74, 13);
+            this.label22.TabIndex = 33;
+            this.label22.Text = "ShrinkChance";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(27, 169);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(81, 13);
+            this.label23.TabIndex = 32;
+            this.label23.Text = "GrowthChance:";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(27, 117);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(95, 13);
+            this.label24.TabIndex = 31;
+            this.label24.Text = "ExchangeChance:";
+            // 
+            // exchange3phase4
+            // 
+            this.exchange3phase4.DecimalPlaces = 3;
+            this.exchange3phase4.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            196608});
+            this.exchange3phase4.Location = new System.Drawing.Point(325, 114);
+            this.exchange3phase4.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.exchange3phase4.Name = "exchange3phase4";
+            this.exchange3phase4.Size = new System.Drawing.Size(56, 20);
+            this.exchange3phase4.TabIndex = 30;
+            // 
+            // exchange2phase4
+            // 
+            this.exchange2phase4.DecimalPlaces = 3;
+            this.exchange2phase4.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            196608});
+            this.exchange2phase4.Location = new System.Drawing.Point(263, 114);
+            this.exchange2phase4.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.exchange2phase4.Name = "exchange2phase4";
+            this.exchange2phase4.Size = new System.Drawing.Size(56, 20);
+            this.exchange2phase4.TabIndex = 29;
+            // 
+            // exchange1phase4
+            // 
+            this.exchange1phase4.DecimalPlaces = 3;
+            this.exchange1phase4.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            196608});
+            this.exchange1phase4.Location = new System.Drawing.Point(201, 115);
+            this.exchange1phase4.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.exchange1phase4.Name = "exchange1phase4";
+            this.exchange1phase4.Size = new System.Drawing.Size(56, 20);
+            this.exchange1phase4.TabIndex = 28;
+            // 
+            // shrinkphase4
+            // 
+            this.shrinkphase4.DecimalPlaces = 3;
+            this.shrinkphase4.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            196608});
+            this.shrinkphase4.Location = new System.Drawing.Point(201, 193);
+            this.shrinkphase4.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.shrinkphase4.Name = "shrinkphase4";
+            this.shrinkphase4.Size = new System.Drawing.Size(56, 20);
+            this.shrinkphase4.TabIndex = 27;
+            // 
+            // growphase4
+            // 
+            this.growphase4.DecimalPlaces = 3;
+            this.growphase4.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            196608});
+            this.growphase4.Location = new System.Drawing.Point(201, 167);
+            this.growphase4.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.growphase4.Name = "growphase4";
+            this.growphase4.Size = new System.Drawing.Size(56, 20);
+            this.growphase4.TabIndex = 26;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(27, 143);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(78, 13);
+            this.label25.TabIndex = 25;
+            this.label25.Text = "ModifyChance:";
+            // 
+            // modchance3phase4
+            // 
+            this.modchance3phase4.DecimalPlaces = 3;
+            this.modchance3phase4.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            196608});
+            this.modchance3phase4.Location = new System.Drawing.Point(325, 140);
+            this.modchance3phase4.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.modchance3phase4.Name = "modchance3phase4";
+            this.modchance3phase4.Size = new System.Drawing.Size(56, 20);
+            this.modchance3phase4.TabIndex = 24;
+            // 
+            // modchance2phase4
+            // 
+            this.modchance2phase4.DecimalPlaces = 3;
+            this.modchance2phase4.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            196608});
+            this.modchance2phase4.Location = new System.Drawing.Point(263, 140);
+            this.modchance2phase4.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.modchance2phase4.Name = "modchance2phase4";
+            this.modchance2phase4.Size = new System.Drawing.Size(56, 20);
+            this.modchance2phase4.TabIndex = 23;
+            // 
+            // modchance1phase4
+            // 
+            this.modchance1phase4.DecimalPlaces = 3;
+            this.modchance1phase4.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            196608});
+            this.modchance1phase4.Location = new System.Drawing.Point(201, 141);
+            this.modchance1phase4.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.modchance1phase4.Name = "modchance1phase4";
+            this.modchance1phase4.Size = new System.Drawing.Size(56, 20);
+            this.modchance1phase4.TabIndex = 22;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(27, 91);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(97, 13);
+            this.label26.TabIndex = 21;
+            this.label26.Text = "TransposeChance:";
+            // 
+            // transpose3phase4
+            // 
+            this.transpose3phase4.DecimalPlaces = 3;
+            this.transpose3phase4.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            196608});
+            this.transpose3phase4.Location = new System.Drawing.Point(325, 88);
+            this.transpose3phase4.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.transpose3phase4.Name = "transpose3phase4";
+            this.transpose3phase4.Size = new System.Drawing.Size(56, 20);
+            this.transpose3phase4.TabIndex = 20;
+            // 
+            // transpose2phase4
+            // 
+            this.transpose2phase4.DecimalPlaces = 3;
+            this.transpose2phase4.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            196608});
+            this.transpose2phase4.Location = new System.Drawing.Point(263, 88);
+            this.transpose2phase4.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.transpose2phase4.Name = "transpose2phase4";
+            this.transpose2phase4.Size = new System.Drawing.Size(56, 20);
+            this.transpose2phase4.TabIndex = 19;
+            // 
+            // transpose1phase4
+            // 
+            this.transpose1phase4.DecimalPlaces = 3;
+            this.transpose1phase4.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            196608});
+            this.transpose1phase4.Location = new System.Drawing.Point(201, 89);
+            this.transpose1phase4.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.transpose1phase4.Name = "transpose1phase4";
+            this.transpose1phase4.Size = new System.Drawing.Size(56, 20);
+            this.transpose1phase4.TabIndex = 18;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(27, 64);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(90, 13);
+            this.label27.TabIndex = 17;
+            this.label27.Text = "InfluenceAmount:";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(27, 38);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(77, 13);
+            this.label28.TabIndex = 16;
+            this.label28.Text = "ModifyAmount:";
+            // 
+            // influence3phase4
+            // 
+            this.influence3phase4.DecimalPlaces = 2;
+            this.influence3phase4.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.influence3phase4.Location = new System.Drawing.Point(325, 62);
+            this.influence3phase4.Maximum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.influence3phase4.Name = "influence3phase4";
+            this.influence3phase4.Size = new System.Drawing.Size(56, 20);
+            this.influence3phase4.TabIndex = 15;
+            // 
+            // influence2phase4
+            // 
+            this.influence2phase4.DecimalPlaces = 2;
+            this.influence2phase4.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.influence2phase4.Location = new System.Drawing.Point(263, 62);
+            this.influence2phase4.Maximum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.influence2phase4.Name = "influence2phase4";
+            this.influence2phase4.Size = new System.Drawing.Size(56, 20);
+            this.influence2phase4.TabIndex = 14;
+            // 
+            // influence1phase4
+            // 
+            this.influence1phase4.DecimalPlaces = 2;
+            this.influence1phase4.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.influence1phase4.Location = new System.Drawing.Point(201, 62);
+            this.influence1phase4.Maximum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.influence1phase4.Name = "influence1phase4";
+            this.influence1phase4.Size = new System.Drawing.Size(56, 20);
+            this.influence1phase4.TabIndex = 13;
+            // 
+            // modify1Phase4
+            // 
+            this.modify1Phase4.Location = new System.Drawing.Point(201, 36);
+            this.modify1Phase4.Name = "modify1Phase4";
+            this.modify1Phase4.Size = new System.Drawing.Size(56, 20);
+            this.modify1Phase4.TabIndex = 12;
+            // 
+            // modify3Phase4
+            // 
+            this.modify3Phase4.Location = new System.Drawing.Point(325, 36);
+            this.modify3Phase4.Name = "modify3Phase4";
+            this.modify3Phase4.Size = new System.Drawing.Size(56, 20);
+            this.modify3Phase4.TabIndex = 11;
+            // 
+            // modify2Phase4
+            // 
+            this.modify2Phase4.Location = new System.Drawing.Point(263, 36);
+            this.modify2Phase4.Name = "modify2Phase4";
+            this.modify2Phase4.Size = new System.Drawing.Size(56, 20);
+            this.modify2Phase4.TabIndex = 10;
+            // 
+            // SustainField
+            // 
+            this.SustainField.Location = new System.Drawing.Point(385, 19);
+            this.SustainField.Name = "SustainField";
+            this.SustainField.Size = new System.Drawing.Size(46, 20);
+            this.SustainField.TabIndex = 71;
             // 
             // label20
             // 
             this.label20.AutoSize = true;
             this.label20.Location = new System.Drawing.Point(338, 21);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(48, 13);
+            this.label20.Size = new System.Drawing.Size(42, 13);
             this.label20.TabIndex = 70;
-            this.label20.Text = "staccato";
+            this.label20.Text = "Sustain";
             // 
             // labelKnob
             // 
@@ -1526,7 +1919,7 @@
             0,
             0});
             this.common_tempo.Minimum = new decimal(new int[] {
-            30,
+            10,
             0,
             0,
             0});
@@ -3588,394 +3981,6 @@
             this.Odcinek.Text = "0";
             this.Odcinek.Click += new System.EventHandler(this.Odcinek_Click);
             // 
-            // groupBoxFactorsPhase4
-            // 
-            this.groupBoxFactorsPhase4.Controls.Add(this.prefferedlengthphase4);
-            this.groupBoxFactorsPhase4.Controls.Add(this.label21);
-            this.groupBoxFactorsPhase4.Controls.Add(this.label22);
-            this.groupBoxFactorsPhase4.Controls.Add(this.label23);
-            this.groupBoxFactorsPhase4.Controls.Add(this.label24);
-            this.groupBoxFactorsPhase4.Controls.Add(this.exchange3phase4);
-            this.groupBoxFactorsPhase4.Controls.Add(this.exchange2phase4);
-            this.groupBoxFactorsPhase4.Controls.Add(this.exchange1phase4);
-            this.groupBoxFactorsPhase4.Controls.Add(this.shrinkphase4);
-            this.groupBoxFactorsPhase4.Controls.Add(this.growphase4);
-            this.groupBoxFactorsPhase4.Controls.Add(this.label25);
-            this.groupBoxFactorsPhase4.Controls.Add(this.modchance3phase4);
-            this.groupBoxFactorsPhase4.Controls.Add(this.modchance2phase4);
-            this.groupBoxFactorsPhase4.Controls.Add(this.modchance1phase4);
-            this.groupBoxFactorsPhase4.Controls.Add(this.label26);
-            this.groupBoxFactorsPhase4.Controls.Add(this.transpose3phase4);
-            this.groupBoxFactorsPhase4.Controls.Add(this.transpose2phase4);
-            this.groupBoxFactorsPhase4.Controls.Add(this.transpose1phase4);
-            this.groupBoxFactorsPhase4.Controls.Add(this.label27);
-            this.groupBoxFactorsPhase4.Controls.Add(this.label28);
-            this.groupBoxFactorsPhase4.Controls.Add(this.influence3phase4);
-            this.groupBoxFactorsPhase4.Controls.Add(this.influence2phase4);
-            this.groupBoxFactorsPhase4.Controls.Add(this.influence1phase4);
-            this.groupBoxFactorsPhase4.Controls.Add(this.modify1Phase4);
-            this.groupBoxFactorsPhase4.Controls.Add(this.modify3Phase4);
-            this.groupBoxFactorsPhase4.Controls.Add(this.modify2Phase4);
-            this.groupBoxFactorsPhase4.Enabled = false;
-            this.groupBoxFactorsPhase4.Location = new System.Drawing.Point(9, 511);
-            this.groupBoxFactorsPhase4.Name = "groupBoxFactorsPhase4";
-            this.groupBoxFactorsPhase4.Size = new System.Drawing.Size(398, 261);
-            this.groupBoxFactorsPhase4.TabIndex = 36;
-            this.groupBoxFactorsPhase4.TabStop = false;
-            this.groupBoxFactorsPhase4.Text = "Współczynniki Faza 4";
-            // 
-            // prefferedlengthphase4
-            // 
-            this.prefferedlengthphase4.Location = new System.Drawing.Point(201, 219);
-            this.prefferedlengthphase4.Name = "prefferedlengthphase4";
-            this.prefferedlengthphase4.Size = new System.Drawing.Size(56, 20);
-            this.prefferedlengthphase4.TabIndex = 35;
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(27, 221);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(86, 13);
-            this.label21.TabIndex = 34;
-            this.label21.Text = "PrefferedLength:";
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(27, 195);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(74, 13);
-            this.label22.TabIndex = 33;
-            this.label22.Text = "ShrinkChance";
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(27, 169);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(81, 13);
-            this.label23.TabIndex = 32;
-            this.label23.Text = "GrowthChance:";
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(27, 117);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(95, 13);
-            this.label24.TabIndex = 31;
-            this.label24.Text = "ExchangeChance:";
-            // 
-            // exchange3phase4
-            // 
-            this.exchange3phase4.DecimalPlaces = 3;
-            this.exchange3phase4.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            196608});
-            this.exchange3phase4.Location = new System.Drawing.Point(325, 114);
-            this.exchange3phase4.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.exchange3phase4.Name = "exchange3phase4";
-            this.exchange3phase4.Size = new System.Drawing.Size(56, 20);
-            this.exchange3phase4.TabIndex = 30;
-            // 
-            // exchange2phase4
-            // 
-            this.exchange2phase4.DecimalPlaces = 3;
-            this.exchange2phase4.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            196608});
-            this.exchange2phase4.Location = new System.Drawing.Point(263, 114);
-            this.exchange2phase4.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.exchange2phase4.Name = "exchange2phase4";
-            this.exchange2phase4.Size = new System.Drawing.Size(56, 20);
-            this.exchange2phase4.TabIndex = 29;
-            // 
-            // exchange1phase4
-            // 
-            this.exchange1phase4.DecimalPlaces = 3;
-            this.exchange1phase4.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            196608});
-            this.exchange1phase4.Location = new System.Drawing.Point(201, 115);
-            this.exchange1phase4.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.exchange1phase4.Name = "exchange1phase4";
-            this.exchange1phase4.Size = new System.Drawing.Size(56, 20);
-            this.exchange1phase4.TabIndex = 28;
-            // 
-            // shrinkphase4
-            // 
-            this.shrinkphase4.DecimalPlaces = 3;
-            this.shrinkphase4.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            196608});
-            this.shrinkphase4.Location = new System.Drawing.Point(201, 193);
-            this.shrinkphase4.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.shrinkphase4.Name = "shrinkphase4";
-            this.shrinkphase4.Size = new System.Drawing.Size(56, 20);
-            this.shrinkphase4.TabIndex = 27;
-            // 
-            // growphase4
-            // 
-            this.growphase4.DecimalPlaces = 3;
-            this.growphase4.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            196608});
-            this.growphase4.Location = new System.Drawing.Point(201, 167);
-            this.growphase4.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.growphase4.Name = "growphase4";
-            this.growphase4.Size = new System.Drawing.Size(56, 20);
-            this.growphase4.TabIndex = 26;
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(27, 143);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(78, 13);
-            this.label25.TabIndex = 25;
-            this.label25.Text = "ModifyChance:";
-            // 
-            // modchance3phase4
-            // 
-            this.modchance3phase4.DecimalPlaces = 3;
-            this.modchance3phase4.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            196608});
-            this.modchance3phase4.Location = new System.Drawing.Point(325, 140);
-            this.modchance3phase4.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.modchance3phase4.Name = "modchance3phase4";
-            this.modchance3phase4.Size = new System.Drawing.Size(56, 20);
-            this.modchance3phase4.TabIndex = 24;
-            // 
-            // modchance2phase4
-            // 
-            this.modchance2phase4.DecimalPlaces = 3;
-            this.modchance2phase4.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            196608});
-            this.modchance2phase4.Location = new System.Drawing.Point(263, 140);
-            this.modchance2phase4.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.modchance2phase4.Name = "modchance2phase4";
-            this.modchance2phase4.Size = new System.Drawing.Size(56, 20);
-            this.modchance2phase4.TabIndex = 23;
-            // 
-            // modchance1phase4
-            // 
-            this.modchance1phase4.DecimalPlaces = 3;
-            this.modchance1phase4.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            196608});
-            this.modchance1phase4.Location = new System.Drawing.Point(201, 141);
-            this.modchance1phase4.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.modchance1phase4.Name = "modchance1phase4";
-            this.modchance1phase4.Size = new System.Drawing.Size(56, 20);
-            this.modchance1phase4.TabIndex = 22;
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(27, 91);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(97, 13);
-            this.label26.TabIndex = 21;
-            this.label26.Text = "TransposeChance:";
-            // 
-            // transpose3phase4
-            // 
-            this.transpose3phase4.DecimalPlaces = 3;
-            this.transpose3phase4.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            196608});
-            this.transpose3phase4.Location = new System.Drawing.Point(325, 88);
-            this.transpose3phase4.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.transpose3phase4.Name = "transpose3phase4";
-            this.transpose3phase4.Size = new System.Drawing.Size(56, 20);
-            this.transpose3phase4.TabIndex = 20;
-            // 
-            // transpose2phase4
-            // 
-            this.transpose2phase4.DecimalPlaces = 3;
-            this.transpose2phase4.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            196608});
-            this.transpose2phase4.Location = new System.Drawing.Point(263, 88);
-            this.transpose2phase4.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.transpose2phase4.Name = "transpose2phase4";
-            this.transpose2phase4.Size = new System.Drawing.Size(56, 20);
-            this.transpose2phase4.TabIndex = 19;
-            // 
-            // transpose1phase4
-            // 
-            this.transpose1phase4.DecimalPlaces = 3;
-            this.transpose1phase4.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            196608});
-            this.transpose1phase4.Location = new System.Drawing.Point(201, 89);
-            this.transpose1phase4.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.transpose1phase4.Name = "transpose1phase4";
-            this.transpose1phase4.Size = new System.Drawing.Size(56, 20);
-            this.transpose1phase4.TabIndex = 18;
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(27, 64);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(90, 13);
-            this.label27.TabIndex = 17;
-            this.label27.Text = "InfluenceAmount:";
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(27, 38);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(77, 13);
-            this.label28.TabIndex = 16;
-            this.label28.Text = "ModifyAmount:";
-            // 
-            // influence3phase4
-            // 
-            this.influence3phase4.DecimalPlaces = 2;
-            this.influence3phase4.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-            this.influence3phase4.Location = new System.Drawing.Point(325, 62);
-            this.influence3phase4.Maximum = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.influence3phase4.Name = "influence3phase4";
-            this.influence3phase4.Size = new System.Drawing.Size(56, 20);
-            this.influence3phase4.TabIndex = 15;
-            // 
-            // influence2phase4
-            // 
-            this.influence2phase4.DecimalPlaces = 2;
-            this.influence2phase4.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-            this.influence2phase4.Location = new System.Drawing.Point(263, 62);
-            this.influence2phase4.Maximum = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.influence2phase4.Name = "influence2phase4";
-            this.influence2phase4.Size = new System.Drawing.Size(56, 20);
-            this.influence2phase4.TabIndex = 14;
-            // 
-            // influence1phase4
-            // 
-            this.influence1phase4.DecimalPlaces = 2;
-            this.influence1phase4.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-            this.influence1phase4.Location = new System.Drawing.Point(201, 62);
-            this.influence1phase4.Maximum = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.influence1phase4.Name = "influence1phase4";
-            this.influence1phase4.Size = new System.Drawing.Size(56, 20);
-            this.influence1phase4.TabIndex = 13;
-            // 
-            // modify1Phase4
-            // 
-            this.modify1Phase4.Location = new System.Drawing.Point(201, 36);
-            this.modify1Phase4.Name = "modify1Phase4";
-            this.modify1Phase4.Size = new System.Drawing.Size(56, 20);
-            this.modify1Phase4.TabIndex = 12;
-            // 
-            // modify3Phase4
-            // 
-            this.modify3Phase4.Location = new System.Drawing.Point(325, 36);
-            this.modify3Phase4.Name = "modify3Phase4";
-            this.modify3Phase4.Size = new System.Drawing.Size(56, 20);
-            this.modify3Phase4.TabIndex = 11;
-            // 
-            // modify2Phase4
-            // 
-            this.modify2Phase4.Location = new System.Drawing.Point(263, 36);
-            this.modify2Phase4.Name = "modify2Phase4";
-            this.modify2Phase4.Size = new System.Drawing.Size(56, 20);
-            this.modify2Phase4.TabIndex = 10;
-            // 
             // perCentNumericUpDownKnob
             // 
             this.perCentNumericUpDownKnob.Location = new System.Drawing.Point(978, 208);
@@ -4013,16 +4018,38 @@
             this.Controls.Add(this.groupBoxParameters);
             this.Controls.Add(this.buttonStartSimulation);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "MainWindow";
-            this.Text = "Populo Simulator";
+            this.Text = "Alauda";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainWindow_FormClosed);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainWindow_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPercentDeath)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxSteps)).EndInit();
             this.groupBoxParameters.ResumeLayout(false);
             this.groupBoxParameters.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.StaccatoField)).EndInit();
+            this.groupBoxFactorsPhase4.ResumeLayout(false);
+            this.groupBoxFactorsPhase4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.prefferedlengthphase4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.exchange3phase4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.exchange2phase4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.exchange1phase4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.shrinkphase4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.growphase4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.modchance3phase4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.modchance2phase4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.modchance1phase4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.transpose3phase4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.transpose2phase4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.transpose1phase4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.influence3phase4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.influence2phase4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.influence1phase4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.modify1Phase4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.modify3Phase4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.modify2Phase4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SustainField)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.divider16)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.divider15)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.divider14)).EndInit();
@@ -4153,26 +4180,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOneModifyAmount3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOneModifyAmount2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAlfa)).EndInit();
-            this.groupBoxFactorsPhase4.ResumeLayout(false);
-            this.groupBoxFactorsPhase4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.prefferedlengthphase4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.exchange3phase4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.exchange2phase4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.exchange1phase4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.shrinkphase4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.growphase4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.modchance3phase4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.modchance2phase4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.modchance1phase4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.transpose3phase4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.transpose2phase4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.transpose1phase4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.influence3phase4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.influence2phase4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.influence1phase4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.modify1Phase4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.modify3Phase4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.modify2Phase4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.perCentNumericUpDownKnob)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -4393,7 +4400,7 @@
         private System.Windows.Forms.Label labelKnob;
         private System.Windows.Forms.Button ChangeStage;
         private System.Windows.Forms.Label Odcinek;
-        private System.Windows.Forms.NumericUpDown StaccatoField;
+        private System.Windows.Forms.NumericUpDown SustainField;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.GroupBox groupBoxFactorsPhase4;
         private System.Windows.Forms.NumericUpDown prefferedlengthphase4;
