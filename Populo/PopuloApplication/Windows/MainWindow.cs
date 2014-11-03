@@ -611,12 +611,12 @@ namespace PopuloApplication
 
         private void MainWindow_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.F1)
+            if (e.KeyCode == Keys.F9)
             {
                 ChangePhase();
                 Odcinek.Text = Melody.stage.ToString();
             }
-            if (e.KeyCode == Keys.F5)
+            if (e.KeyCode == Keys.F12)
                 ChangeStage_Click(sender, null);
         }
     }
