@@ -43,14 +43,10 @@
     <Compile Include="Components\Area\AreaThread.cs" />
     <Compile Include="Components\Board\Board.cs" />
     <Compile Include="Components\Board\BoardParameters.cs" />
-    <Compile Include="Components\Member\Member4Parameters.cs" />
+    <Compile Include="Components\Member\Member2Parameters.cs" />
     <Compile Include="Components\Member\Member.cs" />
     <Compile Include="Components\Member\Member1Parameters.cs" />
     <Compile Include="Components\Member\Member2.cs" />
-    <Compile Include="Components\Member\Member2Parameters.cs" />
-    <Compile Include="Components\Member\Member3.cs" />
-    <Compile Include="Components\Member\Member3Parameters.cs" />
-    <Compile Include="Components\Member\Member4.cs" />
     <Compile Include="Simulation\Simulation.cs" />
     <Compile Include="Tools\Logger.cs" />
     <Compile Include="Tools\RandomGenerator.cs" />

@@ -242,24 +242,24 @@ namespace PopuloApplication
             numericUpDownThreePrefferedNotes.Value = (decimal)Member3.PrefferedNotes;
             numericUpDownThreePlayedGroup.Value = (decimal)Member3.PlayedGroup;
             //fourth phase
-            modify1Phase4.Value = Member4.ModifyAmount[0];
-            modify2Phase4.Value = Member4.ModifyAmount[2];
-            modify3Phase4.Value = Member4.ModifyAmount[3];
-            influence1phase4.Value = (decimal)Member4.InfluenceAmount[0];
-            influence2phase4.Value = (decimal)Member4.InfluenceAmount[2];
-            influence3phase4.Value = (decimal)Member4.InfluenceAmount[3];
-            transpose1phase4.Value = (decimal)Member4.TransposeChance[0];
-            transpose2phase4.Value = (decimal)Member4.TransposeChance[2];
-            transpose3phase4.Value = (decimal)Member4.TransposeChance[3];
-            exchange1phase4.Value = (decimal)Member4.ExchangeChance[0];
-            exchange2phase4.Value = (decimal)Member4.ExchangeChance[2];
-            exchange3phase4.Value = (decimal)Member4.ExchangeChance[3];
-            modchance1phase4.Value = (decimal)Member4.ModifyChance[0];
-            modchance2phase4.Value = (decimal)Member4.ModifyChance[2];
-            modchance3phase4.Value = (decimal)Member4.ModifyChance[3];
-            growphase4.Value = (decimal)Member4.GrowthChance;
-            shrinkphase4.Value = (decimal)Member4.ShrinkChance;
-            prefferedlengthphase4.Value = Member4.PrefferedLength;
+            modify1Phase4.Value = Member2.ModifyAmount[0];
+            modify2Phase4.Value = Member2.ModifyAmount[2];
+            modify3Phase4.Value = Member2.ModifyAmount[3];
+            influence1phase4.Value = (decimal)Member2.InfluenceAmount[0];
+            influence2phase4.Value = (decimal)Member2.InfluenceAmount[2];
+            influence3phase4.Value = (decimal)Member2.InfluenceAmount[3];
+            transpose1phase4.Value = (decimal)Member2.TransposeChance[0];
+            transpose2phase4.Value = (decimal)Member2.TransposeChance[2];
+            transpose3phase4.Value = (decimal)Member2.TransposeChance[3];
+            exchange1phase4.Value = (decimal)Member2.ExchangeChance[0];
+            exchange2phase4.Value = (decimal)Member2.ExchangeChance[2];
+            exchange3phase4.Value = (decimal)Member2.ExchangeChance[3];
+            modchance1phase4.Value = (decimal)Member2.ModifyChance[0];
+            modchance2phase4.Value = (decimal)Member2.ModifyChance[2];
+            modchance3phase4.Value = (decimal)Member2.ModifyChance[3];
+            growphase4.Value = (decimal)Member2.GrowthChance;
+            shrinkphase4.Value = (decimal)Member2.ShrinkChance;
+            prefferedlengthphase4.Value = Member2.PrefferedLength;
 
         }
 
@@ -443,24 +443,24 @@ namespace PopuloApplication
                 Member3.PrefferedNotes = (int)numericUpDownThreePrefferedNotes.Value;
                 Member3.PlayedGroup = (int)numericUpDownThreePlayedGroup.Value;
                 //fourth phase
-                Member4.ModifyAmount[0] = (int)modify1Phase4.Value;
-                Member4.ModifyAmount[2] = (int)modify2Phase4.Value;
-                Member4.ModifyAmount[3] = (int)modify3Phase4.Value;
-                Member4.InfluenceAmount[0] = (double)influence1phase4.Value;
-                Member4.InfluenceAmount[2] = (double)influence2phase4.Value;
-                Member4.InfluenceAmount[3] = (double)influence3phase4.Value;
-                Member4.ExchangeChance[0] = (double)exchange1phase4.Value;
-                Member4.ExchangeChance[2] = (double)exchange2phase4.Value;
-                Member4.ExchangeChance[3] = (double)exchange3phase4.Value;
-                Member4.ModifyChance[0] = (double)modchance1phase4.Value;
-                Member4.ModifyChance[2] = (double)modchance2phase4.Value;
-                Member4.ModifyChance[3] = (double)modchance3phase4.Value;
-                Member4.TransposeChance[0] = (double)transpose1phase4.Value;
-                Member4.TransposeChance[2] = (double)transpose2phase4.Value;
-                Member4.TransposeChance[3] = (double)transpose3phase4.Value;
-                Member4.GrowthChance = (double)growphase4.Value;
-                Member4.ShrinkChance = (double)shrinkphase4.Value;
-                Member4.PrefferedLength = (int)prefferedlengthphase4.Value;
+                Member2.ModifyAmount[0] = (int)modify1Phase4.Value;
+                Member2.ModifyAmount[2] = (int)modify2Phase4.Value;
+                Member2.ModifyAmount[3] = (int)modify3Phase4.Value;
+                Member2.InfluenceAmount[0] = (double)influence1phase4.Value;
+                Member2.InfluenceAmount[2] = (double)influence2phase4.Value;
+                Member2.InfluenceAmount[3] = (double)influence3phase4.Value;
+                Member2.ExchangeChance[0] = (double)exchange1phase4.Value;
+                Member2.ExchangeChance[2] = (double)exchange2phase4.Value;
+                Member2.ExchangeChance[3] = (double)exchange3phase4.Value;
+                Member2.ModifyChance[0] = (double)modchance1phase4.Value;
+                Member2.ModifyChance[2] = (double)modchance2phase4.Value;
+                Member2.ModifyChance[3] = (double)modchance3phase4.Value;
+                Member2.TransposeChance[0] = (double)transpose1phase4.Value;
+                Member2.TransposeChance[2] = (double)transpose2phase4.Value;
+                Member2.TransposeChance[3] = (double)transpose3phase4.Value;
+                Member2.GrowthChance = (double)growphase4.Value;
+                Member2.ShrinkChance = (double)shrinkphase4.Value;
+                Member2.PrefferedLength = (int)prefferedlengthphase4.Value;
             }
             catch (System.InvalidOperationException)
             {

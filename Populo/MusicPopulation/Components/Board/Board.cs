@@ -13,7 +13,7 @@ namespace MusicPopulation
     public partial class Board
     {
         private int _indexOfPhase; // index of current phase
-        private int _numberOfPhases = 4;
+        private int _numberOfPhases = 2;
         private void SetPhase(int indOfPh)
         {
             _indexOfPhase = indOfPh;
@@ -32,12 +32,6 @@ namespace MusicPopulation
                         break;
                     case 1:
                         _board[i, j] = new Member2(randContext);
-                        break;
-                    case 2:
-                        _board[i, j] = new Member3(randContext);
-                        break;
-                    case 3:
-                        _board[i, j] = new Member4(randContext);
                         break;
                 }
             }
