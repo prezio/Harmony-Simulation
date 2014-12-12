@@ -16,6 +16,8 @@ namespace MusicPopulation
         public static double GrowthChance = 0.05;
         public static double ShrinkChance = 0.05;
         public static int PrefferedLength = 5;
+        public static int played = 0;
+        
         public Member(Random randContext)
         {
         }

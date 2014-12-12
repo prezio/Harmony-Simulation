@@ -74,14 +74,14 @@ namespace MusicPopulation
                 return;
 
             _notes[_numberOfNotes, 0] = randContext.Next(limits[0]);
-            _notes[_numberOfNotes, 1] = 0;
+            _notes[_numberOfNotes, 1] = randContext.Next(limits[1]);
             _notes[_numberOfNotes, 2] = randContext.Next(limits[2]);
             _notes[_numberOfNotes, 3] = randContext.Next(limits[3]);
 
             _numberOfNotes++;
         }
 
-        protected static readonly int[] limits = new int[] { 60, 0, 16, 127 };
+        protected static readonly int[] limits = new int[] { 51, 10, 16, 127 };
 
         public Member2(Random randContext)
             : base(randContext)
@@ -92,11 +92,11 @@ namespace MusicPopulation
             for (int i = 0; i < NumberOfNotes; i++)
             {
                 _notes[i, 0] = randContext.Next(limits[0]);
-                _notes[i, 1] = 0;
+                _notes[i, 1] = randContext.Next(limits[1]);
                 _notes[i, 2] = randContext.Next(limits[2]);
                 _notes[i, 3] = randContext.Next(limits[3]);
             }
-            _notes[0, 1] = 1;
+            
         }
         public Member2()
             : base()
@@ -115,7 +115,17 @@ namespace MusicPopulation
         {
             get
             {
-                return _notes;
+
+                int[,] notes = new int[_maxNotes + 1, 4];
+                for(int i= 0; i<_numberOfNotes; i++)
+                {
+                    notes[i, 0] = _notes[i, 0];
+                    notes[i, 1] = 0;
+                    notes[i, 2] = _notes[i, 2];
+                    notes[i, 3] = (_notes[i,1]>played)?_notes[i, 3]:0;
+                }
+
+                return notes;
             }
         }
         public override void Influence(Member influencer, Random randContext)

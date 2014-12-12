@@ -21,7 +21,7 @@ namespace PopuloApplication
     /// </summary>
     public partial class MainWindow : Form
     {
-        private int _perCentKnob;
+        
         private delegate int TempoCount(int lastVal, int minVal, int maxVal);
 
         private void ChangePhase()
@@ -72,7 +72,22 @@ namespace PopuloApplication
             divider14.Value = Melody.dividersInStages[Melody.phase][Melody.stage][13];
             divider15.Value = Melody.dividersInStages[Melody.phase][Melody.stage][14];
             divider16.Value = Melody.dividersInStages[Melody.phase][Melody.stage][15];
-
+            offset1.Value = (decimal)Melody.offset[0];
+            offset2.Value = (decimal)Melody.offset[1];
+            offset3.Value = (decimal)Melody.offset[2];
+            offset4.Value = (decimal)Melody.offset[3];
+            offset5.Value = (decimal)Melody.offset[4];
+            offset6.Value = (decimal)Melody.offset[5];
+            offset7.Value = (decimal)Melody.offset[6];
+            offset8.Value = (decimal)Melody.offset[7];
+            offset9.Value = (decimal)Melody.offset[8];
+            offset10.Value = (decimal)Melody.offset[9];
+            offset11.Value = (decimal)Melody.offset[10];
+            offset12.Value = (decimal)Melody.offset[11];
+            offset13.Value = (decimal)Melody.offset[12];
+            offset14.Value = (decimal)Melody.offset[13];
+            offset15.Value = (decimal)Melody.offset[14];
+            offset16.Value = (decimal)Melody.offset[15];
             this.Invalidate();
         }
         private void LoadParameters()
@@ -145,8 +160,24 @@ namespace PopuloApplication
             numericUpDownOneGrowthChance.Value = (decimal)Member.GrowthChance;
             numericUpDownOneShrinkChance.Value = (decimal)Member.ShrinkChance;
             numericUpDownOnePrefferedLength.Value = (decimal)Member.PrefferedLength;
-
-           
+            offset1.Value = (decimal)Melody.offset[0];
+            offset2.Value = (decimal)Melody.offset[1];
+            offset3.Value = (decimal)Melody.offset[2];
+            offset4.Value = (decimal)Melody.offset[3];
+            offset5.Value = (decimal)Melody.offset[4];
+            offset6.Value = (decimal)Melody.offset[5];
+            offset7.Value = (decimal)Melody.offset[6];
+            offset8.Value = (decimal)Melody.offset[7];
+            offset9.Value = (decimal)Melody.offset[8];
+            offset10.Value = (decimal)Melody.offset[9];
+            offset11.Value = (decimal)Melody.offset[10];
+            offset12.Value = (decimal)Melody.offset[11];
+            offset13.Value = (decimal)Melody.offset[12];
+            offset14.Value = (decimal)Melody.offset[13];
+            offset15.Value = (decimal)Melody.offset[14];
+            offset16.Value = (decimal)Melody.offset[15];
+            chord.Value = (decimal)Member1.chord;
+            played.Value = (decimal)Member.played;
 
         }
 
@@ -220,6 +251,22 @@ namespace PopuloApplication
                 Melody.dividers[13] = (int)divider14.Value;
                 Melody.dividers[14] = (int)divider15.Value;
                 Melody.dividers[15] = (int)divider16.Value;
+                Melody.offset[0] = (int)offset1.Value;
+                Melody.offset[1] = (int)offset2.Value;
+                Melody.offset[2] = (int)offset3.Value;
+                Melody.offset[3] = (int)offset4.Value;
+                Melody.offset[4] = (int)offset5.Value;
+                Melody.offset[5] = (int)offset6.Value;
+                Melody.offset[6] = (int)offset7.Value;
+                Melody.offset[7] = (int)offset8.Value;
+                Melody.offset[8] = (int)offset9.Value;
+                Melody.offset[9] = (int)offset10.Value;
+                Melody.offset[10] = (int)offset11.Value;
+                Melody.offset[11] = (int)offset12.Value;
+                Melody.offset[12] = (int)offset13.Value;
+                Melody.offset[13] = (int)offset14.Value;
+                Melody.offset[14] = (int)offset15.Value;
+                Melody.offset[15] = (int)offset16.Value;
                 // Global parameters
                 SimulationParameters.PercentDeath = (int)numericUpDownPercentDeath.Value;
                 SimulationParameters.MaxSteps = (int)numericUpDownMaxSteps.Value;
@@ -250,6 +297,9 @@ namespace PopuloApplication
                 Member.ShrinkChance = (double)numericUpDownOneShrinkChance.Value;
                 Member.PrefferedLength = (int)numericUpDownOnePrefferedLength.Value;
 
+                Member.played = (int)played.Value;
+                Member1.chord = (int)chord.Value;
+
                 
             }
             catch (System.InvalidOperationException)
@@ -275,7 +325,7 @@ namespace PopuloApplication
         private void buttonChangePhase_Click(object sender, EventArgs e)
         {
             ChangePhase();
-            Odcinek.Text = Melody.stage.ToString();
+            Odcinek.Text = Melody.phase.ToString();
         }
         private void buttonStop_Click(object sender, EventArgs e)
         {
@@ -352,13 +402,7 @@ namespace PopuloApplication
 
         private void MainWindow_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.F9)
-            {
-                ChangePhase();
-                Odcinek.Text = Melody.stage.ToString();
-            }
-            if (e.KeyCode == Keys.F12)
-                ChangeStage_Click(sender, null);
+            
         }
 
         private void groupBoxFactorsPhase1_Enter(object sender, EventArgs e)
@@ -369,6 +413,11 @@ namespace PopuloApplication
         private void MainWindow_Load(object sender, EventArgs e)
         {
             LoadParameters();
+        }
+
+        private void divider1_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

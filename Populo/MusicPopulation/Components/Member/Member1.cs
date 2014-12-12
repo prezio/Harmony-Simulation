@@ -13,7 +13,7 @@ namespace MusicPopulation
     {
         private int _numberOfNotes;
         private int[,] _notes;
-
+        public static int chord = 5;
         protected void Transpose(uint n, Random randContext)
         {
             if (_numberOfNotes <= 1)
@@ -74,14 +74,14 @@ namespace MusicPopulation
                 return;
 
             _notes[_numberOfNotes, 0] = randContext.Next(limits[0]);
-            _notes[_numberOfNotes, 1] = 0;
+            _notes[_numberOfNotes, 1] = randContext.Next(limits[1]);
             _notes[_numberOfNotes, 2] = randContext.Next(limits[2]);
             _notes[_numberOfNotes, 3] = randContext.Next(limits[3]);
 
             _numberOfNotes++;
         }
 
-        protected static readonly int[] limits = new int[] { 20,0, 24, 127 };
+        protected static readonly int[] limits = new int[] { 4,10, 24, 127 };
 
         public Member1(Random randContext)
             : base(randContext)
@@ -92,7 +92,7 @@ namespace MusicPopulation
             for (int i = 0; i < NumberOfNotes; i++)
             {
                 _notes[i, 0] = randContext.Next(limits[0]);
-                _notes[i, 1] = 0;
+                _notes[i, 1] = randContext.Next(limits[1]);
                 _notes[i, 2] = randContext.Next(limits[2]);
                 _notes[i, 3] = randContext.Next(limits[3]);
             }
@@ -114,7 +114,17 @@ namespace MusicPopulation
         {
             get
             {
-                return _notes;
+                int[,] notes = new int[_maxNotes + 1, 4];
+                for(int i= 0; i<_numberOfNotes; i++)
+                {
+                    notes[i, 0] = _notes[i, 0];
+                    notes[i, 1] = 0;
+                    notes[i, 2] = _notes[i, 2];
+                    notes[i, 3] = (_notes[i,1]>played)?_notes[i, 3]:0;
+                }
+                if (_notes[0, 1] > chord)
+                    notes[0, 1] = 1;
+                return notes;
             }
         }
         public override void Influence(Member influencer , Random randContext)
@@ -163,15 +173,20 @@ namespace MusicPopulation
                 else
                 {
                     sameDirectionRhythm++;
-                    if(sameDirectionRhythm>2)
+                    if(sameDirectionRhythm>3)
                     {
                         rank -= sameDirectionRhythm * 20;
                     }
+                    else
+                        if(sameDirectionRhythm<1)
+                        {
+                            rank -= 40;
+                        }
                 }
                 prevDifference = difference;
                 difference = _notes[i - 1, 3] - _notes[i, 3];
-                if (difference > 20)
-                    rank += 40;
+                if (difference > 40)
+                    rank -= 40;
                 if (difference * prevDifference < 0)
                 {
                     sameDirectionDynamics = 0;
@@ -179,9 +194,9 @@ namespace MusicPopulation
                 else
                 {
                     sameDirectionDynamics++;
-                    if (sameDirectionDynamics > 2)
+                    if (sameDirectionDynamics < 2)
                     {
-                        rank -= sameDirectionDynamics * 30;
+                        rank -= 100;
                     }
                 }
             }

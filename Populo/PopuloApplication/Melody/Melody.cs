@@ -147,6 +147,7 @@ namespace PopuloApplication
                 for (int i = 0; i < 16; i++)
                 {
                     currentChords[i] = 0;
+                    offset[i] = 0;
                 }
             }
         }
@@ -159,6 +160,7 @@ namespace PopuloApplication
                 for (int i = 0; i < 16; i++)
                 {
                     currentChords[i] = 0;
+                    offset[i] = 0;
                 }
             }
         }
