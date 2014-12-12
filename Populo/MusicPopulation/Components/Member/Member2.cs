@@ -138,7 +138,7 @@ namespace MusicPopulation
         }
         public override int Rank()
         {
-            int rhythmChange = 0;
+
             int rank = 0;
             
             rank -= _notes[0, 2] & (_notes[0, 2] - 1) * 20;

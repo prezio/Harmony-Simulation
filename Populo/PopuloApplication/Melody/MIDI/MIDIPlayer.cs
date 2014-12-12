@@ -120,20 +120,20 @@ namespace PopuloApplication
             int[,] notes;
             double time = 0;
             int pitch = 0;
-            int[][][] stage;
+            int[][] stage;
             int length;
             int pause;
             double pausePart = ((100.0 - (double)sustain) / 100.0);
             lock (Melody.currentChords)
             {
-                stage = Melody.chords[Melody.phase][Melody.stage];
+                stage = Melody.chords[Melody.phase];
             }
             Tuple<int, int[,]> current;
             for (int channel = 0; channel < 16; channel++)
             {
                 if (!tracks[channel].need)
                     continue;
-                int[] chord = stage[Melody.currentChords[channel]][channel];
+                int[] chord = stage[Melody.currentChords[channel]];
 
                 time = Melody.common_tempo ? baseTime : (60.0 * 100.0 * 4.0 / (double)Melody.tempi[channel]);
                 time /= Melody.common_divider ? Melody.divider : Melody.dividers[channel];
@@ -147,7 +147,7 @@ namespace PopuloApplication
                     {
                         Melody.currentChords[channel]++;
                         Melody.currentChords[channel] %= stage.Length;
-                        chord = stage[Melody.currentChords[channel]][channel];
+                        chord = stage[Melody.currentChords[channel]];
                     }
                     pitch = chord[((notes[index, 0])) % chord.Length];
                     length = (int)((notes[index, 2] > 0 ? notes[index, 2] : 1) * time);

@@ -32,9 +32,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="PeriodicChords">
-      <HintPath>..\..\HarmonyEditor\PeriodicChords\bin\Release\PeriodicChords.dll</HintPath>
-    </Reference>
     <Reference Include="Sanford.Collections, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Sanford\Sanford.Collections.dll</HintPath>

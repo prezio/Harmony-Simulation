@@ -43,9 +43,7 @@
     <Compile Include="Components\Area\AreaThread.cs" />
     <Compile Include="Components\Board\Board.cs" />
     <Compile Include="Components\Board\BoardParameters.cs" />
-    <Compile Include="Components\Member\Member2Parameters.cs" />
     <Compile Include="Components\Member\Member.cs" />
-    <Compile Include="Components\Member\Member1Parameters.cs" />
     <Compile Include="Components\Member\Member2.cs" />
     <Compile Include="Simulation\Simulation.cs" />
     <Compile Include="Tools\Logger.cs" />
