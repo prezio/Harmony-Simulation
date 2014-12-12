@@ -149,7 +149,7 @@ namespace PopuloApplication
                         Melody.currentChords[channel] %= stage.Length;
                         chord = stage[Melody.currentChords[channel]];
                     }
-                    pitch = chord[((notes[index, 0])) % chord.Length];
+                    pitch = chord[(notes[index, 0] + Melody.offset[channel]) % chord.Length];
                     length = (int)((notes[index, 2] > 0 ? notes[index, 2] : 1) * time);
                     pause = Math.Max((int)(length * pausePart), 0);
                     length -= pause;

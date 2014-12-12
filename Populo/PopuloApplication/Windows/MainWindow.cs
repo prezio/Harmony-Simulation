@@ -160,7 +160,7 @@ namespace PopuloApplication
         public MainWindow()
         {
             InitializeComponent();
-            LoadParameters();
+            
             
         }
         /// <summary>
@@ -364,6 +364,11 @@ namespace PopuloApplication
         private void groupBoxFactorsPhase1_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void MainWindow_Load(object sender, EventArgs e)
+        {
+            LoadParameters();
         }
     }
 }

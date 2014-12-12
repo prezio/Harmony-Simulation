@@ -108,7 +108,7 @@ namespace PopuloApplication
                 73,74,75,76,77,78,79,80,81,82,83,84,85,86}
             },
         };
-
+        public static int[] offset = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
         /// <summary>
         /// Returns whether music is playing or not.
         /// </summary>
