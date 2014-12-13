@@ -13,7 +13,10 @@ namespace MusicPopulation
     {
         private int _numberOfNotes;
         private int[,] _notes;
-
+        public static int minRhythmDirection = 1;
+        public static int maxRhythmDirection = 4;
+        public static int minDynamicsDirection = 1;
+        public static int maxDynamicsDirection = 4;
         protected void Transpose(uint n, Random randContext)
         {
             if (_numberOfNotes <= 1)
@@ -149,27 +152,72 @@ namespace MusicPopulation
         public override int Rank()
         {
 
+            int[] count = new int[limits[0]];
             int rank = 0;
-            
-            rank -= _notes[0, 2] & (_notes[0, 2] - 1) * 20;
-            
-            for (int i = 1; i < _numberOfNotes; i++)
+            int rhytmDiff = _notes[1, 2] -_notes[0, 2];
+            int prevRhythmDiff = rhytmDiff;
+            int difference = _notes[1, 3] - _notes[0, 3];
+            int prevDifference = difference;
+            int sameDirectionRhythm = 0;
+            int sameDirectionDynamics = 0;
+            count[_notes[0, 0]]++;
+            count[_notes[1, 0]]++;
+            if (difference > 40)
+                rank += 40;
+            for (int i = 2; i < NumberOfNotes; i++)
             {
-                rank -= _notes[i, 2] & (_notes[i, 2] - 1) * 20;
-                if (_notes[i, 2] != _notes[i - 1, 2] && Math.Abs(_notes[i, 2] - _notes[i - 1, 2]) < 3)
-                    rank += 30;
-                if (_notes[i, 0] != _notes[i - 1, 0] && Math.Abs(_notes[i, 0] - _notes[i - 1, 0]) < 3)
-                    rank += 30;
-                //if (Math.Abs(_notes[i, 3] - _notes[i - 1, 3]) < 6)
-                //    rank -= 60;
-                if (Math.Abs(_notes[i, 3] - _notes[i - 1, 3]) < 20)
-                    rank += 30;
-            }
-            //rank -= (2*_numberOfNotes / 3 - rhythmChange) * (2*_numberOfNotes / 3 - rhythmChange) * 30;
-            rank -= (_numberOfNotes - PrefferedLength) * (_numberOfNotes - PrefferedLength) * 60;
- 
+                count[_notes[i, 0]]++;
+                prevRhythmDiff = rhytmDiff;
+                rhytmDiff =   _notes[i, 2] - _notes[i - 1, 2];
 
+                if (rhytmDiff * prevRhythmDiff < 0)
+                {
+                    if (sameDirectionRhythm > maxRhythmDirection)
+                    {
+                        rank -= (sameDirectionRhythm-maxRhythmDirection) * 40;
+                    }
+                    else
+                        if (sameDirectionRhythm < minRhythmDirection)
+                        {
+                            rank -= 100;
+                        }
+                    sameDirectionRhythm = 0;
+                }
+                else
+                {
+                    sameDirectionRhythm++;
+                    
+                }
+                prevDifference = difference;
+                difference = _notes[i - 1, 3] - _notes[i, 3];
+                if (difference > 40)
+                    rank -= 40;
+                if (difference * prevDifference < 0)
+                {
+                    if (sameDirectionDynamics < minDynamicsDirection)
+                    {
+                        rank -= 100;
+                    }
+                    else if(sameDirectionDynamics>maxDynamicsDirection)
+                    {
+                        rank -= (sameDirectionDynamics-maxDynamicsDirection) * 40;
+                    }
+                    sameDirectionDynamics = 0;
+                }
+                else
+                {
+                    sameDirectionDynamics++;
+                    
+                }
+            }
+            int mean = _numberOfNotes / limits[0];
+            for (int i = 0; i < limits[0]; i++)
+            {
+                rank -= (count[i] - mean) * (count[i] - mean);
+            }
+            rank -= (_numberOfNotes - PrefferedLength) * (_numberOfNotes - PrefferedLength) * 60;
             return rank;
+
         }
         public override void Mutate(Random randContext)
         {

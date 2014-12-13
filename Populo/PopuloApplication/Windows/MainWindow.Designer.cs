@@ -35,6 +35,23 @@
             this.numericUpDownMaxSteps = new System.Windows.Forms.NumericUpDown();
             this.labelAlfa = new System.Windows.Forms.Label();
             this.groupBoxParameters = new System.Windows.Forms.GroupBox();
+            this.offset16 = new System.Windows.Forms.NumericUpDown();
+            this.offset15 = new System.Windows.Forms.NumericUpDown();
+            this.offset14 = new System.Windows.Forms.NumericUpDown();
+            this.offset13 = new System.Windows.Forms.NumericUpDown();
+            this.offset12 = new System.Windows.Forms.NumericUpDown();
+            this.offset11 = new System.Windows.Forms.NumericUpDown();
+            this.offset10 = new System.Windows.Forms.NumericUpDown();
+            this.offset9 = new System.Windows.Forms.NumericUpDown();
+            this.offset8 = new System.Windows.Forms.NumericUpDown();
+            this.offset7 = new System.Windows.Forms.NumericUpDown();
+            this.offset6 = new System.Windows.Forms.NumericUpDown();
+            this.offset5 = new System.Windows.Forms.NumericUpDown();
+            this.offset4 = new System.Windows.Forms.NumericUpDown();
+            this.offset3 = new System.Windows.Forms.NumericUpDown();
+            this.offset2 = new System.Windows.Forms.NumericUpDown();
+            this.offset1 = new System.Windows.Forms.NumericUpDown();
+            this.label21 = new System.Windows.Forms.Label();
             this.SustainField = new System.Windows.Forms.NumericUpDown();
             this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
@@ -93,6 +110,10 @@
             this.common_tempo = new System.Windows.Forms.NumericUpDown();
             this.groupBoxTaskSimulation = new System.Windows.Forms.GroupBox();
             this.groupBoxFactorsPhase1 = new System.Windows.Forms.GroupBox();
+            this.chord = new System.Windows.Forms.NumericUpDown();
+            this.label23 = new System.Windows.Forms.Label();
+            this.played = new System.Windows.Forms.NumericUpDown();
+            this.label22 = new System.Windows.Forms.Label();
             this.numericUpDownOnePrefferedLength = new System.Windows.Forms.NumericUpDown();
             this.labelOnePrefferedLength = new System.Windows.Forms.Label();
             this.labelOneShrinkChance = new System.Windows.Forms.Label();
@@ -125,30 +146,31 @@
             this.buttonStop = new System.Windows.Forms.Button();
             this.ChangeStage = new System.Windows.Forms.Button();
             this.Odcinek = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.offset1 = new System.Windows.Forms.NumericUpDown();
-            this.offset2 = new System.Windows.Forms.NumericUpDown();
-            this.offset3 = new System.Windows.Forms.NumericUpDown();
-            this.offset4 = new System.Windows.Forms.NumericUpDown();
-            this.offset8 = new System.Windows.Forms.NumericUpDown();
-            this.offset7 = new System.Windows.Forms.NumericUpDown();
-            this.offset6 = new System.Windows.Forms.NumericUpDown();
-            this.offset5 = new System.Windows.Forms.NumericUpDown();
-            this.offset12 = new System.Windows.Forms.NumericUpDown();
-            this.offset11 = new System.Windows.Forms.NumericUpDown();
-            this.offset10 = new System.Windows.Forms.NumericUpDown();
-            this.offset9 = new System.Windows.Forms.NumericUpDown();
-            this.offset16 = new System.Windows.Forms.NumericUpDown();
-            this.offset15 = new System.Windows.Forms.NumericUpDown();
-            this.offset14 = new System.Windows.Forms.NumericUpDown();
-            this.offset13 = new System.Windows.Forms.NumericUpDown();
-            this.played = new System.Windows.Forms.NumericUpDown();
-            this.label22 = new System.Windows.Forms.Label();
-            this.chord = new System.Windows.Forms.NumericUpDown();
-            this.label23 = new System.Windows.Forms.Label();
+            this.minRhythmDiretion = new System.Windows.Forms.NumericUpDown();
+            this.maxRhythmDirection = new System.Windows.Forms.NumericUpDown();
+            this.minDynamicsDirection = new System.Windows.Forms.NumericUpDown();
+            this.maxDynamicsDirection = new System.Windows.Forms.NumericUpDown();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPercentDeath)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxSteps)).BeginInit();
             this.groupBoxParameters.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.offset16)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.offset15)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.offset14)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.offset13)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.offset12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.offset11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.offset10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.offset9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.offset8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.offset7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.offset6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.offset5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.offset4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.offset3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.offset2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.offset1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SustainField)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.divider16)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.divider15)).BeginInit();
@@ -185,6 +207,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.common_divider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.common_tempo)).BeginInit();
             this.groupBoxFactorsPhase1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chord)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.played)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOnePrefferedLength)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOneExchangeChance3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOneExchangeChance2)).BeginInit();
@@ -204,30 +228,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOneModifyAmount3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOneModifyAmount2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAlfa)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.offset1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.offset2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.offset3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.offset4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.offset8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.offset7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.offset6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.offset5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.offset12)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.offset11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.offset10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.offset9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.offset16)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.offset15)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.offset14)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.offset13)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.played)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chord)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.minRhythmDiretion)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.maxRhythmDirection)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.minDynamicsDirection)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.maxDynamicsDirection)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonStartSimulation
             // 
             this.buttonStartSimulation.Location = new System.Drawing.Point(1445, 25);
-            this.buttonStartSimulation.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonStartSimulation.Margin = new System.Windows.Forms.Padding(4);
             this.buttonStartSimulation.Name = "buttonStartSimulation";
             this.buttonStartSimulation.Size = new System.Drawing.Size(131, 48);
             this.buttonStartSimulation.TabIndex = 3;
@@ -238,7 +248,7 @@
             // numericUpDownPercentDeath
             // 
             this.numericUpDownPercentDeath.Location = new System.Drawing.Point(316, 23);
-            this.numericUpDownPercentDeath.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericUpDownPercentDeath.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDownPercentDeath.Name = "numericUpDownPercentDeath";
             this.numericUpDownPercentDeath.Size = new System.Drawing.Size(75, 22);
             this.numericUpDownPercentDeath.TabIndex = 4;
@@ -266,7 +276,7 @@
             // numericUpDownMaxSteps
             // 
             this.numericUpDownMaxSteps.Location = new System.Drawing.Point(316, 55);
-            this.numericUpDownMaxSteps.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericUpDownMaxSteps.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDownMaxSteps.Maximum = new decimal(new int[] {
             1200,
             0,
@@ -288,6 +298,12 @@
             // 
             // groupBoxParameters
             // 
+            this.groupBoxParameters.Controls.Add(this.label25);
+            this.groupBoxParameters.Controls.Add(this.label24);
+            this.groupBoxParameters.Controls.Add(this.maxDynamicsDirection);
+            this.groupBoxParameters.Controls.Add(this.minDynamicsDirection);
+            this.groupBoxParameters.Controls.Add(this.maxRhythmDirection);
+            this.groupBoxParameters.Controls.Add(this.minRhythmDiretion);
             this.groupBoxParameters.Controls.Add(this.offset16);
             this.groupBoxParameters.Controls.Add(this.offset15);
             this.groupBoxParameters.Controls.Add(this.offset14);
@@ -370,18 +386,140 @@
             this.groupBoxParameters.Controls.Add(this.numericUpDownAlfa);
             this.groupBoxParameters.Controls.Add(this.labelAlfa);
             this.groupBoxParameters.Location = new System.Drawing.Point(16, 15);
-            this.groupBoxParameters.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBoxParameters.Margin = new System.Windows.Forms.Padding(4);
             this.groupBoxParameters.Name = "groupBoxParameters";
-            this.groupBoxParameters.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBoxParameters.Padding = new System.Windows.Forms.Padding(4);
             this.groupBoxParameters.Size = new System.Drawing.Size(1409, 1180);
             this.groupBoxParameters.TabIndex = 9;
             this.groupBoxParameters.TabStop = false;
             this.groupBoxParameters.Text = "Parametry";
+            this.groupBoxParameters.Enter += new System.EventHandler(this.groupBoxParameters_Enter);
+            // 
+            // offset16
+            // 
+            this.offset16.Location = new System.Drawing.Point(1296, 344);
+            this.offset16.Name = "offset16";
+            this.offset16.Size = new System.Drawing.Size(40, 22);
+            this.offset16.TabIndex = 88;
+            // 
+            // offset15
+            // 
+            this.offset15.Location = new System.Drawing.Point(1250, 344);
+            this.offset15.Name = "offset15";
+            this.offset15.Size = new System.Drawing.Size(40, 22);
+            this.offset15.TabIndex = 87;
+            // 
+            // offset14
+            // 
+            this.offset14.Location = new System.Drawing.Point(1204, 344);
+            this.offset14.Name = "offset14";
+            this.offset14.Size = new System.Drawing.Size(40, 22);
+            this.offset14.TabIndex = 86;
+            // 
+            // offset13
+            // 
+            this.offset13.Location = new System.Drawing.Point(1158, 344);
+            this.offset13.Name = "offset13";
+            this.offset13.Size = new System.Drawing.Size(40, 22);
+            this.offset13.TabIndex = 85;
+            // 
+            // offset12
+            // 
+            this.offset12.Location = new System.Drawing.Point(1112, 344);
+            this.offset12.Name = "offset12";
+            this.offset12.Size = new System.Drawing.Size(40, 22);
+            this.offset12.TabIndex = 84;
+            // 
+            // offset11
+            // 
+            this.offset11.Location = new System.Drawing.Point(1066, 344);
+            this.offset11.Name = "offset11";
+            this.offset11.Size = new System.Drawing.Size(40, 22);
+            this.offset11.TabIndex = 83;
+            // 
+            // offset10
+            // 
+            this.offset10.Location = new System.Drawing.Point(1020, 344);
+            this.offset10.Name = "offset10";
+            this.offset10.Size = new System.Drawing.Size(40, 22);
+            this.offset10.TabIndex = 82;
+            // 
+            // offset9
+            // 
+            this.offset9.Location = new System.Drawing.Point(974, 344);
+            this.offset9.Name = "offset9";
+            this.offset9.Size = new System.Drawing.Size(40, 22);
+            this.offset9.TabIndex = 81;
+            // 
+            // offset8
+            // 
+            this.offset8.Location = new System.Drawing.Point(928, 344);
+            this.offset8.Name = "offset8";
+            this.offset8.Size = new System.Drawing.Size(40, 22);
+            this.offset8.TabIndex = 80;
+            // 
+            // offset7
+            // 
+            this.offset7.Location = new System.Drawing.Point(882, 344);
+            this.offset7.Name = "offset7";
+            this.offset7.Size = new System.Drawing.Size(40, 22);
+            this.offset7.TabIndex = 79;
+            // 
+            // offset6
+            // 
+            this.offset6.Location = new System.Drawing.Point(836, 344);
+            this.offset6.Name = "offset6";
+            this.offset6.Size = new System.Drawing.Size(40, 22);
+            this.offset6.TabIndex = 78;
+            // 
+            // offset5
+            // 
+            this.offset5.Location = new System.Drawing.Point(790, 344);
+            this.offset5.Name = "offset5";
+            this.offset5.Size = new System.Drawing.Size(40, 22);
+            this.offset5.TabIndex = 77;
+            // 
+            // offset4
+            // 
+            this.offset4.Location = new System.Drawing.Point(744, 344);
+            this.offset4.Name = "offset4";
+            this.offset4.Size = new System.Drawing.Size(40, 22);
+            this.offset4.TabIndex = 76;
+            // 
+            // offset3
+            // 
+            this.offset3.Location = new System.Drawing.Point(698, 344);
+            this.offset3.Name = "offset3";
+            this.offset3.Size = new System.Drawing.Size(40, 22);
+            this.offset3.TabIndex = 75;
+            // 
+            // offset2
+            // 
+            this.offset2.Location = new System.Drawing.Point(652, 344);
+            this.offset2.Name = "offset2";
+            this.offset2.Size = new System.Drawing.Size(40, 22);
+            this.offset2.TabIndex = 74;
+            // 
+            // offset1
+            // 
+            this.offset1.Location = new System.Drawing.Point(606, 344);
+            this.offset1.Name = "offset1";
+            this.offset1.Size = new System.Drawing.Size(40, 22);
+            this.offset1.TabIndex = 73;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(603, 307);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(43, 17);
+            this.label21.TabIndex = 72;
+            this.label21.Text = "offset";
             // 
             // SustainField
             // 
             this.SustainField.Location = new System.Drawing.Point(513, 23);
-            this.SustainField.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.SustainField.Margin = new System.Windows.Forms.Padding(4);
             this.SustainField.Name = "SustainField";
             this.SustainField.Size = new System.Drawing.Size(61, 22);
             this.SustainField.TabIndex = 71;
@@ -559,7 +697,7 @@
             // divider16
             // 
             this.divider16.Location = new System.Drawing.Point(1336, 224);
-            this.divider16.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.divider16.Margin = new System.Windows.Forms.Padding(4);
             this.divider16.Maximum = new decimal(new int[] {
             128,
             0,
@@ -583,7 +721,7 @@
             // divider15
             // 
             this.divider15.Location = new System.Drawing.Point(1263, 224);
-            this.divider15.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.divider15.Margin = new System.Windows.Forms.Padding(4);
             this.divider15.Maximum = new decimal(new int[] {
             128,
             0,
@@ -607,7 +745,7 @@
             // divider14
             // 
             this.divider14.Location = new System.Drawing.Point(1189, 224);
-            this.divider14.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.divider14.Margin = new System.Windows.Forms.Padding(4);
             this.divider14.Maximum = new decimal(new int[] {
             128,
             0,
@@ -631,7 +769,7 @@
             // divider13
             // 
             this.divider13.Location = new System.Drawing.Point(1116, 224);
-            this.divider13.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.divider13.Margin = new System.Windows.Forms.Padding(4);
             this.divider13.Maximum = new decimal(new int[] {
             128,
             0,
@@ -655,7 +793,7 @@
             // divider12
             // 
             this.divider12.Location = new System.Drawing.Point(1043, 224);
-            this.divider12.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.divider12.Margin = new System.Windows.Forms.Padding(4);
             this.divider12.Maximum = new decimal(new int[] {
             128,
             0,
@@ -679,7 +817,7 @@
             // divider11
             // 
             this.divider11.Location = new System.Drawing.Point(969, 224);
-            this.divider11.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.divider11.Margin = new System.Windows.Forms.Padding(4);
             this.divider11.Maximum = new decimal(new int[] {
             128,
             0,
@@ -703,7 +841,7 @@
             // divider10
             // 
             this.divider10.Location = new System.Drawing.Point(895, 224);
-            this.divider10.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.divider10.Margin = new System.Windows.Forms.Padding(4);
             this.divider10.Maximum = new decimal(new int[] {
             128,
             0,
@@ -727,7 +865,7 @@
             // divider9
             // 
             this.divider9.Location = new System.Drawing.Point(821, 224);
-            this.divider9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.divider9.Margin = new System.Windows.Forms.Padding(4);
             this.divider9.Maximum = new decimal(new int[] {
             128,
             0,
@@ -751,7 +889,7 @@
             // divider8
             // 
             this.divider8.Location = new System.Drawing.Point(748, 224);
-            this.divider8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.divider8.Margin = new System.Windows.Forms.Padding(4);
             this.divider8.Maximum = new decimal(new int[] {
             128,
             0,
@@ -775,7 +913,7 @@
             // divider7
             // 
             this.divider7.Location = new System.Drawing.Point(675, 224);
-            this.divider7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.divider7.Margin = new System.Windows.Forms.Padding(4);
             this.divider7.Maximum = new decimal(new int[] {
             128,
             0,
@@ -799,7 +937,7 @@
             // divider6
             // 
             this.divider6.Location = new System.Drawing.Point(601, 224);
-            this.divider6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.divider6.Margin = new System.Windows.Forms.Padding(4);
             this.divider6.Maximum = new decimal(new int[] {
             128,
             0,
@@ -823,7 +961,7 @@
             // divider5
             // 
             this.divider5.Location = new System.Drawing.Point(528, 224);
-            this.divider5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.divider5.Margin = new System.Windows.Forms.Padding(4);
             this.divider5.Maximum = new decimal(new int[] {
             128,
             0,
@@ -847,7 +985,7 @@
             // divider4
             // 
             this.divider4.Location = new System.Drawing.Point(455, 224);
-            this.divider4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.divider4.Margin = new System.Windows.Forms.Padding(4);
             this.divider4.Maximum = new decimal(new int[] {
             128,
             0,
@@ -871,7 +1009,7 @@
             // divider3
             // 
             this.divider3.Location = new System.Drawing.Point(381, 224);
-            this.divider3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.divider3.Margin = new System.Windows.Forms.Padding(4);
             this.divider3.Maximum = new decimal(new int[] {
             128,
             0,
@@ -895,7 +1033,7 @@
             // divider2
             // 
             this.divider2.Location = new System.Drawing.Point(308, 224);
-            this.divider2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.divider2.Margin = new System.Windows.Forms.Padding(4);
             this.divider2.Maximum = new decimal(new int[] {
             128,
             0,
@@ -919,7 +1057,7 @@
             // divider1
             // 
             this.divider1.Location = new System.Drawing.Point(235, 224);
-            this.divider1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.divider1.Margin = new System.Windows.Forms.Padding(4);
             this.divider1.Maximum = new decimal(new int[] {
             128,
             0,
@@ -944,7 +1082,7 @@
             // tempo16
             // 
             this.tempo16.Location = new System.Drawing.Point(1336, 192);
-            this.tempo16.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tempo16.Margin = new System.Windows.Forms.Padding(4);
             this.tempo16.Maximum = new decimal(new int[] {
             240,
             0,
@@ -968,7 +1106,7 @@
             // tempo15
             // 
             this.tempo15.Location = new System.Drawing.Point(1263, 192);
-            this.tempo15.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tempo15.Margin = new System.Windows.Forms.Padding(4);
             this.tempo15.Maximum = new decimal(new int[] {
             240,
             0,
@@ -992,7 +1130,7 @@
             // tempo14
             // 
             this.tempo14.Location = new System.Drawing.Point(1189, 192);
-            this.tempo14.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tempo14.Margin = new System.Windows.Forms.Padding(4);
             this.tempo14.Maximum = new decimal(new int[] {
             240,
             0,
@@ -1016,7 +1154,7 @@
             // tempo13
             // 
             this.tempo13.Location = new System.Drawing.Point(1116, 192);
-            this.tempo13.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tempo13.Margin = new System.Windows.Forms.Padding(4);
             this.tempo13.Maximum = new decimal(new int[] {
             240,
             0,
@@ -1040,7 +1178,7 @@
             // tempo12
             // 
             this.tempo12.Location = new System.Drawing.Point(1043, 192);
-            this.tempo12.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tempo12.Margin = new System.Windows.Forms.Padding(4);
             this.tempo12.Maximum = new decimal(new int[] {
             240,
             0,
@@ -1064,7 +1202,7 @@
             // tempo11
             // 
             this.tempo11.Location = new System.Drawing.Point(969, 192);
-            this.tempo11.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tempo11.Margin = new System.Windows.Forms.Padding(4);
             this.tempo11.Maximum = new decimal(new int[] {
             240,
             0,
@@ -1088,7 +1226,7 @@
             // tempo10
             // 
             this.tempo10.Location = new System.Drawing.Point(895, 192);
-            this.tempo10.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tempo10.Margin = new System.Windows.Forms.Padding(4);
             this.tempo10.Maximum = new decimal(new int[] {
             240,
             0,
@@ -1112,7 +1250,7 @@
             // tempo9
             // 
             this.tempo9.Location = new System.Drawing.Point(821, 192);
-            this.tempo9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tempo9.Margin = new System.Windows.Forms.Padding(4);
             this.tempo9.Maximum = new decimal(new int[] {
             240,
             0,
@@ -1136,7 +1274,7 @@
             // tempo8
             // 
             this.tempo8.Location = new System.Drawing.Point(748, 192);
-            this.tempo8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tempo8.Margin = new System.Windows.Forms.Padding(4);
             this.tempo8.Maximum = new decimal(new int[] {
             240,
             0,
@@ -1160,7 +1298,7 @@
             // tempo7
             // 
             this.tempo7.Location = new System.Drawing.Point(675, 192);
-            this.tempo7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tempo7.Margin = new System.Windows.Forms.Padding(4);
             this.tempo7.Maximum = new decimal(new int[] {
             240,
             0,
@@ -1184,7 +1322,7 @@
             // tempo6
             // 
             this.tempo6.Location = new System.Drawing.Point(601, 192);
-            this.tempo6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tempo6.Margin = new System.Windows.Forms.Padding(4);
             this.tempo6.Maximum = new decimal(new int[] {
             240,
             0,
@@ -1208,7 +1346,7 @@
             // tempo5
             // 
             this.tempo5.Location = new System.Drawing.Point(528, 192);
-            this.tempo5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tempo5.Margin = new System.Windows.Forms.Padding(4);
             this.tempo5.Maximum = new decimal(new int[] {
             240,
             0,
@@ -1232,7 +1370,7 @@
             // tempo4
             // 
             this.tempo4.Location = new System.Drawing.Point(455, 192);
-            this.tempo4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tempo4.Margin = new System.Windows.Forms.Padding(4);
             this.tempo4.Maximum = new decimal(new int[] {
             240,
             0,
@@ -1256,7 +1394,7 @@
             // tempo3
             // 
             this.tempo3.Location = new System.Drawing.Point(381, 192);
-            this.tempo3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tempo3.Margin = new System.Windows.Forms.Padding(4);
             this.tempo3.Maximum = new decimal(new int[] {
             240,
             0,
@@ -1280,7 +1418,7 @@
             // tempo2
             // 
             this.tempo2.Location = new System.Drawing.Point(308, 192);
-            this.tempo2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tempo2.Margin = new System.Windows.Forms.Padding(4);
             this.tempo2.Maximum = new decimal(new int[] {
             240,
             0,
@@ -1304,7 +1442,7 @@
             // tempo1
             // 
             this.tempo1.Location = new System.Drawing.Point(235, 192);
-            this.tempo1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tempo1.Margin = new System.Windows.Forms.Padding(4);
             this.tempo1.Maximum = new decimal(new int[] {
             240,
             0,
@@ -1329,7 +1467,7 @@
             // 
             this.commonDividerCheck.AutoSize = true;
             this.commonDividerCheck.Location = new System.Drawing.Point(152, 224);
-            this.commonDividerCheck.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.commonDividerCheck.Margin = new System.Windows.Forms.Padding(4);
             this.commonDividerCheck.Name = "commonDividerCheck";
             this.commonDividerCheck.Size = new System.Drawing.Size(80, 21);
             this.commonDividerCheck.TabIndex = 20;
@@ -1340,7 +1478,7 @@
             // 
             this.commonTempoCheck.AutoSize = true;
             this.commonTempoCheck.Location = new System.Drawing.Point(152, 191);
-            this.commonTempoCheck.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.commonTempoCheck.Margin = new System.Windows.Forms.Padding(4);
             this.commonTempoCheck.Name = "commonTempoCheck";
             this.commonTempoCheck.Size = new System.Drawing.Size(80, 21);
             this.commonTempoCheck.TabIndex = 19;
@@ -1360,7 +1498,7 @@
             // common_divider
             // 
             this.common_divider.Location = new System.Drawing.Point(73, 222);
-            this.common_divider.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.common_divider.Margin = new System.Windows.Forms.Padding(4);
             this.common_divider.Maximum = new decimal(new int[] {
             128,
             0,
@@ -1394,7 +1532,7 @@
             // common_tempo
             // 
             this.common_tempo.Location = new System.Drawing.Point(73, 190);
-            this.common_tempo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.common_tempo.Margin = new System.Windows.Forms.Padding(4);
             this.common_tempo.Maximum = new decimal(new int[] {
             240,
             0,
@@ -1418,9 +1556,9 @@
             // groupBoxTaskSimulation
             // 
             this.groupBoxTaskSimulation.Location = new System.Drawing.Point(1248, 23);
-            this.groupBoxTaskSimulation.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBoxTaskSimulation.Margin = new System.Windows.Forms.Padding(4);
             this.groupBoxTaskSimulation.Name = "groupBoxTaskSimulation";
-            this.groupBoxTaskSimulation.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBoxTaskSimulation.Padding = new System.Windows.Forms.Padding(4);
             this.groupBoxTaskSimulation.Size = new System.Drawing.Size(153, 54);
             this.groupBoxTaskSimulation.TabIndex = 11;
             this.groupBoxTaskSimulation.TabStop = false;
@@ -1459,19 +1597,55 @@
             this.groupBoxFactorsPhase1.Controls.Add(this.numericUpDownOneModifyAmount3);
             this.groupBoxFactorsPhase1.Controls.Add(this.numericUpDownOneModifyAmount2);
             this.groupBoxFactorsPhase1.Location = new System.Drawing.Point(12, 297);
-            this.groupBoxFactorsPhase1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBoxFactorsPhase1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBoxFactorsPhase1.Name = "groupBoxFactorsPhase1";
-            this.groupBoxFactorsPhase1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBoxFactorsPhase1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBoxFactorsPhase1.Size = new System.Drawing.Size(531, 376);
             this.groupBoxFactorsPhase1.TabIndex = 8;
             this.groupBoxFactorsPhase1.TabStop = false;
             this.groupBoxFactorsPhase1.Text = "Współczynniki";
             this.groupBoxFactorsPhase1.Enter += new System.EventHandler(this.groupBoxFactorsPhase1_Enter);
             // 
+            // chord
+            // 
+            this.chord.Location = new System.Drawing.Point(268, 329);
+            this.chord.Margin = new System.Windows.Forms.Padding(4);
+            this.chord.Name = "chord";
+            this.chord.Size = new System.Drawing.Size(75, 22);
+            this.chord.TabIndex = 39;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(36, 331);
+            this.label23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(46, 17);
+            this.label23.TabIndex = 38;
+            this.label23.Text = "Chord";
+            // 
+            // played
+            // 
+            this.played.Location = new System.Drawing.Point(268, 299);
+            this.played.Margin = new System.Windows.Forms.Padding(4);
+            this.played.Name = "played";
+            this.played.Size = new System.Drawing.Size(75, 22);
+            this.played.TabIndex = 37;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(36, 301);
+            this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(51, 17);
+            this.label22.TabIndex = 36;
+            this.label22.Text = "Played";
+            // 
             // numericUpDownOnePrefferedLength
             // 
             this.numericUpDownOnePrefferedLength.Location = new System.Drawing.Point(268, 270);
-            this.numericUpDownOnePrefferedLength.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericUpDownOnePrefferedLength.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDownOnePrefferedLength.Name = "numericUpDownOnePrefferedLength";
             this.numericUpDownOnePrefferedLength.Size = new System.Drawing.Size(75, 22);
             this.numericUpDownOnePrefferedLength.TabIndex = 35;
@@ -1525,7 +1699,7 @@
             0,
             196608});
             this.numericUpDownOneExchangeChance3.Location = new System.Drawing.Point(433, 140);
-            this.numericUpDownOneExchangeChance3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericUpDownOneExchangeChance3.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDownOneExchangeChance3.Maximum = new decimal(new int[] {
             1,
             0,
@@ -1544,7 +1718,7 @@
             0,
             196608});
             this.numericUpDownOneExchangeChance2.Location = new System.Drawing.Point(351, 140);
-            this.numericUpDownOneExchangeChance2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericUpDownOneExchangeChance2.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDownOneExchangeChance2.Maximum = new decimal(new int[] {
             1,
             0,
@@ -1563,7 +1737,7 @@
             0,
             196608});
             this.numericUpDownOneExchangeChance1.Location = new System.Drawing.Point(268, 142);
-            this.numericUpDownOneExchangeChance1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericUpDownOneExchangeChance1.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDownOneExchangeChance1.Maximum = new decimal(new int[] {
             1,
             0,
@@ -1582,7 +1756,7 @@
             0,
             196608});
             this.numericUpDownOneShrinkChance.Location = new System.Drawing.Point(268, 238);
-            this.numericUpDownOneShrinkChance.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericUpDownOneShrinkChance.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDownOneShrinkChance.Maximum = new decimal(new int[] {
             1,
             0,
@@ -1601,7 +1775,7 @@
             0,
             196608});
             this.numericUpDownOneGrowthChance.Location = new System.Drawing.Point(268, 206);
-            this.numericUpDownOneGrowthChance.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericUpDownOneGrowthChance.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDownOneGrowthChance.Maximum = new decimal(new int[] {
             1,
             0,
@@ -1630,7 +1804,7 @@
             0,
             196608});
             this.numericUpDownOneModifyChance3.Location = new System.Drawing.Point(433, 172);
-            this.numericUpDownOneModifyChance3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericUpDownOneModifyChance3.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDownOneModifyChance3.Maximum = new decimal(new int[] {
             1,
             0,
@@ -1649,7 +1823,7 @@
             0,
             196608});
             this.numericUpDownOneModifyChance2.Location = new System.Drawing.Point(351, 172);
-            this.numericUpDownOneModifyChance2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericUpDownOneModifyChance2.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDownOneModifyChance2.Maximum = new decimal(new int[] {
             1,
             0,
@@ -1668,7 +1842,7 @@
             0,
             196608});
             this.numericUpDownOneModifyChance1.Location = new System.Drawing.Point(268, 174);
-            this.numericUpDownOneModifyChance1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericUpDownOneModifyChance1.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDownOneModifyChance1.Maximum = new decimal(new int[] {
             1,
             0,
@@ -1697,7 +1871,7 @@
             0,
             196608});
             this.numericUpDownOneTransposeChance3.Location = new System.Drawing.Point(433, 108);
-            this.numericUpDownOneTransposeChance3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericUpDownOneTransposeChance3.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDownOneTransposeChance3.Maximum = new decimal(new int[] {
             1,
             0,
@@ -1716,7 +1890,7 @@
             0,
             196608});
             this.numericUpDownOneTransposeChance2.Location = new System.Drawing.Point(351, 108);
-            this.numericUpDownOneTransposeChance2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericUpDownOneTransposeChance2.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDownOneTransposeChance2.Maximum = new decimal(new int[] {
             1,
             0,
@@ -1735,7 +1909,7 @@
             0,
             196608});
             this.numericUpDownOneTransposeChance1.Location = new System.Drawing.Point(268, 110);
-            this.numericUpDownOneTransposeChance1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericUpDownOneTransposeChance1.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDownOneTransposeChance1.Maximum = new decimal(new int[] {
             1,
             0,
@@ -1774,7 +1948,7 @@
             0,
             131072});
             this.numericUpDownOneInfluenceAmount3.Location = new System.Drawing.Point(433, 76);
-            this.numericUpDownOneInfluenceAmount3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericUpDownOneInfluenceAmount3.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDownOneInfluenceAmount3.Maximum = new decimal(new int[] {
             5,
             0,
@@ -1793,7 +1967,7 @@
             0,
             131072});
             this.numericUpDownOneInfluenceAmount2.Location = new System.Drawing.Point(351, 76);
-            this.numericUpDownOneInfluenceAmount2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericUpDownOneInfluenceAmount2.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDownOneInfluenceAmount2.Maximum = new decimal(new int[] {
             5,
             0,
@@ -1812,7 +1986,7 @@
             0,
             131072});
             this.numericUpDownOneInfluenceAmount1.Location = new System.Drawing.Point(268, 76);
-            this.numericUpDownOneInfluenceAmount1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericUpDownOneInfluenceAmount1.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDownOneInfluenceAmount1.Maximum = new decimal(new int[] {
             5,
             0,
@@ -1825,7 +1999,7 @@
             // numericUpDownOneModifyAmount1
             // 
             this.numericUpDownOneModifyAmount1.Location = new System.Drawing.Point(268, 44);
-            this.numericUpDownOneModifyAmount1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericUpDownOneModifyAmount1.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDownOneModifyAmount1.Name = "numericUpDownOneModifyAmount1";
             this.numericUpDownOneModifyAmount1.Size = new System.Drawing.Size(75, 22);
             this.numericUpDownOneModifyAmount1.TabIndex = 12;
@@ -1833,7 +2007,7 @@
             // numericUpDownOneModifyAmount3
             // 
             this.numericUpDownOneModifyAmount3.Location = new System.Drawing.Point(433, 44);
-            this.numericUpDownOneModifyAmount3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericUpDownOneModifyAmount3.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDownOneModifyAmount3.Name = "numericUpDownOneModifyAmount3";
             this.numericUpDownOneModifyAmount3.Size = new System.Drawing.Size(75, 22);
             this.numericUpDownOneModifyAmount3.TabIndex = 11;
@@ -1841,7 +2015,7 @@
             // numericUpDownOneModifyAmount2
             // 
             this.numericUpDownOneModifyAmount2.Location = new System.Drawing.Point(351, 44);
-            this.numericUpDownOneModifyAmount2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericUpDownOneModifyAmount2.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDownOneModifyAmount2.Name = "numericUpDownOneModifyAmount2";
             this.numericUpDownOneModifyAmount2.Size = new System.Drawing.Size(75, 22);
             this.numericUpDownOneModifyAmount2.TabIndex = 10;
@@ -1855,7 +2029,7 @@
             0,
             196608});
             this.numericUpDownAlfa.Location = new System.Drawing.Point(316, 87);
-            this.numericUpDownAlfa.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericUpDownAlfa.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDownAlfa.Maximum = new decimal(new int[] {
             5,
             0,
@@ -1868,7 +2042,7 @@
             // buttonClose
             // 
             this.buttonClose.Location = new System.Drawing.Point(1433, 1136);
-            this.buttonClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonClose.Margin = new System.Windows.Forms.Padding(4);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(131, 48);
             this.buttonClose.TabIndex = 10;
@@ -1879,7 +2053,7 @@
             // buttonChangePhase
             // 
             this.buttonChangePhase.Location = new System.Drawing.Point(1445, 135);
-            this.buttonChangePhase.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonChangePhase.Margin = new System.Windows.Forms.Padding(4);
             this.buttonChangePhase.Name = "buttonChangePhase";
             this.buttonChangePhase.Size = new System.Drawing.Size(131, 48);
             this.buttonChangePhase.TabIndex = 11;
@@ -1890,7 +2064,7 @@
             // buttonStop
             // 
             this.buttonStop.Location = new System.Drawing.Point(1445, 80);
-            this.buttonStop.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonStop.Margin = new System.Windows.Forms.Padding(4);
             this.buttonStop.Name = "buttonStop";
             this.buttonStop.Size = new System.Drawing.Size(131, 48);
             this.buttonStop.TabIndex = 12;
@@ -1901,7 +2075,7 @@
             // ChangeStage
             // 
             this.ChangeStage.Location = new System.Drawing.Point(1444, 191);
-            this.ChangeStage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ChangeStage.Margin = new System.Windows.Forms.Padding(4);
             this.ChangeStage.Name = "ChangeStage";
             this.ChangeStage.Size = new System.Drawing.Size(131, 48);
             this.ChangeStage.TabIndex = 14;
@@ -1920,162 +2094,52 @@
             this.Odcinek.Text = "0";
             this.Odcinek.Click += new System.EventHandler(this.Odcinek_Click);
             // 
-            // label21
+            // minRhythmDiretion
             // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(603, 307);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(43, 17);
-            this.label21.TabIndex = 72;
-            this.label21.Text = "offset";
+            this.minRhythmDiretion.Location = new System.Drawing.Point(736, 404);
+            this.minRhythmDiretion.Name = "minRhythmDiretion";
+            this.minRhythmDiretion.Size = new System.Drawing.Size(43, 22);
+            this.minRhythmDiretion.TabIndex = 89;
             // 
-            // offset1
+            // maxRhythmDirection
             // 
-            this.offset1.Location = new System.Drawing.Point(606, 344);
-            this.offset1.Name = "offset1";
-            this.offset1.Size = new System.Drawing.Size(40, 22);
-            this.offset1.TabIndex = 73;
+            this.maxRhythmDirection.Location = new System.Drawing.Point(795, 404);
+            this.maxRhythmDirection.Name = "maxRhythmDirection";
+            this.maxRhythmDirection.Size = new System.Drawing.Size(43, 22);
+            this.maxRhythmDirection.TabIndex = 90;
             // 
-            // offset2
+            // minDynamicsDirection
             // 
-            this.offset2.Location = new System.Drawing.Point(652, 344);
-            this.offset2.Name = "offset2";
-            this.offset2.Size = new System.Drawing.Size(40, 22);
-            this.offset2.TabIndex = 74;
+            this.minDynamicsDirection.Location = new System.Drawing.Point(736, 436);
+            this.minDynamicsDirection.Name = "minDynamicsDirection";
+            this.minDynamicsDirection.Size = new System.Drawing.Size(43, 22);
+            this.minDynamicsDirection.TabIndex = 91;
             // 
-            // offset3
+            // maxDynamicsDirection
             // 
-            this.offset3.Location = new System.Drawing.Point(698, 344);
-            this.offset3.Name = "offset3";
-            this.offset3.Size = new System.Drawing.Size(40, 22);
-            this.offset3.TabIndex = 75;
+            this.maxDynamicsDirection.Location = new System.Drawing.Point(795, 436);
+            this.maxDynamicsDirection.Name = "maxDynamicsDirection";
+            this.maxDynamicsDirection.Size = new System.Drawing.Size(43, 22);
+            this.maxDynamicsDirection.TabIndex = 92;
             // 
-            // offset4
+            // label24
             // 
-            this.offset4.Location = new System.Drawing.Point(744, 344);
-            this.offset4.Name = "offset4";
-            this.offset4.Size = new System.Drawing.Size(40, 22);
-            this.offset4.TabIndex = 76;
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(604, 406);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(114, 17);
+            this.label24.TabIndex = 93;
+            this.label24.Text = "Rhythm direction";
+            this.label24.Click += new System.EventHandler(this.label24_Click);
             // 
-            // offset8
+            // label25
             // 
-            this.offset8.Location = new System.Drawing.Point(928, 344);
-            this.offset8.Name = "offset8";
-            this.offset8.Size = new System.Drawing.Size(40, 22);
-            this.offset8.TabIndex = 80;
-            // 
-            // offset7
-            // 
-            this.offset7.Location = new System.Drawing.Point(882, 344);
-            this.offset7.Name = "offset7";
-            this.offset7.Size = new System.Drawing.Size(40, 22);
-            this.offset7.TabIndex = 79;
-            // 
-            // offset6
-            // 
-            this.offset6.Location = new System.Drawing.Point(836, 344);
-            this.offset6.Name = "offset6";
-            this.offset6.Size = new System.Drawing.Size(40, 22);
-            this.offset6.TabIndex = 78;
-            // 
-            // offset5
-            // 
-            this.offset5.Location = new System.Drawing.Point(790, 344);
-            this.offset5.Name = "offset5";
-            this.offset5.Size = new System.Drawing.Size(40, 22);
-            this.offset5.TabIndex = 77;
-            // 
-            // offset12
-            // 
-            this.offset12.Location = new System.Drawing.Point(1112, 344);
-            this.offset12.Name = "offset12";
-            this.offset12.Size = new System.Drawing.Size(40, 22);
-            this.offset12.TabIndex = 84;
-            // 
-            // offset11
-            // 
-            this.offset11.Location = new System.Drawing.Point(1066, 344);
-            this.offset11.Name = "offset11";
-            this.offset11.Size = new System.Drawing.Size(40, 22);
-            this.offset11.TabIndex = 83;
-            // 
-            // offset10
-            // 
-            this.offset10.Location = new System.Drawing.Point(1020, 344);
-            this.offset10.Name = "offset10";
-            this.offset10.Size = new System.Drawing.Size(40, 22);
-            this.offset10.TabIndex = 82;
-            // 
-            // offset9
-            // 
-            this.offset9.Location = new System.Drawing.Point(974, 344);
-            this.offset9.Name = "offset9";
-            this.offset9.Size = new System.Drawing.Size(40, 22);
-            this.offset9.TabIndex = 81;
-            // 
-            // offset16
-            // 
-            this.offset16.Location = new System.Drawing.Point(1296, 344);
-            this.offset16.Name = "offset16";
-            this.offset16.Size = new System.Drawing.Size(40, 22);
-            this.offset16.TabIndex = 88;
-            // 
-            // offset15
-            // 
-            this.offset15.Location = new System.Drawing.Point(1250, 344);
-            this.offset15.Name = "offset15";
-            this.offset15.Size = new System.Drawing.Size(40, 22);
-            this.offset15.TabIndex = 87;
-            // 
-            // offset14
-            // 
-            this.offset14.Location = new System.Drawing.Point(1204, 344);
-            this.offset14.Name = "offset14";
-            this.offset14.Size = new System.Drawing.Size(40, 22);
-            this.offset14.TabIndex = 86;
-            // 
-            // offset13
-            // 
-            this.offset13.Location = new System.Drawing.Point(1158, 344);
-            this.offset13.Name = "offset13";
-            this.offset13.Size = new System.Drawing.Size(40, 22);
-            this.offset13.TabIndex = 85;
-            // 
-            // played
-            // 
-            this.played.Location = new System.Drawing.Point(268, 299);
-            this.played.Margin = new System.Windows.Forms.Padding(4);
-            this.played.Name = "played";
-            this.played.Size = new System.Drawing.Size(75, 22);
-            this.played.TabIndex = 37;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(36, 301);
-            this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(51, 17);
-            this.label22.TabIndex = 36;
-            this.label22.Text = "Played";
-            // 
-            // chord
-            // 
-            this.chord.Location = new System.Drawing.Point(268, 329);
-            this.chord.Margin = new System.Windows.Forms.Padding(4);
-            this.chord.Name = "chord";
-            this.chord.Size = new System.Drawing.Size(75, 22);
-            this.chord.TabIndex = 39;
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(36, 331);
-            this.label23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(46, 17);
-            this.label23.TabIndex = 38;
-            this.label23.Text = "Chord";
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(604, 438);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(127, 17);
+            this.label25.TabIndex = 94;
+            this.label25.Text = "Dynamics direction";
             // 
             // MainWindow
             // 
@@ -2091,7 +2155,7 @@
             this.Controls.Add(this.buttonStartSimulation);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.KeyPreview = true;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "MainWindow";
             this.Text = "Alauda";
@@ -2103,6 +2167,22 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxSteps)).EndInit();
             this.groupBoxParameters.ResumeLayout(false);
             this.groupBoxParameters.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.offset16)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.offset15)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.offset14)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.offset13)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.offset12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.offset11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.offset10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.offset9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.offset8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.offset7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.offset6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.offset5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.offset4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.offset3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.offset2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.offset1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SustainField)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.divider16)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.divider15)).EndInit();
@@ -2140,6 +2220,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.common_tempo)).EndInit();
             this.groupBoxFactorsPhase1.ResumeLayout(false);
             this.groupBoxFactorsPhase1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chord)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.played)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOnePrefferedLength)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOneExchangeChance3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOneExchangeChance2)).EndInit();
@@ -2159,24 +2241,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOneModifyAmount3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOneModifyAmount2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAlfa)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.offset1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.offset2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.offset3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.offset4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.offset8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.offset7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.offset6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.offset5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.offset12)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.offset11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.offset10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.offset9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.offset16)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.offset15)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.offset14)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.offset13)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.played)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chord)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.minRhythmDiretion)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.maxRhythmDirection)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.minDynamicsDirection)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.maxDynamicsDirection)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2302,6 +2370,12 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.NumericUpDown chord;
         private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.NumericUpDown maxDynamicsDirection;
+        private System.Windows.Forms.NumericUpDown minDynamicsDirection;
+        private System.Windows.Forms.NumericUpDown maxRhythmDirection;
+        private System.Windows.Forms.NumericUpDown minRhythmDiretion;
+        private System.Windows.Forms.Label label25;
     }
 }
 

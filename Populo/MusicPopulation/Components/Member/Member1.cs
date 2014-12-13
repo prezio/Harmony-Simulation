@@ -164,9 +164,8 @@ namespace MusicPopulation
                 count[_notes[i, 0]]++;
                 prevProportion = proportion;
                 proportion = ((double)_notes[i - 1, 2]) / _notes[i, 2];
-                if (Math.Abs(proportion) == Math.Abs(prevProportion))
-                    rank -= 30;
-                if(proportion*prevProportion<0)
+
+                if((proportion-1)*(prevProportion-1)<0)
                 {
                     sameDirectionRhythm = 0;
                 }
@@ -189,15 +188,16 @@ namespace MusicPopulation
                     rank -= 40;
                 if (difference * prevDifference < 0)
                 {
+                    if (sameDirectionDynamics < 2)
+                    {
+                        rank -= 100;
+                    }
                     sameDirectionDynamics = 0;
                 }
                 else
                 {
                     sameDirectionDynamics++;
-                    if (sameDirectionDynamics < 2)
-                    {
-                        rank -= 100;
-                    }
+                   
                 }
             }
             int mean = _numberOfNotes / limits[0];

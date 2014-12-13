@@ -178,7 +178,10 @@ namespace PopuloApplication
             offset16.Value = (decimal)Melody.offset[15];
             chord.Value = (decimal)Member1.chord;
             played.Value = (decimal)Member.played;
-
+            minDynamicsDirection.Value = (decimal)Member2.minDynamicsDirection;
+            maxDynamicsDirection.Value = (decimal)Member2.maxDynamicsDirection;
+            minRhythmDiretion.Value = (decimal)Member2.minRhythmDirection;
+            maxRhythmDirection.Value = (decimal)Member2.maxRhythmDirection;
         }
 
         /// <summary>
@@ -299,7 +302,10 @@ namespace PopuloApplication
 
                 Member.played = (int)played.Value;
                 Member1.chord = (int)chord.Value;
-
+                Member2.minRhythmDirection = (int)minRhythmDiretion.Value;
+                Member2.maxRhythmDirection = (int)minRhythmDiretion.Value;
+                Member2.minDynamicsDirection = (int)minDynamicsDirection.Value;
+                Member2.maxDynamicsDirection = (int)maxDynamicsDirection.Value;
                 
             }
             catch (System.InvalidOperationException)
@@ -416,6 +422,16 @@ namespace PopuloApplication
         }
 
         private void divider1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBoxParameters_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label24_Click(object sender, EventArgs e)
         {
 
         }
